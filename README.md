@@ -91,7 +91,7 @@ npm.cmd start
 ```text
 .
 ├─ 词境/
-│  ├─ app/                 # 前端页面、样式与本地内容
+│  ├─ public/              # 前端页面、样式与本地内容
 │  ├─ scripts/             # 开源离线词典安装器
 │  ├─ data/                # 仅本地：学习状态与词典索引（不进 Git）
 │  ├─ server.js            # 只监听本机的 Node 服务
