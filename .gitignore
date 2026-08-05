@@ -1,0 +1,16 @@
+# Personal learning state — stays only on this computer.
+词境/data/
+
+# Local dependency and runtime output.
+词境/node_modules/
+词境/.next/
+词境/npm-debug.log*
+词境/*.log
+
+# Secrets and editor/OS files.
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+.vscode/

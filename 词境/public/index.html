@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f6f4ef" />
+    <title>词境 · WordScape</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./enhancements.css" />
+  </head>
+  <body>
+    <div class="page-wash" aria-hidden="true"></div>
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="词境首页">
+        <span class="brand-mark">W</span><span>词境 <i>WordScape</i></span>
+      </a>
+      <nav class="nav" aria-label="主导航">
+        <button data-nav="home">此刻</button><button data-nav="words">词表</button><button data-nav="learn">学习</button><button data-nav="review">复习 <span class="nav-count" id="review-count">0</span></button><button data-nav="settings" aria-label="设置">设置</button><button class="theme-switch" data-toggle-theme aria-label="切换到夜间模式">夜间</button>
+      </nav>
+    </header>
+    <main id="app" class="app-shell" tabindex="-1" aria-live="polite"></main>
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <template id="speaker-template"><button class="speaker" type="button" aria-label="朗读"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6l-5 4H4Zm11.5 2a4.5 4.5 0 0 0-2-3.74v7.48A4.5 4.5 0 0 0 15.5 12Zm-2-8.16v2.08a6.5 6.5 0 0 1 0 12.16v2.08a8.5 8.5 0 0 0 0-16.32Z"/></svg></button></template>
+    <script src="./content-library.js"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>

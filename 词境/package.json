@@ -1,0 +1,19 @@
+{
+  "name": "wordscape-local",
+  "private": true,
+  "version": "0.1.0",
+  "description": "词境基础版：仅在本机运行和保存数据",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dictionary:install": "node scripts/install-offline-dictionary.js"
+  },
+  "dependencies": {
+    "fflate": "^0.8.2",
+    "mammoth": "^1.12.0",
+    "pdfjs-dist": "^6.2.108"
+  }
+}
