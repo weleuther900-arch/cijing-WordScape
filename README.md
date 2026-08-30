@@ -6,7 +6,7 @@
 
 _A local-first, fully open-source English learning space._
 
-`离线词典` · `语境学习` · `间隔复习` · `本地数据`
+`离线词典` · `语境学习` · `FSRS 复习` · `独立记忆表` · `PWA 加密同步`
 
 </div>
 
