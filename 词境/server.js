@@ -24,8 +24,11 @@ const MIME_TYPES = {
   ".js": "text/javascript; charset=utf-8",
   ".css": "text/css; charset=utf-8",
   ".json": "application/json; charset=utf-8",
+  ".gz": "application/json; charset=utf-8",
   ".webmanifest": "application/manifest+json; charset=utf-8",
-  ".svg": "image/svg+xml"
+  ".svg": "image/svg+xml",
+  ".png": "image/png",
+  ".ico": "image/x-icon"
 };
 
 function commonHeaders(cacheControl = "no-store") {
@@ -36,6 +39,16 @@ function commonHeaders(cacheControl = "no-store") {
     "X-Frame-Options": "DENY",
     "Permissions-Policy": "camera=(), microphone=(), geolocation=()"
   };
+}
+
+function staticCacheControl(file) {
+  // index.html and the worker must be revalidated so a new release is noticed
+  // promptly.  Every other shell asset is versioned by the HTML file, so it
+  // can be kept locally and makes repeat desktop launches much faster.
+  const name = path.basename(file);
+  return name === "index.html" || name === "refresh.html" || name === "service-worker.js" || name === "manifest.webmanifest"
+    ? "no-cache"
+    : "public, max-age=31536000, immutable";
 }
 
 function writeJson(response, statusCode, value) {
@@ -187,7 +200,10 @@ async function serveStatic(requestPath, response) {
   }
   try {
     const contents = await fs.readFile(resolved);
-    response.writeHead(200, { "Content-Type": MIME_TYPES[path.extname(resolved)] || "application/octet-stream", ...commonHeaders() });
+    const extension = path.extname(resolved);
+    const headers = { "Content-Type": MIME_TYPES[extension] || "application/octet-stream", ...commonHeaders(staticCacheControl(resolved)) };
+    if (extension === ".gz") headers["Content-Encoding"] = "gzip";
+    response.writeHead(200, headers);
     response.end(contents);
   } catch (error) {
     writeJson(response, error.code === "ENOENT" ? 404 : 500, { error: "Not found" });

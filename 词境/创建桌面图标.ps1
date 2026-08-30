@@ -1,9 +1,9 @@
 $ErrorActionPreference = "Stop"
 
 $appDirectory = $PSScriptRoot
-$startScript = Join-Path $appDirectory "start.ps1"
-if (-not (Test-Path -LiteralPath $startScript)) {
-  throw "未找到词境启动脚本。"
+$launcherScript = Join-Path $appDirectory "launch.vbs"
+if (-not (Test-Path -LiteralPath $launcherScript)) {
+  throw "WordScape desktop launcher was not found."
 }
 
 $iconPath = Join-Path $appDirectory "assets\wordscape-icon.ico"
@@ -11,7 +11,7 @@ if (-not (Test-Path -LiteralPath $iconPath)) {
   & (Join-Path $appDirectory "scripts\create-desktop-icon.ps1") -OutputPath $iconPath
 }
 if (-not (Test-Path -LiteralPath $iconPath)) {
-  throw "未能创建词境图标。"
+  throw "WordScape icon could not be created."
 }
 
 $desktop = [Environment]::GetFolderPath("Desktop")
@@ -21,10 +21,11 @@ $previousShortcut = Join-Path $desktop "WordScape.lnk"
 if ($previousShortcut -ne $shortcutPath -and (Test-Path -LiteralPath $previousShortcut)) {
   Remove-Item -LiteralPath $previousShortcut -Force
 }
+
 $shell = New-Object -ComObject WScript.Shell
 $shortcut = $shell.CreateShortcut($shortcutPath)
-$shortcut.TargetPath = (Join-Path $PSHOME "powershell.exe")
-$shortcut.Arguments = "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$startScript`""
+$shortcut.TargetPath = (Join-Path $env:WINDIR "System32\wscript.exe")
+$shortcut.Arguments = "`"$launcherScript`""
 $shortcut.WorkingDirectory = $appDirectory
 $shortcut.IconLocation = "$iconPath,0"
 $shortcut.Description = $shortcutTitle

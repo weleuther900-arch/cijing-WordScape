@@ -9,7 +9,11 @@
   },
   "scripts": {
     "start": "node server.js",
-    "dictionary:install": "node scripts/install-offline-dictionary.js"
+    "dictionary:install": "node scripts/install-offline-dictionary.js",
+    "ios:web:prepare": "node scripts/prepare-ios-web.js",
+    "sync:verify": "node scripts/verify-cloud-sync.js && node scripts/verify-cloud-worker.js",
+    "sync:verify:remote": "node scripts/verify-deployed-cloud-sync.js",
+    "learn:rollover:verify": "node scripts/verify-learning-rollover.js"
   },
   "dependencies": {
     "fflate": "^0.8.2",

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title">
+  <title>词境 WordScape</title>
+  <rect width="512" height="512" rx="112" fill="#20211f"/>
+  <path fill="#f7f5f0" d="M115 142h58l39 178 47-178h50l47 178 39-178h58l-66 228h-55l-48-167-48 167h-55z"/>
+  <circle cx="397" cy="118" r="30" fill="#9bb9c2"/>
+</svg>
