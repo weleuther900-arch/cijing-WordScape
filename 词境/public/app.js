@@ -41,6 +41,10 @@ let browserDictionaryLoading;
 let importEntryOverride = null;
 let deviceDatabasePromise;
 let deviceStateLoadedFromLegacy = false;
+let homeScreenRecoveryPending = false;
+let homeScreenRecoveryError = "";
+function isHomeScreenWebApp() { return Boolean(window.matchMedia?.("(display-mode: standalone)").matches || window.navigator.standalone === true); }
+function hasStoredWords(value) { return Array.isArray(value?.words) && value.words.length > 0; }
 function lastItem(items) { return items && items.length ? items[items.length - 1] : undefined; }
 function cloneValue(value) { return typeof structuredClone === "function" ? structuredClone(value) : JSON.parse(JSON.stringify(value)); }
 function apiFetch(url, options = {}) { return fetch(url, options); }
@@ -229,6 +233,10 @@ async function saveDeviceState(value) {
     return false;
   }
 }
+async function requestPersistentDeviceStorage() {
+  if (storageMode !== "device" || !navigator.storage?.persist) return;
+  try { await navigator.storage.persist(); } catch { /* Storage persistence is best effort on iOS. */ }
+}
 function setCloudSyncStatus(message) {
   cloudSyncStatus = message;
   document.querySelectorAll("[data-cloud-sync-status]").forEach((element) => { element.textContent = message; });
@@ -407,9 +415,10 @@ async function enableCloudSync(secret) {
   state.sync = { enabled: true, key, revision: prior.key === key ? prior.revision : 0, lastSyncedAt: prior.key === key ? prior.lastSyncedAt : null, dirty: true, contentVersion: CLOUD_SYNC_CONTENT_VERSION };
   await persist({ skipCloud: true, silent: true });
   render();
-  setCloudSyncStatus("已启用 · 点击立即同步，或等待每 4 小时自动同步");
+  setCloudSyncStatus("正在创建加密备份…");
   startCloudSyncPolling();
-  showToast("云端同步已启用；每 4 小时自动同步一次。" );
+  showToast("云端同步已启用，正在创建这台设备的加密备份。" );
+  void syncCloudState({ manual: true });
 }
 async function disableCloudSync() {
   if (!window.confirm("停止这台设备的云端同步？云端加密备份会保留，之后输入同一密钥即可重新连接。")) return;
@@ -419,6 +428,45 @@ async function disableCloudSync() {
   await persist({ skipCloud: true, silent: true });
   render();
   showToast("这台设备已停止云端同步，本机记录没有删除。");
+}
+async function recoverHomeScreenState(secret) {
+  const key = String(secret || "").trim();
+  if (key.length < 16) { homeScreenRecoveryError = "请输入浏览器中保存的完整同步密钥。"; render(); return; }
+  if (!SYNC || !window.crypto?.subtle) { homeScreenRecoveryError = "这台设备不支持加密恢复。请改用设置中的备份文件恢复。"; render(); return; }
+  homeScreenRecoveryError = "";
+  showToast("正在恢复你的词本…");
+  try {
+    const profileId = await SYNC.sha256(key);
+    const remote = await postCloudSync({ action: "pull", profileId, revision: 0 });
+    if (remote.status !== "found" || !remote.payload) throw new Error("没有找到对应的加密备份。请先在浏览器版点“立即同步”。");
+    const restored = await SYNC.decrypt(remote.payload, key);
+    if (!restored || typeof restored !== "object" || !Array.isArray(restored.words)) throw new Error("加密备份格式无效。请重新在浏览器版同步一次。");
+    state = restored;
+    state.settings = { ...DEFAULT_SETTINGS, ...(state.settings || {}) };
+    state.sync = { enabled: true, key, revision: Math.max(0, Number(remote.revision) || 0), lastSyncedAt: new Date().toISOString(), dirty: false, contentVersion: CLOUD_SYNC_CONTENT_VERSION };
+    syncConfig();
+    refreshCloudSyncState();
+    document.documentElement.dataset.reduceMotion = String(state.settings.reducedMotion);
+    applyTheme();
+    selectedBatchId = lastItem(state.batches.filter((batch) => batch.notebookId === state.activeNotebookId))?.id || null;
+    homeScreenRecoveryPending = false;
+    homeScreenRecoveryError = "";
+    await persist({ skipCloud: true, silent: true });
+    setCloudSyncStatus(`已恢复 · ${formatCloudSyncDate(state.sync.lastSyncedAt)}（北京时间）`);
+    startCloudSyncPolling();
+    render();
+    scheduleOfflineDictionaryHydration();
+    showToast("词本与学习记录已恢复到主屏幕版。" );
+  } catch (error) {
+    homeScreenRecoveryError = error?.message || "恢复失败，请检查网络和同步密钥后重试。";
+    render();
+  }
+}
+function dismissHomeScreenRecovery() {
+  homeScreenRecoveryPending = false;
+  state.settings.pwaRecoveryDismissed = true;
+  void persist({ skipCloud: true, silent: true });
+  render();
 }
 async function copyCloudSyncKey() {
   const key = String(syncConfig().key || "");
@@ -1023,6 +1071,7 @@ async function load() {
       payload = { state: await loadDeviceState() };
     }
   }
+  homeScreenRecoveryPending = Boolean(isStaticMobileApp && isHomeScreenWebApp() && !hasStoredWords(payload.state) && !payload.state?.settings?.pwaRecoveryDismissed);
   state = payload.state && payload.state.settings ? payload.state : makeInitialState();
   const voiceSpeedUpdated = upgradeVoiceSpeedSettings(state.settings);
   const settingsUpdated = Object.keys(DEFAULT_SETTINGS).some((key) => !(key in state.settings));
@@ -1042,13 +1091,16 @@ async function load() {
   document.documentElement.dataset.reduceMotion = String(state.settings.reducedMotion);
   applyTheme();
   selectedBatchId = lastItem(state.batches.filter((batch) => batch.notebookId === state.activeNotebookId))?.id || null;
+  if (homeScreenRecoveryPending) currentView = "home";
   render();
+  void requestPersistentDeviceStorage();
   scheduleSenseLibraryLoad();
   if (contentUpdated || voiceSpeedUpdated || settingsUpdated || notebookUpdated || memoryTableUpdated || removedLegacyAiSettings || syncWasNormalized || syncScopeUpdated || deviceStateLoadedFromLegacy) persist();
   scheduleOfflineDictionaryHydration();
   if (canUseCloudSync()) {
     setCloudSyncStatus(state.sync.dirty ? "本地改动待同步 · 将在 4 小时内自动同步" : state.sync.lastSyncedAt ? `已同步 · ${formatCloudSyncDate(state.sync.lastSyncedAt)}（北京时间）` : "准备就绪 · 点击立即同步，或等待自动同步");
     startCloudSyncPolling();
+    void syncCloudState({ automatic: true });
   }
 }
 function persist({ skipCloud = false, silent = false, defer = false } = {}) {
@@ -1119,7 +1171,12 @@ function renderNav() {
 }
 function pageHeading(title) { const quote = dailyQuote({ "词表": "words", "学习": "learn", "复习": "review", "记忆": "memory", "设置": "settings" }[title] || "home"); return `<div class="page-heading"><div><h1>${title}</h1><p class="daily-quote"><span>${quote.en}</span><em>${quote.zh}</em></p></div></div>`; }
 
+function renderHomeScreenRecovery() {
+  APP.innerHTML = `<section class="home-page home-screen-recovery"><p class="eyebrow">主屏幕版 · 首次打开</p><h1 class="display">先恢复你的<br />词本。</h1><p class="lede">iPhone 会把浏览器和主屏幕应用的本机数据分开保存。你的词本没有被清空；输入浏览器版中使用的同步密钥，即可安全恢复。</p><section class="home-screen-recovery-card"><div><p class="section-label">从浏览器词境恢复</p><h2>恢复已有词本</h2><ol><li>在浏览器版打开“设置”。</li><li>在“云端自动同步”中复制密钥并点“立即同步”。</li><li>回到这里输入同一密钥。</li></ol></div><label class="field-label">同步密钥<input data-home-screen-sync-key type="text" autocomplete="off" spellcheck="false" placeholder="粘贴浏览器里的同步密钥" /></label><div class="backup-actions"><button class="primary" data-recover-home-screen>恢复词本</button><button class="quiet-button" data-dismiss-home-screen-recovery>这是一个空白新词本</button></div>${homeScreenRecoveryError ? `<p class="home-screen-recovery-error" role="alert">${escapeHtml(homeScreenRecoveryError)}</p>` : ""}</section><p class="note">如果浏览器版从未启用同步，请在浏览器“设置 → 数据备份”导出备份，再在这里的“设置”中恢复该文件。</p></section>`;
+}
+
 function renderHome() {
+  if (homeScreenRecoveryPending) { renderHomeScreenRecovery(); return; }
   const plan = dailyPlanSummary();
   const due = dueCount(); const learning = incompleteCount(); const total = activeWords().length; const completed = activeLogs().length; const quote = dailyQuote("home"); const studyDays = studyHistoryDays(); const curveDays = reviewCurveDays();
   const primaryView = due ? "review" : plan.remaining ? "learn" : learning ? "learn" : total ? "words" : "words";
@@ -2152,6 +2209,8 @@ document.addEventListener("click", (event) => {
     if (field && SYNC) { field.value = SYNC.createSecret(); field.focus(); field.select(); showToast("已生成同步密钥。请保存它，并在三台设备输入完全相同的密钥。"); }
   }
   if (button.dataset.enableSync !== undefined) void enableCloudSync(document.querySelector("[data-cloud-sync-key]")?.value);
+  if (button.dataset.recoverHomeScreen !== undefined) void recoverHomeScreenState(document.querySelector("[data-home-screen-sync-key]")?.value);
+  if (button.dataset.dismissHomeScreenRecovery !== undefined) dismissHomeScreenRecovery();
   if (button.dataset.copySyncKey !== undefined) void copyCloudSyncKey();
   if (button.dataset.syncNow !== undefined) void syncCloudState({ manual: true });
   if (button.dataset.refreshApp !== undefined) window.location.assign("./refresh.html");

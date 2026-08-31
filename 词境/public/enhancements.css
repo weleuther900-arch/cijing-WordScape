@@ -774,6 +774,18 @@ html[data-theme="dark"] .daily-plan-overview.is-gated, html[data-theme="dark"] .
 
 .app-startup { margin: 2.5rem auto; max-width: 36rem; color: var(--muted, #697386); text-align: center; }
 
+/* Home Screen web apps intentionally receive an isolated local store on iOS. */
+.home-screen-recovery { max-width: 760px; }
+.home-screen-recovery .display { max-width: 650px; }
+.home-screen-recovery-card { display: grid; gap: 19px; margin-top: 34px; padding: 27px; border: 1px solid rgba(51,95,109,.22); border-radius: 20px; background: rgba(220,231,233,.42); box-shadow: var(--shadow); }
+.home-screen-recovery-card h2 { margin: 0; font-family: Georgia, serif; font-size: 28px; font-weight: 400; }
+.home-screen-recovery-card ol { display: grid; gap: 7px; margin: 13px 0 0; padding-left: 21px; color: var(--muted); line-height: 1.65; }
+.home-screen-recovery-card .field-label { display: grid; gap: 8px; margin: 0; }
+.home-screen-recovery-card .backup-actions { display: flex; flex-wrap: wrap; gap: 9px; }
+.home-screen-recovery-error { margin: 0; color: var(--bad); font-size: 14px; line-height: 1.6; }
+html[data-theme="dark"] .home-screen-recovery-card { border-color: #4b5960; background: #272c30; }
+@media (max-width: 700px) { .home-screen-recovery-card { margin-top: 28px; padding: 21px 18px; } .home-screen-recovery-card .backup-actions { display: grid; } .home-screen-recovery-card .backup-actions > * { width: 100%; } }
+
 /* Independent memory table: it inherits WordScape's paper, ink and muted warm accent. */
 .memory-page { display: grid; gap: 22px; }
 .memory-page .page-heading { margin-bottom: 3px; }

@@ -2,7 +2,7 @@
   "name": "wordscape-local",
   "private": true,
   "version": "0.1.0",
-  "description": "词境基础版：仅在本机运行和保存数据",
+  "description": "词境：本地优先、离线可用的英语词汇学习工具，支持可选的加密云同步",
   "license": "MIT",
   "engines": {
     "node": ">=20"
@@ -12,7 +12,7 @@
     "dictionary:install": "node scripts/install-offline-dictionary.js",
     "ios:web:prepare": "node scripts/prepare-ios-web.js",
     "sync:verify": "node scripts/verify-cloud-sync.js && node scripts/verify-cloud-worker.js",
-    "sync:verify:remote": "node scripts/verify-deployed-cloud-sync.js",
+    "sync:verify:remote": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/verify-deployed-cloud-sync.ps1",
     "learn:rollover:verify": "node scripts/verify-learning-rollover.js"
   },
   "dependencies": {
