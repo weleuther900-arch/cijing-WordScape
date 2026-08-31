@@ -11,6 +11,7 @@
       main { width: min(420px, 100%); padding: 30px; border: 1px solid rgba(39,43,39,.13); border-radius: 22px; background: rgba(255,255,255,.62); box-shadow: 0 20px 50px rgba(53,54,47,.09); }
       h1 { margin: 0 0 13px; font-family: Georgia, serif; font-size: 30px; font-weight: 400; }
       p { margin: 0; color: #6d706a; line-height: 1.7; }
+      a { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; margin-top: 22px; padding: 0 20px; border-radius: 999px; color: #fff; background: #20211f; font-weight: 700; text-decoration: none; }
       .dot { display: inline-block; width: 9px; height: 9px; margin-right: 8px; border-radius: 50%; background: #335f6d; animation: pulse 1s ease-in-out infinite alternate; }
       @keyframes pulse { to { opacity: .25; transform: scale(.72); } }
     </style>
@@ -19,6 +20,7 @@
     <main>
       <h1><span class="dot"></span>正在更新词境</h1>
       <p id="status">正在移除旧界面缓存；学习记录会保留。</p>
+      <a id="continue" href="./?cache-reset=manual">重新打开词境</a>
     </main>
     <script>
       (async () => {
@@ -29,10 +31,10 @@
             const names = await caches.keys();
             await Promise.all(names.filter((name) => name.startsWith("wordscape-shell-")).map((name) => caches.delete(name)));
           }
-          document.querySelector("#status").textContent = "新版已准备好，正在打开词境。";
-          setTimeout(() => location.replace(`./?cache-reset=${Date.now()}`), 700);
+          document.querySelector("#status").textContent = "旧界面缓存已清理。请点击下方按钮重新打开词境。";
+          document.querySelector("#continue").href = `./?cache-reset=${Date.now()}`;
         } catch {
-          document.querySelector("#status").textContent = "更新完成。请返回词境主页后重新打开一次。";
+          document.querySelector("#status").textContent = "无法自动清理，但可点击下方按钮重新打开词境。";
         }
       })();
     </script>

@@ -1,4 +1,4 @@
-const CACHE_NAME = "wordscape-shell-v58";
+const CACHE_NAME = "wordscape-shell-v59";
 const SHELL_FILES = [
   "./",
   "./index.html",
@@ -46,6 +46,10 @@ async function refreshCachedAsset(cacheKey, request) {
 self.addEventListener("fetch", (event) => {
   const requestUrl = new URL(event.request.url);
   if (event.request.method !== "GET" || requestUrl.origin !== self.location.origin || requestUrl.pathname.startsWith("/api/")) return;
+  if (requestUrl.pathname.endsWith("/refresh.html")) {
+    event.respondWith(fetch(event.request, { cache: "no-store" }).catch(() => caches.match(event.request)).then((response) => response || new Response("暂时无法打开修复页面，请检查网络后重试。", { status: 503 })));
+    return;
+  }
   if (event.request.mode === "navigate") {
     // New deployments must be visible on the same launch. The old cache-first
     // behavior made installed PWAs keep showing a previous page until later.
