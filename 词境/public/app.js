@@ -2049,7 +2049,9 @@ function englishVoices() {
 function selectedVoice() { const voices = englishVoices(); return voices.find((voice) => voice.voiceURI === state.settings.voiceURI) || voices[0] || null; }
 let speechRequestId = 0;
 let speechEnginePrimed = false;
+let activeSpeechUtterance = null;
 const pointerStartedSpeechButtons = new WeakSet();
+function isAppleTouchDevice() { return /iP(?:hone|ad|od)/i.test(navigator.userAgent || "") || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1); }
 function primeSpeechEngine() {
   if (speechEnginePrimed || !("speechSynthesis" in window)) return;
   speechEnginePrimed = true;
@@ -2059,7 +2061,8 @@ function speak(text, type = "sentence") {
   const phrase = String(text || "").replace(/\s+/g, " ").trim();
   if (!phrase) return;
   if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) { showToast("当前浏览器不支持朗读。"); return; }
-  const voice = selectedVoice(); const requestId = ++speechRequestId;
+  const useSystemVoice = isAppleTouchDevice();
+  const voice = useSystemVoice ? null : selectedVoice(); const requestId = ++speechRequestId;
   const defaultRate = type === "word" ? DEFAULT_SETTINGS.wordRate : DEFAULT_SETTINGS.sentenceRate;
   const requestedRate = Number(type === "word" ? state.settings.wordRate : state.settings.sentenceRate);
   const rate = Math.min(2, Math.max(0.8, Number.isFinite(requestedRate) ? requestedRate : defaultRate));
@@ -2069,9 +2072,14 @@ function speak(text, type = "sentence") {
   else utterance.lang = "en-US";
   const naturalSentence = type === "sentence" && state.settings.sentenceVoiceEngine === "natural";
   utterance.rate = naturalSentence ? Math.min(rate, 0.96) : rate; utterance.pitch = naturalSentence ? 0.92 : 1; utterance.volume = 1;
+  activeSpeechUtterance = utterance;
+  const clearActiveUtterance = () => { if (activeSpeechUtterance === utterance) activeSpeechUtterance = null; };
+  utterance.onend = clearActiveUtterance;
   utterance.onerror = (event) => {
+    clearActiveUtterance();
     if (requestId !== speechRequestId || event.error === "canceled" || event.error === "interrupted") return;
-    if (event.error === "not-allowed") showToast("请先轻点页面，再试听发音。");
+    if (event.error === "not-allowed") showToast("请直接轻点单词，再试听发音。");
+    else showToast("系统朗读暂时不可用，请检查音量后重试。");
   };
   // Clear any earlier utterance and actively resume the engine so a direct tap
   // starts the requested word or sentence without waiting for a stale queue.
@@ -2165,6 +2173,7 @@ document.addEventListener("pointerdown", (event) => {
   if (event.isPrimary === false || (event.button !== undefined && event.button !== 0)) return;
   primeSpeechEngine();
   const button = event.target.closest("button"); if (!button) return;
+  if (isAppleTouchDevice()) return;
   if (triggerSpeechButtonAction(button)) pointerStartedSpeechButtons.add(button);
 }, true);
 
@@ -2208,7 +2217,7 @@ document.addEventListener("click", (event) => {
   if (button.dataset.choice) choose(button.dataset.choice);
   if (button.dataset.nextQuestion !== undefined) nextQuestion();
   if (button.dataset.previousQuestion !== undefined) previousQuestion();
-  if (!pointerStartedSpeechButtons.delete(button)) triggerSpeechButtonAction(button);
+  if (!pointerStartedSpeechButtons.delete(button) || isAppleTouchDevice()) triggerSpeechButtonAction(button);
   if (button.dataset.retryExamples) { const word = state.words.find((item) => item.id === button.dataset.retryExamples); if (word) retryAiContexts([word], currentView); }
 
   if (button.dataset.exportBackup !== undefined) exportBackup();
