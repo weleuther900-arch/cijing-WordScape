@@ -2061,8 +2061,7 @@ function speak(text, type = "sentence") {
   const phrase = String(text || "").replace(/\s+/g, " ").trim();
   if (!phrase) return;
   if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) { showToast("当前浏览器不支持朗读。"); return; }
-  const useSystemVoice = isAppleTouchDevice();
-  const voice = useSystemVoice ? null : selectedVoice(); const requestId = ++speechRequestId;
+  const voice = selectedVoice(); const requestId = ++speechRequestId;
   const defaultRate = type === "word" ? DEFAULT_SETTINGS.wordRate : DEFAULT_SETTINGS.sentenceRate;
   const requestedRate = Number(type === "word" ? state.settings.wordRate : state.settings.sentenceRate);
   const rate = Math.min(2, Math.max(0.8, Number.isFinite(requestedRate) ? requestedRate : defaultRate));
