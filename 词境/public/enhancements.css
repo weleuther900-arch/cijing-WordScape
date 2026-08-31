@@ -1152,12 +1152,3 @@ html[data-theme="dark"] .memory-mode:not(.is-active):hover { color: #e4e8ed; bac
 .memory-meaning { gap: 6px; }
 .memory-meaning span { overflow: visible; text-overflow: clip; white-space: normal; overflow-wrap: anywhere; line-height: 1.55; }
 .memory-meaning b { vertical-align: top; }
-/* Optional unified voice: a compact local-only panel in the existing settings rhythm. */
-.offline-voice-panel { display: grid; gap: 8px; padding: 15px 16px; border: 1px solid rgba(51,95,109,.18); border-radius: 14px; background: rgba(51,95,109,.055); }
-.offline-voice-panel > strong { font-size: 15px; }
-.offline-voice-panel .field-note { margin: 0; }
-.offline-voice-panel .backup-actions { margin-top: 2px; }
-.offline-voice-panel .backup-actions .quiet-button { min-height: 42px; }
-.offline-voice-panel button:disabled { cursor: not-allowed; opacity: .48; }
-html[data-theme="dark"] .offline-voice-panel { border-color: #4b5960; background: rgba(113,136,186,.10); }
-@media (max-width: 700px) { .offline-voice-panel { padding: 14px; } .offline-voice-panel .backup-actions .quiet-button { width: 100%; } }
