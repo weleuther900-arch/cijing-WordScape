@@ -2221,6 +2221,7 @@ document.addEventListener("click", (event) => {
   if (button.dataset.recoverHomeScreen !== undefined) void recoverHomeScreenState(document.querySelector("[data-home-screen-sync-key]")?.value);
   if (button.dataset.dismissHomeScreenRecovery !== undefined) dismissHomeScreenRecovery();
   if (button.dataset.openHomeScreenRecovery !== undefined) openHomeScreenRecovery();
+  if (button.dataset.startupRecover !== undefined) { state = makeInitialState(); storageMode = "device"; homeScreenRecoveryPending = true; homeScreenRecoveryError = ""; currentView = "home"; render(); }
   if (button.dataset.copySyncKey !== undefined) void copyCloudSyncKey();
   if (button.dataset.syncNow !== undefined) void syncCloudState({ manual: true });
   if (button.dataset.refreshApp !== undefined) window.location.assign("./refresh.html");
@@ -2280,8 +2281,15 @@ if ("speechSynthesis" in window) {
 }
 
 currentView = ["home", "words", "learn", "review", "memory", "settings"].includes(window.location.hash.slice(1)) ? window.location.hash.slice(1) : "home";
-load().then(() => installBundledWordbook()).then(() => {
-  if (currentView === "learn") return preloadAiContexts(dailyStudyWords(), currentView);
-  if (currentView === "review") return preloadAiContexts(queue(), currentView);
-  return undefined;
-});
+async function startApplication() {
+  try {
+    await load();
+    await installBundledWordbook();
+    if (currentView === "learn") return preloadAiContexts(dailyStudyWords(), currentView);
+    if (currentView === "review") return preloadAiContexts(queue(), currentView);
+  } catch (error) {
+    console.error("wordscape startup failed", error);
+    APP.innerHTML = `<section class="done-state startup-recovery"><p class="eyebrow">启动恢复</p><h2>词境没有完全打开。</h2><p>你的本机词本与学习记录没有被删除。先修复本机界面缓存；若仍无法进入，再恢复已有词本。</p><div class="action-row"><a class="primary" href="./refresh.html">修复本机缓存</a><button class="secondary" data-startup-recover>恢复已有词本</button></div><p class="note">“修复本机缓存”只移除旧界面文件，不会删除词本。</p></section>`;
+  }
+}
+startApplication();

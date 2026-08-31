@@ -783,6 +783,8 @@ html[data-theme="dark"] .daily-plan-overview.is-gated, html[data-theme="dark"] .
 .home-screen-recovery-card .field-label { display: grid; gap: 8px; margin: 0; }
 .home-screen-recovery-card .backup-actions { display: flex; flex-wrap: wrap; gap: 9px; }
 .home-screen-recovery-error { margin: 0; color: var(--bad); font-size: 14px; line-height: 1.6; }
+.startup-recovery .action-row { justify-content: center; }
+.startup-recovery .action-row a.primary { display: inline-flex; align-items: center; justify-content: center; text-decoration: none; }
 html[data-theme="dark"] .home-screen-recovery-card { border-color: #4b5960; background: #272c30; }
 @media (max-width: 700px) { .home-screen-recovery-card { margin-top: 28px; padding: 21px 18px; } .home-screen-recovery-card .backup-actions { display: grid; } .home-screen-recovery-card .backup-actions > * { width: 100%; } }
 
