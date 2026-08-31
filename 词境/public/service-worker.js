@@ -1,4 +1,4 @@
-const CACHE_NAME = "wordscape-shell-v56";
+const CACHE_NAME = "wordscape-shell-v57";
 const SHELL_FILES = [
   "./",
   "./index.html",
