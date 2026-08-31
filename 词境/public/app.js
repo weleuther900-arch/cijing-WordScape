@@ -2223,6 +2223,7 @@ document.addEventListener("pointerdown", (event) => {
   if (event.isPrimary === false || (event.button !== undefined && event.button !== 0)) return;
   primeSpeechEngine();
   const button = event.target.closest("button"); if (!button) return;
+  if (isAppleTouchDevice()) return;
   if (triggerSpeechButtonAction(button)) pointerStartedSpeechButtons.add(button);
 }, true);
 
@@ -2266,7 +2267,7 @@ document.addEventListener("click", (event) => {
   if (button.dataset.choice) choose(button.dataset.choice);
   if (button.dataset.nextQuestion !== undefined) nextQuestion();
   if (button.dataset.previousQuestion !== undefined) previousQuestion();
-  if (!pointerStartedSpeechButtons.delete(button)) triggerSpeechButtonAction(button);
+  if (!pointerStartedSpeechButtons.delete(button) || isAppleTouchDevice()) triggerSpeechButtonAction(button);
   if (button.dataset.retryExamples) { const word = state.words.find((item) => item.id === button.dataset.retryExamples); if (word) retryAiContexts([word], currentView); }
 
   if (button.dataset.exportBackup !== undefined) exportBackup();
