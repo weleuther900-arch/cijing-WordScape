@@ -29,6 +29,7 @@ const CLOUD_SYNC_INITIAL_DELAY_MS = 8000;
 const CLOUD_SYNC_CONTENT_VERSION = 4;
 const GENTLE_SAME_DAY_RECALL_LIMIT = 8;
 const DEVICE_STATE_KEY = "wordscape-ios-state-v1";
+const DEVICE_VOICE_PREFERENCE_KEY = "wordscape-device-voice-preference-v1";
 const DEVICE_DATABASE_NAME = "wordscape-device-data";
 const DEVICE_DATABASE_VERSION = 1;
 const DEVICE_STORE_NAME = "state";
@@ -1529,7 +1530,11 @@ function renderMemory() {
 }
 
 function renderSettings() {
-  const voices = englishVoices(); const selectedVoiceURI = voices.some((voice) => voice.voiceURI === state.settings.voiceURI) ? state.settings.voiceURI : ""; const voiceOptions = `<option value="" ${selectedVoiceURI ? "" : "selected"}>系统默认英语声音</option>${voices.map((voice) => `<option value="${escapeHtml(voice.voiceURI)}" ${voice.voiceURI === selectedVoiceURI ? "selected" : ""}>${escapeHtml(voice.name)} · ${voice.lang}</option>`).join("")}`;
+  const voices = englishVoices();
+  const configuredVoiceURI = preferredVoiceURI();
+  const selectedVoiceURI = voices.some((voice) => voice.voiceURI === configuredVoiceURI) ? configuredVoiceURI : "";
+  const defaultVoiceLabel = isAppleTouchDevice() ? "跟随本机系统英语声音" : "系统默认英语声音";
+  const voiceOptions = '<option value="" ' + (selectedVoiceURI ? "" : "selected") + '>' + defaultVoiceLabel + '</option>' + voices.map((voice) => '<option value="' + escapeHtml(voice.voiceURI) + '" ' + (voice.voiceURI === selectedVoiceURI ? "selected" : "") + '>' + escapeHtml(voice.name) + ' · ' + voice.lang + '</option>').join("");
   const notebooks = state.notebooks.filter((notebook) => !notebook.archivedAt); const archived = state.notebooks.filter((notebook) => notebook.archivedAt); const current = activeNotebook();
   const notebookOptions = notebooks.map((notebook) => `<option value="${notebook.id}" ${notebook.id === current?.id ? "selected" : ""}>${escapeHtml(notebook.name)} · ${state.words.filter((word) => word.notebookId === notebook.id).length} 词</option>`).join("");
   const archivedRows = archived.length ? `<div class="archived-books">${archived.map((notebook) => `<div><span>${escapeHtml(notebook.name)} · ${state.words.filter((word) => word.notebookId === notebook.id).length} 词</span><button class="quiet-button" data-restore-notebook="${notebook.id}">恢复</button><button class="quiet-button danger-button" data-delete-notebook="${notebook.id}">彻底删除</button></div>`).join("")}</div>` : "";
@@ -2051,7 +2056,21 @@ function englishVoices() {
   ordered.forEach((voice) => { const key = voiceIdentity(voice); const current = distinct.get(key); if (!current || voiceQuality(voice) > voiceQuality(current)) distinct.set(key, voice); });
   return [...distinct.values()];
 }
-function selectedVoice() { const requested = String(state.settings.voiceURI || ""); return requested ? englishVoices().find((voice) => voice.voiceURI === requested) || null : null; }
+function deviceVoicePreference() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(DEVICE_VOICE_PREFERENCE_KEY) || "null");
+    return saved?.mode === "custom" && typeof saved.voiceURI === "string" ? saved : { mode: "system", voiceURI: "" };
+  } catch { return { mode: "system", voiceURI: "" }; }
+}
+function preferredVoiceURI() {
+  if (!isAppleTouchDevice()) return String(state.settings.voiceURI || "");
+  const preference = deviceVoicePreference();
+  return preference.mode === "custom" ? preference.voiceURI : "";
+}
+function saveDeviceVoicePreference(voiceURI) {
+  try { localStorage.setItem(DEVICE_VOICE_PREFERENCE_KEY, JSON.stringify({ mode: voiceURI ? "custom" : "system", voiceURI: String(voiceURI || "") })); } catch { /* 本机偏好保存失败时仍使用系统声音。 */ }
+}
+function selectedVoice() { const requested = preferredVoiceURI(); return requested ? englishVoices().find((voice) => voice.voiceURI === requested) || null : null; }
 let speechRequestId = 0;
 let speechEnginePrimed = false;
 let activeSpeechUtterance = null;
@@ -2247,7 +2266,11 @@ document.addEventListener("change", (event) => {
   if (event.target.dataset.fileInput && event.target.files?.[0]) { const file = event.target.files[0]; event.target.value = ""; importFile(file); }
   if (event.target.dataset.backupInput && event.target.files?.[0]) { const file = event.target.files[0]; event.target.value = ""; restoreBackup(file); }
   if (event.target.dataset.activeNotebook) setActiveNotebook(event.target.value);
-  if (event.target.dataset.setting) { state.settings[event.target.dataset.setting] = event.target.value; persist(); }
+  if (event.target.dataset.setting) {
+    const key = event.target.dataset.setting;
+    if (key === "voiceURI" && isAppleTouchDevice()) { saveDeviceVoicePreference(event.target.value); return; }
+    state.settings[key] = event.target.value; persist();
+  }
   if (event.target.dataset.numberSetting) {
     const key = event.target.dataset.numberSetting; const limits = { dailyNewTarget: [1, 500], dailyReviewTarget: [1, 500], reviewGate: [1, 1000] }[key];
     let value = Number(event.target.value);
