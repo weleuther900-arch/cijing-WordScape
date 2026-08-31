@@ -1529,7 +1529,7 @@ function renderMemory() {
 }
 
 function renderSettings() {
-  const voices = englishVoices(); const voiceOptions = voices.length ? voices.map((voice) => `<option value="${escapeHtml(voice.voiceURI)}" ${voice.voiceURI === state.settings.voiceURI ? "selected" : ""}>${escapeHtml(voice.name)} · ${voice.lang}</option>`).join("") : `<option value="">系统将自动选择可用英语声音</option>`;
+  const voices = englishVoices(); const selectedVoiceURI = voices.some((voice) => voice.voiceURI === state.settings.voiceURI) ? state.settings.voiceURI : ""; const voiceOptions = `<option value="" ${selectedVoiceURI ? "" : "selected"}>系统默认英语声音</option>${voices.map((voice) => `<option value="${escapeHtml(voice.voiceURI)}" ${voice.voiceURI === selectedVoiceURI ? "selected" : ""}>${escapeHtml(voice.name)} · ${voice.lang}</option>`).join("")}`;
   const notebooks = state.notebooks.filter((notebook) => !notebook.archivedAt); const archived = state.notebooks.filter((notebook) => notebook.archivedAt); const current = activeNotebook();
   const notebookOptions = notebooks.map((notebook) => `<option value="${notebook.id}" ${notebook.id === current?.id ? "selected" : ""}>${escapeHtml(notebook.name)} · ${state.words.filter((word) => word.notebookId === notebook.id).length} 词</option>`).join("");
   const archivedRows = archived.length ? `<div class="archived-books">${archived.map((notebook) => `<div><span>${escapeHtml(notebook.name)} · ${state.words.filter((word) => word.notebookId === notebook.id).length} 词</span><button class="quiet-button" data-restore-notebook="${notebook.id}">恢复</button><button class="quiet-button danger-button" data-delete-notebook="${notebook.id}">彻底删除</button></div>`).join("")}</div>` : "";
@@ -2037,16 +2037,21 @@ function voicePreference(voice) {
   if (/fred|grandma|grandpa|zarvox|bells|boing|bad news|good news|whisper/.test(name)) return 3;
   return 1;
 }
+function voiceIdentity(voice) { return `${String(voice.lang || "").toLowerCase().replace("_", "-").split("-").slice(0, 2).join("-")}|${String(voice.name || "").toLowerCase().replace(/\b(?:enhanced|premium|compact|default|local|online|neural|quality|voice)\b/g, "").replace(/[^a-z0-9]+/g, "").trim() || String(voice.voiceURI || "")}`; }
+function voiceQuality(voice) { const name = String(voice.name || "").toLowerCase(); if (/(enhanced|premium|neural)/.test(name)) return 3; if (/compact/.test(name)) return 1; return 2; }
 function englishVoices() {
   if (!("speechSynthesis" in window)) return [];
   const voices = speechSynthesis.getVoices().filter((voice) => /^en(?:[-_]|$)/i.test(String(voice.lang || "")));
-  return voices.sort((left, right) => {
+  const ordered = voices.sort((left, right) => {
     const leftUs = /^en[-_]US$/i.test(left.lang) ? 0 : 1;
     const rightUs = /^en[-_]US$/i.test(right.lang) ? 0 : 1;
     return leftUs - rightUs || voicePreference(left) - voicePreference(right) || left.name.localeCompare(right.name);
   });
+  const distinct = new Map();
+  ordered.forEach((voice) => { const key = voiceIdentity(voice); const current = distinct.get(key); if (!current || voiceQuality(voice) > voiceQuality(current)) distinct.set(key, voice); });
+  return [...distinct.values()];
 }
-function selectedVoice() { const voices = englishVoices(); return voices.find((voice) => voice.voiceURI === state.settings.voiceURI) || voices[0] || null; }
+function selectedVoice() { const requested = String(state.settings.voiceURI || ""); return requested ? englishVoices().find((voice) => voice.voiceURI === requested) || null : null; }
 let speechRequestId = 0;
 let speechEnginePrimed = false;
 let activeSpeechUtterance = null;
