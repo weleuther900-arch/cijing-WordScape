@@ -1,4 +1,4 @@
-const CACHE_NAME = "wordscape-shell-v63";
+const CACHE_NAME = "wordscape-shell-v68";
 const SHELL_FILES = [
   "./",
   "./index.html",
@@ -12,6 +12,7 @@ const SHELL_FILES = [
   "./sync-core.js",
   "./daily-quotes.js",
   "./app.js",
+  "./offline-voice.js",
   "./manifest.webmanifest",
   "./app-icon.png",
   "./bundled-imports/27-one.json"

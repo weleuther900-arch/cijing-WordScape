@@ -37,6 +37,7 @@ docs/项目资料/
 # Local dependency and runtime output.
 词境/node_modules/
 词境/.next/
+词境/.cache/
 词境/ios-web/
 词境/npm-debug.log*
 词境/*.log

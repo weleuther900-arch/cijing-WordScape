@@ -1541,6 +1541,15 @@ function renderSettings() {
   const sectionLabels = ["单词本", "今日计划", "英语发音", "显示与动效", "数据备份", "云端同步", "重置学习记录", "学习记录与导出", "学习规则"];
   const plan = dailyPlanSummary();
   APP.innerHTML = `<section>${pageHeading("设置")}<div class="settings-grid settings-workspace"><aside class="settings-sidebar"><nav class="settings-toc" aria-label="设置目录"><p>设置目录</p>${sectionLabels.map((label, index) => `<button class="settings-toc-link" data-scroll-setting="${index}">${label}</button>`).join("")}</nav></aside><div class="settings-content"><section class="setting-group"><h2>单词本</h2><div class="setting-stack"><label class="field-label">当前单词本 <select data-active-notebook aria-label="当前单词本">${notebookOptions}</select></label><div class="notebook-create"><input id="new-notebook-name" placeholder="例如：雅思核心词" maxlength="40" aria-label="新单词本名称" /><button class="secondary" data-create-notebook>新建单词本</button></div><div class="notebook-actions"><button class="secondary" data-archive-notebook="${current?.id}">归档并保留学习记录</button><button class="quiet-button danger-button" data-delete-notebook="${current?.id}">彻底删除词与学习记录</button></div>${archivedRows}</div></section><section class="setting-group"><h2>英语发音</h2><div class="setting-stack"><select data-setting="voiceURI" aria-label="英语声音">${voiceOptions}</select><label class="field-label">句子朗读 <select data-setting="sentenceVoiceEngine" aria-label="句子朗读模式"><option value="natural" ${state.settings.sentenceVoiceEngine === "natural" ? "selected" : ""}>自然句式</option><option value="system" ${state.settings.sentenceVoiceEngine === "system" ? "selected" : ""}>快速系统朗读</option></select></label><p class="field-note">自然句式会使用更平缓的语速和音调；单词朗读仍保持快速响应。</p><label class="field-label">单词语速 <input data-number-setting="wordRate" type="number" min="0.8" max="1.5" step="0.05" value="${state.settings.wordRate}" /></label><label class="field-label">句子语速 <input data-number-setting="sentenceRate" type="number" min="0.8" max="1.6" step="0.05" value="${state.settings.sentenceRate}" /></label><div><button class="secondary" data-test-voice>试听句子朗读</button></div></div></section><section class="setting-group"><h2>显示与动效</h2><div class="setting-stack"><label class="check-row"><input data-checkbox-setting="darkMode" type="checkbox" ${state.settings.darkMode ? "checked" : ""} />夜间模式</label><label class="check-row"><input data-checkbox-setting="reducedMotion" type="checkbox" ${state.settings.reducedMotion ? "checked" : ""} />减少动态效果</label></div></section></div></div></section>`;
+  const nativeVoicePicker = APP.querySelector('[data-setting="voiceURI"]');
+  if (nativeVoicePicker) {
+    const offlineVoicePanel = document.createElement("div");
+    offlineVoicePanel.className = "offline-voice-panel";
+    offlineVoicePanel.innerHTML = '<strong>统一离线英语声音</strong><span class="field-note" data-offline-voice-state>正在检查这台设备…</span><div class="backup-actions"><button class="secondary" data-download-offline-voice>准备声音</button><button class="quiet-button" data-remove-offline-voice>清除缓存</button><button class="quiet-button" data-test-voice>试听</button></div><small class="field-note">首次准备约 110 MB（量化声音模型约 92 MB）；下载后在本机离线运行，不上传单词内容，也不参与同步。</small>';
+    nativeVoicePicker.replaceWith(offlineVoicePanel);
+    void refreshOfflineVoicePanel();
+  }
+  APP.querySelector("[data-test-voice]")?.replaceChildren(document.createTextNode("试听统一声音"));
   APP.querySelector(".settings-content > .setting-group")?.insertAdjacentHTML("afterend", `<section class="setting-group"><h2>今日计划</h2><p class="daily-plan-setting-status ${plan.gateClosed ? "is-gated" : ""}">${plan.gateClosed ? `到期复习已有 ${plan.overdue} 词，暂缓加入全新单词。` : plan.plannedCount ? `今日已安排 ${plan.plannedCount} 词，已学习 ${plan.learned} 词，待初学 ${plan.remaining} 词。` : "尚未安排可学习的新词。"}</p><div class="setting-stack"><label class="field-label">每日新词目标 <input data-number-setting="dailyNewTarget" type="number" min="1" max="500" step="1" value="${plan.configuredTarget}" inputmode="numeric" /></label><label class="field-label">每日常规复习目标 <input data-number-setting="dailyReviewTarget" type="number" min="1" max="500" step="1" value="${state.settings.dailyReviewTarget}" inputmode="numeric" /></label><label class="field-label">复习优先门槛 <input data-number-setting="reviewGate" type="number" min="1" max="1000" step="1" value="${state.settings.reviewGate}" inputmode="numeric" /></label><p class="field-note">当天已排入的词会保留；未完成的词会优先进入明天的固定名额。当到期复习达到门槛，系统不再添加全新单词。</p></div></section>`);
   APP.querySelector(".settings-content")?.insertAdjacentHTML("beforeend", `<section class="setting-group"><h2>数据备份</h2><p>建议每隔一段时间导出一次，并将备份文件保存到“文件”或 iCloud Drive。恢复备份时会替换这台设备现有的学习记录。</p><div class="backup-actions"><button class="secondary" data-export-backup>导出备份</button><label class="secondary" for="backup-file">从备份恢复<input id="backup-file" data-backup-input type="file" accept="application/json,.json" hidden /></label></div></section>`);
   const canRecoverEmptyHomeScreen = Boolean(storageMode === "device" && isHomeScreenWebApp() && !hasStoredWords(state));
@@ -2070,10 +2079,14 @@ function preferredVoiceURI() {
 function saveDeviceVoicePreference(voiceURI) {
   try { localStorage.setItem(DEVICE_VOICE_PREFERENCE_KEY, JSON.stringify({ mode: voiceURI ? "custom" : "system", voiceURI: String(voiceURI || "") })); } catch { /* 本机偏好保存失败时仍使用系统声音。 */ }
 }
-function selectedVoice() { const requested = preferredVoiceURI(); return requested ? englishVoices().find((voice) => voice.voiceURI === requested) || null : null; }
+function selectedVoice() { return null; }
 let speechRequestId = 0;
 let speechEnginePrimed = false;
 let activeSpeechUtterance = null;
+let offlineVoiceLibraryPromise = null;
+let offlineVoiceAudioContext = null;
+let offlineVoiceSource = null;
+let offlineVoiceRequestId = 0;
 const pointerStartedSpeechButtons = new WeakSet();
 function isAppleTouchDevice() { return /iP(?:hone|ad|od)/i.test(navigator.userAgent || "") || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1); }
 function primeSpeechEngine() {
@@ -2081,9 +2094,105 @@ function primeSpeechEngine() {
   speechEnginePrimed = true;
   try { speechSynthesis.getVoices(); speechSynthesis.resume(); } catch { /* Voice engines vary by browser. */ }
 }
+function offlineVoiceLibrary() {
+  if (!offlineVoiceLibraryPromise) offlineVoiceLibraryPromise = import("./offline-voice.js");
+  return offlineVoiceLibraryPromise;
+}
+function primeOfflineVoiceAudio() {
+  const AudioEngine = window.AudioContext || window.webkitAudioContext;
+  if (!AudioEngine) return null;
+  if (!offlineVoiceAudioContext) offlineVoiceAudioContext = new AudioEngine();
+  if (offlineVoiceAudioContext.state === "suspended") void offlineVoiceAudioContext.resume();
+  return offlineVoiceAudioContext;
+}
+async function refreshOfflineVoicePanel() {
+  const label = document.querySelector("[data-offline-voice-state]");
+  if (!label) return;
+  const downloadButton = document.querySelector("[data-download-offline-voice]");
+  const removeButton = document.querySelector("[data-remove-offline-voice]");
+  try {
+    const voice = await offlineVoiceLibrary();
+    const current = await voice.status();
+    if (!current.supported) {
+      label.textContent = "当前浏览器不支持离线声音";
+      if (downloadButton) downloadButton.disabled = true;
+      if (removeButton) removeButton.disabled = true;
+      return;
+    }
+    label.textContent = current.ready ? "已准备 · 电脑、iPhone、iPad 使用同一声音" : "尚未准备 · 目前使用本机系统声音";
+    if (downloadButton) { downloadButton.disabled = current.ready; downloadButton.textContent = current.ready ? "已准备" : "准备声音"; }
+    if (removeButton) removeButton.disabled = !current.ready;
+  } catch (error) {
+    console.error("offline voice status failed", error);
+    label.textContent = "离线声音暂不可用 · 目前使用本机系统声音";
+    if (downloadButton) downloadButton.disabled = true;
+    if (removeButton) removeButton.disabled = true;
+  }
+}
+async function downloadOfflineVoice() {
+  const label = document.querySelector("[data-offline-voice-state]");
+  const downloadButton = document.querySelector("[data-download-offline-voice]");
+  const context = primeOfflineVoiceAudio();
+  if (downloadButton) downloadButton.disabled = true;
+  try {
+    const voice = await offlineVoiceLibrary();
+    const current = await voice.download((progress) => {
+      if (!label) return;
+      const percent = progress.total ? Math.min(100, Math.round(progress.loaded * 100 / progress.total)) : 0;
+      label.textContent = percent ? `正在准备统一声音 · ${percent}%` : "正在准备统一声音…";
+    }, context);
+    if (!current.ready) throw new Error("离线声音没有完成准备");
+    showToast("统一离线英语声音已准备，可离线使用。");
+  } catch (error) {
+    console.error("offline voice download failed", error);
+    showToast("准备统一声音失败，请连接网络后重试。");
+  } finally { void refreshOfflineVoicePanel(); }
+}
+async function removeOfflineVoice() {
+  try {
+    const voice = await offlineVoiceLibrary();
+    await voice.remove();
+    showToast("已清除本机的离线声音缓存。");
+  } catch (error) {
+    console.error("offline voice removal failed", error);
+    showToast("移除统一声音失败，请稍后重试。");
+  } finally { void refreshOfflineVoicePanel(); }
+}
+async function playOfflineWord(phrase, context) {
+  if (!context) return false;
+  const requestId = ++offlineVoiceRequestId;
+  try {
+    const voice = await offlineVoiceLibrary();
+    const current = await voice.status();
+    if (!current.supported || !current.ready) return false;
+    const buffer = await voice.synthesize(phrase, context, state.settings.wordRate);
+    if (requestId !== offlineVoiceRequestId) return true;
+    try { await context.resume(); } catch { /* The first direct tap has already primed compatible browsers. */ }
+    try { offlineVoiceSource?.stop(); } catch { /* No active source. */ }
+    const source = context.createBufferSource();
+    source.buffer = buffer;
+    source.connect(context.destination);
+    offlineVoiceSource = source;
+    source.onended = () => { if (offlineVoiceSource === source) offlineVoiceSource = null; };
+    try { speechSynthesis.cancel(); } catch { /* The offline audio is independent of system speech. */ }
+    source.start();
+    return true;
+  } catch (error) {
+    if (error?.code !== "VOICE_NOT_READY") console.error("offline voice playback failed", error);
+    return false;
+  }
+}
 function speak(text, type = "sentence") {
   const phrase = String(text || "").replace(/\s+/g, " ").trim();
   if (!phrase) return;
+  if (type === "word") {
+    const context = primeOfflineVoiceAudio();
+    void playOfflineWord(phrase, context).then((played) => { if (!played) speakWithSystem(phrase, "word"); });
+    return;
+  }
+  speakWithSystem(phrase, type);
+}
+function speakWithSystem(phrase, type) {
   if (!("speechSynthesis" in window) || !("SpeechSynthesisUtterance" in window)) { showToast("当前浏览器不支持朗读。"); return; }
   const voice = selectedVoice(); const requestId = ++speechRequestId;
   const defaultRate = type === "word" ? DEFAULT_SETTINGS.wordRate : DEFAULT_SETTINGS.sentenceRate;
@@ -2104,8 +2213,6 @@ function speak(text, type = "sentence") {
     if (event.error === "not-allowed") showToast("请直接轻点单词，再试听发音。");
     else showToast("系统朗读暂时不可用，请检查音量后重试。");
   };
-  // Clear any earlier utterance and actively resume the engine so a direct tap
-  // starts the requested word or sentence without waiting for a stale queue.
   speechSynthesis.speak(utterance);
   try { speechSynthesis.resume(); } catch { /* The initial speak call is sufficient on older browsers. */ }
 }
@@ -2189,7 +2296,7 @@ function triggerSpeechButtonAction(button) {
   if (button.dataset.popoverWord) { popover(button.dataset.popoverWord, button); return true; }
   if (button.dataset.showWord) { const word = state.words.find((item) => item.id === button.dataset.showWord); if (word) popover(word.text, button); return Boolean(word); }
   if (button.dataset.showTranslation) { showTranslation(button.dataset.showTranslation, button); return true; }
-  if (button.dataset.testVoice !== undefined) { speak("A quiet morning begins with a new word.", "sentence"); return true; }
+  if (button.dataset.testVoice !== undefined) { speak("WordScape", "word"); return true; }
   return false;
 }
 document.addEventListener("pointerdown", (event) => {
@@ -2211,6 +2318,8 @@ document.addEventListener("click", (event) => {
   if (button.dataset.memoryToggleDefinition) toggleMemoryDefinition(button.dataset.memoryToggleDefinition);
   if (button.dataset.memoryStep && button.dataset.memoryWord) toggleMemoryStep(button.dataset.memoryWord, button.dataset.memoryStep);
   if (button.dataset.memoryMore !== undefined) { memoryVisibleCount += MEMORY_TABLE_PAGE_SIZE; render(); }
+  if (button.dataset.downloadOfflineVoice !== undefined) void downloadOfflineVoice();
+  if (button.dataset.removeOfflineVoice !== undefined) void removeOfflineVoice();
 
   if (button.dataset.import !== undefined) importWords(document.querySelector("#word-input")?.value || "");
   if (button.dataset.openFile !== undefined) document.querySelector("#txt-file")?.click();
