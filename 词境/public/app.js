@@ -10,22 +10,44 @@ const CONTENT_LIBRARY = window.WORD_CONTENT_LIBRARY || {};
 const EXAMPLE_LIBRARY = window.WORD_EXAMPLE_LIBRARY?.entries || {};
 const EXAMPLE_LIBRARY_META = window.WORD_EXAMPLE_LIBRARY || {};
 let SENSE_LIBRARY = window.WORD_SENSE_LIBRARY?.entries || {};
-const SENSE_LIBRARY_VERSION = "20260815-08";
+const SENSE_LIBRARY_VERSION = "20260916-02";
 let senseLibraryLoading;
 const AI_EXAMPLE_LIBRARY = { ...(window.WORD_AI_EXAMPLE_LIBRARY?.entries || {}) };
 const AI_EXAMPLE_INDEX = window.WORD_AI_EXAMPLE_INDEX || {};
 const RELEASED_EXAMPLE_WORDS = new Set((window.WORD_RELEASED_EXAMPLE_WORDS || []).map((word) => String(word).toLowerCase()));
 const AI_EXAMPLE_LOADS = new Map();
-const VERIFIED_EXAMPLE_REVISION = "20260821-02";
+const VERIFIED_EXAMPLE_REVISION = "20260916-03";
+// The source dictionary is intentionally broad. These entries are the
+// learning-facing layer: correct common meanings first, without legacy or
+// unrelated technical senses leaking into normal study cards.
+const STUDY_SENSE_OVERRIDES = Object.freeze({
+  cafe: [{ id: "n-1", partOfSpeech: "n.", sense: "咖啡馆；咖啡店" }],
+  chalk: [{ id: "n-1", partOfSpeech: "n.", sense: "粉笔" }, { id: "n-2", partOfSpeech: "n.", sense: "白垩" }, { id: "v-1", partOfSpeech: "v.", sense: "用粉笔写（或画）" }],
+  host: [{ id: "n-1", partOfSpeech: "n.", sense: "主人；东道主" }, { id: "n-3", partOfSpeech: "n.", sense: "节目主持人" }, { id: "v-1", partOfSpeech: "v.", sense: "接待；招待" }, { id: "v-2", partOfSpeech: "v.", sense: "主持（节目、活动）" }],
+  preside: [{ id: "v-3", partOfSpeech: "v.", sense: "主持" }, { id: "v-5", partOfSpeech: "v.", sense: "负责" }, { id: "v-6", partOfSpeech: "v.", sense: "指挥" }],
+  concerning: [{ id: "prep-1", partOfSpeech: "prep.", sense: "关于；有关" }]
+});
+const IRREGULAR_SENSE_LEMMAS = Object.freeze({ children: "child", feet: "foot", geese: "goose", men: "man", mice: "mouse", people: "person", teeth: "tooth", women: "woman", wrote: "write", written: "write", went: "go", gone: "go", did: "do", done: "do", had: "have", has: "have", was: "be", were: "be", been: "be", better: "good", best: "good" });
+const NON_STUDY_SENSE_PATTERN = /(?:\[(?:法|医|化|物|生|植|动|矿|军|航海|航|经|电子|语|音|宗|哲|心理|体育)\]|^(?:计算机|医学|法律)$|\b(?:DOS|CONFIG\.SYS|COMMAND\.COM)\b)/i;
 const SYNC = window.WORDSCAPE_SYNC;
 // The desktop shortcut runs this app at 127.0.0.1, whereas iPhone and iPad
-// open the Workers site.  Keep one explicit cloud endpoint so all three
-// clients meet at the same encrypted profile instead of the desktop trying to
-// call a non-existent local /api/sync route.
-const CLOUD_SYNC_URL = "https://wordscape.weleuther900.workers.dev/api/sync";
+// open the Workers site. Use the same-origin path in the installed web app:
+// this avoids an unnecessary iOS cross-origin fetch. Desktop keeps the
+// explicit Worker endpoint because its local server has no /api/sync route.
+const CLOUD_SYNC_ORIGIN = "https://wordscape.weleuther900.workers.dev";
+const CLOUD_SYNC_URL = window.location.origin === CLOUD_SYNC_ORIGIN ? "/api/sync" : `${CLOUD_SYNC_ORIGIN}/api/sync`;
+if (window.location.hostname.endsWith(".pages.dev")) {
+  // The iPad only talks to Pages; the Function forwards this fixed route at
+  // Cloudflare's edge, so a blocked workers.dev connection cannot stop sync.
+  const pagesFetch = window.fetch.bind(window);
+  window.fetch = (input, init) => input === `${CLOUD_SYNC_ORIGIN}/api/sync` ? pagesFetch("/api/sync", init) : pagesFetch(input, init);
+}
 const CLOUD_SYNC_INTERVAL_MS = 4 * 60 * 60 * 1000;
+const CLOUD_SYNC_DEBOUNCE_MS = 15 * 1000;
 const CLOUD_SYNC_RETRY_MS = 5 * 60 * 1000;
 const CLOUD_SYNC_INITIAL_DELAY_MS = 8000;
+const CLOUD_SYNC_REQUEST_TIMEOUT_MS = 45 * 1000;
+const CLOUD_SYNC_TRANSPORT_RETRY_DELAY_MS = 900;
 const CLOUD_SYNC_CONTENT_VERSION = 4;
 const GENTLE_SAME_DAY_RECALL_LIMIT = 8;
 const DEVICE_STATE_KEY = "wordscape-ios-state-v1";
@@ -36,6 +58,7 @@ const DEVICE_STORE_NAME = "state";
 const DEVICE_RECORD_KEY = "current";
 const DEVICE_CACHE_NAME = "wordscape-user-state-v1";
 const DEVICE_CACHE_KEY = "/__wordscape-user-state__.json";
+const DEVICE_STARTUP_TIMEOUT_MS = 3500;
 let storageMode = "server";
 let browserDictionary;
 let browserDictionaryLoading;
@@ -48,6 +71,7 @@ function isHomeScreenWebApp() { return Boolean(window.matchMedia?.("(display-mod
 function hasStoredWords(value) { return Array.isArray(value?.words) && value.words.length > 0; }
 function lastItem(items) { return items && items.length ? items[items.length - 1] : undefined; }
 function cloneValue(value) { return typeof structuredClone === "function" ? structuredClone(value) : JSON.parse(JSON.stringify(value)); }
+function awaitStartupResource(promise, message) { let timer; return Promise.race([promise, new Promise((resolve, reject) => { timer = setTimeout(() => reject(new Error(message)), DEVICE_STARTUP_TIMEOUT_MS); })]).finally(() => clearTimeout(timer)); }
 function apiFetch(url, options = {}) { return fetch(url, options); }
 function readLegacyDeviceState() {
   try {
@@ -96,23 +120,17 @@ async function saveCachedDeviceState(value) {
   await cache.put(DEVICE_CACHE_KEY, new Response(JSON.stringify(value), { headers: { "Content-Type": "application/json" } }));
   return true;
 }
-function mostRecentSavedState(states) {
-  return states.filter(Boolean).sort((left, right) => String(right.updatedAt || "").localeCompare(String(left.updatedAt || "")))[0] || null;
-}
 async function loadDeviceState() {
-  const savedStates = [];
   try {
-    const database = await openDeviceDatabase();
+    const database = await awaitStartupResource(openDeviceDatabase(), "本机数据库启动超时");
     const transaction = database.transaction(DEVICE_STORE_NAME, "readonly");
-    const saved = await readDatabaseRequest(transaction.objectStore(DEVICE_STORE_NAME).get(DEVICE_RECORD_KEY));
-    if (saved) savedStates.push(saved);
-  } catch { /* Safari 不可用时，继续尝试离线文件缓存。 */ }
+    const saved = await awaitStartupResource(readDatabaseRequest(transaction.objectStore(DEVICE_STORE_NAME).get(DEVICE_RECORD_KEY)), "本机数据读取超时");
+    if (saved) return saved;
+  } catch { deviceDatabasePromise = null; /* Safari 不可用或被卡住时，继续尝试离线文件缓存。 */ }
   try {
-    const cached = await loadCachedDeviceState();
-    if (cached) savedStates.push(cached);
+    const cached = await awaitStartupResource(loadCachedDeviceState(), "本机缓存读取超时");
+    if (cached) return cached;
   } catch { /* Safari 不可用时，继续尝试旧版小型存储。 */ }
-  const recent = mostRecentSavedState(savedStates);
-  if (recent) return recent;
   const legacyState = readLegacyDeviceState();
   if (legacyState) deviceStateLoadedFromLegacy = true;
   return legacyState;
@@ -270,17 +288,52 @@ function applyCloudLearningReset(resetAt) {
   pausedQuestion = null;
   return true;
 }
+function cloudSyncPendingMessage() { return `本地改动待同步 · 将在约 ${Math.ceil(CLOUD_SYNC_DEBOUNCE_MS / 1000)} 秒后自动同步`; }
 function scheduleCloudSync() {
   clearTimeout(cloudSyncTimer);
   if (!canUseCloudSync()) return;
   if (cloudSyncRunning) { cloudSyncQueued = true; return; }
-  setCloudSyncStatus("本地改动待同步 · 将在 4 小时内自动同步");
+  setCloudSyncStatus(cloudSyncPendingMessage());
+  cloudSyncTimer = setTimeout(() => {
+    cloudSyncTimer = null;
+    // Background iOS pages often suspend timers. The dirty marker is kept and
+    // visibilitychange will resume the same sync as soon as the app returns.
+    if (document.hidden) return;
+    void syncCloudState({ automatic: true });
+  }, CLOUD_SYNC_DEBOUNCE_MS);
+}
+function shouldRetryCloudSync(error) {
+  const message = String(error?.message || "");
+  return error instanceof TypeError || /(?:load failed|failed to fetch|networkerror|network request failed)/i.test(message);
+}
+function retryCloudSyncFetch(request, attempt = 0) {
+  return request().catch(async (error) => {
+    if (attempt > 0 || !shouldRetryCloudSync(error)) throw error;
+    await new Promise((resolve) => window.setTimeout(resolve, CLOUD_SYNC_TRANSPORT_RETRY_DELAY_MS));
+    return retryCloudSyncFetch(request, 1);
+  });
 }
 async function postCloudSync(body) {
-  const response = await fetch(CLOUD_SYNC_URL, { method: "POST", cache: "no-store", headers: { "Content-Type": "application/json", "Cache-Control": "no-store" }, body: JSON.stringify(body) });
-  const payload = await response.json().catch(() => ({}));
-  if (!response.ok) throw new Error(payload.error || "云端同步服务暂不可用");
-  return payload;
+  const controller = typeof AbortController === "function" ? new AbortController() : null;
+  let timeout = null;
+  const nativeFetch = window.fetch.bind(window);
+  const fetch = (...args) => retryCloudSyncFetch(() => nativeFetch(...args));
+  const request = fetch(CLOUD_SYNC_URL, { method: "POST", cache: "no-store", signal: controller?.signal, headers: { "Content-Type": "application/json", "Cache-Control": "no-store" }, body: JSON.stringify(body) }).then(async (response) => {
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok) throw new Error(payload.error || "云端同步服务暂不可用");
+    return payload;
+  });
+  const deadline = new Promise((resolve, reject) => {
+    timeout = window.setTimeout(() => {
+      controller?.abort();
+      reject(new Error("同步请求超时，请检查网络后重试"));
+    }, CLOUD_SYNC_REQUEST_TIMEOUT_MS);
+  });
+  try {
+    return await Promise.race([request, deadline]);
+  } finally {
+    if (timeout !== null) window.clearTimeout(timeout);
+  }
 }
 function refreshCloudSyncState() {
   const voiceSpeedUpdated = upgradeVoiceSpeedSettings(state.settings);
@@ -310,6 +363,8 @@ function startCloudSyncPolling() {
 async function syncCloudState({ manual = false, automatic = false } = {}) {
   if (!canUseCloudSync()) return false;
   if (cloudSyncRunning) { cloudSyncQueued = true; return false; }
+  clearTimeout(cloudSyncTimer);
+  cloudSyncTimer = null;
   cloudSyncRunning = true;
   let config = syncConfig();
   const announced = Boolean(manual || automatic);
@@ -372,7 +427,10 @@ async function syncCloudState({ manual = false, automatic = false } = {}) {
       appliedRemote = true;
     }
     if (needsUpload && (!response || response.status !== "saved" || !Number.isFinite(Number(response.revision)))) throw new Error("云端正在被另一台设备更新，请稍后重试");
-    const completedWork = Boolean(manual || appliedRemote || uploaded);
+    // A lightweight "current" response is still a successful automatic
+    // check. Record it and schedule the next one; otherwise polling stops
+    // forever after the first clean four-hour check.
+    const completedWork = Boolean(manual || appliedRemote || uploaded || remote.status === "current");
     let releasedMemoryRows = false;
     if (completedWork) {
       config.enabled = true;
@@ -384,7 +442,7 @@ async function syncCloudState({ manual = false, automatic = false } = {}) {
       state.sync = config;
       state.updatedAt = config.lastSyncedAt;
       await persist({ skipCloud: true, silent: true });
-      setCloudSyncStatus(changedDuringSync ? "本地有新改动 · 将在下次自动同步时上传" : `已同步 · ${formatCloudSyncDate(config.lastSyncedAt)}（北京时间）`);
+      setCloudSyncStatus(changedDuringSync ? cloudSyncPendingMessage() : `已同步 · ${formatCloudSyncDate(config.lastSyncedAt)}（北京时间）`);
       startCloudSyncPolling();
       releasedMemoryRows = !changedDuringSync && releaseMemoryPendingDirectoryExits();
     }
@@ -395,7 +453,7 @@ async function syncCloudState({ manual = false, automatic = false } = {}) {
     if (manual) showToast(appliedRemote ? "已从云端合并这台设备的学习记录。" : "三台设备的学习记录已同步。");
     return true;
   } catch (error) {
-    const reason = error?.message || "网络或云端服务暂不可用";
+    const reason = shouldRetryCloudSync(error) ? "网络连接暂时中断，请检查网络后重试" : (error?.message || "网络或云端服务暂不可用");
     if (announced) setCloudSyncStatus(`同步失败：${reason}`);
     if (automatic) { clearTimeout(cloudSyncPollTimer); cloudSyncPollTimer = setTimeout(runScheduledCloudSync, CLOUD_SYNC_RETRY_MS); }
     if (manual) showToast(`同步未完成：${reason}`);
@@ -406,6 +464,7 @@ async function syncCloudState({ manual = false, automatic = false } = {}) {
       cloudSyncQueued = false;
       syncConfig().dirty = true;
       setCloudSyncStatus("本地改动待同步 · 将在下次自动同步时上传");
+      scheduleCloudSync();
     }
   }
 }
@@ -423,6 +482,8 @@ async function enableCloudSync(secret) {
 }
 async function disableCloudSync() {
   if (!window.confirm("停止这台设备的云端同步？云端加密备份会保留，之后输入同一密钥即可重新连接。")) return;
+  clearTimeout(cloudSyncTimer);
+  cloudSyncTimer = null;
   clearInterval(cloudSyncPollTimer);
   state.sync = { enabled: false, key: "", revision: 0, lastSyncedAt: null, dirty: false, contentVersion: CLOUD_SYNC_CONTENT_VERSION };
   setCloudSyncStatus("未启用");
@@ -754,9 +815,51 @@ function wordData(word) {
   // several offline examples to the remaining imported vocabulary.
   return { ...(LEXICON[key] || {}), ...(IMPORTED_WORD_DETAILS[key] || {}), ...(EXAMPLE_LIBRARY[key] || {}), ...(CONTENT_LIBRARY[key] || {}) };
 }
+function senseLookupKey(word) {
+  const key = String(word?.text || word || "").trim().toLowerCase();
+  if (!key || SENSE_LIBRARY[key]) return key;
+  const candidates = [IRREGULAR_SENSE_LEMMAS[key]];
+  if (key.endsWith("ies") && key.length > 4) candidates.push(`${key.slice(0, -3)}y`);
+  if (key.endsWith("ied") && key.length > 4) candidates.push(`${key.slice(0, -3)}y`);
+  if (key.endsWith("es") && key.length > 4) candidates.push(key.slice(0, -2), key.slice(0, -1));
+  if (key.endsWith("s") && key.length > 3) candidates.push(key.slice(0, -1));
+  if (key.endsWith("ing") && key.length > 5) candidates.push(key.slice(0, -3), `${key.slice(0, -3)}e`, key.slice(0, -4));
+  if (key.endsWith("ed") && key.length > 4) candidates.push(key.slice(0, -2), `${key.slice(0, -1)}e`, key.slice(0, -3));
+  return candidates.find((candidate) => candidate && SENSE_LIBRARY[candidate]) || key;
+}
+function isStudySense(entry) {
+  const sense = String(entry?.sense || "").trim();
+  return Boolean(sense) && !NON_STUDY_SENSE_PATTERN.test(sense) && !NON_STUDY_SENSE_PATTERN.test(String(entry?.partOfSpeech || ""));
+}
+function curatedSenseEntries(word) {
+  const key = senseLookupKey(word);
+  const source = STUDY_SENSE_OVERRIDES[key] || SENSE_LIBRARY[key]?.senses || [];
+  const unique = [];
+  source.forEach((entry) => {
+    const normalized = { id: String(entry?.id || ""), partOfSpeech: String(entry?.partOfSpeech || "词性未标注"), sense: String(entry?.sense || "").trim() };
+    if (!normalized.sense || unique.some((item) => item.partOfSpeech === normalized.partOfSpeech && item.sense === normalized.sense)) return;
+    unique.push(normalized);
+  });
+  const common = unique.filter(isStudySense);
+  // A specialist word can legitimately have only a specialist definition;
+  // retain it rather than showing an empty or fabricated meaning.
+  return common.length ? common : unique;
+}
 function librarySenseEntries(word) {
-  const key = String(word?.text || word || "").toLowerCase();
-  return Array.isArray(SENSE_LIBRARY[key]?.senses) ? SENSE_LIBRARY[key].senses : [];
+  return curatedSenseEntries(word);
+}
+function hasUsableSense(value) {
+  const sense = String(value || "").trim();
+  return Boolean(sense) && !/^(?:[.。…·•\s-]+|词性待补充|中文释义待补充)$/u.test(sense);
+}
+function resolvedAiSenseGroup(word, group) {
+  const available = librarySenseEntries(word);
+  if (!available.length) return group;
+  const ids = Array.isArray(group?.sourceSenseIds) ? group.sourceSenseIds.map(String) : [];
+  if (!ids.length) return group;
+  const matched = available.filter((entry) => ids.includes(entry.id));
+  if (!matched.length) return null;
+  return { ...group, partOfSpeech: matched[0].partOfSpeech, sense: matched.map((entry) => entry.sense).join("；") };
 }
 function aiRecordForWord(word) {
   const key = String(word?.text || word || "").toLowerCase();
@@ -791,6 +894,7 @@ function hydrateAiContexts(words) {
 async function preloadAiContexts(words, view) {
   // Examples are streamed as small two-letter shards. Only request a shard
   // when an entry is genuinely absent from the in-memory library.
+  const senseReady = loadSenseLibrary();
   const keys = [...new Set((words || []).filter((word) => !aiRecordForWord(word)).map(aiShardKey))];
   // iPhone Safari can drop a large burst of dynamic scripts.  Loading the
   // few shards used by the visible page in sequence is slower by milliseconds
@@ -798,6 +902,7 @@ async function preloadAiContexts(words, view) {
   for (const key of keys) {
     try { await loadAiShard(key); } catch { /* Keep the retry control visible. */ }
   }
+  await senseReady;
   const hydrated = hydrateAiContexts(words || []);
   if (hydrated) await persist();
   if ((hydrated || keys.length) && currentView === view) render();
@@ -812,7 +917,7 @@ function normalizedSentenceKey(sentence) {
 function verifiedExampleContexts(word) {
   const record = aiRecordForWord(word);
   if (!record) return [];
-  const groups = new Map(record.senseGroups.map((group) => [group.id, group]));
+  const groups = new Map(record.senseGroups.map((group) => resolvedAiSenseGroup(word, group)).filter(Boolean).map((group) => [group.id, group]));
   return record.examples.map((example, index) => {
     const group = groups.get(example.senseId);
     if (!group || !example.sentence || !example.translation) return null;
@@ -845,14 +950,16 @@ function selectedLearningContext(word) {
 function wordProfile(word) {
   const base = wordData(word); const detail = WORD_DETAILS[word.text.toLowerCase()] || {}; const usage = WORD_USAGE_DETAILS[word.text.toLowerCase()] || {};
   const dictionarySenses = librarySenseEntries(word);
-  const partOfSpeech = usage.currentPartOfSpeech || word.partOfSpeech || base.partOfSpeech || detail.partOfSpeech || dictionarySenses[0]?.partOfSpeech || "词性待补充";
-  const currentSense = word.currentSense || base.currentSense || detail.currentSense || dictionarySenses[0]?.sense || word.definition || base.zh || "中文释义待补充";
+  const curatedCurrent = [base.currentSense, detail.currentSense].find(hasUsableSense);
+  const storedCurrent = [word.currentSense, word.definition, base.zh].find(hasUsableSense);
+  const partOfSpeech = usage.currentPartOfSpeech || base.partOfSpeech || detail.partOfSpeech || dictionarySenses[0]?.partOfSpeech || word.partOfSpeech || "词性待补充";
+  const currentSense = curatedCurrent || dictionarySenses[0]?.sense || storedCurrent || "中文释义待补充";
   const suppliedOtherDefinitions = word.otherDefinitions?.length ? word.otherDefinitions : usage.otherDefinitions?.length ? usage.otherDefinitions : [];
   const derivedOtherDefinitions = dictionaryDefinitionEntries(word.definition || base.zh, partOfSpeech).filter((entry) => entry.sense !== currentSense);
   return {
     partOfSpeech,
     currentSense,
-    senses: word.senses?.length ? word.senses : base.senses?.length ? base.senses : detail.senses?.length ? detail.senses : [word.definition || base.zh || "中文释义待补充"],
+    senses: dictionarySenses.length ? dictionarySenses.map((entry) => entry.sense) : base.senses?.length ? base.senses : detail.senses?.length ? detail.senses : word.senses?.length ? word.senses : [storedCurrent || "中文释义待补充"],
     otherDefinitions: suppliedOtherDefinitions.length ? suppliedOtherDefinitions : derivedOtherDefinitions
   };
 }
@@ -1105,9 +1212,9 @@ async function load() {
   if (contentUpdated || voiceSpeedUpdated || settingsUpdated || notebookUpdated || memoryTableUpdated || removedLegacyAiSettings || syncWasNormalized || syncScopeUpdated || deviceStateLoadedFromLegacy) persist();
   scheduleOfflineDictionaryHydration();
   if (canUseCloudSync()) {
-    setCloudSyncStatus(state.sync.dirty ? "本地改动待同步 · 将在 4 小时内自动同步" : state.sync.lastSyncedAt ? `已同步 · ${formatCloudSyncDate(state.sync.lastSyncedAt)}（北京时间）` : "准备就绪 · 点击立即同步，或等待自动同步");
+    setCloudSyncStatus(state.sync.dirty ? cloudSyncPendingMessage() : state.sync.lastSyncedAt ? `已同步 · ${formatCloudSyncDate(state.sync.lastSyncedAt)}（北京时间）` : "准备就绪 · 点击立即同步，或等待自动同步");
     startCloudSyncPolling();
-    void syncCloudState({ automatic: true });
+    if (state.sync.dirty || cloudSyncIsDue()) void syncCloudState({ automatic: true });
   }
 }
 function persist({ skipCloud = false, silent = false, defer = false } = {}) {
@@ -1513,9 +1620,18 @@ function renderMemory() {
   const directory = memoryDirectoryItems(orderedWords);
   const filtered = orderedWords.filter((word) => memoryFilterIncludes(word, prefs.filter) && memoryMatchesSearch(word, memorySearch));
   const visible = filtered.slice(0, memoryVisibleCount); const mode = prefs.mode;
+  if (!Object.keys(SENSE_LIBRARY).length) void loadSenseLibrary();
   const rows = visible.map((word) => `<div class="memory-row" role="row"><div class="memory-cell memory-index is-sticky" role="cell">${serials.get(word.id)}</div><div class="memory-cell memory-word is-sticky" role="cell">${memoryWordCell(word, mode)}</div><div class="memory-cell memory-definition is-sticky" role="cell">${memoryDefinitionHtml(word, prefs)}</div>${MEMORY_STEPS.map((step) => `<div class="memory-cell memory-step" role="cell">${memoryCircle(word, step, mode)}</div>`).join("")}</div>`).join("");
   const body = rows || `<div class="memory-empty">${orderedWords.length ? "这个目录中还没有单词。" : "完成一次初学后，单词会按最初学习顺序出现在这里。"}</div>`;
   APP.innerHTML = `<section class="memory-page">${pageHeading("记忆")}<section class="memory-lead"><div><p class="section-label">${escapeHtml(notebook?.name || "我的单词本")} · 独立记录</p><h2>循着自己的记忆痕迹。</h2><p>按首次学习顺序排列；圆点只记录你的手动记忆，不影响 FSRS 复习。</p></div><div class="memory-summary"><strong>${orderedWords.length}</strong><span>已学习单词</span></div></section><div class="memory-toolbar"><div class="memory-modes" role="tablist" aria-label="记忆方式"><button class="memory-mode ${mode === "recite" ? "is-active" : ""}" data-memory-mode="recite" role="tab" aria-selected="${mode === "recite"}">背诵</button><button class="memory-mode ${mode === "dictation" ? "is-active" : ""}" data-memory-mode="dictation" role="tab" aria-selected="${mode === "dictation"}">默写</button></div><button class="quiet-button memory-hide-all" data-memory-hide-all aria-label="${prefs.hideAll ? "显示全部词性和释义" : "隐藏全部词性和释义"}">${prefs.hideAll ? "显示" : "隐藏"}</button><label class="memory-search"><span>搜索</span><input data-memory-search type="search" value="${escapeHtml(memorySearch)}" placeholder="英文或中文" autocomplete="off" /></label></div><div class="memory-workspace"><aside class="memory-sidebar"><p class="section-label">目录</p><nav class="memory-directory" aria-label="记忆目录">${directory.map((item) => `<button class="memory-directory-item ${prefs.filter === item.id ? "is-active" : ""}" data-memory-filter="${item.id}"><span>${item.label}</span><b>${item.count}</b></button>`).join("")}</nav></aside><section class="memory-table-card"><div class="memory-table-caption"><div><p class="section-label">${mode === "dictation" ? "默写" : "背诵"}</p><h2>${memoryFilterLabel(prefs.filter)}</h2></div><p>${mode === "dictation" ? "直接在英文框中书写；核对正确后自动填满下一个空圆。" : "先回忆释义，再点按对应圆点。"}</p></div><div class="memory-table-scroll"><div class="memory-table" role="table" aria-label="${escapeHtml(notebook?.name || "当前")}单词本记忆表"><div class="memory-row memory-head" role="row"><div class="memory-cell memory-index is-sticky" role="columnheader">序号</div><div class="memory-cell memory-word is-sticky" role="columnheader">${mode === "dictation" ? "默写" : "英文"}</div><div class="memory-cell memory-definition is-sticky" role="columnheader">释义</div>${MEMORY_STEPS.map((step) => `<div class="memory-cell memory-step" role="columnheader">${step.label}</div>`).join("")}</div>${body}</div></div>${visible.length < filtered.length ? `<button class="secondary memory-more" data-memory-more>更多</button>` : ""}</section></div><p class="memory-footnote">节点：${memoryStepDescription()}。切换单词本会切换整张记忆表与全部记录。</p></section>`;
+  APP.querySelectorAll(".memory-row").forEach((row) => {
+    const steps = [...row.children].filter((cell) => cell.classList.contains("memory-step"));
+    if (!steps.length) return;
+    const group = document.createElement("div");
+    group.className = "memory-steps";
+    steps[0].before(group);
+    steps.forEach((step) => group.append(step));
+  });
   const summary = APP.querySelector(".memory-summary");
   const sidebar = APP.querySelector(".memory-sidebar");
   if (summary && sidebar) sidebar.prepend(summary);
@@ -1561,7 +1677,7 @@ function renderSettings() {
   const sync = syncConfig();
   const cloudSyncPanel = sync.enabled ? `<section class="setting-group cloud-sync-group"><h2>云端自动同步</h2><p><strong data-cloud-sync-status>${escapeHtml(cloudSyncStatus === "未启用" ? "准备同步" : cloudSyncStatus)}</strong></p><p>这台设备已加入你的加密同步空间。电脑、iPhone 和 iPad 输入同一同步密钥后，学习进度与复习记录会自动合并；词库和例句仍保留在每台设备本地。</p><label class="field-label">同步密钥<input id="cloud-sync-key" data-cloud-sync-key type="text" value="${escapeHtml(sync.key)}" readonly autocomplete="off" spellcheck="false" aria-label="当前同步密钥" /></label><p class="field-note">同步密钥只显示在本机；请妥善保管，不要分享给其他人。</p><div class="backup-actions"><button class="secondary" data-copy-sync-key>复制同步密钥</button><button class="secondary" data-sync-now>立即同步</button><button class="quiet-button danger-button" data-disable-sync>停止这台设备的同步</button></div></section>` : `<section class="setting-group cloud-sync-group"><h2>云端自动同步</h2><p>免费同步电脑、iPhone 和 iPad 的词本、学习进度与复习记录。请在三台设备上输入完全相同的同步密钥；密钥只保存在设备中，云端只保存加密内容。</p><label class="field-label">同步密钥<input id="cloud-sync-key" data-cloud-sync-key type="text" autocomplete="off" spellcheck="false" placeholder="至少 16 个字符；三台设备完全相同" /></label><p class="field-note">请将密钥存入密码管理器。遗失后无法从云端找回；不要把它分享给其他人。</p><div class="backup-actions"><button class="secondary" data-generate-sync-key>生成安全密钥</button><button class="primary" data-enable-sync>启用云端同步</button></div></section>`;
   APP.querySelector(".settings-content")?.insertAdjacentHTML("beforeend", cloudSyncPanel);
-  APP.querySelector(".cloud-sync-group h2")?.replaceChildren(document.createTextNode("云端自动同步（每 4 小时）"));
+  APP.querySelector(".cloud-sync-group h2")?.replaceChildren(document.createTextNode("云端自动同步"));
   if (sync.enabled) {
     const syncDetail = APP.querySelector(".cloud-sync-group p:nth-of-type(2)");
     if (syncDetail) syncDetail.textContent = "云端会加密同步完整用户数据：词本、单词内容、学习状态、例句与上下文、全部复习记录、导入记录和设置。同步密钥只保存在本机。";
@@ -1575,6 +1691,7 @@ function renderSettings() {
 
 function render() {
   if (!state) return;
+  document.documentElement.dataset.view = currentView;
   ({ home: renderHome, words: renderWords, learn: renderLearn, review: renderReview, memory: renderMemory, settings: renderSettings }[currentView] || renderHome)();
   renderNav();
   if (currentView === "review" && !question?.historical) {
@@ -1939,7 +2056,7 @@ async function resetAllLearningProgress() {
   pausedQuestion = null;
   await persist({ skipCloud: true, silent: true });
   render();
-  if (canUseCloudSync()) { setCloudSyncStatus("学习记录已重置 · 将在 4 小时内自动同步"); showToast("学习记录已在本机清空；将在下次自动同步时同步到云端。" ); }
+  if (canUseCloudSync()) { setCloudSyncStatus(cloudSyncPendingMessage()); scheduleCloudSync(); showToast("学习记录已在本机清空；将在约 15 秒后自动同步到云端。" ); }
   else showToast("学习记录已清空；以后启用云端同步时会同步这次重置。" );
 }
 
@@ -2161,7 +2278,6 @@ function popover(wordText, anchor) {
   document.querySelector(".word-popover")?.remove();
   const word = activeWords().find((item) => item.text.toLowerCase() === wordText.toLowerCase());
   if (!word) return;
-  const box = anchor.getBoundingClientRect();
   const element = document.createElement("aside");
   element.className = "word-popover";
   const sentenceSense = friendlySense(word.sentenceSense || word.currentSense || "");
@@ -2170,23 +2286,26 @@ function popover(wordText, anchor) {
   document.body.append(element);
   const padding = 12;
   const gap = 10;
-  const mobile = window.matchMedia("(max-width: 700px)").matches;
-  let left;
-  let top;
-  if (mobile) {
-    // Avoid reading offsetHeight on mobile: a forced full-page layout here made
-    // a second word tap visibly pause on long learning pages.
-    const width = Math.min(350, window.innerWidth - padding * 2);
-    left = Math.min(window.innerWidth - width - padding, Math.max(padding, box.left));
-    top = box.bottom + window.scrollY + gap;
-    element.style.position = "absolute";
-  } else {
-    const width = element.offsetWidth;
-    const height = element.offsetHeight;
-    left = Math.min(window.innerWidth - width - padding, Math.max(padding, box.left));
-    top = box.bottom + gap;
-    if (top + height > window.innerHeight - padding) top = Math.max(padding, box.top - height - gap);
-  }
+  const viewport = window.visualViewport;
+  const viewportLeft = viewport?.pageLeft ?? window.scrollX;
+  const viewportTop = viewport?.pageTop ?? window.scrollY;
+  const viewportWidth = viewport?.width ?? window.innerWidth;
+  const viewportHeight = viewport?.height ?? window.innerHeight;
+  const maxPopupWidth = Math.max(160, viewportWidth - padding * 2);
+  const maxPopupHeight = Math.max(140, viewportHeight - padding * 2);
+  element.style.setProperty("max-width", `${maxPopupWidth}px`, "important");
+  element.style.setProperty("max-height", `${maxPopupHeight}px`, "important");
+  const box = anchor.getBoundingClientRect();
+  const width = element.offsetWidth;
+  const height = element.offsetHeight;
+  const safeLeft = viewportLeft + padding;
+  const safeRight = viewportLeft + viewportWidth - padding;
+  const left = Math.max(safeLeft, Math.min(safeRight - width, Math.max(safeLeft, viewportLeft + box.left)));
+  const below = viewportTop + box.bottom + gap;
+  const above = viewportTop + box.top - height - gap;
+  const top = below + height <= viewportTop + viewportHeight - padding ? below : Math.max(viewportTop + padding, above);
+  element.classList.add("is-viewport-anchored");
+  element.style.setProperty("position", "absolute", "important");
   element.style.setProperty("right", "auto", "important");
   element.style.setProperty("bottom", "auto", "important");
   element.style.setProperty("left", `${left}px`, "important");
@@ -2203,10 +2322,8 @@ function popover(wordText, anchor) {
   }), 0);
 }
 document.addEventListener("scroll", () => {
-  // On iPhone the popover is positioned in the document, so removing it during
-  // momentum scrolling forces a repaint and can flash the entire page. Keep it
-  // on mobile; it simply scrolls out of view and is replaced on the next word tap.
-  if (!window.matchMedia("(max-width: 700px)").matches) document.querySelector(".word-popover")?.remove();
+  // Apple popovers use document-relative coordinates and move with their word.
+  if (!isAppleTouchDevice() && !window.matchMedia("(max-width: 700px)").matches) document.querySelector(".word-popover")?.remove();
 }, true);
 
 function triggerSpeechButtonAction(button) {
@@ -2336,8 +2453,8 @@ document.addEventListener("keydown", (event) => {
   if (question.answered && event.key === "Enter") nextQuestion();
 });
 window.addEventListener("hashchange", () => { const view = window.location.hash.slice(1); if (["home", "words", "learn", "review", "memory", "settings"].includes(view) && currentView !== view) { currentView = view; question = null; render(); } });
-window.addEventListener("online", () => { if (cloudSyncIsDue()) void syncCloudState({ automatic: true }); });
-document.addEventListener("visibilitychange", () => { if (!document.hidden && cloudSyncIsDue()) void syncCloudState({ automatic: true }); });
+window.addEventListener("online", () => { if (canUseCloudSync() && (syncConfig().dirty || cloudSyncIsDue())) void syncCloudState({ automatic: true }); });
+document.addEventListener("visibilitychange", () => { if (!document.hidden && canUseCloudSync() && (syncConfig().dirty || cloudSyncIsDue())) void syncCloudState({ automatic: true }); });
 if ("speechSynthesis" in window) {
   speechSynthesis.getVoices();
   speechSynthesis.addEventListener("voiceschanged", () => { if (currentView === "settings") render(); });

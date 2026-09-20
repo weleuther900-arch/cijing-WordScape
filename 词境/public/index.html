@@ -9,11 +9,11 @@
     <meta name="apple-mobile-web-app-title" content="词境" />
     <meta name="mobile-web-app-capable" content="yes" />
     <title>词境 · WordScape</title>
-    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="manifest" href="./manifest.webmanifest?v=20260917-05" />
     <link rel="icon" href="./app-icon.png" type="image/png" />
     <link rel="apple-touch-icon" href="./app-icon.png" />
     <link rel="stylesheet" href="./styles.css?v=20260815-08" />
-    <link rel="stylesheet" href="./enhancements.css?v=20260831-14" />
+    <link rel="stylesheet" href="./enhancements.css?v=20260917-02" />
   </head>
   <body>
     <div class="page-wash" aria-hidden="true"></div>
@@ -36,10 +36,18 @@
     <script defer src="./released-example-words.js?v=20260821-01"></script>
     <script defer src="./sync-core.js?v=20260830-14"></script>
     <script defer src="./daily-quotes.js?v=20260815-10"></script>
-    <script defer src="./app.js?v=20260831-15"></script>
+    <script defer src="./app.js?v=20260917-04"></script>
     <script>
       if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost" || location.hostname === "127.0.0.1")) {
-        window.addEventListener("load", () => navigator.serviceWorker.register("./service-worker.js?v=20260831-15").catch(() => undefined));
+        const wordscapeAppleTouch = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+        const wordscapePagesPwa = wordscapeAppleTouch && location.hostname.endsWith(".pages.dev");
+        window.addEventListener("load", () => {
+          if (wordscapePagesPwa) {
+            navigator.serviceWorker.getRegistrations().then((registrations) => Promise.all(registrations.map((registration) => registration.unregister()))).catch(() => undefined);
+            return;
+          }
+          navigator.serviceWorker.register("./service-worker.js?v=20260917-05").then((registration) => registration.update()).catch(() => undefined);
+        });
       }
     </script>
   </body>

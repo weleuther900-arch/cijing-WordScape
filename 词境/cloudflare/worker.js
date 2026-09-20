@@ -1,10 +1,14 @@
 const JSON_HEADERS = { "Content-Type": "application/json; charset=UTF-8", "Cache-Control": "no-store" };
 const MAX_PAYLOAD_BYTES = 24 * 1024 * 1024;
 const CHUNK_SIZE = 320000;
+const NATIVE_APP_ORIGINS = new Set(["capacitor://localhost", "ionic://localhost"]);
+const WEB_APP_ORIGINS = new Set(["https://wordscape.weleuther900.workers.dev", "https://wordscape-fresh.weleuther900.workers.dev"]);
 
 function reply(value, status = 200) { return new Response(JSON.stringify(value), { status, headers: JSON_HEADERS }); }
 function isAllowedOrigin(origin) {
-  return origin === "https://wordscape.weleuther900.workers.dev" || /^http:\/\/(?:127\.0\.0\.1|localhost)(?::\d+)?$/.test(origin || "");
+  if (WEB_APP_ORIGINS.has(origin)) return true;
+  if (origin === "https://wordscape-open.pages.dev") return true;
+  return NATIVE_APP_ORIGINS.has(origin) || origin === "https://wordscape.weleuther900.workers.dev" || /^http:\/\/(?:127\.0\.0\.1|localhost)(?::\d+)?$/.test(origin || "");
 }
 function withCors(response, request) {
   const origin = request.headers.get("Origin");

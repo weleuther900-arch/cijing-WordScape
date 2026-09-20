@@ -1152,3 +1152,34 @@ html[data-theme="dark"] .memory-mode:not(.is-active):hover { color: #e4e8ed; bac
 .memory-meaning { gap: 6px; }
 .memory-meaning span { overflow: visible; text-overflow: clip; white-space: normal; overflow-wrap: anywhere; line-height: 1.55; }
 .memory-meaning b { vertical-align: top; }
+
+/* Learning readability and stable iPad meaning cards. */
+.learning-page { --learning-sentence-size: clamp(23px, 2.7vw, 30px); }
+.learning-page .story-line { font-size: var(--learning-sentence-size); line-height: 1.58; }
+.learning-page .story-translation { font-size: calc(var(--learning-sentence-size) - 2px); line-height: 1.62; }
+
+.review-card .scene-cn { font-size: clamp(20px, 2.25vw, 24px); line-height: 1.7; }
+.review-card .cloze { font-size: clamp(30px, 4.9vw, 46px); line-height: 1.38; }
+
+/* Larger bilingual type for the selected-word explanation. */
+.word-popover { padding: 22px; }
+.word-popover h3 { font-size: clamp(32px, 4vw, 38px); line-height: 1.08; }
+.word-popover .word-phonetic { font-size: 16px; line-height: 1.55; }
+.word-popover .sentence-sense > small { font-size: 13px; }
+.word-popover .popover-current-sense { font-size: 20px !important; line-height: 1.55; }
+.word-popover .popover-current-sense span { font-size: 14px; }
+/* Phone memory ledger: no overlap, full definitions, and every review step stays tappable. */ .memory-steps { display: contents; } .memory-steps > .memory-cell:last-child { border-right: 0; } @media (max-width: 700px) { html[data-view="memory"] .mobile-nav { position: static; inset: auto; width: calc(100% - 24px); margin: 8px 12px 0; transform: none; } html[data-view="memory"] .app-shell { padding-bottom: calc(28px + env(safe-area-inset-bottom)) !important; } html[data-view="memory"] .memory-table-scroll { overflow-x: hidden; } html[data-view="memory"] .memory-table { width: 100%; min-width: 0; } html[data-view="memory"] .memory-row { grid-template-columns: 38px minmax(86px, .72fr) minmax(0, 1.45fr); grid-template-areas: "index word definition" ". steps steps"; min-height: 0; } html[data-view="memory"] .memory-index { grid-area: index; position: static !important; } html[data-view="memory"] .memory-word { grid-area: word; position: static !important; } html[data-view="memory"] .memory-definition { grid-area: definition; position: static !important; box-shadow: none; } html[data-view="memory"] .memory-steps { display: grid; grid-area: steps; grid-template-columns: repeat(7, minmax(0, 1fr)); min-width: 0; padding: 3px 4px 8px; } html[data-view="memory"] .memory-step { display: flex; min-width: 0; min-height: 34px; padding: 3px; border: 0; } html[data-view="memory"] .memory-head .memory-steps { padding: 3px 4px 5px; } html[data-view="memory"] .memory-head .memory-step { min-height: 28px; font-size: 9px; line-height: 1.1; text-align: center; } html[data-view="memory"] .memory-cell { padding: 8px 7px; } html[data-view="memory"] .memory-row:not(.memory-head) .memory-cell, html[data-view="memory"] .memory-index, html[data-view="memory"] .memory-word, html[data-view="memory"] .memory-meaning span, html[data-view="memory"] .memory-entry input { font-size: 16px; } html[data-view="memory"] .memory-meaning span { line-height: 1.48; } }
+/* Memory keeps the same bottom navigation position as every other mobile view. */
+@media (max-width: 700px) {
+  html[data-view="memory"] .mobile-nav {
+    position: fixed !important;
+    right: 9px !important;
+    bottom: calc(7px + env(safe-area-inset-bottom)) !important;
+    left: 9px !important;
+    width: auto !important;
+    margin: 0 !important;
+  }
+  html[data-view="memory"] .app-shell {
+    padding-bottom: calc(102px + env(safe-area-inset-bottom)) !important;
+  }
+}

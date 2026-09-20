@@ -3,7 +3,7 @@
   "short_name": "词境",
   "description": "在语境中学习和复习英语单词。",
   "lang": "zh-CN",
-  "start_url": "/",
+  "start_url": "/?standalone=1",
   "scope": "/",
   "display": "standalone",
   "background_color": "#f7f5f0",

@@ -92,6 +92,21 @@ npm.cmd start
 旧版 `.xls` 是已淘汰的二进制格式，请在 Excel 中另存为 `.xlsx` 再导入。
 
 ## 开源与致谢
+## 换电脑继续开发
+
+本仓库已包含可复现的应用源码、词库与例句资产、部署配置、项目交接日志和开发说明。换电脑后，将仓库克隆到任意工作目录，并在项目根目录执行：
+
+```powershell
+git clone https://github.com/weleuther900-arch/cijing-WordScape.git
+cd cijing-WordScape\词境
+npm.cmd ci
+npm.cmd run ios:web:prepare
+```
+
+随后可执行 `npm.cmd start` 启动本地版；需要发布 Cloudflare 时，先在新电脑运行 `npx wrangler login`，再按 `cloudflare/README.md` 操作。使用 Codex 时直接打开仓库根目录，`AGENTS.md` 与 `项目一级日志.md` 会提供项目协作约束和简短交接记录。
+
+个人学习记录（`词境/data/`）与本机密钥（`词境/.env.local`）不会上传到公开仓库；如需迁移学习进度，请在应用“设置 → 数据备份”导出后，手动复制并恢复到新设备。
+
 
 项目以 [MIT License](LICENSE) 发布。所有运行时依赖和离线词库均采用可再分发的开源许可证；完整清单见 [第三方开源声明](THIRD_PARTY_NOTICES.md)。
 

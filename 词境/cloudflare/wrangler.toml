@@ -1,0 +1,15 @@
+name = "wordscape"
+main = "worker.js"
+compatibility_date = "2026-08-13"
+
+[assets]
+directory = "../ios-web"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+# 仅 /api 先进入 Worker；其余静态资源仍由 Cloudflare 就近高速返回。
+run_worker_first = ["/api/*"]
+
+[[d1_databases]]
+binding = "WORDSCAPE_DB"
+database_name = "wordscape-sync"
+database_id = "e2a04fcd-b15e-4e1f-810d-1422382b232e"

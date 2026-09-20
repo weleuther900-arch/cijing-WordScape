@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <title>词境 · 英语声音试听</title>
+    <link rel="stylesheet" href="./preview.css" />
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">词境 · 独立试听</p>
+      <h1>英语声音</h1>
+      <p class="intro">这里仅展示这台设备实际可用的英语系统声音。选择与播放都只在本机发生，不包含词本、同步或正式应用数据。</p>
+      <label>声音<select id="voice" aria-label="英语声音"></select></label>
+      <label>试听句子<input id="word" value="On a quiet morning, I read a new sentence, repeat it aloud, and let each word become familiar." maxlength="240" autocomplete="off" autocapitalize="none" spellcheck="false" /></label>
+      <button id="speak" type="button">试听句子</button>
+      <p id="status" class="status" role="status">正在读取这台设备的英语声音…</p>
+      <p class="note">请分别在 iPhone 与 iPad 打开本页试听；列表只会显示对应设备能实际使用的声音。</p>
+    </main>
+    <script src="./preview.js"></script>
+  </body>
+</html>

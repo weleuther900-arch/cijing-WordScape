@@ -1,38 +1,15 @@
 # Personal learning state — stays only on this computer.
 词境/data/
 
-# Local project records and machine-specific work areas — never publish.
-AGENTS.md
-项目一级日志.md
-docs/项目资料/
+# Machine-specific work areas.
 词境/.kokoro-build/
 词境/.voice-build-env/
 词境/releases/
 词境/tools/
 词境/scripts/__pycache__/
 
-# Generated word corpora and bundled word content are local-only.
-词境/public/ai-example-*.js
-词境/public/ai-examples/
-词境/public/bundled-imports/
-词境/public/example-library.js
-词境/public/released-example-words.js
-词境/public/word-senses.js
-
-# The real deployment configuration can identify a personal cloud resource.
-词境/cloudflare/wrangler.toml
-
-# Cloudflare account cache and local corpus-generation tools are not source releases.
+# Cloudflare account cache.
 词境/cloudflare/.wrangler/
-词境/public/ai-examples*.js
-词境/scripts/*.py
-词境/scripts/build-*.js
-词境/scripts/compile-*.js
-词境/scripts/generate-*.js
-词境/scripts/merge-*.js
-词境/scripts/normalize-*.js
-词境/scripts/reset-*.js
-词境/scripts/split-*.js
 
 # Local dependency and runtime output.
 词境/node_modules/
@@ -45,7 +22,9 @@ docs/项目资料/
 # Secrets and editor/OS files.
 .env
 .env.*
+词境/.env.local
 !.env.example
+!词境/.env.example
 .DS_Store
 Thumbs.db
 .vscode/
