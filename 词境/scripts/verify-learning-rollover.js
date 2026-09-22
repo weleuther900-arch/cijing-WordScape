@@ -9,13 +9,12 @@ const start = source.indexOf("function movePastLearningToReview()");
 const end = source.indexOf("function showToast(message)", start);
 assert.ok(start >= 0 && end > start, "Could not locate the learning rollover implementation.");
 
-let today = "2026-08-16";
-let gateClosed = false;
+let today = "2026-09-22";
 const words = Array.from({ length: 450 }, (_, index) => ({
-  id: `word-${index + 1}`,
+  id: "word-" + (index + 1),
   stage: "learning",
   learningSeen: index < 150,
-  learningPlanDate: index < 200 ? "2026-08-15" : null
+  learningPlanDate: index < 200 ? "2026-09-21" : null
 }));
 const state = { settings: { dailyNewTarget: 200 }, words };
 const context = {
@@ -24,7 +23,7 @@ const context = {
   wordsForBatch: () => words,
   studyWords: () => words,
   isReleasedForStudy: () => true,
-  isGateClosed: () => gateClosed,
+  isGateClosed: () => false,
   persist: () => Promise.resolve(),
   Date,
   console
@@ -32,27 +31,22 @@ const context = {
 vm.runInNewContext(source.slice(start, end), context);
 
 const firstPlan = context.dailyStudyWordsForBatch({ id: "batch" });
-assert.equal(firstPlan.length, 200, "The next-day plan must remain capped at 200 words.");
-assert.deepEqual(Array.from(firstPlan.slice(0, 50), (word) => word.id), Array.from({ length: 50 }, (_, index) => `word-${index + 151}`), "All 50 unseen words from yesterday must be carried into today first.");
-assert.deepEqual(Array.from(firstPlan.slice(50), (word) => word.id), Array.from({ length: 150 }, (_, index) => `word-${index + 201}`), "The remaining 150 places must be filled with new words.");
-assert.equal(words.filter((word) => word.stage === "review").length, 150, "Yesterday's 150 seen words must move to review.");
-assert.equal(firstPlan.some((word) => Number(word.id.slice(5)) <= 150), false, "Yesterday's seen words must not remain on the learning page.");
+assert.equal(firstPlan.length, 200, "The daily new-word target must remain 200.");
+assert.deepEqual(Array.from(firstPlan.slice(0, 50), (word) => word.id), Array.from({ length: 50 }, (_, index) => "word-" + (index + 151)), "Unseen carry-over words must stay first.");
+assert.deepEqual(Array.from(firstPlan.slice(50), (word) => word.id), Array.from({ length: 150 }, (_, index) => "word-" + (index + 201)), "Untouched words must fill the remaining daily places.");
+assert.equal(words.filter((word) => word.stage === "review").length, 150, "Yesterday's seen words must move to review.");
 
-// On the following day, only words not yet seen continue; seen words again
-// leave learning for review, keeping the daily page at exactly 200 entries.
 firstPlan.slice(0, 100).forEach((word) => { word.learningSeen = true; });
-today = "2026-08-17";
+today = "2026-09-23";
 const secondPlan = context.dailyStudyWordsForBatch({ id: "batch" });
-assert.equal(secondPlan.length, 200, "Carry-over plus fresh words must still produce exactly 200 entries.");
-assert.equal(words.filter((word) => word.stage === "review").length, 250, "Words seen on either previous day must be in review.");
-assert.equal(secondPlan.some((word) => word.learningSeen), false, "No previously seen word may remain on the next day's learning page.");
+assert.equal(secondPlan.length, 200, "Carry-over plus fresh words must keep the configured daily target.");
+assert.equal(words.filter((word) => word.stage === "review").length, 250, "Words learned on either previous day must move to review.");
+assert.equal(secondPlan.some((word) => word.learningSeen), false, "Previously learned words must not remain in the next day's learning list.");
 
-console.log("Learning rollover verification passed: seen words move to review and unseen words fill the next fixed-size plan.");
-
-const crossBatchWords = Array.from({ length: 220 }, (_, index) => ({ id: `cross-${index + 1}`, stage: "learning", learningSeen: false, learningPlanDate: null }));
+const crossBatchWords = Array.from({ length: 220 }, (_, index) => ({ id: "cross-" + (index + 1), stage: "learning", learningSeen: false, learningPlanDate: null }));
 const crossBatchContext = {
   state: { settings: { dailyNewTarget: 200 }, words: crossBatchWords },
-  beijingDateKey: () => "2026-08-18",
+  beijingDateKey: () => "2026-09-24",
   wordsForBatch: () => crossBatchWords.slice(0, 20),
   studyWords: () => crossBatchWords,
   isReleasedForStudy: () => true,
@@ -62,21 +56,21 @@ const crossBatchContext = {
   console
 };
 vm.runInNewContext(source.slice(start, end), crossBatchContext);
-assert.equal(crossBatchContext.dailyStudyWords().length, 200, "The daily plan must cover the whole active wordbook, not only the latest batch.");
+assert.equal(crossBatchContext.dailyStudyWords().length, 200, "The daily plan must span the whole active wordbook.");
 
-const gatedWords = Array.from({ length: 20 }, (_, index) => ({ id: `gated-${index + 1}`, stage: "learning", learningSeen: false, learningPlanDate: null }));
-const gatedContext = {
-  state: { settings: { dailyNewTarget: 200 }, words: gatedWords },
-  beijingDateKey: () => "2026-08-18",
-  wordsForBatch: () => gatedWords,
-  studyWords: () => gatedWords,
+const backlogWords = Array.from({ length: 20 }, (_, index) => ({ id: "backlog-" + (index + 1), stage: "learning", learningSeen: false, learningPlanDate: null }));
+const backlogContext = {
+  state: { settings: { dailyNewTarget: 200 }, words: backlogWords },
+  beijingDateKey: () => "2026-09-24",
+  wordsForBatch: () => backlogWords,
+  studyWords: () => backlogWords,
   isReleasedForStudy: () => true,
   isGateClosed: () => true,
   persist: () => Promise.resolve(),
   Date,
   console
 };
-vm.runInNewContext(source.slice(start, end), gatedContext);
-assert.equal(gatedContext.dailyStudyWords().length, 0, "The review gate must block fresh words from entering a new daily plan.");
+vm.runInNewContext(source.slice(start, end), backlogContext);
+assert.equal(backlogContext.dailyStudyWords().length, 20, "A large review backlog must never block untouched words from the learning page.");
 
-console.log("Daily planning verification passed: the plan spans the wordbook and honors the review gate.");
+console.log("Learning rollover verification passed: daily target retained and review backlog never blocks new-word learning.");

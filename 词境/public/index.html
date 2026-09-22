@@ -36,7 +36,7 @@
     <script defer src="./released-example-words.js?v=20260821-01"></script>
     <script defer src="./sync-core.js?v=20260830-14"></script>
     <script defer src="./daily-quotes.js?v=20260815-10"></script>
-    <script defer src="./app.js?v=20260917-04"></script>
+    <script defer src="./app.js?v=20260922-02"></script>
     <script>
       if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost" || location.hostname === "127.0.0.1")) {
         const wordscapeAppleTouch = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
@@ -46,7 +46,7 @@
             navigator.serviceWorker.getRegistrations().then((registrations) => Promise.all(registrations.map((registration) => registration.unregister()))).catch(() => undefined);
             return;
           }
-          navigator.serviceWorker.register("./service-worker.js?v=20260917-05").then((registration) => registration.update()).catch(() => undefined);
+          navigator.serviceWorker.register("./service-worker.js?v=20260922-02").then((registration) => registration.update()).catch(() => undefined);
         });
       }
     </script>

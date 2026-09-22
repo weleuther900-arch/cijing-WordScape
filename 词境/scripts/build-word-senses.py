@@ -30,6 +30,38 @@ POS_NORMALIZE = {"a.": "adj.", "ad.": "adv.", "vi.": "v.", "vt.": "v."}
 # stable and use this only after manual review; it prevents examples from
 # being paired with a visibly incorrect definition in the iOS app.
 SENSE_OVERRIDES: dict[str, list[dict[str, str]]] = {
+    "a": [
+        {"id": "other-2", "partOfSpeech": "art.", "sense": "一（个）"},
+        {"id": "other-3", "partOfSpeech": "art.", "sense": "每一"},
+    ],
+    "according to": [
+        {"id": "other-1", "partOfSpeech": "prep.", "sense": "根据"},
+        {"id": "other-2", "partOfSpeech": "prep.", "sense": "按照"},
+        {"id": "other-3", "partOfSpeech": "prep.", "sense": "取决于"},
+        {"id": "other-4", "partOfSpeech": "prep.", "sense": "据……所说"},
+    ],
+    "agenda": [
+        {"id": "other-1", "partOfSpeech": "n.", "sense": "议程"},
+        {"id": "other-2", "partOfSpeech": "n.", "sense": "待办事项"},
+    ],
+    "air-conditioning": [
+        {"id": "other-1", "partOfSpeech": "n.", "sense": "空调；空气调节"},
+    ],
+    "data": [
+        {"id": "other-1", "partOfSpeech": "n.", "sense": "数据"},
+        {"id": "other-2", "partOfSpeech": "n.", "sense": "资料"},
+    ],
+    "hello": [
+        {"id": "other-1", "partOfSpeech": "int.", "sense": "你好"},
+        {"id": "other-2", "partOfSpeech": "int.", "sense": "喂；嘿"},
+    ],
+    "hi": [
+        {"id": "other-1", "partOfSpeech": "int.", "sense": "嗨；你好"},
+    ],
+    "scissors": [
+        {"id": "other-1", "partOfSpeech": "n.", "sense": "剪刀"},
+        {"id": "other-2", "partOfSpeech": "n.", "sense": "剪具"},
+    ],
     "tram": [
         {"id": "n-1", "partOfSpeech": "n.", "sense": "电车"},
         {"id": "n-2", "partOfSpeech": "n.", "sense": "电车轨道"},
@@ -37,6 +69,13 @@ SENSE_OVERRIDES: dict[str, list[dict[str, str]]] = {
         {"id": "n-4", "partOfSpeech": "n.", "sense": "纬纱；纬丝"},
         {"id": "v-1", "partOfSpeech": "v.", "sense": "用煤车运载"},
         {"id": "v-2", "partOfSpeech": "v.", "sense": "乘电车"},
+    ],
+    "trousers": [
+        {"id": "other-1", "partOfSpeech": "n.", "sense": "裤子"},
+        {"id": "other-2", "partOfSpeech": "n.", "sense": "长裤"},
+    ],
+    "tv": [
+        {"id": "other-1", "partOfSpeech": "n.", "sense": "电视；电视机"},
     ],
 }
 

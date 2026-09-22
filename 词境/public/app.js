@@ -1,7 +1,7 @@
 "use strict";
 
 const FSRS6 = [0.212, 1.2931, 2.3065, 8.2956, 6.4133, 0.8334, 3.0194, 0.001, 1.8722, 0.1666, 0.796, 1.4835, 0.0614, 0.2629, 1.6483, 0.6014, 1.8729, 0.5425, 0.0912, 0.0658, 0.1542];
-const DEFAULT_SETTINGS = { targetRetention: 0.92, reviewGate: 100, wordRate: 1.08, sentenceRate: 0.96, voiceSpeedVersion: 3, voiceURI: "", sentenceVoiceEngine: "natural", reducedMotion: false, darkMode: false, dailyNewTarget: 200, dailyReviewTarget: 30 };
+const DEFAULT_SETTINGS = { targetRetention: 0.92, wordRate: 1.08, sentenceRate: 0.96, voiceSpeedVersion: 3, voiceURI: "", sentenceVoiceEngine: "natural", reducedMotion: false, darkMode: false, dailyNewTarget: 200, dailyReviewTarget: 30 };
 const APP = document.querySelector("#app");
 const TOAST = document.querySelector("#toast");
 const SPEAKER_TEMPLATE = document.querySelector("#speaker-template");
@@ -10,7 +10,7 @@ const CONTENT_LIBRARY = window.WORD_CONTENT_LIBRARY || {};
 const EXAMPLE_LIBRARY = window.WORD_EXAMPLE_LIBRARY?.entries || {};
 const EXAMPLE_LIBRARY_META = window.WORD_EXAMPLE_LIBRARY || {};
 let SENSE_LIBRARY = window.WORD_SENSE_LIBRARY?.entries || {};
-const SENSE_LIBRARY_VERSION = "20260916-02";
+const SENSE_LIBRARY_VERSION = "20260922-01";
 let senseLibraryLoading;
 const AI_EXAMPLE_LIBRARY = { ...(window.WORD_AI_EXAMPLE_LIBRARY?.entries || {}) };
 const AI_EXAMPLE_INDEX = window.WORD_AI_EXAMPLE_INDEX || {};
@@ -21,11 +21,21 @@ const VERIFIED_EXAMPLE_REVISION = "20260916-03";
 // learning-facing layer: correct common meanings first, without legacy or
 // unrelated technical senses leaking into normal study cards.
 const STUDY_SENSE_OVERRIDES = Object.freeze({
+  a: [{ id: "other-2", partOfSpeech: "art.", sense: "一（个）" }, { id: "other-3", partOfSpeech: "art.", sense: "每一" }],
+  "according to": [{ id: "other-1", partOfSpeech: "prep.", sense: "根据" }, { id: "other-2", partOfSpeech: "prep.", sense: "按照" }, { id: "other-3", partOfSpeech: "prep.", sense: "取决于" }, { id: "other-4", partOfSpeech: "prep.", sense: "据……所说" }],
+  agenda: [{ id: "other-1", partOfSpeech: "n.", sense: "议程" }, { id: "other-2", partOfSpeech: "n.", sense: "待办事项" }],
+  "air-conditioning": [{ id: "other-1", partOfSpeech: "n.", sense: "空调；空气调节" }],
   cafe: [{ id: "n-1", partOfSpeech: "n.", sense: "咖啡馆；咖啡店" }],
   chalk: [{ id: "n-1", partOfSpeech: "n.", sense: "粉笔" }, { id: "n-2", partOfSpeech: "n.", sense: "白垩" }, { id: "v-1", partOfSpeech: "v.", sense: "用粉笔写（或画）" }],
+  data: [{ id: "other-1", partOfSpeech: "n.", sense: "数据" }, { id: "other-2", partOfSpeech: "n.", sense: "资料" }],
+  hello: [{ id: "other-1", partOfSpeech: "int.", sense: "你好" }, { id: "other-2", partOfSpeech: "int.", sense: "喂；嘿" }],
+  hi: [{ id: "other-1", partOfSpeech: "int.", sense: "嗨；你好" }],
   host: [{ id: "n-1", partOfSpeech: "n.", sense: "主人；东道主" }, { id: "n-3", partOfSpeech: "n.", sense: "节目主持人" }, { id: "v-1", partOfSpeech: "v.", sense: "接待；招待" }, { id: "v-2", partOfSpeech: "v.", sense: "主持（节目、活动）" }],
   preside: [{ id: "v-3", partOfSpeech: "v.", sense: "主持" }, { id: "v-5", partOfSpeech: "v.", sense: "负责" }, { id: "v-6", partOfSpeech: "v.", sense: "指挥" }],
-  concerning: [{ id: "prep-1", partOfSpeech: "prep.", sense: "关于；有关" }]
+  concerning: [{ id: "prep-1", partOfSpeech: "prep.", sense: "关于；有关" }],
+  scissors: [{ id: "other-1", partOfSpeech: "n.", sense: "剪刀" }, { id: "other-2", partOfSpeech: "n.", sense: "剪具" }],
+  trousers: [{ id: "other-1", partOfSpeech: "n.", sense: "裤子" }, { id: "other-2", partOfSpeech: "n.", sense: "长裤" }],
+  tv: [{ id: "other-1", partOfSpeech: "n.", sense: "电视；电视机" }]
 });
 const IRREGULAR_SENSE_LEMMAS = Object.freeze({ children: "child", feet: "foot", geese: "goose", men: "man", mice: "mouse", people: "person", teeth: "tooth", women: "woman", wrote: "write", written: "write", went: "go", gone: "go", did: "do", done: "do", had: "have", has: "have", was: "be", were: "be", been: "be", better: "good", best: "good" });
 const NON_STUDY_SENSE_PATTERN = /(?:\[(?:法|医|化|物|生|植|动|矿|军|航海|航|经|电子|语|音|宗|哲|心理|体育)\]|^(?:计算机|医学|法律)$|\b(?:DOS|CONFIG\.SYS|COMMAND\.COM)\b)/i;
@@ -580,7 +590,7 @@ function dictionaryDefinitionEntries(definition, fallbackPartOfSpeech = "词性�
     const match = value.match(prefix);
     const partOfSpeech = match ? dictionaryPartOfSpeech(match[1], "") : activePartOfSpeech;
     const sense = (match ? match[2] : value).trim();
-    if (!sense) return;
+    if (!hasUsablePartOfSpeech(partOfSpeech) || !hasUsableSense(sense)) return;
     activePartOfSpeech = partOfSpeech;
     if (!entries.some((entry) => entry.partOfSpeech === partOfSpeech && entry.sense === sense)) entries.push({ partOfSpeech, sense });
   });
@@ -824,7 +834,7 @@ function senseLookupKey(word) {
   if (key.endsWith("es") && key.length > 4) candidates.push(key.slice(0, -2), key.slice(0, -1));
   if (key.endsWith("s") && key.length > 3) candidates.push(key.slice(0, -1));
   if (key.endsWith("ing") && key.length > 5) candidates.push(key.slice(0, -3), `${key.slice(0, -3)}e`, key.slice(0, -4));
-  if (key.endsWith("ed") && key.length > 4) candidates.push(key.slice(0, -2), `${key.slice(0, -1)}e`, key.slice(0, -3));
+  if (key.endsWith("ed") && key.length > 4) candidates.push(key.slice(0, -1), key.slice(0, -2), key.slice(0, -3));
   return candidates.find((candidate) => candidate && SENSE_LIBRARY[candidate]) || key;
 }
 function isStudySense(entry) {
@@ -850,8 +860,9 @@ function librarySenseEntries(word) {
 }
 function hasUsableSense(value) {
   const sense = String(value || "").trim();
-  return Boolean(sense) && !/^(?:[.。…·•\s-]+|词性待补充|中文释义待补充)$/u.test(sense);
+  return Boolean(sense) && !/^[.。…·•\s-]+$/u.test(sense) && !/(?:词性|中文释义)(?:未标注|待补充)/u.test(sense);
 }
+function hasUsablePartOfSpeech(value) { return Boolean(String(value || "").trim()) && !/(?:词性)(?:未标注|待补充)/u.test(String(value)); }
 function resolvedAiSenseGroup(word, group) {
   const available = librarySenseEntries(word);
   if (!available.length) return group;
@@ -1143,13 +1154,10 @@ function assignDailyStudyWords(words) {
   const today = beijingDateKey(); const target = Math.max(1, Number(state.settings.dailyNewTarget) || 200);
   let planned = words.filter((word) => word.learningPlanDate === today);
   if (planned.length < target) {
-    // A missed word is carried forward before any untouched word is scheduled.
-    // Words seen before today have already moved to review, while words seen
-    // today remain visible in today's plan.
     const carryOver = words.filter((word) => word.stage === "learning" && !word.learningSeen && word.learningPlanDate && word.learningPlanDate < today);
-    // When the review backlog reaches its safety threshold, retain an
-    // existing plan and its carry-over words, but do not add fresh words.
-    const untouched = isGateClosed() ? [] : words.filter((word) => word.stage === "learning" && !word.learningSeen && !word.learningPlanDate);
+    // Review backlog never locks the learning page. Carry-over stays first,
+    // then untouched words fill the learner's configured daily plan.
+    const untouched = words.filter((word) => word.stage === "learning" && !word.learningSeen && !word.learningPlanDate);
     const add = [...carryOver, ...untouched].slice(0, target - planned.length);
     if (add.length) { add.forEach((word) => { word.learningPlanDate = today; }); planned = [...planned, ...add]; persist(); }
   }
@@ -1165,7 +1173,7 @@ function dailyPlanSummary(planned = dailyStudyWords()) {
   const configuredTarget = Math.max(1, Number(state.settings.dailyNewTarget) || 200);
   const plannedCount = planned.length;
   const learned = planned.filter((word) => word.learningSeen).length;
-  return { planned, plannedCount, learned, remaining: Math.max(0, plannedCount - learned), configuredTarget, displayTarget: Math.max(configuredTarget, plannedCount), overdue: overdueReviewCount(), gateClosed: isGateClosed() };
+  return { planned, plannedCount, learned, remaining: Math.max(0, plannedCount - learned), configuredTarget, displayTarget: Math.max(configuredTarget, plannedCount), overdue: overdueReviewCount(), gateClosed: false };
 }
 function showToast(message) { TOAST.textContent = message; TOAST.classList.add("is-visible"); clearTimeout(toastTimer); toastTimer = setTimeout(() => TOAST.classList.remove("is-visible"), 2800); }
 function applyTheme() { document.documentElement.dataset.theme = state.settings.darkMode ? "dark" : "light"; document.querySelector('meta[name="theme-color"]')?.setAttribute("content", state.settings.darkMode ? "#1c1c1e" : "#f6f4ef"); }
@@ -1195,7 +1203,8 @@ async function load() {
   syncConfig();
   if (syncScopeUpdated) { state.sync.contentVersion = CLOUD_SYNC_CONTENT_VERSION; state.sync.dirty = true; }
   const removedLegacyAiSettings = ["aiEnabled", "aiEndpoint", "aiModel"].some((key) => key in state.settings);
-  ["aiEnabled", "aiEndpoint", "aiModel"].forEach((key) => delete state.settings[key]);
+  const removedLegacyReviewGate = "reviewGate" in state.settings;
+  ["aiEnabled", "aiEndpoint", "aiModel", "reviewGate"].forEach((key) => delete state.settings[key]);
   const notebookUpdated = migrateNotebookState();
   const memoryTableUpdated = migrateMemoryTableState();
   // On iPhone, `wordProfile()` already reads the bundled metadata whenever a
@@ -1209,7 +1218,7 @@ async function load() {
   render();
   void requestPersistentDeviceStorage();
   scheduleSenseLibraryLoad();
-  if (contentUpdated || voiceSpeedUpdated || settingsUpdated || notebookUpdated || memoryTableUpdated || removedLegacyAiSettings || syncWasNormalized || syncScopeUpdated || deviceStateLoadedFromLegacy) persist();
+  if (contentUpdated || voiceSpeedUpdated || settingsUpdated || notebookUpdated || memoryTableUpdated || removedLegacyAiSettings || removedLegacyReviewGate || syncWasNormalized || syncScopeUpdated || deviceStateLoadedFromLegacy) persist();
   scheduleOfflineDictionaryHydration();
   if (canUseCloudSync()) {
     setCloudSyncStatus(state.sync.dirty ? cloudSyncPendingMessage() : state.sync.lastSyncedAt ? `已同步 · ${formatCloudSyncDate(state.sync.lastSyncedAt)}（北京时间）` : "准备就绪 · 点击立即同步，或等待自动同步");
@@ -1275,7 +1284,7 @@ function queue() {
   return [...sameDay, ...regular.slice(0, regularLimit)];
 }
 function dueCount() { return queue().length; }
-function isGateClosed() { return overdueReviewCount() >= Math.max(1, Number(state.settings.reviewGate) || 100); }
+function isGateClosed() { return false; }
 function incompleteCount() { return studyWords().filter((word) => word.stage === "learning").length; }
 function renderNav() {
   document.querySelectorAll("[data-nav]").forEach((button) => button.classList.toggle("is-active", button.dataset.nav === currentView));
@@ -1297,7 +1306,7 @@ function renderHome() {
   const primaryLabel = due ? `开始复习 · ${due} 词` : plan.remaining ? `继续学习 · ${plan.remaining} 词` : learning ? `继续学习 · ${learning} 词` : total ? "查看词表" : "导入一小批词";
   const message = plan.gateClosed ? `先清理 <em>${plan.overdue}</em> 个到期复习。` : due ? `今天，重新遇见 <em>${due}</em> 个词。` : plan.remaining ? `让 <em>${plan.remaining}</em> 个词进入语境。` : total ? "此刻，没有到期的复习。" : "从一小批词开始。";
   APP.innerHTML = `<section class="home-page"><p class="eyebrow">${escapeHtml(activeNotebook()?.name || "我的单词本")} · 本地学习</p><h1 class="display">${message}</h1><p class="lede daily-home-quote"><span>${quote.en}</span><em>${quote.zh}</em></p><div class="action-row"><button class="primary" data-go="${primaryView}">${primaryLabel}</button>${total ? `<button class="secondary" data-go="words">管理词表</button>` : ""}</div><div class="home-shelf"><section><p class="section-label">今日节奏 · 北京时间</p>${taskCard("学习", `${dailyLearnedCount()} / ${state.settings.dailyNewTarget} 词已学习。`, "learn", "继续")}${taskCard("复习", `${dailyReviewCount()} / ${state.settings.dailyReviewTarget} 词已完成复习。`, "review", "开始")}</section><aside><p class="section-label">当前单词本</p><dl class="stat-list"><div><dt>词表中的词</dt><dd>${total}</dd></div><div><dt>已完成的复习</dt><dd>${completed}</dd></div><div><dt>目标记忆率</dt><dd>${Math.round(state.settings.targetRetention * 100)}%</dd></div></dl></aside></div><div class="home-insights"><section class="home-insight memory-curve"><div class="insight-heading"><div><p class="section-label">间隔复习</p><h2>记忆曲线</h2></div><span>未来 7 天</span></div><ol class="curve-days">${curveDays.map((item) => `<li class="${item.isToday ? "is-today" : ""}"><time datetime="${item.dateKey}">${item.isToday ? "今天" : shortDate(item.dateKey)}</time><strong>${item.due}</strong><small>待复习</small></li>`).join("")}</ol></section><section class="home-insight study-history"><div class="insight-heading"><div><p class="section-label">学习记录</p><h2>每日学习与复习</h2></div><span>全部 ${studyDays.length} 天</span></div><ol class="activity-days">${studyDays.map((item) => `<li class="${item.isToday ? "is-today" : ""}"><time datetime="${item.dateKey}"><b>${item.isToday ? "今天" : shortDate(item.dateKey)}</b><span>${item.dateKey}</span></time><p><strong>学 ${item.learned}</strong><strong>复 ${item.reviewed}</strong></p></li>`).join("")}</ol></section></div></section>`;
-  APP.querySelector(".home-shelf")?.insertAdjacentHTML("afterend", `<section class="daily-plan-overview ${plan.gateClosed ? "is-gated" : ""}"><div><p class="section-label">今日计划</p><h2>${plan.plannedCount} / ${plan.displayTarget} 词</h2></div><p>${plan.gateClosed ? `到期复习已有 ${plan.overdue} 词；今天不再加入全新单词。` : plan.plannedCount ? (plan.remaining ? `还剩 ${plan.remaining} 词待初学；未完成的词会优先续入明天。` : "今日初学已完成；当天学习页会保留已学词。") : "导入后会在这里安排已核对例句的单词。"}<small>${plan.plannedCount > plan.configuredTarget ? `今天已固定 ${plan.plannedCount} 词；新的目标从明天起生效。` : `每日目标 ${plan.configuredTarget} 词。`}</small></p></section>`);
+  APP.querySelector(".home-shelf")?.insertAdjacentHTML("afterend", `<section class="daily-plan-overview ${plan.gateClosed ? "is-gated" : ""}"><div><p class="section-label">今日计划</p><h2>${plan.plannedCount} / ${plan.displayTarget} 词</h2></div><p>${plan.gateClosed ? `到期复习已有 ${plan.overdue} 词；完成一部分复习后可继续加入全新单词。` : plan.plannedCount ? (plan.remaining ? `还剩 ${plan.remaining} 词待初学；待复习数量不会暂停新词学习。` : "今日初学已完成；当天学习页会保留已学词。") : "导入后会在这里安排已核对例句的单词。"}<small>每日目标 ${plan.configuredTarget} 词。</small></p></section>`);
   APP.querySelector(".memory-curve .section-label").textContent = "预计复习安排";
   APP.querySelector(".memory-curve h2").textContent = "未来复习";
   APP.querySelector(".memory-curve .insight-heading > span").textContent = "预测，不是学习记录";
@@ -1328,7 +1337,7 @@ function groupDefinitions(entries, { limitGroups = 4, limitSenses = 3 } = {}) {
   entries.forEach((entry) => {
     const partOfSpeech = entry.partOfSpeech || "词性未标注";
     const sense = friendlySense(entry.sense);
-    if (!sense) return;
+    if (!hasUsablePartOfSpeech(partOfSpeech) || !hasUsableSense(sense)) return;
     const senses = grouped.get(partOfSpeech) || [];
     if (!senses.includes(sense)) senses.push(sense);
     grouped.set(partOfSpeech, senses);
@@ -1469,7 +1478,7 @@ function renderLearn() {
   // `dailyStudyWords` omits them from the new-learning plan.
   const batchWords = plannedWords;
   const pageCount = Math.max(1, Math.ceil(batchWords.length / LEARNING_PAGE_SIZE)); learnPage = Math.max(0, Math.min(learnPage, pageCount - 1));
-  const pageWords = batchWords.slice(learnPage * LEARNING_PAGE_SIZE, (learnPage + 1) * LEARNING_PAGE_SIZE); const viewed = plannedWords.filter((word) => word.learningSeen).length; const missing = batchWords.filter((word) => !word.definition).length;
+  const pageWords = batchWords.slice(learnPage * LEARNING_PAGE_SIZE, (learnPage + 1) * LEARNING_PAGE_SIZE); const viewed = plannedWords.filter((word) => word.learningSeen).length; const missing = Object.keys(SENSE_LIBRARY).length ? batchWords.filter((word) => !hasUsableWordDefinition(word)).length : 0;
   learningPlanWordIds = new Set(plannedWords.map((word) => word.id)); learningPlanSeenCount = viewed; learningPlanTotal = plannedWords.length;
   const ready = plannedWords.some((word) => word.stage === "learning"); const allSeen = viewed === plannedWords.length;
   const sidebar = pageWords.map((word) => `<button class="learning-word-nav ${word.learningSeen ? "is-seen" : ""}" data-jump-word="${word.id}"><strong>${escapeHtml(word.text)}</strong><span data-learning-status="${word.id}">${word.learningSeen ? "已学习" : "未学习"}</span></button>`).join("");
@@ -1517,7 +1526,10 @@ function studyFormForWord(word) {
 }
 function wordForStudyForm(form) {
   const normalized = String(form || "").toLowerCase();
-  return studyWords().find((word) => word.text.toLowerCase() === normalized || verifiedExampleContexts(word).some((item) => String(item.targetForm).toLowerCase() === normalized));
+  const stored = studyWords().find((word) => word.text.toLowerCase() === normalized || verifiedExampleContexts(word).some((item) => String(item.targetForm).toLowerCase() === normalized));
+  if (stored) return stored;
+  const lemma = senseLookupKey(normalized);
+  return librarySenseEntries({ text: lemma }).length ? { text: lemma } : null;
 }
 function partFamily(partOfSpeech) {
   const value = String(partOfSpeech || "").toLowerCase();
@@ -1562,6 +1574,24 @@ function meaningOverlap(left, right) {
   let shared = 0; leftSet.forEach((character) => { if (rightSet.has(character)) shared += 1; });
   return shared / Math.max(1, Math.min(leftSet.size, rightSet.size));
 }
+function meaningPhrases(word, additionalSense = "") {
+  const values = [...allDefinitions(word).map((entry) => entry.sense), additionalSense];
+  return [...new Set(values.flatMap((value) => friendlySense(value).split(/[；;、，,／/]/)).map((value) => value
+    .replace(/[（(【\[].*?[）)】\]]/g, "")
+    .replace(/^(?:(?:n|v|vi|vt|adj|a|adv|ad|prep|pron|conj|aux|art|num|int)\.\s*)+/i, "")
+    .replace(/\s+/g, "")
+    .trim())
+    .filter((value) => value.length >= 2 && hasUsableSense(value)))];
+}
+function meaningsAreConfusable(left, right, leftContextSense = "") {
+  const leftPhrases = meaningPhrases(left, leftContextSense); const rightPhrases = meaningPhrases(right);
+  const phraseCollision = leftPhrases.some((leftPhrase) => rightPhrases.some((rightPhrase) =>
+    leftPhrase === rightPhrase || leftPhrase.includes(rightPhrase) || rightPhrase.includes(leftPhrase)));
+  return phraseCollision || meaningOverlap(left, right) >= 0.5;
+}
+function hasUsableWordDefinition(word) {
+  return allDefinitions(word).some((entry) => hasUsablePartOfSpeech(entry.partOfSpeech) && hasUsableSense(entry.sense));
+}
 function createQuestion(word) {
   const context = reviewContextForWord(word);
   const targetForm = context.targetForm || word.text;
@@ -1570,23 +1600,30 @@ function createQuestion(word) {
   const questionMode = targetForm.toLowerCase() !== word.text.toLowerCase() && Math.random() < 0.35 ? "form" : "lemma";
   const answer = questionMode === "form" ? targetForm : word.text;
   const normalizedAnswer = answer.toLowerCase();
-  const others = studyWords().filter((candidate) => candidate.id !== word.id);
+  const targetLemma = senseLookupKey(normalizedAnswer);
+  const others = studyWords().filter((candidate) => candidate.id !== word.id && hasUsableWordDefinition(candidate));
   const targetPart = partFamily(context.contextPartOfSpeech);
   const samePart = others.filter((candidate) => supportsPartOfSpeech(candidate, targetPart));
-  const confusable = samePart.filter((candidate) => meaningOverlap(word, candidate) > 0).sort((left, right) => meaningOverlap(word, right) - meaningOverlap(word, left));
-  const remainingSamePart = shuffle(samePart.filter((candidate) => !confusable.includes(candidate)));
-  const answers = []; const seenAnswers = new Set([normalizedAnswer]);
-  for (const candidate of [...confusable, ...remainingSamePart, ...shuffle(others)]) {
-    // Distractors deliberately come from the whole notebook. A form seen in
-    // another word's verified sentence is fair game, not just a variant of the
-    // current target word.
+  const remaining = others.filter((candidate) => !samePart.includes(candidate));
+  const answers = []; const selectedWords = [word]; const seenAnswers = new Set([normalizedAnswer]);
+  const considerCandidate = (candidate) => {
+    if (!hasUsableWordDefinition(candidate)) return false;
+    if (selectedWords.some((selected) => meaningsAreConfusable(selected, candidate, selected === word ? context.contextSense : ""))) return false;
     const option = challengingFormForWord(candidate, targetForm, targetPart); const normalized = option.toLowerCase();
-    if (!seenAnswers.has(normalized)) { answers.push(option); seenAnswers.add(normalized); }
-    if (answers.length === 3) break;
+    if (seenAnswers.has(normalized) || senseLookupKey(normalized) === targetLemma) return false;
+    answers.push(option); selectedWords.push(candidate); seenAnswers.add(normalized);
+    return answers.length === 3;
+  };
+  // Prefer the same part of speech, but reject every pair whose Chinese
+  // meanings overlap. This prevents synonym pairs from turning one question
+  // into two defensible answers.
+  for (const candidate of [...shuffle(samePart), ...shuffle(remaining)]) {
+    if (considerCandidate(candidate)) break;
   }
-  for (const fallback of ["bridge", "ticket", "book", "window", "garden", "travel"]) {
-    if (!seenAnswers.has(fallback)) { answers.push(fallback); seenAnswers.add(fallback); }
-    if (answers.length === 3) break;
+  if (answers.length < 3) {
+    for (const text of ["bridge", "ticket", "book", "window", "garden", "travel"]) {
+      if (considerCandidate({ text })) break;
+    }
   }
   return { wordId: word.id, ...context, targetForm, questionMode, answer, fullSentence: context.sentence, sentence: context.sentence ? clozeSentence(context.sentence, targetForm) : "", options: shuffle([answer, ...answers.slice(0, 3)]), showingOptions: false, hintUsed: false, answered: false, selected: null, startedAt: Date.now() };
 }
@@ -1594,6 +1631,11 @@ function getQuestion() { if (!question) { const card = queue()[0]; if (card) que
 function renderReview() {
   const items = queue(); const isHistorical = Boolean(question?.historical);
   if (!items.length && !isHistorical) { APP.innerHTML = `<section class="done-state"><p class="eyebrow">复习</p><h2>此刻，已经足够。</h2><p>没有到期的词需要复习。完成初学后，当日巩固会出现在这里；之后由 FSRS 根据实际作答安排下一次相遇。</p><div class="action-row">${reviewHistory.length ? `<button class="secondary" data-previous-question>上一题</button>` : ""}${incompleteCount() ? `<button class="primary" data-go="learn">继续学习</button>` : `<button class="secondary" data-go="words">查看词表</button>`}</div></section>`; return; }
+  if (!isHistorical && items.length && !Object.keys(SENSE_LIBRARY).length) {
+    APP.innerHTML = '<section class="review-layout"><article class="review-card review-loading"><p class="review-kind">准备复习</p><h1>正在载入完整中文释义…</h1><p>释义就绪后才会生成候选，避免出现缺失或含义相近的选项。</p></article></section>';
+    void loadSenseLibrary();
+    return;
+  }
   if (!isHistorical && !question && items[0] && !verifiedExampleContexts(items[0]).length) {
     APP.innerHTML = `<section class="review-layout"><article class="review-card review-loading"><p class="review-kind">准备复习</p><h1>正在载入本题例句…</h1><p>复习只会使用已核对的完整语境，不会退回为“根据中文找单词”。</p><button class="secondary" data-retry-examples="${items[0].id}">重新载入例句</button></article></section>`;
     void preloadAiContexts([items[0]], "review");
@@ -1670,7 +1712,7 @@ function renderSettings() {
     note.textContent = isAppleTouchDevice() ? "iPhone 与 iPad 仅显示 Moira、Samantha、Tessa；选择只保存在当前设备。" : "保留电脑当前可用的英语声音；选择只保存在当前设备。";
     label.insertAdjacentElement("afterend", note);
   }
-  APP.querySelector(".settings-content > .setting-group")?.insertAdjacentHTML("afterend", `<section class="setting-group"><h2>今日计划</h2><p class="daily-plan-setting-status ${plan.gateClosed ? "is-gated" : ""}">${plan.gateClosed ? `到期复习已有 ${plan.overdue} 词，暂缓加入全新单词。` : plan.plannedCount ? `今日已安排 ${plan.plannedCount} 词，已学习 ${plan.learned} 词，待初学 ${plan.remaining} 词。` : "尚未安排可学习的新词。"}</p><div class="setting-stack"><label class="field-label">每日新词目标 <input data-number-setting="dailyNewTarget" type="number" min="1" max="500" step="1" value="${plan.configuredTarget}" inputmode="numeric" /></label><label class="field-label">每日常规复习目标 <input data-number-setting="dailyReviewTarget" type="number" min="1" max="500" step="1" value="${state.settings.dailyReviewTarget}" inputmode="numeric" /></label><label class="field-label">复习优先门槛 <input data-number-setting="reviewGate" type="number" min="1" max="1000" step="1" value="${state.settings.reviewGate}" inputmode="numeric" /></label><p class="field-note">当天已排入的词会保留；未完成的词会优先进入明天的固定名额。当到期复习达到门槛，系统不再添加全新单词。</p></div></section>`);
+  APP.querySelector(".settings-content > .setting-group")?.insertAdjacentHTML("afterend", `<section class="setting-group"><h2>今日计划</h2><p class="daily-plan-setting-status ${plan.gateClosed ? "is-gated" : ""}">${plan.gateClosed ? `到期复习已有 ${plan.overdue} 词，暂缓加入全新单词。` : plan.plannedCount ? `今日已安排 ${plan.plannedCount} 词，已学习 ${plan.learned} 词，待初学 ${plan.remaining} 词。` : "尚未安排可学习的新词。"}</p><div class="setting-stack"><label class="field-label">每日新词目标 <input data-number-setting="dailyNewTarget" type="number" min="1" max="500" step="1" value="${plan.configuredTarget}" inputmode="numeric" /></label><label class="field-label">每日常规复习目标 <input data-number-setting="dailyReviewTarget" type="number" min="1" max="500" step="1" value="${state.settings.dailyReviewTarget}" inputmode="numeric" /></label><p class="field-note">每日新词按目标数量安排；已排入的词会保留，未完成的词优先续入明天。待复习数量再多，也不会暂停新词学习。</p></div></section>`);
   APP.querySelector(".settings-content")?.insertAdjacentHTML("beforeend", `<section class="setting-group"><h2>数据备份</h2><p>建议每隔一段时间导出一次，并将备份文件保存到“文件”或 iCloud Drive。恢复备份时会替换这台设备现有的学习记录。</p><div class="backup-actions"><button class="secondary" data-export-backup>导出备份</button><label class="secondary" for="backup-file">从备份恢复<input id="backup-file" data-backup-input type="file" accept="application/json,.json" hidden /></label></div></section>`);
   const canRecoverEmptyHomeScreen = Boolean(storageMode === "device" && isHomeScreenWebApp() && !hasStoredWords(state));
   if (canRecoverEmptyHomeScreen) APP.querySelector(".settings-content")?.insertAdjacentHTML("beforeend", `<section class="setting-group home-screen-recovery-setting"><h2>恢复已有词本</h2><p>这是 iPhone 主屏幕版的独立本机空间。粘贴浏览器版“设置 → 云端自动同步”中的同一密钥，可恢复词本和学习记录，不需要重新导入。</p><label class="field-label">同步密钥<input data-home-screen-sync-key type="text" autocomplete="off" spellcheck="false" placeholder="粘贴浏览器里的同步密钥" /></label><div class="backup-actions"><button class="primary" data-recover-home-screen>恢复已有词本</button></div>${homeScreenRecoveryError ? `<p class="home-screen-recovery-error" role="alert">${escapeHtml(homeScreenRecoveryError)}</p>` : ""}</section>`);
@@ -2254,7 +2296,7 @@ function speakWithSystem(phrase, type) {
   try { speechSynthesis.resume(); } catch { /* The initial speak call is sufficient on older browsers. */ }
 }
 function markLearningSeen(word) {
-  if (word.learningSeen) return; word.learningSeen = true; word.learnedAt = now().toISOString(); persist({ defer: true });
+  if (word.learningSeen) return; word.learningSeen = true; word.learningPlanDate = beijingDateKey(); word.learnedAt = now().toISOString(); persist({ defer: true });
   const status = document.querySelector(`[data-learning-status="${word.id}"]`); if (status) { status.textContent = "已学习"; status.closest(".learning-word-nav")?.classList.add("is-seen"); }
   if (!learningPlanWordIds.has(word.id)) return;
   learningPlanSeenCount += 1;
@@ -2416,7 +2458,7 @@ document.addEventListener("change", (event) => {
     state.settings[key] = event.target.value; persist();
   }
   if (event.target.dataset.numberSetting) {
-    const key = event.target.dataset.numberSetting; const limits = { dailyNewTarget: [1, 500], dailyReviewTarget: [1, 500], reviewGate: [1, 1000] }[key];
+    const key = event.target.dataset.numberSetting; const limits = { dailyNewTarget: [1, 500], dailyReviewTarget: [1, 500] }[key];
     let value = Number(event.target.value);
     if (!Number.isFinite(value)) { event.target.value = state.settings[key]; return; }
     if (limits) value = Math.min(limits[1], Math.max(limits[0], Math.round(value)));
@@ -2465,7 +2507,7 @@ async function startApplication() {
   try {
     await load();
     await installBundledWordbook();
-    if (currentView === "learn") return preloadAiContexts(dailyStudyWords(), currentView);
+    if (currentView === "learn") return preloadAiContexts(dailyStudyWords().slice(learnPage * LEARNING_PAGE_SIZE, (learnPage + 1) * LEARNING_PAGE_SIZE), currentView);
     if (currentView === "review") return preloadAiContexts(queue(), currentView);
   } catch (error) {
     console.error("wordscape startup failed", error);
