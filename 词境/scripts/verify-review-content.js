@@ -13,10 +13,11 @@ function readWindowAsset(file, globalName) {
 }
 function usableSense(value) {
   const text = String(value || "").trim();
-  return Boolean(text) && !/^[.。…·•\s-]+$/u.test(text) && !/(?:词性|中文释义)(?:未标注|待补充)/u.test(text);
+  return Boolean(text) && /\p{Script=Han}/u.test(text) && !/[\p{Script=Cyrillic}\p{Script=Greek}]/u.test(text) && !/^[.。…·•\s-]+$/u.test(text) && !/(?:词性|中文释义)(?:未标注|待补充)/u.test(text);
 }
 function usablePartOfSpeech(value) {
-  return Boolean(String(value || "").trim()) && !/(?:词性)(?:未标注|待补充)/u.test(String(value));
+  const parts = String(value || "").trim().split(/\s*\/\s*/);
+  return parts.length > 0 && parts.every((part) => /^(?:n|v|adj|adv|prep|pron|conj|aux|art|det|num|int)\.$/i.test(part));
 }
 
 const library = readWindowAsset(path.join(publicDir, "word-senses.js"), "WORD_SENSE_LIBRARY");
@@ -30,6 +31,12 @@ for (const [word, record] of Object.entries(entries)) {
   if (!senses.length || senses.some((entry) => !usablePartOfSpeech(entry.partOfSpeech) || !usableSense(entry.sense))) invalidWords.push(word);
 }
 assert.deepEqual(invalidWords, [], "Every bundled sense must have a usable part of speech and Chinese definition.");
+assert.equal(Object.values(entries).flatMap((record) => record.senses || []).some((entry) => /^(?:计算机|医学|法律)$/.test(entry.partOfSpeech)), false, "Specialist domain labels must never become parts of speech.");
+assert.deepEqual(Array.from(entries.laptop.senses, ({ partOfSpeech, sense }) => ({ partOfSpeech, sense })), [{ partOfSpeech: "n.", sense: "笔记本电脑；便携式电脑" }]);
+assert.deepEqual(Array.from(entries.ounce.senses, ({ partOfSpeech, sense }) => ({ partOfSpeech, sense })), [{ partOfSpeech: "n.", sense: "盎司" }, { partOfSpeech: "n.", sense: "少量" }, { partOfSpeech: "n.", sense: "雪豹" }]);
+assert.equal(entries["o'clock"].senses[0].partOfSpeech, "adv.");
+assert.equal(entries.yes.senses[0].partOfSpeech, "int.");
+assert.equal(entries.every.senses[0].partOfSpeech, "det.");
 
 const irregular = { children: "child", feet: "foot", geese: "goose", men: "man", mice: "mouse", people: "person", teeth: "tooth", women: "woman" };
 function senseKey(value) {
@@ -91,4 +98,4 @@ assert.doesNotMatch(appSource, /const confusable = samePart/);
 assert.match(appSource, /data-number-setting="dailyNewTarget"/);
 assert.doesNotMatch(appSource, /data-number-setting="reviewGate"/);
 
-console.log("Review content verification passed: 5,487 definitions complete, inflections resolve, ambiguous pairs are blocked, and released examples remain linked.");
+console.log("Review content verification passed: 5,487 entries have standard parts of speech and Chinese senses, corrected dictionary records resolve, ambiguous pairs are blocked, and released examples remain linked.");

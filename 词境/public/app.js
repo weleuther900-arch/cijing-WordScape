@@ -10,7 +10,7 @@ const CONTENT_LIBRARY = window.WORD_CONTENT_LIBRARY || {};
 const EXAMPLE_LIBRARY = window.WORD_EXAMPLE_LIBRARY?.entries || {};
 const EXAMPLE_LIBRARY_META = window.WORD_EXAMPLE_LIBRARY || {};
 let SENSE_LIBRARY = window.WORD_SENSE_LIBRARY?.entries || {};
-const SENSE_LIBRARY_VERSION = "20260922-01";
+const SENSE_LIBRARY_VERSION = "20260922-03";
 let senseLibraryLoading;
 const AI_EXAMPLE_LIBRARY = { ...(window.WORD_AI_EXAMPLE_LIBRARY?.entries || {}) };
 const AI_EXAMPLE_INDEX = window.WORD_AI_EXAMPLE_INDEX || {};
@@ -25,6 +25,28 @@ const STUDY_SENSE_OVERRIDES = Object.freeze({
   "according to": [{ id: "other-1", partOfSpeech: "prep.", sense: "根据" }, { id: "other-2", partOfSpeech: "prep.", sense: "按照" }, { id: "other-3", partOfSpeech: "prep.", sense: "取决于" }, { id: "other-4", partOfSpeech: "prep.", sense: "据……所说" }],
   agenda: [{ id: "other-1", partOfSpeech: "n.", sense: "议程" }, { id: "other-2", partOfSpeech: "n.", sense: "待办事项" }],
   "air-conditioning": [{ id: "other-1", partOfSpeech: "n.", sense: "空调；空气调节" }],
+  born: [{ id: "adj-1", partOfSpeech: "v.", sense: "出生；诞生" }, { id: "adj-2", partOfSpeech: "adj.", sense: "天生的" }],
+  cyberspace: [{ id: "other-1", partOfSpeech: "n.", sense: "网络空间" }, { id: "other-2", partOfSpeech: "n.", sense: "虚拟空间" }],
+  "e-mail": [{ id: "other-1", partOfSpeech: "n.", sense: "电子邮件" }, { id: "other-2", partOfSpeech: "v.", sense: "给……发电子邮件" }],
+  every: [{ id: "adj-1", partOfSpeech: "det.", sense: "每一" }, { id: "adj-2", partOfSpeech: "det.", sense: "所有的" }],
+  internet: [{ id: "other-1", partOfSpeech: "n.", sense: "互联网" }, { id: "other-2", partOfSpeech: "n.", sense: "因特网" }],
+  its: [{ id: "pron-1", partOfSpeech: "det.", sense: "它的" }],
+  laptop: [{ id: "other-1", partOfSpeech: "n.", sense: "笔记本电脑；便携式电脑" }],
+  my: [{ id: "pron-1", partOfSpeech: "det.", sense: "我的" }],
+  no: [{ id: "n-1", partOfSpeech: "n.", sense: "否定回答" }, { id: "n-2", partOfSpeech: "n.", sense: "拒绝" }, { id: "n-3", partOfSpeech: "n.", sense: "反对票" }, { id: "adj-1", partOfSpeech: "det.", sense: "没有" }, { id: "adj-2", partOfSpeech: "det.", sense: "不是" }, { id: "adj-3", partOfSpeech: "det.", sense: "绝非" }, { id: "adv-1", partOfSpeech: "adv.", sense: "不；没有" }],
+  nothing: [{ id: "n-1", partOfSpeech: "pron.", sense: "没有什么" }, { id: "n-2", partOfSpeech: "pron.", sense: "无关紧要的事" }, { id: "n-3", partOfSpeech: "pron.", sense: "零" }, { id: "adv-1", partOfSpeech: "adv.", sense: "毫不" }, { id: "adv-2", partOfSpeech: "adv.", sense: "决不" }],
+  "o'clock": [{ id: "n-1", partOfSpeech: "adv.", sense: "……点钟" }],
+  ounce: [{ id: "n-1", partOfSpeech: "n.", sense: "盎司" }, { id: "n-2", partOfSpeech: "n.", sense: "少量" }, { id: "n-3", partOfSpeech: "n.", sense: "雪豹" }],
+  our: [{ id: "pron-1", partOfSpeech: "det.", sense: "我们的" }],
+  plenty: [{ id: "n-1", partOfSpeech: "pron.", sense: "大量" }, { id: "n-2", partOfSpeech: "pron.", sense: "充足" }, { id: "n-3", partOfSpeech: "pron.", sense: "丰富" }, { id: "adj-1", partOfSpeech: "pron.", sense: "大量" }, { id: "adj-2", partOfSpeech: "pron.", sense: "充足" }, { id: "adj-3", partOfSpeech: "pron.", sense: "丰富" }],
+  regardless: [{ id: "adj-1", partOfSpeech: "adv.", sense: "不管" }, { id: "adj-2", partOfSpeech: "adv.", sense: "不加理会" }, { id: "adj-3", partOfSpeech: "adv.", sense: "不顾" }],
+  such: [{ id: "adj-1", partOfSpeech: "det.", sense: "如此的" }, { id: "adj-2", partOfSpeech: "det.", sense: "这样的" }],
+  their: [{ id: "pron-1", partOfSpeech: "det.", sense: "他们的；她们的；它们的" }],
+  whatsoever: [{ id: "pron-1", partOfSpeech: "adv.", sense: "任何；丝毫" }],
+  wherever: [{ id: "adv-1", partOfSpeech: "conj.", sense: "无论在哪里；在任何地方" }],
+  yes: [{ id: "adv-1", partOfSpeech: "int.", sense: "是；好的；同意" }, { id: "n-1", partOfSpeech: "n.", sense: "肯定回答" }, { id: "n-2", partOfSpeech: "n.", sense: "赞成；同意" }],
+  your: [{ id: "pron-1", partOfSpeech: "det.", sense: "你的" }, { id: "pron-2", partOfSpeech: "det.", sense: "你们的" }],
+  zero: [{ id: "num-1", partOfSpeech: "num.", sense: "零" }, { id: "n-1", partOfSpeech: "n.", sense: "零" }, { id: "n-2", partOfSpeech: "n.", sense: "零点" }, { id: "n-3", partOfSpeech: "n.", sense: "零度" }, { id: "n-4", partOfSpeech: "n.", sense: "无" }, { id: "n-5", partOfSpeech: "n.", sense: "乌有" }, { id: "n-6", partOfSpeech: "n.", sense: "最低点" }, { id: "adj-1", partOfSpeech: "adj.", sense: "零的" }, { id: "adj-2", partOfSpeech: "adj.", sense: "没有的" }, { id: "v-1", partOfSpeech: "v.", sense: "调零" }, { id: "v-2", partOfSpeech: "v.", sense: "校正" }],
   cafe: [{ id: "n-1", partOfSpeech: "n.", sense: "咖啡馆；咖啡店" }],
   chalk: [{ id: "n-1", partOfSpeech: "n.", sense: "粉笔" }, { id: "n-2", partOfSpeech: "n.", sense: "白垩" }, { id: "v-1", partOfSpeech: "v.", sense: "用粉笔写（或画）" }],
   data: [{ id: "other-1", partOfSpeech: "n.", sense: "数据" }, { id: "other-2", partOfSpeech: "n.", sense: "资料" }],
@@ -567,15 +589,15 @@ async function copyCloudSyncKey() {
 }
 function dictionarySenses(definition) {
   return String(definition || "").replace(/\\n/g, "\n").replace(/\r/g, "").split("\n")
-    .map((sense) => sense.trim().replace(/^(?:n|v|vi|vt|adj|a|adv|ad|prep|pron|conj|aux|art|num|int)\.\s*/i, ""))
+    .map((sense) => sense.trim().replace(/^(?:n|v|vi|vt|adj|a|adv|ad|prep|pron|conj|aux|art|det|num|int|interj)\.\s*/i, ""))
     .filter(Boolean).slice(0, 12);
 }
 function dictionaryPartOfSpeech(value, definition) {
   const rawTags = [
     ...String(value || "").split("/").map((entry) => entry.trim().match(/^[a-z]+/i)?.[0]).filter(Boolean),
-    ...(String(definition || "").match(/\b(?:n|v|vi|vt|adj|a|adv|ad|prep|pron|conj|aux|art|num|int)\./gi) || []).map((tag) => tag.slice(0, -1))
+    ...(String(definition || "").match(/\b(?:n|v|vi|vt|adj|a|adv|ad|prep|pron|conj|aux|art|det|num|int|interj)\./gi) || []).map((tag) => tag.slice(0, -1))
   ];
-  const aliases = { a: "adj", ad: "adv", vi: "v", vt: "v" };
+  const aliases = { a: "adj", ad: "adv", vi: "v", vt: "v", interj: "int" };
   const tags = [...new Set(rawTags.map((tag) => aliases[tag.toLowerCase()] || tag.toLowerCase()))];
   return tags.length ? tags.map((tag) => `${tag}.`).join(" / ") : "词性未标注";
 }
@@ -583,7 +605,7 @@ function dictionaryDefinitionEntries(definition, fallbackPartOfSpeech = "词性�
   const text = String(definition || "").replace(/\\n/g, "\n").replace(/\r/g, "");
   const entries = [];
   let activePartOfSpeech = fallbackPartOfSpeech || "词性未标注";
-  const prefix = /^\s*((?:(?:n|v|vi|vt|adj|a|adv|ad|prep|pron|conj|aux|art|num|int)\.\s*(?:\/|,|;|、)?\s*)+)(.*)$/i;
+  const prefix = /^\s*((?:(?:n|v|vi|vt|adj|a|adv|ad|prep|pron|conj|aux|art|det|num|int|interj)\.\s*(?:\/|,|;|、)?\s*)+)(.*)$/i;
   text.split("\n").forEach((line) => {
     const value = line.trim();
     if (!value) return;
@@ -1533,7 +1555,7 @@ function wordForStudyForm(form) {
 }
 function partFamily(partOfSpeech) {
   const value = String(partOfSpeech || "").toLowerCase();
-  return ["adj", "adv", "aux", "prep", "pron", "conj", "num", "n", "v"].find((part) => new RegExp(`(^|[^a-z])${part}\\.?($|[^a-z])`).test(value)) || "";
+  return ["adj", "adv", "aux", "prep", "pron", "conj", "art", "det", "num", "int", "n", "v"].find((part) => new RegExp(`(^|[^a-z])${part}\\.?($|[^a-z])`).test(value)) || "";
 }
 function supportsPartOfSpeech(word, family) {
   if (!family) return true;
@@ -1578,7 +1600,7 @@ function meaningPhrases(word, additionalSense = "") {
   const values = [...allDefinitions(word).map((entry) => entry.sense), additionalSense];
   return [...new Set(values.flatMap((value) => friendlySense(value).split(/[；;、，,／/]/)).map((value) => value
     .replace(/[（(【\[].*?[）)】\]]/g, "")
-    .replace(/^(?:(?:n|v|vi|vt|adj|a|adv|ad|prep|pron|conj|aux|art|num|int)\.\s*)+/i, "")
+    .replace(/^(?:(?:n|v|vi|vt|adj|a|adv|ad|prep|pron|conj|aux|art|det|num|int|interj)\.\s*)+/i, "")
     .replace(/\s+/g, "")
     .trim())
     .filter((value) => value.length >= 2 && hasUsableSense(value)))];
@@ -2306,11 +2328,11 @@ function markLearningSeen(word) {
 function sentenceFor(word) { const base = wordData(word); return word.sentence || base.sentence || ""; }
 function showTranslation(wordId, button) { const panel = document.querySelector(`[data-translation-panel="${wordId}"]`); if (!panel) return; const shown = panel.classList.toggle("is-visible"); button.textContent = shown ? "收起句子意思" : "查看句子意思"; const word = state.words.find((item) => item.id === wordId); const sentence = word?.sentence || wordData(word || {}).sentence; if (shown && sentence) speak(sentence, "sentence"); }
 function partOfSpeechTokens(value) {
-  const aliases = { a: "adj", ad: "adv", vi: "v", vt: "v" };
-  return [...new Set((String(value || "").match(/\b(?:n|v|vi|vt|adj|a|adv|ad|prep|pron|conj|aux|art|num|int)\./gi) || []).map((tag) => `${aliases[tag.slice(0, -1).toLowerCase()] || tag.slice(0, -1).toLowerCase()}.`))];
+  const aliases = { a: "adj", ad: "adv", vi: "v", vt: "v", interj: "int" };
+  return [...new Set((String(value || "").match(/\b(?:n|v|vi|vt|adj|a|adv|ad|prep|pron|conj|aux|art|det|num|int|interj)\./gi) || []).map((tag) => `${aliases[tag.slice(0, -1).toLowerCase()] || tag.slice(0, -1).toLowerCase()}.`))];
 }
 function meaningTokens(value) {
-  const withoutPartOfSpeech = String(value || "").replace(/^(?:(?:n|v|vi|vt|adj|a|adv|ad|prep|pron|conj|aux|art|num|int)\.\s*(?:\/|,|;|、)?\s*)+/i, "");
+  const withoutPartOfSpeech = String(value || "").replace(/^(?:(?:n|v|vi|vt|adj|a|adv|ad|prep|pron|conj|aux|art|det|num|int|interj)\.\s*(?:\/|,|;|、)?\s*)+/i, "");
   return withoutPartOfSpeech.split(/[；;，,、]/).map((item) => item.trim()).filter(Boolean).slice(0, 14);
 }
 function definitionMarkup(partOfSpeech, sense) {

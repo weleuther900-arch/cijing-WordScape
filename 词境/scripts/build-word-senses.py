@@ -19,11 +19,11 @@ DICTIONARY_PATH = ROOT / "data" / "offline-dictionary.json"
 OUTPUT_PATH = ROOT / "public" / "word-senses.js"
 
 POS_PREFIX = re.compile(
-    r"^\s*((?:(?:n|v|vi|vt|adj|a|adv|ad|prep|pron|conj|aux|art|num|int)\.\s*(?:[/,;、]\s*)?)+)(.*)$",
+    r"^\s*((?:(?:n|v|vi|vt|adj|a|adv|ad|prep|pron|conj|aux|art|det|num|int|interj)\.\s*(?:[/,;、]\s*)?)+)(.*)$",
     re.IGNORECASE,
 )
-POS_PART = re.compile(r"(?:n|v|vi|vt|adj|a|adv|ad|prep|pron|conj|aux|art|num|int)\.", re.IGNORECASE)
-POS_NORMALIZE = {"a.": "adj.", "ad.": "adv.", "vi.": "v.", "vt.": "v."}
+POS_PART = re.compile(r"(?:n|v|vi|vt|adj|a|adv|ad|prep|pron|conj|aux|art|det|num|int|interj)\.", re.IGNORECASE)
+POS_NORMALIZE = {"a.": "adj.", "ad.": "adv.", "vi.": "v.", "vt.": "v.", "interj.": "int."}
 
 # A small, explicit correction layer for entries whose offline dictionary
 # gloss is materially wrong or omits the ordinary learnable sense. Keep IDs
@@ -47,6 +47,33 @@ SENSE_OVERRIDES: dict[str, list[dict[str, str]]] = {
     "air-conditioning": [
         {"id": "other-1", "partOfSpeech": "n.", "sense": "空调；空气调节"},
     ],
+    "born": [{"id": "adj-1", "partOfSpeech": "v.", "sense": "出生；诞生"}, {"id": "adj-2", "partOfSpeech": "adj.", "sense": "天生的"}],
+    "cafe": [{"id": "n-1", "partOfSpeech": "n.", "sense": "咖啡馆；咖啡店"}],
+    "chalk": [{"id": "n-1", "partOfSpeech": "n.", "sense": "粉笔"}, {"id": "n-2", "partOfSpeech": "n.", "sense": "白垩"}, {"id": "v-1", "partOfSpeech": "v.", "sense": "用粉笔写（或画）"}],
+    "concerning": [{"id": "prep-1", "partOfSpeech": "prep.", "sense": "关于；有关"}],
+    "cyberspace": [{"id": "other-1", "partOfSpeech": "n.", "sense": "网络空间"}, {"id": "other-2", "partOfSpeech": "n.", "sense": "虚拟空间"}],
+    "e-mail": [{"id": "other-1", "partOfSpeech": "n.", "sense": "电子邮件"}, {"id": "other-2", "partOfSpeech": "v.", "sense": "给……发电子邮件"}],
+    "every": [{"id": "adj-1", "partOfSpeech": "det.", "sense": "每一"}, {"id": "adj-2", "partOfSpeech": "det.", "sense": "所有的"}],
+    "host": [{"id": "n-1", "partOfSpeech": "n.", "sense": "主人；东道主"}, {"id": "n-3", "partOfSpeech": "n.", "sense": "节目主持人"}, {"id": "v-1", "partOfSpeech": "v.", "sense": "接待；招待"}, {"id": "v-2", "partOfSpeech": "v.", "sense": "主持（节目、活动）"}],
+    "internet": [{"id": "other-1", "partOfSpeech": "n.", "sense": "互联网"}, {"id": "other-2", "partOfSpeech": "n.", "sense": "因特网"}],
+    "its": [{"id": "pron-1", "partOfSpeech": "det.", "sense": "它的"}],
+    "laptop": [{"id": "other-1", "partOfSpeech": "n.", "sense": "笔记本电脑；便携式电脑"}],
+    "my": [{"id": "pron-1", "partOfSpeech": "det.", "sense": "我的"}],
+    "no": [{"id": "n-1", "partOfSpeech": "n.", "sense": "否定回答"}, {"id": "n-2", "partOfSpeech": "n.", "sense": "拒绝"}, {"id": "n-3", "partOfSpeech": "n.", "sense": "反对票"}, {"id": "adj-1", "partOfSpeech": "det.", "sense": "没有"}, {"id": "adj-2", "partOfSpeech": "det.", "sense": "不是"}, {"id": "adj-3", "partOfSpeech": "det.", "sense": "绝非"}, {"id": "adv-1", "partOfSpeech": "adv.", "sense": "不；没有"}],
+    "nothing": [{"id": "n-1", "partOfSpeech": "pron.", "sense": "没有什么"}, {"id": "n-2", "partOfSpeech": "pron.", "sense": "无关紧要的事"}, {"id": "n-3", "partOfSpeech": "pron.", "sense": "零"}, {"id": "adv-1", "partOfSpeech": "adv.", "sense": "毫不"}, {"id": "adv-2", "partOfSpeech": "adv.", "sense": "决不"}],
+    "o'clock": [{"id": "n-1", "partOfSpeech": "adv.", "sense": "……点钟"}],
+    "ounce": [{"id": "n-1", "partOfSpeech": "n.", "sense": "盎司"}, {"id": "n-2", "partOfSpeech": "n.", "sense": "少量"}, {"id": "n-3", "partOfSpeech": "n.", "sense": "雪豹"}],
+    "our": [{"id": "pron-1", "partOfSpeech": "det.", "sense": "我们的"}],
+    "plenty": [{"id": "n-1", "partOfSpeech": "pron.", "sense": "大量"}, {"id": "n-2", "partOfSpeech": "pron.", "sense": "充足"}, {"id": "n-3", "partOfSpeech": "pron.", "sense": "丰富"}, {"id": "adj-1", "partOfSpeech": "pron.", "sense": "大量"}, {"id": "adj-2", "partOfSpeech": "pron.", "sense": "充足"}, {"id": "adj-3", "partOfSpeech": "pron.", "sense": "丰富"}],
+    "preside": [{"id": "v-3", "partOfSpeech": "v.", "sense": "主持"}, {"id": "v-5", "partOfSpeech": "v.", "sense": "负责"}, {"id": "v-6", "partOfSpeech": "v.", "sense": "指挥"}],
+    "regardless": [{"id": "adj-1", "partOfSpeech": "adv.", "sense": "不管"}, {"id": "adj-2", "partOfSpeech": "adv.", "sense": "不加理会"}, {"id": "adj-3", "partOfSpeech": "adv.", "sense": "不顾"}],
+    "such": [{"id": "adj-1", "partOfSpeech": "det.", "sense": "如此的"}, {"id": "adj-2", "partOfSpeech": "det.", "sense": "这样的"}],
+    "their": [{"id": "pron-1", "partOfSpeech": "det.", "sense": "他们的；她们的；它们的"}],
+    "whatsoever": [{"id": "pron-1", "partOfSpeech": "adv.", "sense": "任何；丝毫"}],
+    "wherever": [{"id": "adv-1", "partOfSpeech": "conj.", "sense": "无论在哪里；在任何地方"}],
+    "yes": [{"id": "adv-1", "partOfSpeech": "int.", "sense": "是；好的；同意"}, {"id": "n-1", "partOfSpeech": "n.", "sense": "肯定回答"}, {"id": "n-2", "partOfSpeech": "n.", "sense": "赞成；同意"}],
+    "your": [{"id": "pron-1", "partOfSpeech": "det.", "sense": "你的"}, {"id": "pron-2", "partOfSpeech": "det.", "sense": "你们的"}],
+    "zero": [{"id": "num-1", "partOfSpeech": "num.", "sense": "零"}, {"id": "n-1", "partOfSpeech": "n.", "sense": "零"}, {"id": "n-2", "partOfSpeech": "n.", "sense": "零点"}, {"id": "n-3", "partOfSpeech": "n.", "sense": "零度"}, {"id": "n-4", "partOfSpeech": "n.", "sense": "无"}, {"id": "n-5", "partOfSpeech": "n.", "sense": "乌有"}, {"id": "n-6", "partOfSpeech": "n.", "sense": "最低点"}, {"id": "adj-1", "partOfSpeech": "adj.", "sense": "零的"}, {"id": "adj-2", "partOfSpeech": "adj.", "sense": "没有的"}, {"id": "v-1", "partOfSpeech": "v.", "sense": "调零"}, {"id": "v-2", "partOfSpeech": "v.", "sense": "校正"}],
     "data": [
         {"id": "other-1", "partOfSpeech": "n.", "sense": "数据"},
         {"id": "other-2", "partOfSpeech": "n.", "sense": "资料"},
@@ -114,9 +141,11 @@ def parse_definition(raw: str) -> list[dict]:
         if match:
             active_pos = display_pos(match.group(1), active_pos)
             meaning_text = match.group(2)
-        elif line.startswith("[计]"):
-            active_pos = "计算机"
-            meaning_text = line[3:]
+        elif re.match(r"^\[[^\]]+\]", line):
+            # Domain labels in ECDICT are specialist metadata, not parts of speech.
+            # The learning dictionary keeps ordinary senses and uses explicit overrides
+            # when a headword is otherwise represented only by a domain line.
+            continue
         else:
             meaning_text = line
 
