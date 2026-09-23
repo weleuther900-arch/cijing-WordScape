@@ -12,6 +12,7 @@ const EXAMPLE_LIBRARY_META = window.WORD_EXAMPLE_LIBRARY || {};
 let SENSE_LIBRARY = window.WORD_SENSE_LIBRARY?.entries || {};
 const SENSE_LIBRARY_VERSION = "20260922-03";
 let senseLibraryLoading;
+let senseLibraryLoadError = "";
 const AI_EXAMPLE_LIBRARY = { ...(window.WORD_AI_EXAMPLE_LIBRARY?.entries || {}) };
 const AI_EXAMPLE_INDEX = window.WORD_AI_EXAMPLE_INDEX || {};
 const RELEASED_EXAMPLE_WORDS = new Set((window.WORD_RELEASED_EXAMPLE_WORDS || []).map((word) => String(word).toLowerCase()));
@@ -171,29 +172,57 @@ const browserAssetLoads = new Map();
 function loadBrowserAsset(src, globalName) {
   if (window[globalName]) return Promise.resolve(window[globalName]);
   if (!browserAssetLoads.has(src)) {
-    browserAssetLoads.set(src, new Promise((resolve, reject) => {
+    const task = new Promise((resolve, reject) => {
       const script = document.createElement("script");
       script.src = src;
       script.async = true;
       script.onload = () => window[globalName] ? resolve(window[globalName]) : reject(new Error("导入组件没有正确加载"));
       script.onerror = () => reject(new Error("导入组件下载失败，请检查网络后重试"));
       document.head.append(script);
-    }));
+    }).catch((error) => {
+      browserAssetLoads.delete(src);
+      throw error;
+    });
+    browserAssetLoads.set(src, task);
   }
   return browserAssetLoads.get(src);
 }
+function hasSenseLibrary() { return Boolean(Object.keys(SENSE_LIBRARY).length); }
 function loadSenseLibrary() {
-  if (Object.keys(SENSE_LIBRARY).length) return Promise.resolve(SENSE_LIBRARY);
+  if (hasSenseLibrary()) return Promise.resolve(SENSE_LIBRARY);
   if (!senseLibraryLoading) {
+    senseLibraryLoadError = "";
     senseLibraryLoading = loadBrowserAsset(`./word-senses.js?v=${SENSE_LIBRARY_VERSION}`, "WORD_SENSE_LIBRARY")
       .then((library) => {
-        SENSE_LIBRARY = library?.entries || {};
+        const entries = library?.entries || {};
+        if (!Object.keys(entries).length) throw new Error("完整中文释义文件内容为空");
+        SENSE_LIBRARY = entries;
+        senseLibraryLoadError = "";
+        senseLibraryLoading = undefined;
         if (state && currentView) render();
         return SENSE_LIBRARY;
       })
-      .catch(() => SENSE_LIBRARY);
+      .catch((error) => {
+        senseLibraryLoadError = String(error?.message || "完整中文释义载入失败");
+        senseLibraryLoading = undefined;
+        if (state && currentView) render();
+        return SENSE_LIBRARY;
+      });
   }
   return senseLibraryLoading;
+}
+function retrySenseLibraryLoad() {
+  senseLibraryLoadError = "";
+  senseLibraryLoading = undefined;
+  browserAssetLoads.delete(`./word-senses.js?v=${SENSE_LIBRARY_VERSION}`);
+  render();
+}
+function renderSenseLibraryGate(sectionLabel) {
+  if (hasSenseLibrary()) return false;
+  const failed = Boolean(senseLibraryLoadError);
+  APP.innerHTML = `<section class="done-state definition-loading"><p class="eyebrow">${escapeHtml(sectionLabel)}</p><h2>${failed ? "完整中文释义尚未载入。" : "正在载入完整中文释义…"}</h2><p>${failed ? "没有使用空释义或占位内容替代。请检查网络后重新载入。" : "释义就绪后才会显示单词内容，避免出现空白或错误释义。"}</p>${failed ? '<div class="action-row"><button class="primary" data-retry-senses>重新载入释义</button></div>' : ""}</section>`;
+  if (!failed && !senseLibraryLoading) void loadSenseLibrary();
+  return true;
 }
 function scheduleSenseLibraryLoad() {
   const start = () => { void loadSenseLibrary(); };
@@ -953,15 +982,15 @@ function verifiedExampleContexts(word) {
   const groups = new Map(record.senseGroups.map((group) => resolvedAiSenseGroup(word, group)).filter(Boolean).map((group) => [group.id, group]));
   return record.examples.map((example, index) => {
     const group = groups.get(example.senseId);
-    if (!group || !example.sentence || !example.translation) return null;
+    if (!group || !example.sentence || !example.translation || !hasUsablePartOfSpeech(group.partOfSpeech) || !hasUsableSense(group.sense)) return null;
     return {
       sceneId: `ai-${index}`,
       sentence: example.sentence,
       zh: example.translation,
       targetForm: example.targetForm || String(word?.text || word || ""),
       senseId: group.id,
-      contextPartOfSpeech: group.partOfSpeech || "词性未标注",
-      contextSense: group.sense || "中文释义待补充"
+      contextPartOfSpeech: group.partOfSpeech,
+      contextSense: group.sense
     };
   }).filter(Boolean);
 }
@@ -985,14 +1014,14 @@ function wordProfile(word) {
   const dictionarySenses = librarySenseEntries(word);
   const curatedCurrent = [base.currentSense, detail.currentSense].find(hasUsableSense);
   const storedCurrent = [word.currentSense, word.definition, base.zh].find(hasUsableSense);
-  const partOfSpeech = usage.currentPartOfSpeech || base.partOfSpeech || detail.partOfSpeech || dictionarySenses[0]?.partOfSpeech || word.partOfSpeech || "词性待补充";
-  const currentSense = curatedCurrent || dictionarySenses[0]?.sense || storedCurrent || "中文释义待补充";
+  const partOfSpeech = usage.currentPartOfSpeech || base.partOfSpeech || detail.partOfSpeech || dictionarySenses[0]?.partOfSpeech || word.partOfSpeech || "";
+  const currentSense = curatedCurrent || dictionarySenses[0]?.sense || storedCurrent || "";
   const suppliedOtherDefinitions = word.otherDefinitions?.length ? word.otherDefinitions : usage.otherDefinitions?.length ? usage.otherDefinitions : [];
   const derivedOtherDefinitions = dictionaryDefinitionEntries(word.definition || base.zh, partOfSpeech).filter((entry) => entry.sense !== currentSense);
   return {
     partOfSpeech,
     currentSense,
-    senses: dictionarySenses.length ? dictionarySenses.map((entry) => entry.sense) : base.senses?.length ? base.senses : detail.senses?.length ? detail.senses : word.senses?.length ? word.senses : [storedCurrent || "中文释义待补充"],
+    senses: dictionarySenses.length ? dictionarySenses.map((entry) => entry.sense) : base.senses?.length ? base.senses : detail.senses?.length ? detail.senses : word.senses?.length ? word.senses : storedCurrent ? [storedCurrent] : [],
     otherDefinitions: suppliedOtherDefinitions.length ? suppliedOtherDefinitions : derivedOtherDefinitions
   };
 }
@@ -1105,7 +1134,7 @@ function memoryDefinitionHtml(word, prefs) {
   const mode = memoryModeKey(prefs); const hidden = memoryHideAll(prefs, mode) ? !memoryRevealedDefinitionIds(mode).has(word.id) : Boolean(progress.definitionHiddenByMode?.[mode] ?? progress.definitionHidden);
   if (hidden) return `<button class="memory-meaning is-hidden" data-memory-toggle-definition="${word.id}" aria-label="显示 ${escapeHtml(word.text)} 的词性和中文释义"><span>······</span></button>`;
   const meanings = memoryDefinitions(word);
-  return `<button class="memory-meaning" data-memory-toggle-definition="${word.id}" aria-label="隐藏 ${escapeHtml(word.text)} 的词性和中文释义">${meanings.map((item) => `<span><b>${escapeHtml(item.partOfSpeech)}</b>${escapeHtml(item.sense)}</span>`).join("") || "<span><b>—</b>中文释义待补充</span>"}</button>`;
+  return `<button class="memory-meaning" data-memory-toggle-definition="${word.id}" aria-label="隐藏 ${escapeHtml(word.text)} 的词性和中文释义">${meanings.map((item) => `<span><b>${escapeHtml(item.partOfSpeech)}</b>${escapeHtml(item.sense)}</span>`).join("") || "<span><b>—</b>未在本地词典中找到可用释义</span>"}</button>`;
 }
 function memoryCircle(word, step, mode) {
   const complete = memoryStepComplete(word, step.id);
@@ -1405,6 +1434,7 @@ function matchesWordLibrarySearch(word, query) {
   return !needle || word.text.toLowerCase().includes(needle);
 }
 function renderWords() {
+  if (activeWords().length && renderSenseLibraryGate("词表")) return;
   let words = activeWords(); const notebook = activeNotebook(); const mistakeCounts = new Map(); const searching = Boolean(librarySearch.trim());
   const notebookOptions = state.notebooks.filter((item) => !item.archivedAt).map((item) => `<option value="${item.id}" ${item.id === notebook?.id ? "selected" : ""}>${escapeHtml(item.name)}</option>`).join("");
   activeLogs().filter((log) => !log.correct).forEach((log) => mistakeCounts.set(log.wordId, (mistakeCounts.get(log.wordId) || 0) + 1));
@@ -1496,7 +1526,9 @@ function renderLearn() {
     const action = gateClosed ? `<button class="primary" data-go="review">去复习</button>` : canRecoverEmptyHomeScreen ? `<button class="primary" data-open-home-screen-recovery>恢复已有词本</button><button class="secondary" data-go="words">这是新词本，去导入</button>` : noReleasedWords ? `<button class="primary" data-go="words">去导入词表</button>` : `<button class="secondary" data-go="words">查看词表</button>`;
     APP.innerHTML = `<section class="done-state"><p class="eyebrow">学习</p><h2>${title}</h2><p>${copy}</p><div class="action-row">${action}</div></section>`;
     return;
-  }  // Keep today's completed words visible for the rest of the day. Tomorrow,
+  }
+  if (renderSenseLibraryGate("学习")) return;
+  // Keep today's completed words visible for the rest of the day. Tomorrow,
   // `dailyStudyWords` omits them from the new-learning plan.
   const batchWords = plannedWords;
   const pageCount = Math.max(1, Math.ceil(batchWords.length / LEARNING_PAGE_SIZE)); learnPage = Math.max(0, Math.min(learnPage, pageCount - 1));
@@ -1653,11 +1685,7 @@ function getQuestion() { if (!question) { const card = queue()[0]; if (card) que
 function renderReview() {
   const items = queue(); const isHistorical = Boolean(question?.historical);
   if (!items.length && !isHistorical) { APP.innerHTML = `<section class="done-state"><p class="eyebrow">复习</p><h2>此刻，已经足够。</h2><p>没有到期的词需要复习。完成初学后，当日巩固会出现在这里；之后由 FSRS 根据实际作答安排下一次相遇。</p><div class="action-row">${reviewHistory.length ? `<button class="secondary" data-previous-question>上一题</button>` : ""}${incompleteCount() ? `<button class="primary" data-go="learn">继续学习</button>` : `<button class="secondary" data-go="words">查看词表</button>`}</div></section>`; return; }
-  if (!isHistorical && items.length && !Object.keys(SENSE_LIBRARY).length) {
-    APP.innerHTML = '<section class="review-layout"><article class="review-card review-loading"><p class="review-kind">准备复习</p><h1>正在载入完整中文释义…</h1><p>释义就绪后才会生成候选，避免出现缺失或含义相近的选项。</p></article></section>';
-    void loadSenseLibrary();
-    return;
-  }
+  if (!isHistorical && items.length && renderSenseLibraryGate("复习")) return;
   if (!isHistorical && !question && items[0] && !verifiedExampleContexts(items[0]).length) {
     APP.innerHTML = `<section class="review-layout"><article class="review-card review-loading"><p class="review-kind">准备复习</p><h1>正在载入本题例句…</h1><p>复习只会使用已核对的完整语境，不会退回为“根据中文找单词”。</p><button class="secondary" data-retry-examples="${items[0].id}">重新载入例句</button></article></section>`;
     void preloadAiContexts([items[0]], "review");
@@ -1679,12 +1707,13 @@ function answerPanel(card, item) {
 }
 
 function renderMemory() {
+  if (memoryWords().length && renderSenseLibraryGate("记忆")) return;
   const notebook = activeNotebook(); const prefs = memoryPrefs(notebook); const orderedWords = memoryWords();
   const serials = new Map(orderedWords.map((word, index) => [word.id, index + 1]));
   const directory = memoryDirectoryItems(orderedWords);
   const filtered = orderedWords.filter((word) => memoryFilterIncludes(word, prefs.filter) && memoryMatchesSearch(word, memorySearch));
   const visible = filtered.slice(0, memoryVisibleCount); const mode = prefs.mode;
-  if (!Object.keys(SENSE_LIBRARY).length) void loadSenseLibrary();
+
   const rows = visible.map((word) => `<div class="memory-row" role="row"><div class="memory-cell memory-index is-sticky" role="cell">${serials.get(word.id)}</div><div class="memory-cell memory-word is-sticky" role="cell">${memoryWordCell(word, mode)}</div><div class="memory-cell memory-definition is-sticky" role="cell">${memoryDefinitionHtml(word, prefs)}</div>${MEMORY_STEPS.map((step) => `<div class="memory-cell memory-step" role="cell">${memoryCircle(word, step, mode)}</div>`).join("")}</div>`).join("");
   const body = rows || `<div class="memory-empty">${orderedWords.length ? "这个目录中还没有单词。" : "完成一次初学后，单词会按最初学习顺序出现在这里。"}</div>`;
   APP.innerHTML = `<section class="memory-page">${pageHeading("记忆")}<section class="memory-lead"><div><p class="section-label">${escapeHtml(notebook?.name || "我的单词本")} · 独立记录</p><h2>循着自己的记忆痕迹。</h2><p>按首次学习顺序排列；圆点只记录你的手动记忆，不影响 FSRS 复习。</p></div><div class="memory-summary"><strong>${orderedWords.length}</strong><span>已学习单词</span></div></section><div class="memory-toolbar"><div class="memory-modes" role="tablist" aria-label="记忆方式"><button class="memory-mode ${mode === "recite" ? "is-active" : ""}" data-memory-mode="recite" role="tab" aria-selected="${mode === "recite"}">背诵</button><button class="memory-mode ${mode === "dictation" ? "is-active" : ""}" data-memory-mode="dictation" role="tab" aria-selected="${mode === "dictation"}">默写</button></div><button class="quiet-button memory-hide-all" data-memory-hide-all aria-label="${prefs.hideAll ? "显示全部词性和释义" : "隐藏全部词性和释义"}">${prefs.hideAll ? "显示" : "隐藏"}</button><label class="memory-search"><span>搜索</span><input data-memory-search type="search" value="${escapeHtml(memorySearch)}" placeholder="英文或中文" autocomplete="off" /></label></div><div class="memory-workspace"><aside class="memory-sidebar"><p class="section-label">目录</p><nav class="memory-directory" aria-label="记忆目录">${directory.map((item) => `<button class="memory-directory-item ${prefs.filter === item.id ? "is-active" : ""}" data-memory-filter="${item.id}"><span>${item.label}</span><b>${item.count}</b></button>`).join("")}</nav></aside><section class="memory-table-card"><div class="memory-table-caption"><div><p class="section-label">${mode === "dictation" ? "默写" : "背诵"}</p><h2>${memoryFilterLabel(prefs.filter)}</h2></div><p>${mode === "dictation" ? "直接在英文框中书写；核对正确后自动填满下一个空圆。" : "先回忆释义，再点按对应圆点。"}</p></div><div class="memory-table-scroll"><div class="memory-table" role="table" aria-label="${escapeHtml(notebook?.name || "当前")}单词本记忆表"><div class="memory-row memory-head" role="row"><div class="memory-cell memory-index is-sticky" role="columnheader">序号</div><div class="memory-cell memory-word is-sticky" role="columnheader">${mode === "dictation" ? "默写" : "英文"}</div><div class="memory-cell memory-definition is-sticky" role="columnheader">释义</div>${MEMORY_STEPS.map((step) => `<div class="memory-cell memory-step" role="columnheader">${step.label}</div>`).join("")}</div>${body}</div></div>${visible.length < filtered.length ? `<button class="secondary memory-more" data-memory-more>更多</button>` : ""}</section></div><p class="memory-footnote">节点：${memoryStepDescription()}。切换单词本会切换整张记忆表与全部记录。</p></section>`;
@@ -1941,7 +1970,7 @@ function exportBackup() {
   setTimeout(() => URL.revokeObjectURL(link.href), 1000);
   showToast("备份已生成。请将文件存到“文件”或 iCloud Drive。 ");
 }
-function exportLearnedWords(dateKey) {
+async function exportLearnedWords(dateKey) {
   const date = /^\d{4}-\d{2}-\d{2}$/.test(String(dateKey || "")) ? String(dateKey) : beijingDateKey();
   const learnedWords = state.words.filter((word) => learnedDateKey(word) === date).sort((left, right) => {
     const leftTime = Date.parse(left.learnedAt || "") || 0;
@@ -1949,11 +1978,15 @@ function exportLearnedWords(dateKey) {
     return leftTime - rightTime || String(left.text || "").localeCompare(String(right.text || ""), "en");
   });
   if (!learnedWords.length) { showToast(`${shortDate(date)}没有可导出的学习单词。`); return; }
+  if (!hasSenseLibrary()) await loadSenseLibrary();
+  if (!hasSenseLibrary()) { showToast("完整中文释义尚未载入，请联网后重试。"); return; }
+  const unresolvedWords = learnedWords.filter((word) => !hasUsableWordDefinition(word));
+  if (unresolvedWords.length) { showToast(`有 ${unresolvedWords.length} 个单词没有可用释义，已停止导出。`); return; }
   const csvCell = (value) => `"${String(value ?? "").replace(/"/g, '""')}"`;
   const rows = [["序号", "英文", "中文意思"], ...learnedWords.map((word, index) => {
     const profile = wordProfile(word);
-    const meaning = String(friendlySense(profile.currentSense || word.definition || wordData(word).zh || "中文释义待补充")).replace(/\s+/g, " ").trim();
-    return [index + 1, String(word.text || "").trim(), meaning || "中文释义待补充"];
+    const meaning = String(friendlySense(profile.currentSense)).replace(/\s+/g, " ").trim();
+    return [index + 1, String(word.text || "").trim(), meaning];
   })];
   const blob = new Blob([`\uFEFF${rows.map((row) => row.map(csvCell).join(",")).join("\r\n")}\r\n`], { type: "text/csv;charset=utf-8" });
   const url = URL.createObjectURL(blob);
@@ -2336,7 +2369,7 @@ function meaningTokens(value) {
   return withoutPartOfSpeech.split(/[；;，,、]/).map((item) => item.trim()).filter(Boolean).slice(0, 14);
 }
 function definitionMarkup(partOfSpeech, sense) {
-  return `<p class="popover-current-sense"><span>${escapeHtml(friendlyPartOfSpeech(partOfSpeech))}</span>${escapeHtml(friendlySense(sense) || "中文释义待补充")}</p>`;
+  return `<p class="popover-current-sense"><span>${escapeHtml(friendlyPartOfSpeech(partOfSpeech))}</span>${escapeHtml(friendlySense(sense) || "未在本地词典中找到可用释义")}</p>`;
 }
 function popover(wordText, anchor) {
   document.querySelector(".word-popover")?.remove();
@@ -2450,9 +2483,10 @@ document.addEventListener("click", (event) => {
   if (button.dataset.previousQuestion !== undefined) previousQuestion();
   if (!pointerStartedSpeechButtons.delete(button) || isAppleTouchDevice()) triggerSpeechButtonAction(button);
   if (button.dataset.retryExamples) { const word = state.words.find((item) => item.id === button.dataset.retryExamples); if (word) retryAiContexts([word], currentView); }
+  if (button.dataset.retrySenses !== undefined) retrySenseLibraryLoad();
 
   if (button.dataset.exportBackup !== undefined) exportBackup();
-  if (button.dataset.exportLearnedWords !== undefined) exportLearnedWords(document.querySelector('[data-export-learning-date]')?.value);
+  if (button.dataset.exportLearnedWords !== undefined) void exportLearnedWords(document.querySelector('[data-export-learning-date]')?.value);
   if (button.dataset.generateSyncKey !== undefined) {
     const field = document.querySelector("[data-cloud-sync-key]");
     if (field && SYNC) { field.value = SYNC.createSecret(); field.focus(); field.select(); showToast("已生成同步密钥。请保存它，并在三台设备输入完全相同的密钥。"); }

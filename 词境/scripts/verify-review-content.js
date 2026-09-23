@@ -55,6 +55,11 @@ assert.equal(senseKey("dispersed"), "disperse");
 assert.equal(senseKey("groaned"), "groan");
 assert.equal(senseKey("retailed"), "retail");
 
+const bundledWordbook = JSON.parse(fs.readFileSync(path.join(publicDir, "bundled-imports", "27-one.json"), "utf8"));
+assert.equal(bundledWordbook.words.length, 5487, "The built-in wordbook must keep all 5,487 words.");
+assert.equal(new Set(bundledWordbook.words.map((word) => String(word).toLowerCase())).size, 5487, "The built-in wordbook must not contain duplicate headwords.");
+assert.deepEqual(bundledWordbook.words.filter((word) => !entries[senseKey(word)]), [], "Every built-in word must resolve to a bundled Chinese definition.");
+
 function phrases(word) {
   return new Set(entries[word].senses.flatMap((entry) => String(entry.sense).split(/[；;、，,／/]/)).map((value) => value.replace(/[（(【\[].*?[）)】\]]/g, "").replace(/\s+/g, "").trim()).filter((value) => value.length >= 2));
 }
@@ -97,5 +102,11 @@ assert.match(appSource, /hasUsableWordDefinition/);
 assert.doesNotMatch(appSource, /const confusable = samePart/);
 assert.match(appSource, /data-number-setting="dailyNewTarget"/);
 assert.doesNotMatch(appSource, /data-number-setting="reviewGate"/);
+assert.match(appSource, /browserAssetLoads\.delete\(src\)/, "A failed definition asset request must be retryable.");
+assert.match(appSource, /data-retry-senses/, "A failed definition load must expose a retry control.");
+for (const view of ["词表", "学习", "复习", "记忆"]) assert.match(appSource, new RegExp(`renderSenseLibraryGate\\("${view}"\\)`), `${view} must wait for the complete definition library.`);
+assert.equal((appSource.match(/中文释义待补充/g) || []).length, 1, "The legacy placeholder may only remain in the migration detector and must never be rendered.");
+assert.equal((appSource.match(/词性待补充/g) || []).length, 1, "The legacy part-of-speech placeholder may only remain in the migration detector and must never be rendered.");
+assert.match(appSource, /unresolvedWords\.length.*已停止导出/, "CSV export must stop instead of writing a missing definition.");
 
 console.log("Review content verification passed: 5,487 entries have standard parts of speech and Chinese senses, corrected dictionary records resolve, ambiguous pairs are blocked, and released examples remain linked.");
