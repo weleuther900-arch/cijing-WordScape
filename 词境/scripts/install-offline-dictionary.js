@@ -4,12 +4,55 @@
 // The resulting file lives under data/ and is deliberately excluded from Git.
 const fs = require("node:fs/promises");
 const path = require("node:path");
+const { execFile } = require("node:child_process");
+const { promisify } = require("node:util");
 
 const ECDICT_COMMIT = "bc015ed2e24a7abef49fc6dbbb7fe32c1dadaf8b";
-const SOURCE_URL = `https://raw.githubusercontent.com/skywind3000/ECDICT/${ECDICT_COMMIT}/ecdict.csv`;
+const SOURCE_URLS = [
+  `https://raw.githubusercontent.com/skywind3000/ECDICT/${ECDICT_COMMIT}/ecdict.csv`,
+  `https://github.com/skywind3000/ECDICT/raw/${ECDICT_COMMIT}/ecdict.csv`
+];
 const ROOT = path.resolve(__dirname, "..");
 const DATA_DIR = path.join(ROOT, "data");
 const OUTPUT_FILE = path.join(DATA_DIR, "offline-dictionary.json");
+const execFileAsync = promisify(execFile);
+
+function verifyCsv(text) {
+  const value = String(text || "").replace(/^\uFEFF/, "");
+  if (!value.startsWith("word,")) throw new Error("downloaded file is not a valid ECDICT CSV");
+  return value;
+}
+async function downloadWithFetch(sourceUrl) {
+  const response = await fetch(sourceUrl, { headers: { "User-Agent": "WordScape-local-dictionary-installer" }, signal: AbortSignal.timeout(30000) });
+  if (!response.ok) throw new Error(`HTTP ${response.status}`);
+  return verifyCsv(await response.text());
+}
+async function downloadWithCurl(sourceUrl) {
+  const temporary = path.join(ROOT, `.ecdict-download-${process.pid}.csv`);
+  const command = process.platform === "win32" ? "curl.exe" : "curl";
+  try {
+    await fs.rm(temporary, { force: true });
+    await execFileAsync(command, ["--fail", "--location", "--retry", "1", "--connect-timeout", "15", "--max-time", "120", "--silent", "--show-error", "--output", temporary, sourceUrl], { windowsHide: true, maxBuffer: 1024 * 1024 });
+    return verifyCsv(await fs.readFile(temporary, "utf8"));
+  } finally {
+    await fs.rm(temporary, { force: true });
+  }
+}
+async function downloadEcdict() {
+  let lastError;
+  for (const sourceUrl of SOURCE_URLS) {
+    for (const [label, downloader] of [["Node", downloadWithFetch], ["系统下载器", downloadWithCurl]]) {
+      try {
+        console.log(`Downloading ECDICT source via ${label}…`);
+        return { sourceUrl, text: await downloader(sourceUrl) };
+      } catch (error) {
+        lastError = error;
+        console.warn(`ECDICT source attempt failed: ${error?.message || error}`);
+      }
+    }
+  }
+  throw new Error(`ECDICT download failed after all fallbacks: ${lastError?.message || lastError}`);
+}
 
 function parseCsv(text, onRow) {
   let field = ""; let row = []; let quoted = false;
@@ -34,10 +77,7 @@ function compactTranslation(value) {
 }
 
 async function main() {
-  console.log("Downloading the open ECDICT source…");
-  const response = await fetch(SOURCE_URL, { headers: { "User-Agent": "WordScape-local-dictionary-installer" }, signal: AbortSignal.timeout(120000) });
-  if (!response.ok) throw new Error(`ECDICT download failed: HTTP ${response.status}`);
-  const text = await response.text();
+  const { sourceUrl, text } = await downloadEcdict();
   const entries = Object.create(null); let header = null; let count = 0;
   parseCsv(text, (row) => {
     if (!header) { header = row.map((name) => name.trim()); return; }
@@ -53,7 +93,7 @@ async function main() {
     version: 1,
     source: "ECDICT",
     license: "MIT",
-    sourceUrl: `https://github.com/skywind3000/ECDICT/tree/${ECDICT_COMMIT}`,
+    sourceUrl,
     installedAt: new Date().toISOString(),
     entries
   };
