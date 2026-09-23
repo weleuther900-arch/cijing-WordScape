@@ -108,5 +108,7 @@ for (const view of ["词表", "学习", "复习", "记忆"]) assert.match(appSou
 assert.equal((appSource.match(/中文释义待补充/g) || []).length, 1, "The legacy placeholder may only remain in the migration detector and must never be rendered.");
 assert.equal((appSource.match(/词性待补充/g) || []).length, 1, "The legacy part-of-speech placeholder may only remain in the migration detector and must never be rendered.");
 assert.match(appSource, /unresolvedWords\.length.*已停止导出/, "CSV export must stop instead of writing a missing definition.");
+assert.match(appSource, /const importable = fresh\.filter/, "Imports must filter out words without a reliable dictionary definition.");
+assert.match(appSource, /if \(!importable\.length\).*未执行导入/, "An unresolved import must stop before writing an empty definition.");
 
 console.log("Review content verification passed: 5,487 entries have standard parts of speech and Chinese senses, corrected dictionary records resolve, ambiguous pairs are blocked, and released examples remain linked.");

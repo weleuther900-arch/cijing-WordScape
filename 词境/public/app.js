@@ -1426,7 +1426,8 @@ function allDefinitionEntries(word) {
 }
 function wordLibraryCard(word, mistakeCount = 0) {
   const definitions = allDefinitionEntries(word);
-  return `<button class="word-library-item" data-speak-word="${word.id}" aria-label="朗读 ${escapeHtml(word.text)}"><span class="word-library-term">${escapeHtml(word.text)}</span><span class="word-library-definitions">${definitions.map((entry) => `<span class="word-library-meaning"><b>${escapeHtml(entry.partOfSpeech || "")}</b>${escapeHtml(entry.sense)}</span>`).join("")}</span>${mistakeCount ? `<small>错 ${mistakeCount} 次</small>` : ""}</button>`;
+  const meanings = definitions.length ? definitions.map((entry) => `<span class="word-library-meaning"><b>${escapeHtml(entry.partOfSpeech || "")}</b>${escapeHtml(entry.sense)}</span>`).join("") : '<span class="word-library-meaning"><b>—</b>未在本地词典中找到可用释义</span>';
+  return `<button class="word-library-item" data-speak-word="${word.id}" aria-label="朗读 ${escapeHtml(word.text)}"><span class="word-library-term">${escapeHtml(word.text)}</span><span class="word-library-definitions">${meanings}</span>${mistakeCount ? `<small>错 ${mistakeCount} 次</small>` : ""}</button>`;
 }
 function masteredWordRow(word) { return `<div class="mastered-word-row">${wordLibraryCard(word)}<button class="mastered-word-delete" data-delete-mastered-word="${word.id}" aria-label="从词库删除 ${escapeHtml(word.text)}">删除</button></div>`; }
 function matchesWordLibrarySearch(word, query) {
@@ -1869,27 +1870,41 @@ async function importWords(raw, source = "用户导入") {
   const existing = new Set(activeWords().map((word) => word.text.toLowerCase()));
   const fresh = parsed.filter((word) => !existing.has(word));
   if (!fresh.length) { showToast("这些词已经在当前单词本中了。"); return; }
+  if (!hasSenseLibrary()) await loadSenseLibrary();
+  if (!hasSenseLibrary()) { showToast("完整中文释义尚未载入，暂未导入单词。请联网后重试。"); return; }
   const suppliedEntries = importEntryOverride || new Map();
   const missingEntries = fresh.filter((word) => !suppliedEntries.has(word));
   const offlineEntries = new Map([...suppliedEntries, ...await lookupOfflineDefinitions(missingEntries)]);
+  const importable = fresh.filter((text) => {
+    const base = wordData({ text });
+    const detail = WORD_DETAILS[text.toLowerCase()] || {};
+    const offline = offlineEntries.get(text) || {};
+    const dictionarySenses = librarySenseEntries({ text });
+    const partOfSpeech = offline.partOfSpeech || dictionarySenses[0]?.partOfSpeech || base.partOfSpeech || detail.partOfSpeech || "";
+    const sense = offline.currentSense || offline.definition || dictionarySenses[0]?.sense || base.currentSense || base.zh || detail.currentSense || "";
+    return dictionarySenses.length || (hasUsablePartOfSpeech(partOfSpeech) && hasUsableSense(sense));
+  });
+  const unresolvedImportCount = fresh.length - importable.length;
+  if (!importable.length) { showToast("这些单词未在本地英汉词典中找到可靠释义，未执行导入。"); return; }
   const batchId = id("batch");
   const notebookId = state.activeNotebookId;
-  const words = fresh.map((text) => {
+  const words = importable.map((text) => {
     const base = wordData({ text });
     const detail = WORD_DETAILS[text.toLowerCase()] || {};
     const usage = WORD_USAGE_DETAILS[text.toLowerCase()] || {};
     const offline = offlineEntries.get(text) || {};
+    const dictionarySenses = librarySenseEntries({ text });
     const verified = selectedLearningContext({ text, contexts: [] });
     return {
       id: id("word"), text,
-      definition: offline.definition || base.zh || "",
+      definition: dictionarySenses[0]?.sense || offline.definition || base.zh || "",
       phonetic: offline.phonetic || base.phonetic || "",
       sentence: verified?.sentence || "", translation: verified?.zh || "",
       sentenceTargetForm: verified?.targetForm || text, sentenceSenseId: verified?.senseId || "", sentencePartOfSpeech: verified?.contextPartOfSpeech || "", sentenceSense: verified?.contextSense || "", sentenceSource: verified ? `ai-verified:${VERIFIED_EXAMPLE_REVISION}` : "",
-      partOfSpeech: usage.currentPartOfSpeech || base.partOfSpeech || detail.partOfSpeech || offline.partOfSpeech || "",
-      currentSense: base.currentSense || detail.currentSense || offline.currentSense || "",
-      senses: offline.senses?.length ? offline.senses : base.senses || detail.senses || [],
-      otherDefinitions: usage.otherDefinitions?.length ? usage.otherDefinitions : offline.otherDefinitions || [],
+      partOfSpeech: usage.currentPartOfSpeech || dictionarySenses[0]?.partOfSpeech || offline.partOfSpeech || base.partOfSpeech || detail.partOfSpeech || "",
+      currentSense: dictionarySenses[0]?.sense || offline.currentSense || base.currentSense || detail.currentSense || "",
+      senses: dictionarySenses.length ? dictionarySenses.map((entry) => entry.sense) : offline.senses?.length ? offline.senses : base.senses || detail.senses || [],
+      otherDefinitions: usage.otherDefinitions?.length ? usage.otherDefinitions : dictionarySenses.length > 1 ? dictionarySenses.slice(1) : offline.otherDefinitions || [],
       learningSeen: false, learningPlanDate: null, stage: "learning", batchId, notebookId,
       dueAt: null, stability: null, difficulty: null, lastReviewAt: null, reviewCount: 0, lapses: 0, contexts: [], createdAt: new Date().toISOString()
     };
@@ -1898,7 +1913,8 @@ async function importWords(raw, source = "用户导入") {
   state.batches.push({ id: batchId, notebookId, wordIds: words.map((word) => word.id), source, status: "learning", createdAt: new Date().toISOString() });
   selectedBatchId = batchId;
   await persist();
-  showToast(`已保存 ${words.length} 个词到「${activeNotebook()?.name}」。`);
+  const skippedMessage = unresolvedImportCount ? `；另有 ${unresolvedImportCount} 个词未找到可靠释义，未导入` : "";
+  showToast(`已保存 ${words.length} 个词到「${activeNotebook()?.name}」${skippedMessage}。`);
   navigate("learn");
 }
 async function refreshBundledWordbookDefinitions(payload) {
