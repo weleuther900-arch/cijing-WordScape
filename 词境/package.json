@@ -15,6 +15,8 @@
     "sync:verify:remote": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/verify-deployed-cloud-sync.ps1",
     "learn:rollover:verify": "node scripts/verify-learning-rollover.js",
     "content:verify": "node scripts/verify-review-content.js",
+    "content:contexts:resolve": "python scripts/resolve-example-contexts.py",
+    "content:contexts:verify": "python scripts/verify-final-example-library.py",
     "dictionary:audit": "node scripts/audit-dictionary-sources.js"
   },
   "dependencies": {

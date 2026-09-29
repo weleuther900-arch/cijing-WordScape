@@ -37,6 +37,11 @@ assert.deepEqual(Array.from(entries.ounce.senses, ({ partOfSpeech, sense }) => (
 assert.equal(entries["o'clock"].senses[0].partOfSpeech, "adv.");
 assert.equal(entries.yes.senses[0].partOfSpeech, "int.");
 assert.equal(entries.every.senses[0].partOfSpeech, "det.");
+assert.deepEqual(Array.from(entries.descent.senses, ({ id, sense }) => ({ id, sense })), [{ id: "n-1", sense: "下降；下行" }, { id: "n-2", sense: "家系；出身" }, { id: "n-3", sense: "侵袭；突然来临" }, { id: "n-4", sense: "血统；世系" }, { id: "n-5", sense: "下降" }, { id: "n-6", sense: "世代" }]);
+assert.deepEqual(Array.from(entries.kid.senses, ({ id, partOfSpeech, sense }) => ({ id, partOfSpeech, sense })), [{ id: "n-1", partOfSpeech: "n.", sense: "小山羊" }, { id: "n-2", partOfSpeech: "n.", sense: "小山羊皮" }, { id: "n-3", partOfSpeech: "n.", sense: "小孩；儿童" }, { id: "n-4", partOfSpeech: "v.", sense: "开玩笑；戏弄；哄骗" }]);
+assert.equal(entries.liner.senses.find((entry) => entry.id === "n-3").sense, "定期客轮；班轮");
+assert.equal(entries.liner.senses.find((entry) => entry.id === "n-4").sense, "内衬；衬里");
+assert.equal(entries.liner.senses.find((entry) => entry.id === "n-5").sense, "衬垫；防渗膜");
 
 const irregular = { children: "child", feet: "foot", geese: "goose", men: "man", mice: "mouse", people: "person", teeth: "tooth", women: "woman" };
 function senseKey(value) {
@@ -78,6 +83,10 @@ for (const file of fs.readdirSync(path.join(publicDir, "ai-examples")).filter((n
   for (const [word, record] of Object.entries((chunk && chunk.entries) || {})) records.set(word, record);
 }
 const unresolved = [];
+const mergedContextGroups = [];
+function usableContextPartOfSpeech(value) {
+  return usablePartOfSpeech(value) || (Boolean(String(value || "").trim()) && !/(?:词性)(?:未标注|待补充)/u.test(String(value)));
+}
 for (const word of released) {
   const record = records.get(word);
   const available = entries[word] && entries[word].senses || [];
@@ -87,17 +96,24 @@ for (const word of released) {
   }
   const groups = (record.senseGroups || []).map((group) => {
     const ids = Array.isArray(group.sourceSenseIds) ? group.sourceSenseIds.map(String) : [];
-    const matched = ids.length ? available.filter((entry) => ids.includes(String(entry.id))) : [];
-    if (ids.length && !matched.length) return null;
-    return matched.length ? { id: group.id, partOfSpeech: matched[0].partOfSpeech, sense: matched.map((entry) => entry.sense).join("；") } : group;
+    if (ids.length !== 1) {
+      mergedContextGroups.push(`${word}:${String(group.id || "")}`);
+      return null;
+    }
+    const matched = available.find((entry) => String(entry.id) === ids[0]);
+    if (matched) return { id: group.id, partOfSpeech: matched.partOfSpeech, sense: matched.sense };
+    if (group.contextReviewed && usableContextPartOfSpeech(group.partOfSpeech) && usableSense(group.sense)) return group;
+    return null;
   }).filter(Boolean);
-  const groupIds = new Set(groups.filter((group) => usablePartOfSpeech(group.partOfSpeech) && usableSense(group.sense)).map((group) => group.id));
-  if (!groupIds.size || !(record.examples || []).some((example) => groupIds.has(example.senseId) && example.sentence && example.translation)) unresolved.push(word);
+  const groupIds = new Set(groups.filter((group) => usableContextPartOfSpeech(group.partOfSpeech) && usableSense(group.sense)).map((group) => group.id));
+  if (!groupIds.size || !(record.examples || []).every((example) => groupIds.has(example.senseId) && example.sentence && example.translation)) unresolved.push(word);
 }
-assert.deepEqual(unresolved, [], "Every released word must resolve to a valid Chinese sense and at least one verified example.");
+assert.deepEqual(mergedContextGroups, [], "A sentence context group must contain exactly one dictionary sense.");
+assert.deepEqual(unresolved, [], "Every released word must resolve to one valid Chinese context sense for every verified example.");
 
 const appSource = fs.readFileSync(path.join(publicDir, "app.js"), "utf8");
 assert.match(appSource, /meaningsAreConfusable/);
+assert.match(appSource, /ids\.length !== 1/, "The app must reject merged sense groups before rendering 本句释义。");
 assert.match(appSource, /hasUsableWordDefinition/);
 assert.doesNotMatch(appSource, /const confusable = samePart/);
 assert.match(appSource, /data-number-setting="dailyNewTarget"/);

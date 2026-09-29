@@ -1,5 +1,6 @@
 # Personal learning state — stays only on this computer.
-词境/data/
+词境/data/*
+!词境/data/context-resolved-examples.js
 
 # Machine-specific work areas.
 词境/.kokoro-build/

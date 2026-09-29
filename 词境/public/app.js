@@ -17,7 +17,7 @@ const AI_EXAMPLE_LIBRARY = { ...(window.WORD_AI_EXAMPLE_LIBRARY?.entries || {}) 
 const AI_EXAMPLE_INDEX = window.WORD_AI_EXAMPLE_INDEX || {};
 const RELEASED_EXAMPLE_WORDS = new Set((window.WORD_RELEASED_EXAMPLE_WORDS || []).map((word) => String(word).toLowerCase()));
 const AI_EXAMPLE_LOADS = new Map();
-const VERIFIED_EXAMPLE_REVISION = "20260916-03";
+const VERIFIED_EXAMPLE_REVISION = "20260928-01";
 // The source dictionary is intentionally broad. These entries are the
 // learning-facing layer: correct common meanings first, without legacy or
 // unrelated technical senses leaking into normal study cards.
@@ -50,6 +50,9 @@ const STUDY_SENSE_OVERRIDES = Object.freeze({
   zero: [{ id: "num-1", partOfSpeech: "num.", sense: "零" }, { id: "n-1", partOfSpeech: "n.", sense: "零" }, { id: "n-2", partOfSpeech: "n.", sense: "零点" }, { id: "n-3", partOfSpeech: "n.", sense: "零度" }, { id: "n-4", partOfSpeech: "n.", sense: "无" }, { id: "n-5", partOfSpeech: "n.", sense: "乌有" }, { id: "n-6", partOfSpeech: "n.", sense: "最低点" }, { id: "adj-1", partOfSpeech: "adj.", sense: "零的" }, { id: "adj-2", partOfSpeech: "adj.", sense: "没有的" }, { id: "v-1", partOfSpeech: "v.", sense: "调零" }, { id: "v-2", partOfSpeech: "v.", sense: "校正" }],
   cafe: [{ id: "n-1", partOfSpeech: "n.", sense: "咖啡馆；咖啡店" }],
   chalk: [{ id: "n-1", partOfSpeech: "n.", sense: "粉笔" }, { id: "n-2", partOfSpeech: "n.", sense: "白垩" }, { id: "v-1", partOfSpeech: "v.", sense: "用粉笔写（或画）" }],
+  descent: [{ id: "n-1", partOfSpeech: "n.", sense: "下降；下行" }, { id: "n-2", partOfSpeech: "n.", sense: "家系；出身" }, { id: "n-3", partOfSpeech: "n.", sense: "侵袭；突然来临" }, { id: "n-4", partOfSpeech: "n.", sense: "血统；世系" }, { id: "n-5", partOfSpeech: "n.", sense: "下降" }, { id: "n-6", partOfSpeech: "n.", sense: "世代" }],
+  kid: [{ id: "n-1", partOfSpeech: "n.", sense: "小山羊" }, { id: "n-2", partOfSpeech: "n.", sense: "小山羊皮" }, { id: "n-3", partOfSpeech: "n.", sense: "小孩；儿童" }, { id: "n-4", partOfSpeech: "v.", sense: "开玩笑；戏弄；哄骗" }],
+  liner: [{ id: "n-1", partOfSpeech: "n.", sense: "大型客轮" }, { id: "n-2", partOfSpeech: "n.", sense: "划线器；画线者" }, { id: "n-3", partOfSpeech: "n.", sense: "定期客轮；班轮" }, { id: "n-4", partOfSpeech: "n.", sense: "内衬；衬里" }, { id: "n-5", partOfSpeech: "n.", sense: "衬垫；防渗膜" }],
   data: [{ id: "other-1", partOfSpeech: "n.", sense: "数据" }, { id: "other-2", partOfSpeech: "n.", sense: "资料" }],
   hello: [{ id: "other-1", partOfSpeech: "int.", sense: "你好" }, { id: "other-2", partOfSpeech: "int.", sense: "喂；嘿" }],
   hi: [{ id: "other-1", partOfSpeech: "int.", sense: "嗨；你好" }],
@@ -916,12 +919,18 @@ function hasUsableSense(value) {
 function hasUsablePartOfSpeech(value) { return Boolean(String(value || "").trim()) && !/(?:词性)(?:未标注|待补充)/u.test(String(value)); }
 function resolvedAiSenseGroup(word, group) {
   const available = librarySenseEntries(word);
-  if (!available.length) return group;
   const ids = Array.isArray(group?.sourceSenseIds) ? group.sourceSenseIds.map(String) : [];
-  if (!ids.length) return group;
-  const matched = available.filter((entry) => ids.includes(entry.id));
-  if (!matched.length) return null;
-  return { ...group, partOfSpeech: matched[0].partOfSpeech, sense: matched.map((entry) => entry.sense).join("；") };
+  // Learner-facing sentence cards may name one, and only one, dictionary
+  // meaning. A merged generation group is useful metadata but must never be
+  // rendered as a false "本句释义".
+  if (ids.length !== 1) return null;
+  const matched = available.find((entry) => entry.id === ids[0]);
+  if (matched) return { ...group, partOfSpeech: matched.partOfSpeech, sense: matched.sense };
+  // A few historical specialist entries have a stable source ID but are not
+  // represented by the compact everyday dictionary. They are admitted only
+  // after the release reviewer has made the group atomic and context-specific.
+  if (group?.contextReviewed && hasUsablePartOfSpeech(group.partOfSpeech) && hasUsableSense(group.sense)) return group;
+  return null;
 }
 function aiRecordForWord(word) {
   const key = String(word?.text || word || "").toLowerCase();
@@ -934,7 +943,7 @@ function loadAiShard(key) {
   if (AI_EXAMPLE_LOADS.has(key)) return AI_EXAMPLE_LOADS.get(key);
   const task = new Promise((resolve, reject) => {
     const script = document.createElement("script");
-    script.src = `${AI_EXAMPLE_INDEX[key]}?v=20260821-02`;
+    script.src = `${AI_EXAMPLE_INDEX[key]}?v=20260928-01`;
     script.onload = () => { Object.assign(AI_EXAMPLE_LIBRARY, window.WORD_AI_EXAMPLE_CHUNK?.entries || {}); resolve(); };
     script.onerror = () => reject(new Error("例句分片加载失败"));
     document.head.append(script);

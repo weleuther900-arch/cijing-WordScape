@@ -32,7 +32,7 @@ def tools():
 
 def main() -> None:
     parser = ArgumentParser(description="Verify a source example library against its browser shards.")
-    parser.add_argument("--source", type=Path, default=ROOT / "data" / "corpus-backed-examples.js", help="Source library, relative to the 词境 directory unless absolute.")
+    parser.add_argument("--source", type=Path, default=ROOT / "data" / "context-resolved-examples.js", help="Source library, relative to the 词境 directory unless absolute.")
     args = parser.parse_args()
     source = args.source if args.source.is_absolute() else ROOT / args.source
     sense_tools = tools()
@@ -45,6 +45,18 @@ def main() -> None:
         groups = {group.get("id") for group in entry.get("senseGroups", [])}
         examples = entry.get("examples", [])
         errors = []
+        known_senses = {str(sense.get("id", "")): sense for sense in senses.get(word, {}).get("senses", [])}
+        for group in entry.get("senseGroups", []):
+            source_ids = [str(value) for value in group.get("sourceSenseIds", [])]
+            if len(source_ids) != 1:
+                errors.append("context group must contain exactly one source sense")
+                continue
+            matched_sense = known_senses.get(source_ids[0])
+            if matched_sense is None:
+                if not group.get("contextReviewed") or not str(group.get("partOfSpeech", "")).strip() or not str(group.get("sense", "")).strip():
+                    errors.append("context group has no reviewed resolvable source sense")
+            elif group.get("partOfSpeech") != matched_sense.get("partOfSpeech") or group.get("sense") != matched_sense.get("sense"):
+                errors.append("context group disagrees with the dictionary sense")
         if not examples:
             errors.append("entry has no publishable examples")
         if len({" ".join(str(example.get("sentence", "")).lower().split()) for example in examples}) != len(examples):
@@ -97,7 +109,7 @@ def main() -> None:
         if result:
             old_checked += 1
 
-    report = {"source": str(source), "targetWords": len(target_words), "finalWords": len(final), "wordsHeldForReviewedRewrite": len(target_words - set(final)), "finalExamples": sum(len(entry["examples"]) for entry in final.values()), "invalidFinalWords": len(failures), "wordsWithNoRepeatFallback": no_repeat_fallback, "multiSenseWords": multi_sense_words, "multiSenseWordsThatCanSwitchAfterCorrect": correct_can_switch, "iosShards": len(index), "iosShardMatchesFinal": shard_ok, "iosFullLibraryMatchesFinal": full_static_ok, "deepseekWords": len(old), "deepseekStructurallyValid": old_checked}
+    report = {"source": str(source), "targetWords": len(target_words), "finalWords": len(final), "wordsHeldForReviewedRewrite": len(target_words - set(final)), "finalExamples": sum(len(entry["examples"]) for entry in final.values()), "invalidFinalWords": len(failures), "atomicContextGroups": sum(len(entry.get("senseGroups", [])) for entry in final.values()), "wordsWithNoRepeatFallback": no_repeat_fallback, "multiSenseWords": multi_sense_words, "multiSenseWordsThatCanSwitchAfterCorrect": correct_can_switch, "iosShards": len(index), "iosShardMatchesFinal": shard_ok, "iosFullLibraryMatchesFinal": full_static_ok, "deepseekWords": len(old), "deepseekStructurallyValid": old_checked}
     print(json.dumps(report, ensure_ascii=False, indent=2))
     if failures or not shard_ok or not full_static_ok:
         raise SystemExit(1)

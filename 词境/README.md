@@ -43,3 +43,16 @@ npm.cmd run ios:web:prepare
 以上文件均不会进入 Git；原始导入文件也不会被保存。
 
 Excel 支持 `.xlsx` 与 `.xlsm`；旧版 `.xls` 请先另存为 `.xlsx`。
+## 例句义项发布校验
+
+学习卡中的“本句释义”必须绑定到一个唯一的词典义项；构建流程会拒绝把多个义项合并后展示为句中义。维护内容时运行：
+
+```powershell
+npm.cmd run content:contexts:resolve   # 仅维护者：逐句语义审校，可中断后继续
+python scripts/split-example-library.py
+npm.cmd run content:contexts:verify
+npm.cmd run content:verify
+npm.cmd run ios:web:prepare
+```
+
+`data/context-resolved-examples.js` 是受审校后的可发布例句源，会随源码提交；审校过程文件和本机学习数据仍只留在当前电脑。

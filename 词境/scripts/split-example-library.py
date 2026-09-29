@@ -7,7 +7,7 @@ from argparse import ArgumentParser
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE = ROOT / "data" / "corpus-backed-examples.js"
+SOURCE = ROOT / "data" / "context-resolved-examples.js"
 OUT = ROOT / "public" / "ai-examples"
 INDEX = ROOT / "public" / "ai-example-index.js"
 FULL = ROOT / "public" / "ai-examples-full.js"
