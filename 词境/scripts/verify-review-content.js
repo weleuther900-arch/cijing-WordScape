@@ -147,6 +147,7 @@ assert.match(appSource, /function updateMemoryMemo\(value\)/, "Memo edits must b
 assert.match(appSource, /persist\(\{ defer: true, silent: true \}\)/, "Memo typing must use deferred automatic saving.");
 assert.match(fs.readFileSync(path.join(publicDir, "enhancements.css"), "utf8"), /memory-memo/, "The memory memo must retain its separate sticky-note styling.");
 assert.match(fs.readFileSync(path.join(publicDir, "enhancements.css"), "utf8"), /single blank sheet/, "The separate memo must retain its single blank-sheet styling.");
+assert.match(fs.readFileSync(path.join(publicDir, "enhancements.css"), "utf8"), /same visual system as the directory card/, "The memo must keep the directory card's background and corner system.");
 assert.doesNotMatch(fs.readFileSync(path.join(publicDir, "enhancements.css"), "utf8"), /memory-side-stack \.memory-memo textarea \{[^}]*repeating-linear-gradient/, "The single-layer memo must not contain internal ruled lines.");
 assert.match(appSource, /tableScroller\.scrollLeft = memoryTableScrollLeft/, "The memory table must restore its horizontal position after rendering.");
 assert.doesNotMatch(fs.readFileSync(path.join(publicDir, "enhancements.css"), "utf8"), /translateX\(14px\)/, "Mastered list exit must not slide the table horizontally.");

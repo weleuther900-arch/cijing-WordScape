@@ -1273,3 +1273,9 @@ html[data-theme="dark"] .memory-side-stack .memory-memo-heading span, html[data-
   .memory-side-stack { gap: 10px; position: static; }
   .memory-side-stack .memory-memo textarea { height: 82px; min-height: 82px; font-size: 14px; }
 }
+/* Keep the separate memo card on the same visual system as the directory card. */
+.memory-side-stack .memory-memo { padding: 16px 14px 12px; border-color: var(--line); border-radius: 20px; background: rgba(255,255,255,.28); }
+html[data-theme="dark"] .memory-side-stack .memory-memo { border-color: #494b53; background: #27282c; }
+@media (max-width: 700px) {
+  .memory-side-stack .memory-memo { padding: 13px 12px 10px; border-radius: 16px; }
+}
