@@ -135,6 +135,12 @@ assert.match(appSource, /\{ id: "mastered", label: "Mastered"/, "Memory director
 assert.match(appSource, /const serials = new Map\(filtered\.map\(\(word, index\) => \[word\.id, index \+ 1\]\)\)/, "Each memory directory must renumber its filtered rows from one.");
 assert.match(appSource, /function memoryWordHasBeenLearned\(word\) \{ return Boolean\(word\?\.learningSeen \|\| word\?\.learnedAt\); \}/, "The memory table must only contain words that have been learned.");
 assert.match(appSource, /activeWords\(\)\.filter\(memoryWordHasBeenLearned\)/, "Unlearned words must be excluded from all memory directories.");
+assert.match(appSource, /captureMemoryTableScrollPosition/, "Memory step updates must preserve horizontal table position.");
+assert.match(appSource, /const preservedScrollLeft = captureMemoryTableScrollPosition\(\);/, "Mastered updates must capture the current horizontal table position before rendering.");
+assert.match(appSource, /memoryTableScrollLeft = preservedScrollLeft;\s*render\(\);/, "Mastered updates must restore the captured horizontal table position after rendering.");
+assert.match(appSource, /tableScroller\.scrollLeft = memoryTableScrollLeft/, "The memory table must restore its horizontal position after rendering.");
+assert.doesNotMatch(fs.readFileSync(path.join(publicDir, "enhancements.css"), "utf8"), /translateX\(14px\)/, "Mastered list exit must not slide the table horizontally.");
+assert.match(fs.readFileSync(path.join(publicDir, "enhancements.css"), "utf8"), /memory-mastered-column-fix/, "The final Mastered column must retain an explicit responsive layout.");
 assert.doesNotMatch(appSource, /memoryPendingDirectoryExits/, "A Mastered word must not remain in Learning while waiting for sync.");
 assert.match(appSource, /movesToMastered.*animateMasteredMemoryRow/, "Completing Mastered from Learning must animate the immediate list exit.");
 assert.match(fs.readFileSync(path.join(publicDir, "enhancements.css"), "utf8"), /memory-row-to-mastered/, "The Mastered list exit animation must be available in the published stylesheet.");
