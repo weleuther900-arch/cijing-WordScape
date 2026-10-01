@@ -136,4 +136,8 @@ assert.match(appSource, /const serials = new Map\(filtered\.map\(\(word, index\)
 assert.doesNotMatch(appSource, /memoryPendingDirectoryExits/, "A Mastered word must not remain in Learning while waiting for sync.");
 assert.match(appSource, /movesToMastered.*animateMasteredMemoryRow/, "Completing Mastered from Learning must animate the immediate list exit.");
 assert.match(fs.readFileSync(path.join(publicDir, "enhancements.css"), "utf8"), /memory-row-to-mastered/, "The Mastered list exit animation must be available in the published stylesheet.");
+assert.match(appSource, /data-memory-examples/, "Each memory serial must open that word's verified examples.");
+assert.match(appSource, /memoryExampleSentenceMarkup/, "Memory examples must mark the target form within each sentence.");
+assert.match(appSource, /verifiedExampleContexts\(word\)/, "Memory examples must use verified sentence contexts and Chinese translations.");
+assert.match(fs.readFileSync(path.join(publicDir, "enhancements.css"), "utf8"), /memory-example-sheet/, "The published stylesheet must include the responsive memory example sheet.");
 console.log("Review content verification passed: 5,487 entries have standard parts of speech and Chinese senses, corrected dictionary records resolve, ambiguous pairs are blocked, and released examples remain linked.");
