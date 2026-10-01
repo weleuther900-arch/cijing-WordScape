@@ -133,4 +133,7 @@ assert.match(appSource, /\{ id: "all", label: "All", count: words\.length \}/, "
 assert.match(appSource, /\{ id: "learning", label: "Learning"/, "Memory directories must include Learning.");
 assert.match(appSource, /\{ id: "mastered", label: "Mastered"/, "Memory directories must include Mastered.");
 assert.match(appSource, /const serials = new Map\(filtered\.map\(\(word, index\) => \[word\.id, index \+ 1\]\)\)/, "Each memory directory must renumber its filtered rows from one.");
+assert.doesNotMatch(appSource, /memoryPendingDirectoryExits/, "A Mastered word must not remain in Learning while waiting for sync.");
+assert.match(appSource, /movesToMastered.*animateMasteredMemoryRow/, "Completing Mastered from Learning must animate the immediate list exit.");
+assert.match(fs.readFileSync(path.join(publicDir, "enhancements.css"), "utf8"), /memory-row-to-mastered/, "The Mastered list exit animation must be available in the published stylesheet.");
 console.log("Review content verification passed: 5,487 entries have standard parts of speech and Chinese senses, corrected dictionary records resolve, ambiguous pairs are blocked, and released examples remain linked.");

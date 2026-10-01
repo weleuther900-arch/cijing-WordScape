@@ -495,7 +495,6 @@ async function syncCloudState({ manual = false, automatic = false } = {}) {
     // check. Record it and schedule the next one; otherwise polling stops
     // forever after the first clean four-hour check.
     const completedWork = Boolean(manual || appliedRemote || uploaded || remote.status === "current");
-    let releasedMemoryRows = false;
     if (completedWork) {
       config.enabled = true;
       config.key = secret;
@@ -508,13 +507,11 @@ async function syncCloudState({ manual = false, automatic = false } = {}) {
       await persist({ skipCloud: true, silent: true });
       setCloudSyncStatus(changedDuringSync ? cloudSyncPendingMessage() : `已同步 · ${formatCloudSyncDate(config.lastSyncedAt)}（北京时间）`);
       startCloudSyncPolling();
-      releasedMemoryRows = !changedDuringSync && releaseMemoryPendingDirectoryExits();
     }
-    if (appliedRemote || releasedMemoryRows) {
+    if (appliedRemote) {
       render();
       scheduleOfflineDictionaryHydration();
-    }
-    if (manual) showToast(appliedRemote ? "已从云端合并这台设备的学习记录。" : "三台设备的学习记录已同步。");
+    }    if (manual) showToast(appliedRemote ? "已从云端合并这台设备的学习记录。" : "三台设备的学习记录已同步。");
     return true;
   } catch (error) {
     const reason = shouldRetryCloudSync(error) ? "网络连接暂时中断，请检查网络后重试" : (error?.message || "网络或云端服务暂不可用");
@@ -775,7 +772,7 @@ const MEMORY_TABLE_PAGE_SIZE = 80;
 let memoryVisibleCount = MEMORY_TABLE_PAGE_SIZE;
 let memorySearch = "";
 const memoryRevealedDefinitions = new Map([["recite", new Set()], ["dictation", new Set()]]);
-const memoryPendingDirectoryExits = new Map();
+
 const DAILY_QUOTES = window.WORDSCAPE_DAILY_QUOTES || [
   ["Small deeds done are better than great deeds planned.", "完成微小的行动，胜过筹划宏大的目标。"],
   ["The future depends on what you do today.", "未来取决于你今天所做的事。"],
@@ -1127,15 +1124,8 @@ function memoryRevealedDefinitionIds(mode = memoryModeKey()) {
 }
 
 function memoryFilterIncludes(word, filter) {
-  if (filter === "all") return true;
-  return memoryDirectoryKey(word) === filter || memoryPendingDirectoryExits.get(word.id) === filter;
+  return filter === "all" || memoryDirectoryKey(word) === filter;
 }
-function releaseMemoryPendingDirectoryExits() {
-  if (!memoryPendingDirectoryExits.size) return false;
-  memoryPendingDirectoryExits.clear();
-  return true;
-}
-
 function memoryWords() {
   return activeWords().slice().sort((left, right) => (Date.parse(left.learnedAt || left.createdAt) || 0) - (Date.parse(right.learnedAt || right.createdAt) || 0));
 }function memoryMatchesSearch(word, query) {
@@ -1733,7 +1723,7 @@ function renderMemory() {
   const serials = new Map(filtered.map((word, index) => [word.id, index + 1]));
   const visible = filtered.slice(0, memoryVisibleCount); const mode = prefs.mode;
 
-  const rows = visible.map((word) => `<div class="memory-row" role="row"><div class="memory-cell memory-index is-sticky" role="cell">${serials.get(word.id)}</div><div class="memory-cell memory-word is-sticky" role="cell">${memoryWordCell(word, mode)}</div><div class="memory-cell memory-definition is-sticky" role="cell">${memoryDefinitionHtml(word, prefs)}</div>${MEMORY_STEPS.map((step) => `<div class="memory-cell memory-step" role="cell">${memoryCircle(word, step, mode)}</div>`).join("")}</div>`).join("");
+  const rows = visible.map((word) => `<div class="memory-row" data-memory-row="${escapeHtml(word.id)}" role="row"><div class="memory-cell memory-index is-sticky" role="cell">${serials.get(word.id)}</div><div class="memory-cell memory-word is-sticky" role="cell">${memoryWordCell(word, mode)}</div><div class="memory-cell memory-definition is-sticky" role="cell">${memoryDefinitionHtml(word, prefs)}</div>${MEMORY_STEPS.map((step) => `<div class="memory-cell memory-step" role="cell">${memoryCircle(word, step, mode)}</div>`).join("")}</div>`).join("");
   const body = rows || `<div class="memory-empty">${orderedWords.length ? "这个目录中还没有单词。" : "当前单词本还没有单词。"}</div>`;
   APP.innerHTML = `<section class="memory-page">${pageHeading("记忆")}<section class="memory-lead"><div><p class="section-label">${escapeHtml(notebook?.name || "我的单词本")} · 独立记录</p><h2>循着自己的记忆痕迹。</h2><p>按加入词本与首次学习时间排列；圆点只记录你的手动记忆，不影响 FSRS 复习。</p></div><div class="memory-summary"><strong>${orderedWords.length}</strong><span>全部单词</span></div></section><div class="memory-toolbar"><div class="memory-modes" role="tablist" aria-label="记忆方式"><button class="memory-mode ${mode === "recite" ? "is-active" : ""}" data-memory-mode="recite" role="tab" aria-selected="${mode === "recite"}">背诵</button><button class="memory-mode ${mode === "dictation" ? "is-active" : ""}" data-memory-mode="dictation" role="tab" aria-selected="${mode === "dictation"}">默写</button></div><button class="quiet-button memory-hide-all" data-memory-hide-all aria-label="${prefs.hideAll ? "显示全部词性和释义" : "隐藏全部词性和释义"}">${prefs.hideAll ? "显示" : "隐藏"}</button><label class="memory-search"><span>搜索</span><input data-memory-search type="search" value="${escapeHtml(memorySearch)}" placeholder="英文或中文" autocomplete="off" /></label></div><div class="memory-workspace"><aside class="memory-sidebar"><p class="section-label">目录</p><nav class="memory-directory" aria-label="记忆目录">${directory.map((item) => `<button class="memory-directory-item ${prefs.filter === item.id ? "is-active" : ""}" data-memory-filter="${item.id}"><span>${item.label}</span><b>${item.count}</b></button>`).join("")}</nav></aside><section class="memory-table-card"><div class="memory-table-caption"><div><p class="section-label">${mode === "dictation" ? "默写" : "背诵"}</p><h2>${memoryFilterLabel(prefs.filter)}</h2></div><p>${mode === "dictation" ? "直接在英文框中书写；核对正确后自动填满下一个空圆。" : "先回忆释义，再点按对应圆点。"}</p></div><div class="memory-table-scroll"><div class="memory-table" role="table" aria-label="${escapeHtml(notebook?.name || "当前")}单词本记忆表"><div class="memory-row memory-head" role="row"><div class="memory-cell memory-index is-sticky" role="columnheader">序号</div><div class="memory-cell memory-word is-sticky" role="columnheader">${mode === "dictation" ? "默写" : "英文"}</div><div class="memory-cell memory-definition is-sticky" role="columnheader">释义</div>${MEMORY_STEPS.map((step) => `<div class="memory-cell memory-step" role="columnheader">${step.label}</div>`).join("")}</div>${body}</div></div>${visible.length < filtered.length ? `<button class="secondary memory-more" data-memory-more>更多</button>` : ""}</section></div><p class="memory-footnote">节点：${memoryStepDescription()}。切换单词本会切换整张记忆表与全部记录。</p></section>`;
   APP.querySelectorAll(".memory-row").forEach((row) => {
@@ -2084,13 +2074,23 @@ function toggleMemoryDefinition(wordId) {
   word.memoryTable = { ...current, definitionHiddenByMode: { ...(current.definitionHiddenByMode || {}), [mode]: nextHidden }, definitionUpdatedAtByMode: { ...(current.definitionUpdatedAtByMode || {}), [mode]: timestamp }, updatedAt: timestamp };
   persist(); render();
 }
+function animateMasteredMemoryRow(wordId) {
+  const row = [...APP.querySelectorAll(".memory-row[data-memory-row]")].find((item) => item.dataset.memoryRow === wordId);
+  if (!row) return Promise.resolve();
+  row.classList.add("is-mastering");
+  const button = row.querySelector(`[data-memory-step="day30"][data-memory-word="${wordId}"]`);
+  button?.classList.add("is-complete");
+  button?.setAttribute("aria-label", "已完全熟悉，正在移至 Mastered");
+  return new Promise((resolve) => window.setTimeout(resolve, 240));
+}
 async function updateMemoryStep(wordId, stepId, completed, mode = memoryPrefs().mode) {
   const word = state.words.find((item) => item.id === wordId && item.notebookId === state.activeNotebookId); if (!word || !MEMORY_STEPS.some((step) => step.id === stepId)) return;
-  const current = memoryProgress(word); const priorDirectory = memoryDirectoryKey(word); const timestamp = new Date().toISOString();
+  const current = memoryProgress(word); const priorDirectory = memoryDirectoryKey(word); const timestamp = new Date().toISOString(); const prefs = memoryPrefs();
   word.memoryTable = { ...current, steps: { ...(current.steps || {}), [stepId]: { completed: Boolean(completed), mode, updatedAt: timestamp } }, updatedAt: timestamp };
-  if (completed && memoryPrefs().filter === priorDirectory && memoryDirectoryKey(word) !== priorDirectory) memoryPendingDirectoryExits.set(word.id, priorDirectory);
-  if (!completed) memoryPendingDirectoryExits.delete(word.id);
+  const movesToMastered = completed && stepId === "day30" && priorDirectory === "learning" && prefs.filter === "learning" && memoryDirectoryKey(word) === "mastered";
+  const exitAnimation = movesToMastered ? animateMasteredMemoryRow(wordId) : null;
   await persist();
+  if (exitAnimation) await exitAnimation;
   render();
 }
 function toggleMemoryStep(wordId, stepId) {
