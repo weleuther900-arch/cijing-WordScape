@@ -127,4 +127,10 @@ assert.match(appSource, /unresolvedWords\.length.*已停止导出/, "CSV export 
 assert.match(appSource, /const importable = fresh\.filter/, "Imports must filter out words without a reliable dictionary definition.");
 assert.match(appSource, /if \(!importable\.length\).*未执行导入/, "An unresolved import must stop before writing an empty definition.");
 
+assert.match(appSource, /\{ id: "day30", label: "Mastered"/, "The final memory step must be named Mastered.");
+assert.match(appSource, /function memoryIsMastered\(word\) \{ return memoryStepComplete\(word, "day30"\); \}/, "Mastered must be determined by the final memory step.");
+assert.match(appSource, /\{ id: "all", label: "All", count: words\.length \}/, "Memory directories must include All.");
+assert.match(appSource, /\{ id: "learning", label: "Learning"/, "Memory directories must include Learning.");
+assert.match(appSource, /\{ id: "mastered", label: "Mastered"/, "Memory directories must include Mastered.");
+assert.match(appSource, /const serials = new Map\(filtered\.map\(\(word, index\) => \[word\.id, index \+ 1\]\)\)/, "Each memory directory must renumber its filtered rows from one.");
 console.log("Review content verification passed: 5,487 entries have standard parts of speech and Chinese senses, corrected dictionary records resolve, ambiguous pairs are blocked, and released examples remain linked.");

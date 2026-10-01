@@ -32,11 +32,11 @@
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
     <template id="speaker-template"><button class="speaker" type="button" aria-label="朗读"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 10v4h4l5 4V6l-5 4H4Zm11.5 2a4.5 4.5 0 0 0-2-3.74v7.48A4.5 4.5 0 0 0 15.5 12Zm-2-8.16v2.08a6.5 6.5 0 0 1 0 12.16v2.08a8.5 8.5 0 0 0 0-16.32Z"/></svg></button></template>
     <script defer src="./content-library.js?v=20260815-08"></script>
-    <script defer src="./ai-example-index.js?v=20260928-01"></script>
-    <script defer src="./released-example-words.js?v=20260928-01"></script>
+    <script defer src="./ai-example-index.js?v=20261001-01"></script>
+    <script defer src="./released-example-words.js?v=20261001-01"></script>
     <script defer src="./sync-core.js?v=20260830-14"></script>
     <script defer src="./daily-quotes.js?v=20260815-10"></script>
-    <script defer src="./app.js?v=20260928-01"></script>
+    <script defer src="./app.js?v=20261001-01"></script>
     <script>
       if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost" || location.hostname === "127.0.0.1")) {
         const wordscapeAppleTouch = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
@@ -46,7 +46,7 @@
             navigator.serviceWorker.getRegistrations().then((registrations) => Promise.all(registrations.map((registration) => registration.unregister()))).catch(() => undefined);
             return;
           }
-          navigator.serviceWorker.register("./service-worker.js?v=20260928-01").then((registration) => registration.update()).catch(() => undefined);
+          navigator.serviceWorker.register("./service-worker.js?v=20261001-01").then((registration) => registration.update()).catch(() => undefined);
         });
       }
     </script>
