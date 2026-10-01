@@ -777,6 +777,7 @@ let memoryTableScrollLeft = 0;
 const memoryRevealedDefinitions = new Map([["recite", new Set()], ["dictation", new Set()]]);
 let memoryExampleWordId = "";
 let memoryExampleLoading = false;
+let memoryExampleLoadVersion = 0;
 let memoryExampleClosing = false;
 let memoryExampleCloseTimer = null;
 
@@ -966,7 +967,7 @@ function hydrateAiContexts(words) {
   });
   return changed;
 }
-async function preloadAiContexts(words, view) {
+async function preloadAiContexts(words, view, { renderAfterLoad = true } = {}) {
   // Examples are streamed as small two-letter shards. Only request a shard
   // when an entry is genuinely absent from the in-memory library.
   const senseReady = loadSenseLibrary();
@@ -980,7 +981,7 @@ async function preloadAiContexts(words, view) {
   await senseReady;
   const hydrated = hydrateAiContexts(words || []);
   if (hydrated) await persist();
-  if ((hydrated || keys.length) && currentView === view) render();
+  if (renderAfterLoad && (hydrated || keys.length) && currentView === view) render();
 }
 function retryAiContexts(words, view) {
   [...new Set((words || []).map(aiShardKey))].forEach((key) => AI_EXAMPLE_LOADS.delete(key));
@@ -1030,8 +1031,8 @@ function memoryExampleSentenceMarkup(sentence, targetForm, word) {
 }
 function memoryExamplePanelHtml(word) {
   if (!word) return "";
-  const contexts = memoryExampleContexts(word);
-  const content = contexts.length ? `<div class="memory-example-list">${contexts.map((context, index) => `<article class="memory-example-item"><span class="memory-example-order" aria-hidden="true">${index + 1}</span><div class="memory-example-copy"><p class="memory-example-sentence">${memoryExampleSentenceMarkup(context.sentence, context.targetForm, word)}</p><p class="memory-example-translation"><span>中文释义</span>${escapeHtml(context.zh)}</p></div></article>`).join("")}</div>` : `<div class="memory-example-empty"><p>${memoryExampleLoading ? "正在载入这个单词的全部例句…" : "暂时没有可显示的完整例句。"}</p>${memoryExampleLoading ? "" : '<button class="secondary" type="button" data-memory-examples-retry>重新载入</button>'}</div>`;
+  const contexts = memoryExampleLoading ? [] : memoryExampleContexts(word);
+  const content = memoryExampleLoading ? `<div class="memory-example-empty" aria-live="polite"><p>正在准备这个单词的全部例句…</p></div>` : contexts.length ? `<div class="memory-example-list">${contexts.map((context, index) => `<article class="memory-example-item"><span class="memory-example-order" aria-hidden="true">${index + 1}</span><div class="memory-example-copy"><div class="memory-example-sentence-row"><p class="memory-example-sentence">${memoryExampleSentenceMarkup(context.sentence, context.targetForm, word)}</p><button class="memory-example-speak" type="button" data-speak-sentence="${escapeHtml(context.sentence)}" aria-label="朗读第 ${index + 1} 句">${SPEAKER_ICON}</button></div><p class="memory-example-translation"><span>中文释义</span>${escapeHtml(context.zh)}</p></div></article>`).join("")}</div>` : `<div class="memory-example-empty"><p>暂时没有可显示的完整例句。</p><button class="secondary" type="button" data-memory-examples-retry>重新载入</button></div>`;
   return `<div class="memory-example-overlay ${memoryExampleClosing ? "is-closing" : ""}" data-memory-example-overlay><button class="memory-example-backdrop" type="button" data-memory-examples-close aria-label="关闭例句面板"></button><section class="memory-example-sheet" role="dialog" aria-modal="true" aria-labelledby="memory-example-title" tabindex="-1"><header class="memory-example-header"><div><p>例句与中文释义</p><h2 id="memory-example-title">${escapeHtml(word.text)}</h2>${word.phonetic ? `<span>${escapeHtml(word.phonetic)}</span>` : ""}</div><button class="memory-example-close" type="button" data-memory-examples-close aria-label="关闭例句面板">关闭</button></header>${content}</section></div>`;
 }
 function clearMemoryExamplePanel() {
@@ -1039,14 +1040,17 @@ function clearMemoryExamplePanel() {
   memoryExampleCloseTimer = null;
   memoryExampleWordId = "";
   memoryExampleLoading = false;
+  memoryExampleLoadVersion += 1;
   memoryExampleClosing = false;
 }
 function requestMemoryExamples(word, retry = false) {
   if (!word) return;
+  const requestVersion = ++memoryExampleLoadVersion;
   if (retry) AI_EXAMPLE_LOADS.delete(aiShardKey(word));
   memoryExampleLoading = !aiRecordForWord(word) || retry;
   if (!memoryExampleLoading) return;
-  void preloadAiContexts([word], "memory").finally(() => {
+  void preloadAiContexts([word], "memory", { renderAfterLoad: false }).finally(() => {
+    if (requestVersion !== memoryExampleLoadVersion) return;
     memoryExampleLoading = false;
     if (currentView === "memory" && memoryExampleWordId === word.id && !memoryExampleClosing) render();
   });

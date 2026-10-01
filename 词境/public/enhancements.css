@@ -1279,3 +1279,15 @@ html[data-theme="dark"] .memory-side-stack .memory-memo { border-color: #494b53;
 @media (max-width: 700px) {
   .memory-side-stack .memory-memo { padding: 13px 12px 10px; border-radius: 16px; }
 }
+/* Memory example sentence controls: one fixed speaker position per sentence. */
+.memory-example-sentence-row { display: grid; grid-template-columns: minmax(0, 1fr) 38px; align-items: start; gap: 10px; }
+.memory-example-sentence-row .memory-example-sentence { min-width: 0; }
+.memory-example-speak { display: grid; width: 36px; height: 36px; place-items: center; padding: 0; border: 1px solid rgba(51,95,109,.32); border-radius: 50%; color: var(--accent); background: transparent; cursor: pointer; }
+.memory-example-speak:hover, .memory-example-speak:focus-visible { border-color: var(--accent); background: rgba(51,95,109,.1); outline: none; }
+.memory-example-speak svg { display: block; width: 17px; height: 17px; }
+html[data-theme="dark"] .memory-example-speak { border-color: #65818c; color: #b7dbe4; }
+html[data-theme="dark"] .memory-example-speak:hover, html[data-theme="dark"] .memory-example-speak:focus-visible { border-color: #b7dbe4; background: rgba(142,184,196,.14); }
+@media (max-width: 700px) {
+  .memory-example-sentence-row { grid-template-columns: minmax(0, 1fr) 35px; gap: 8px; }
+  .memory-example-speak { width: 34px; height: 34px; }
+}

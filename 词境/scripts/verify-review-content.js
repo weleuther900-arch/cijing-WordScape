@@ -157,8 +157,13 @@ assert.match(appSource, /movesToMastered.*animateMasteredMemoryRow/, "Completing
 assert.match(fs.readFileSync(path.join(publicDir, "enhancements.css"), "utf8"), /memory-row-to-mastered/, "The Mastered list exit animation must be available in the published stylesheet.");
 assert.match(appSource, /data-memory-examples/, "Each memory serial must open that word's verified examples.");
 assert.match(appSource, /memoryExampleSentenceMarkup/, "Memory examples must mark the target form within each sentence.");
+assert.match(appSource, /data-speak-sentence="\$\{escapeHtml\(context\.sentence\)\}"/, "Every memory example sentence must have its own speech control.");
+assert.match(appSource, /const contexts = memoryExampleLoading \? \[\] : memoryExampleContexts\(word\)/, "Memory examples must wait for the complete set instead of showing a fallback sentence first.");
+assert.match(appSource, /preloadAiContexts\(\[word\], "memory", \{ renderAfterLoad: false \}\)/, "Memory example loading must perform only the final stable render.");
+assert.match(appSource, /requestVersion !== memoryExampleLoadVersion/, "Stale memory example requests must not redraw a newer panel.");
 assert.match(appSource, /verifiedExampleContexts\(word\)/, "Memory examples must use verified sentence contexts and Chinese translations.");
 assert.match(fs.readFileSync(path.join(publicDir, "enhancements.css"), "utf8"), /memory-example-sheet/, "The published stylesheet must include the responsive memory example sheet.");
+assert.match(fs.readFileSync(path.join(publicDir, "enhancements.css"), "utf8"), /memory-example-sentence-row/, "The published stylesheet must align each sentence speech control consistently.");
 assert.match(appSource, /function locateMemorySearch\(\)/, "Memory search must locate a word instead of only filtering the table.");
 assert.match(appSource, /memoryWindowStart = Math\.floor/, "Memory search must open the target row's table window.");
 assert.match(appSource, /row\.scrollIntoView/, "Memory search must scroll to the located row.");
