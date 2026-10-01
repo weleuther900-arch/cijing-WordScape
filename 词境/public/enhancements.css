@@ -1256,17 +1256,17 @@ html[data-theme="dark"] .memory-memo textarea::placeholder { color: #988d68; }
   .memory-memo { width: 100%; max-width: none; margin-top: 11px; }
   .memory-memo textarea { height: 76px; min-height: 76px; font-size: 14px; }
 }
-/* The memo is a separate, quiet ruled sheet rather than part of the directory card. */
+/* The memo is a separate, single blank sheet rather than part of the directory card. */
 .memory-side-stack { display: grid; gap: 12px; align-self: start; position: sticky; top: 88px; }
 .memory-side-stack .memory-sidebar { position: static; top: auto; }
-.memory-side-stack .memory-memo { width: auto; max-width: none; margin: 0; padding: 10px 12px 9px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,255,255,.18); box-shadow: none; }
+.memory-side-stack .memory-memo { width: auto; max-width: none; margin: 0; padding: 10px 12px 9px; border: 1px solid var(--line); border-radius: 8px; background: transparent; box-shadow: none; }
 .memory-side-stack .memory-memo-title { margin: 0 0 7px; color: var(--muted); font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
 .memory-side-stack .memory-memo-heading { margin-bottom: 7px; }
 .memory-side-stack .memory-memo-heading h3 { color: var(--ink); font-size: 13px; font-weight: 700; }
 .memory-side-stack .memory-memo-heading span, .memory-side-stack .memory-memo p { color: var(--muted); }
-.memory-side-stack .memory-memo textarea { height: 104px; min-height: 104px; color: var(--ink); background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 25px, rgba(51,95,109,.16) 25px, rgba(51,95,109,.16) 26px); font-size: 13px; line-height: 26px; }
+.memory-side-stack .memory-memo textarea { height: 104px; min-height: 104px; color: var(--ink); background: transparent; font-size: 13px; line-height: 1.6; }
 .memory-side-stack .memory-memo textarea::placeholder { color: var(--muted); }
-html[data-theme="dark"] .memory-side-stack .memory-memo { border-color: #494b53; background: #27282c; } html[data-theme="dark"] .memory-side-stack .memory-memo textarea { background-image: repeating-linear-gradient(to bottom, transparent 0, transparent 25px, rgba(169,208,219,.16) 25px, rgba(169,208,219,.16) 26px); }
+html[data-theme="dark"] .memory-side-stack .memory-memo { border-color: #494b53; background: transparent; } html[data-theme="dark"] .memory-side-stack .memory-memo textarea { background: transparent; }
 html[data-theme="dark"] .memory-side-stack .memory-memo-heading h3, html[data-theme="dark"] .memory-side-stack .memory-memo textarea { color: #eef0ec; }
 html[data-theme="dark"] .memory-side-stack .memory-memo-heading span, html[data-theme="dark"] .memory-side-stack .memory-memo p, html[data-theme="dark"] .memory-side-stack .memory-memo textarea::placeholder { color: #aeb5b7; }
 @media (max-width: 700px) {

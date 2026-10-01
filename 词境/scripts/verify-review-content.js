@@ -146,7 +146,8 @@ assert.doesNotMatch(appSource, /data-memory-memo[^>]*placeholder=/, "The blank m
 assert.match(appSource, /function updateMemoryMemo\(value\)/, "Memo edits must be persisted without rerendering the page.");
 assert.match(appSource, /persist\(\{ defer: true, silent: true \}\)/, "Memo typing must use deferred automatic saving.");
 assert.match(fs.readFileSync(path.join(publicDir, "enhancements.css"), "utf8"), /memory-memo/, "The memory memo must retain its separate sticky-note styling.");
-assert.match(fs.readFileSync(path.join(publicDir, "enhancements.css"), "utf8"), /quiet ruled sheet/, "The separate memo must retain its simple ruled-paper styling.");
+assert.match(fs.readFileSync(path.join(publicDir, "enhancements.css"), "utf8"), /single blank sheet/, "The separate memo must retain its single blank-sheet styling.");
+assert.doesNotMatch(fs.readFileSync(path.join(publicDir, "enhancements.css"), "utf8"), /memory-side-stack \.memory-memo textarea \{[^}]*repeating-linear-gradient/, "The single-layer memo must not contain internal ruled lines.");
 assert.match(appSource, /tableScroller\.scrollLeft = memoryTableScrollLeft/, "The memory table must restore its horizontal position after rendering.");
 assert.doesNotMatch(fs.readFileSync(path.join(publicDir, "enhancements.css"), "utf8"), /translateX\(14px\)/, "Mastered list exit must not slide the table horizontally.");
 assert.match(fs.readFileSync(path.join(publicDir, "enhancements.css"), "utf8"), /memory-mastered-column-fix/, "The final Mastered column must retain an explicit responsive layout.");

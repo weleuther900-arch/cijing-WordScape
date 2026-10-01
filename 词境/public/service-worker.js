@@ -1,4 +1,4 @@
-const CACHE_NAME = "wordscape-shell-v101";
+const CACHE_NAME = "wordscape-shell-v102";
 const SHELL_FILES = [
   "./",
   "./index.html",
@@ -20,13 +20,13 @@ const SHELL_FILES = [
 
 const VERSIONED_CORE_FILES = [
   "./styles.css?v=20260815-08",
-  "./enhancements.css?v=20261001-09",
+  "./enhancements.css?v=20261001-10",
   "./content-library.js?v=20260815-08",
-  "./ai-example-index.js?v=20261001-09",
-  "./released-example-words.js?v=20261001-09",
+  "./ai-example-index.js?v=20261001-10",
+  "./released-example-words.js?v=20261001-10",
   "./sync-core.js?v=20260830-14",
   "./daily-quotes.js?v=20260815-10",
-  "./app.js?v=20261001-09"
+  "./app.js?v=20261001-10"
 ];
 
 
