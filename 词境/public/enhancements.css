@@ -1239,3 +1239,20 @@ html[data-theme="dark"] .memory-example-trigger:hover, html[data-theme="dark"] .
   html[data-view="memory"] .memory-steps > .memory-step:last-child { justify-content: center; padding-inline: 4px; }
   html[data-view="memory"] .memory-head .memory-step:last-child { min-width: 0; font-size: 10px; white-space: nowrap; }
 }
+
+/* Per-notebook sticky note, intentionally separate from the memory directories. */
+.memory-memo { margin-top: 15px; max-width: 250px; padding: 11px 10px 9px; border: 1px solid rgba(169, 137, 61, .42); border-radius: 12px; background: #fff7c9; box-shadow: 0 5px 13px rgba(91, 70, 21, .10); }
+.memory-memo-heading { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 7px; }
+.memory-memo-heading h3 { margin: 0; color: #62501e; font-size: 13px; line-height: 1.2; }
+.memory-memo-heading span { color: #857646; font-size: 10px; white-space: nowrap; }
+.memory-memo textarea { display: block; box-sizing: border-box; width: 100%; height: 88px; min-height: 88px; padding: 0; resize: none; border: 0; outline: 0; color: #393221; background: transparent; font: inherit; font-size: 13px; line-height: 1.58; }
+.memory-memo textarea::placeholder { color: #a09261; opacity: 1; }
+.memory-memo p { margin: 7px 0 0; color: #8a7a46; font-size: 10px; line-height: 1.35; }
+html[data-theme="dark"] .memory-memo { border-color: rgba(208, 186, 109, .35); background: #383321; box-shadow: none; }
+html[data-theme="dark"] .memory-memo-heading h3, html[data-theme="dark"] .memory-memo textarea { color: #f1e8c4; }
+html[data-theme="dark"] .memory-memo-heading span, html[data-theme="dark"] .memory-memo p { color: #c1b587; }
+html[data-theme="dark"] .memory-memo textarea::placeholder { color: #988d68; }
+@media (max-width: 700px) {
+  .memory-memo { width: 100%; max-width: none; margin-top: 11px; }
+  .memory-memo textarea { height: 76px; min-height: 76px; font-size: 14px; }
+}
