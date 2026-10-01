@@ -142,4 +142,8 @@ assert.match(appSource, /data-memory-examples/, "Each memory serial must open th
 assert.match(appSource, /memoryExampleSentenceMarkup/, "Memory examples must mark the target form within each sentence.");
 assert.match(appSource, /verifiedExampleContexts\(word\)/, "Memory examples must use verified sentence contexts and Chinese translations.");
 assert.match(fs.readFileSync(path.join(publicDir, "enhancements.css"), "utf8"), /memory-example-sheet/, "The published stylesheet must include the responsive memory example sheet.");
-console.log("Review content verification passed: 5,487 entries have standard parts of speech and Chinese senses, corrected dictionary records resolve, ambiguous pairs are blocked, and released examples remain linked.");
+assert.match(appSource, /function locateMemorySearch\(\)/, "Memory search must locate a word instead of only filtering the table.");
+assert.match(appSource, /memoryWindowStart = Math\.floor/, "Memory search must open the target row's table window.");
+assert.match(appSource, /row\.scrollIntoView/, "Memory search must scroll to the located row.");
+assert.doesNotMatch(appSource, /memoryFilterIncludes\(word, prefs\.filter\) && memoryMatchesSearch\(word, memorySearch\)/, "Memory search must not shrink the table to matching words.");
+assert.match(fs.readFileSync(path.join(publicDir, "enhancements.css"), "utf8"), /memory-search-target/, "The located memory row must receive a visible highlight style.");console.log("Review content verification passed: 5,487 entries have standard parts of speech and Chinese senses, corrected dictionary records resolve, ambiguous pairs are blocked, and released examples remain linked.");

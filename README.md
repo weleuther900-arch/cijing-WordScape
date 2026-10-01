@@ -45,7 +45,7 @@ irm https://raw.githubusercontent.com/weleuther900-arch/cijing-WordScape/main/in
 | 初学 | 英文例句、按需显示句意；点击单词或句意即可朗读英文 | 侧栏会标记已学习与未学习的词。 |
 | 回忆 | 中文新情景 + 英文挖空；可先在心里作答，再验证候选 | 错误选项与正确选项显示词性、句中义项和朗读。 |
 | 巩固 | FSRS 根据答对、提示后答对、答错等情况计算下次间隔 | 显示当前保持率、距上次复习和下一次复习日期。 |
-| 记忆 | 单词本内已学习单词的 All / Learning / Mastered 记忆表，支持背诵与默写 | Day 30 勾选后归入 Mastered；点击序号可查看全部双语例句，目标词形会突出显示；不改变 FSRS。 |
+| 记忆 | 单词本内已学习单词的 All / Learning / Mastered 记忆表，支持背诵与默写 | Day 30 勾选后归入 Mastered；搜索会定位并跳到目标行；点击序号可查看全部双语例句，目标词形会突出显示；不改变 FSRS。 |
 
 <p align="center">
   <img src="docs/images/learn.png" alt="词境学习页：词表侧栏与英语语境" width="49.2%" />
