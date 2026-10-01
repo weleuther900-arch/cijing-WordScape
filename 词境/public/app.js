@@ -1201,8 +1201,9 @@ function memoryRevealedDefinitionIds(mode = memoryModeKey()) {
 function memoryFilterIncludes(word, filter) {
   return filter === "all" || memoryDirectoryKey(word) === filter;
 }
+function memoryWordHasBeenLearned(word) { return Boolean(word?.learningSeen || word?.learnedAt); }
 function memoryWords() {
-  return activeWords().slice().sort((left, right) => (Date.parse(left.learnedAt || left.createdAt) || 0) - (Date.parse(right.learnedAt || right.createdAt) || 0));
+  return activeWords().filter(memoryWordHasBeenLearned).slice().sort((left, right) => (Date.parse(left.learnedAt || left.createdAt) || 0) - (Date.parse(right.learnedAt || right.createdAt) || 0));
 }
 function memoryMatchesSearch(word, query) {
   const needle = String(query || "").trim().toLowerCase();
