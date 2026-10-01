@@ -141,6 +141,8 @@ assert.match(appSource, /memoryTableScrollLeft = preservedScrollLeft;\s*render\(
 assert.match(appSource, /memo: "", memoUpdatedAt: null/, "Each notebook memory table must include a personal memo.");
 assert.match(appSource, /data-memory-memo/, "The memory page must render its editable personal memo.");
 assert.match(appSource, /memory-side-stack/, "The personal memo must live outside the directory sidebar.");
+assert.match(appSource, /class="memory-memo-title" id="memory-memo-title">Notes<\/h3><textarea data-memory-memo/, "The memo must be visually blank except for its concise English Notes title.");
+assert.doesNotMatch(appSource, /data-memory-memo[^>]*placeholder=/, "The blank memo must not include an instructional placeholder.");
 assert.match(appSource, /function updateMemoryMemo\(value\)/, "Memo edits must be persisted without rerendering the page.");
 assert.match(appSource, /persist\(\{ defer: true, silent: true \}\)/, "Memo typing must use deferred automatic saving.");
 assert.match(fs.readFileSync(path.join(publicDir, "enhancements.css"), "utf8"), /memory-memo/, "The memory memo must retain its separate sticky-note styling.");
