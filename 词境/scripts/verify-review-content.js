@@ -164,6 +164,8 @@ assert.match(appSource, /requestVersion !== memoryExampleLoadVersion/, "Stale me
 assert.match(appSource, /verifiedExampleContexts\(word\)/, "Memory examples must use verified sentence contexts and Chinese translations.");
 assert.match(fs.readFileSync(path.join(publicDir, "enhancements.css"), "utf8"), /memory-example-sheet/, "The published stylesheet must include the responsive memory example sheet.");
 assert.match(fs.readFileSync(path.join(publicDir, "enhancements.css"), "utf8"), /memory-example-sentence-row/, "The published stylesheet must align each sentence speech control consistently.");
+assert.match(fs.readFileSync(path.join(publicDir, "enhancements.css"), "utf8"), /iPhone: keep the word header fixed/, "The iPhone example panel must keep its header separate from its scroll area.");
+assert.match(fs.readFileSync(path.join(publicDir, "enhancements.css"), "utf8"), /memory-example-list,[\s\S]*overflow-y: auto/, "The iPhone example list must provide its own vertical scroll area.");
 assert.match(appSource, /function locateMemorySearch\(\)/, "Memory search must locate a word instead of only filtering the table.");
 assert.match(appSource, /memoryWindowStart = Math\.floor/, "Memory search must open the target row's table window.");
 assert.match(appSource, /row\.scrollIntoView/, "Memory search must scroll to the located row.");
