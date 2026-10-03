@@ -18,13 +18,13 @@ function Note([string]$message) {
 Push-Location $root
 try {
   for ($pass = 1; $pass -le $MaximumPasses; $pass += 1) {
-    Note "pass $pass: merging existing Codex drafts"
+    Note "pass ${pass}: merging existing Codex drafts"
     & $node .\scripts\merge-semantic-sense-coverage-drafts.js *>> $log
     if ($LASTEXITCODE -ne 0) { throw 'draft merge failed' }
 
     $failed = $false
     for ($index = 0; $index -lt $PartitionCount; $index += 1) {
-      Note "pass $pass: partition $index/$PartitionCount starting (single worker)"
+      Note "pass ${pass}: partition ${index}/$PartitionCount starting (single worker)"
       & $node .\scripts\generate-semantic-sense-coverage.js `
         --limit-words 6000 --batch-size $BatchSize `
         --partition-index $index --partition-count $PartitionCount `
