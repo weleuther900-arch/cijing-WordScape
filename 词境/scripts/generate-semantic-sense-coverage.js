@@ -59,7 +59,7 @@ function prompt(items) {
       "Use realistic educational, daily-life, workplace, scientific, or public contexts. No dialogue, question, exclamation, quotation, template, invented statistic, or filler.",
       "Before returning, perform a native-speaker quality review of every pair: the English must sound idiomatic and naturally motivated, with a specific plausible situation; reject stiff, vague, repetitive, translated-from-Chinese, or textbook-template sentences.",
       "Make the target sense unmistakable from context, use natural collocations and varied subjects, and avoid filler openings, invented facts, awkward modifiers, and unnatural verb patterns.",
-      "Check that the Chinese translation faithfully conveys the whole sentence and the intended target sense without adding or omitting facts; rewrite any weak sentence rather than returning it."
+      "Check that the Chinese translation faithfully conveys the whole sentence and the intended target sense without adding or omitting facts; rewrite any weak sentence rather than returning it.",
       "Check grammar, collocation and exact word sense before returning."
     ],
     returnShape: { items: [{ word: "exact word", omittedSenseIds: ["only supplied near-synonym ids"], examples: [{ sentence: "English.", translation: "中文。", targetForm: "exact form", senseId: "supplied id" }] }] },
