@@ -20,8 +20,8 @@ function readAssignment(file, name) {
   return JSON.parse(raw.slice(at + marker.length).trim().replace(/;$/, ""));
 }
 
-function writeDrafts(entries) {
-  fs.writeFileSync(draftPath, `window.SEMANTIC_SENSE_COVERAGE_DRAFTS = ${JSON.stringify({ entries })};\n`, "utf8");
+function writeDrafts(entries, outputPath) {
+  fs.writeFileSync(outputPath, `window.SEMANTIC_SENSE_COVERAGE_DRAFTS = ${JSON.stringify({ entries })};\n`, "utf8");
 }
 
 function normal(value) {
@@ -81,13 +81,22 @@ function main() {
   const limitAt = argv.indexOf("--limit-words");
   const batchAt = argv.indexOf("--batch-size");
   const modelAt = argv.indexOf("--model");
+  const outputAt = argv.indexOf("--output");
+  const partitionIndexAt = argv.indexOf("--partition-index");
+  const partitionCountAt = argv.indexOf("--partition-count");
   const limit = limitAt >= 0 ? Number(argv[limitAt + 1]) : 5;
   const batchSize = batchAt >= 0 ? Number(argv[batchAt + 1]) : 3;
   const model = modelAt >= 0 ? String(argv[modelAt + 1]) : "gpt-5.6-terra";
+  const outputPath = outputAt >= 0 ? path.resolve(root, String(argv[outputAt + 1])) : draftPath;
+  const partitionIndex = partitionIndexAt >= 0 ? Number(argv[partitionIndexAt + 1]) : 0;
+  const partitionCount = partitionCountAt >= 0 ? Number(argv[partitionCountAt + 1]) : 1;
   if (!Number.isInteger(limit) || limit < 1 || !Number.isInteger(batchSize) || batchSize < 1) throw new Error("limits must be positive integers");
+  if (!Number.isInteger(partitionIndex) || !Number.isInteger(partitionCount) || partitionCount < 1 || partitionIndex < 0 || partitionIndex >= partitionCount) throw new Error("invalid partition");
   const plan = JSON.parse(fs.readFileSync(planPath, "utf8"));
-  const existing = fs.existsSync(draftPath) ? readAssignment(draftPath, "SEMANTIC_SENSE_COVERAGE_DRAFTS").entries || {} : {};
-  const pending = Object.entries(plan.entries).filter(([word, item]) => item.requestedCount > 0 && !existing[word]).slice(0, limit);
+  const baseline = fs.existsSync(draftPath) ? readAssignment(draftPath, "SEMANTIC_SENSE_COVERAGE_DRAFTS").entries || {} : {};
+  const own = outputPath !== draftPath && fs.existsSync(outputPath) ? readAssignment(outputPath, "SEMANTIC_SENSE_COVERAGE_DRAFTS").entries || {} : {};
+  const existing = { ...baseline, ...own };
+  const pending = Object.entries(plan.entries).filter(([word, item], index) => item.requestedCount > 0 && index % partitionCount === partitionIndex && !existing[word]).slice(0, limit);
   let completed = 0;
   const failures = [];
   for (let offset = 0; offset < pending.length; offset += batchSize) {
@@ -119,8 +128,8 @@ function main() {
       existing[word] = { examples: accepted, omittedSenseIds: [...omitted] };
       completed += 1;
     }
-    writeDrafts(existing);
-    console.log(JSON.stringify({ processed: Math.min(offset + batch.length, pending.length), requested: pending.length, acceptedWords: completed, failures: failures.length }));
+    writeDrafts(existing, outputPath);
+    console.log(JSON.stringify({ partitionIndex, partitionCount, processed: Math.min(offset + batch.length, pending.length), requested: pending.length, acceptedWords: completed, failures: failures.length }));
   }
   console.log(JSON.stringify({ status: "complete", requested: pending.length, acceptedWords: completed, failures }));
 }
