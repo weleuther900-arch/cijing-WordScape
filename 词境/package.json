@@ -16,6 +16,8 @@
     "learn:rollover:verify": "node scripts/verify-learning-rollover.js",
     "content:verify": "node scripts/verify-review-content.js && node scripts/verify-distinct-example-senses.js",
     "examples:senses:curate": "node scripts/curate-distinct-example-senses.js",
+    "examples:senses:plan": "node scripts/plan-semantic-sense-coverage.js",
+    "examples:senses:compose": "node scripts/compose-semantic-sense-coverage.js",
     "content:contexts:resolve": "python scripts/resolve-example-contexts.py",
     "content:contexts:verify": "python scripts/verify-final-example-library.py",
     "dictionary:audit": "node scripts/audit-dictionary-sources.js"
