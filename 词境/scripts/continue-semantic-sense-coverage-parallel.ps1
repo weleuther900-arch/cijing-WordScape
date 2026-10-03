@@ -4,7 +4,7 @@ param(
   [int]$MaximumPasses = 20
 )
 
-$ErrorActionPreference = 'Stop'
+$ErrorActionPreference = 'Continue'
 $root = Split-Path -Parent $PSScriptRoot
 $node = 'E:\node\node.exe'
 $log = Join-Path $root 'data\semantic-sense-coverage-parallel-continuation.log'
