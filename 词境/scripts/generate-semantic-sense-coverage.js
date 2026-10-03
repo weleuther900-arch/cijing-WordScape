@@ -1,0 +1,128 @@
+"use strict";
+
+// Resumable Codex writer. Drafts are deliberately separate from the published
+// library until every requested sense has passed structural validation.
+const fs = require("node:fs");
+const path = require("node:path");
+const { spawnSync } = require("node:child_process");
+
+const root = path.resolve(__dirname, "..");
+const planPath = path.join(root, "data", "semantic-sense-coverage-plan.json");
+const draftPath = path.join(root, "data", "semantic-sense-coverage-drafts.js");
+const draftDir = path.join(root, "data", "semantic-sense-coverage-codex-drafts");
+const codexPath = path.join(root, "tools", "codex-cli", "node_modules", "@openai", "codex-win32-x64", "vendor", "x86_64-pc-windows-msvc", "bin", "codex.exe");
+
+function readAssignment(file, name) {
+  const raw = fs.readFileSync(file, "utf8").replace(/^\uFEFF/, "");
+  const marker = `window.${name} =`;
+  const at = raw.indexOf(marker);
+  if (at < 0) throw new Error(`${file} does not define ${name}`);
+  return JSON.parse(raw.slice(at + marker.length).trim().replace(/;$/, ""));
+}
+
+function writeDrafts(entries) {
+  fs.writeFileSync(draftPath, `window.SEMANTIC_SENSE_COVERAGE_DRAFTS = ${JSON.stringify({ entries })};\n`, "utf8");
+}
+
+function normal(value) {
+  return String(value || "").trim().replace(/\s+/g, " ");
+}
+
+function containsForm(sentence, form) {
+  return new RegExp(`(^|[^a-z])${String(form).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}($|[^a-z])`, "i").test(sentence);
+}
+
+function validExample(word, example, target, known) {
+  const sentence = normal(example?.sentence);
+  const translation = normal(example?.translation);
+  const form = normal(example?.targetForm);
+  if (String(example?.senseId) !== target.id) return "unknown sense ID";
+  if (!sentence || !translation || !form) return "missing field";
+  if (!/^[A-Z]/.test(sentence) || !/\.$/.test(sentence)) return "invalid English punctuation";
+  if (sentence.split(/\s+/).length < 8 || sentence.split(/\s+/).length > 32) return "English length";
+  if (!/。$/.test(translation)) return "invalid Chinese punctuation";
+  if (!containsForm(sentence, form)) return "target form absent";
+  if (known.has(sentence.toLowerCase())) return "duplicate sentence";
+  return null;
+}
+
+function prompt(items) {
+  return JSON.stringify({
+    task: "Write missing bilingual examples for precisely the supplied dictionary senses.",
+    rules: [
+      "Return every requested word once. For each targetSense return exactly one new example, with senseId exactly equal to that targetSense id.",
+      "Before writing, compare every targetSense with retainedExamples and the other targetSenses. If Chinese meanings are synonyms or near-synonyms in this context, keep only the clearest representative and list every omitted synonymous id in omittedSenseIds. Never write duplicate examples for synonyms. Differences only of intensity, attitude, or generic help are near-synonyms: for example 鼓励、支持、激励 must normally be represented by one example, unless a supplied definition names a clearly different concrete use.",
+      "A targetSense that is truly different in meaning must receive one example. Never merge two genuinely different target senses or use a target sense for a different meaning.",
+      "Do not repeat, paraphrase, or change retainedExamples. Do not add examples for omittedForCap senses.",
+      "English sentence: self-contained, natural, declarative, 8-32 words, starts with a capital letter, ends with one period, and naturally contains targetForm literally; targetForm must exactly match the form used in the sentence.",
+      "Chinese translation: concise idiomatic Simplified Chinese translation of the whole English sentence, ends with one Chinese full stop。.",
+      "Use realistic educational, daily-life, workplace, scientific, or public contexts. No dialogue, question, exclamation, quotation, template, invented statistic, or filler.",
+      "Check grammar, collocation and exact word sense before returning."
+    ],
+    returnShape: { items: [{ word: "exact word", omittedSenseIds: ["only supplied near-synonym ids"], examples: [{ sentence: "English.", translation: "中文。", targetForm: "exact form", senseId: "supplied id" }] }] },
+    items
+  }, null, 0);
+}
+
+function callCodex(payload, batchNo, model) {
+  fs.mkdirSync(draftDir, { recursive: true });
+  const promptFile = path.join(draftDir, `${String(batchNo).padStart(5, "0")}.prompt.json`);
+  const outputFile = path.join(draftDir, `${String(batchNo).padStart(5, "0")}.result.js`);
+  fs.writeFileSync(promptFile, `${payload}\n\nReturn exactly window.SEMANTIC_SENSE_DRAFT = {"items":[...]}; with no Markdown or commentary.\n`, "utf8");
+  if (fs.existsSync(outputFile)) fs.unlinkSync(outputFile);
+  const result = spawnSync(codexPath, ["exec", "--ephemeral", "--ignore-user-config", "--disable", "plugins", "--disable", "remote_plugin", "--sandbox", "read-only", "-m", model, "-C", root, "-o", outputFile, "-"], { cwd: root, input: fs.readFileSync(promptFile), encoding: "utf8", timeout: 300000 });
+  if (result.error) throw result.error;
+  if (result.status !== 0 || !fs.existsSync(outputFile)) throw new Error(`Codex exited ${result.status}: ${(result.stderr || result.stdout || "").slice(-400)}`);
+  return readAssignment(outputFile, "SEMANTIC_SENSE_DRAFT");
+}
+
+function main() {
+  const argv = process.argv.slice(2);
+  const limitAt = argv.indexOf("--limit-words");
+  const batchAt = argv.indexOf("--batch-size");
+  const modelAt = argv.indexOf("--model");
+  const limit = limitAt >= 0 ? Number(argv[limitAt + 1]) : 5;
+  const batchSize = batchAt >= 0 ? Number(argv[batchAt + 1]) : 3;
+  const model = modelAt >= 0 ? String(argv[modelAt + 1]) : "gpt-5.6-terra";
+  if (!Number.isInteger(limit) || limit < 1 || !Number.isInteger(batchSize) || batchSize < 1) throw new Error("limits must be positive integers");
+  const plan = JSON.parse(fs.readFileSync(planPath, "utf8"));
+  const existing = fs.existsSync(draftPath) ? readAssignment(draftPath, "SEMANTIC_SENSE_COVERAGE_DRAFTS").entries || {} : {};
+  const pending = Object.entries(plan.entries).filter(([word, item]) => item.requestedCount > 0 && !existing[word]).slice(0, limit);
+  let completed = 0;
+  const failures = [];
+  for (let offset = 0; offset < pending.length; offset += batchSize) {
+    const batch = pending.slice(offset, offset + batchSize);
+    const requests = batch.map(([word, item]) => ({ word, targetSenses: item.targetSenses, retainedExamples: item.retainedExamples, omittedForCap: item.omittedForCap }));
+    const response = callCodex(prompt(requests), offset / batchSize + 1, model);
+    const rows = new Map((response.items || []).filter((row) => row && row.word).map((row) => [String(row.word).toLowerCase(), row]));
+    for (const [word, item] of batch) {
+      const row = rows.get(word.toLowerCase());
+      const targets = new Map(item.targetSenses.map((sense) => [sense.id, sense]));
+      const known = new Set(item.retainedExamples.map((example) => normal(example.sentence).toLowerCase()));
+      const omitted = new Set((row?.omittedSenseIds || []).map(String));
+      const accepted = [];
+      const reasons = [];
+      for (const example of row?.examples || []) {
+        const target = targets.get(String(example?.senseId));
+        if (!target || omitted.has(String(example?.senseId)) || accepted.some((item) => item.senseId === target.id)) { reasons.push("wrong or repeated sense"); continue; }
+        const reason = validExample(word, example, target, known);
+        if (reason) { reasons.push(reason); continue; }
+        const cleaned = { sentence: normal(example.sentence), translation: normal(example.translation), targetForm: normal(example.targetForm), senseId: target.id };
+        accepted.push(cleaned);
+        known.add(cleaned.sentence.toLowerCase());
+      }
+      const allCovered = accepted.length + omitted.size === item.requestedCount && [...omitted].every((id) => targets.has(id));
+      if (!allCovered || !accepted.length) {
+        failures.push({ word, reasons: [...new Set(reasons)].slice(0, 6) });
+        continue;
+      }
+      existing[word] = { examples: accepted, omittedSenseIds: [...omitted] };
+      completed += 1;
+    }
+    writeDrafts(existing);
+    console.log(JSON.stringify({ processed: Math.min(offset + batch.length, pending.length), requested: pending.length, acceptedWords: completed, failures: failures.length }));
+  }
+  console.log(JSON.stringify({ status: "complete", requested: pending.length, acceptedWords: completed, failures }));
+}
+
+main();
