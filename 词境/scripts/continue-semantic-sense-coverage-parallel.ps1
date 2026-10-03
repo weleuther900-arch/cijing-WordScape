@@ -1,5 +1,6 @@
 param(
   [int[]]$InitialGeneratorProcessIds = @(),
+  [int]$PartitionCount = 4,
   [int]$MaximumPasses = 20
 )
 
@@ -44,9 +45,9 @@ try {
 
     Note "pass $pass incomplete; starting retry workers"
     $workers = @()
-    0..3 | ForEach-Object {
+    0..($PartitionCount - 1) | ForEach-Object {
       $index = $_
-      $workers += Start-Process -FilePath $node -ArgumentList @('.\scripts\generate-semantic-sense-coverage.js','--limit-words','6000','--batch-size','3','--partition-index',$index,'--partition-count','4','--output',("data\semantic-sense-coverage-partition-" + $index + '.js'),'--model','gpt-5.6-terra') -WorkingDirectory $root -WindowStyle Hidden -PassThru
+      $workers += Start-Process -FilePath $node -ArgumentList @('.\scripts\generate-semantic-sense-coverage.js','--limit-words','6000','--batch-size','3','--partition-index',$index,'--partition-count',$PartitionCount,'--output',("data\semantic-sense-coverage-partition-" + $index + '.js'),'--model','gpt-5.6-terra') -WorkingDirectory $root -WindowStyle Hidden -PassThru
     }
     Wait-Workers $workers.Id
   }
