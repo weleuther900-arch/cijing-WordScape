@@ -14,7 +14,8 @@
     "sync:verify": "node scripts/verify-cloud-sync.js && node scripts/verify-cloud-worker.js",
     "sync:verify:remote": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File scripts/verify-deployed-cloud-sync.ps1",
     "learn:rollover:verify": "node scripts/verify-learning-rollover.js",
-    "content:verify": "node scripts/verify-review-content.js",
+    "content:verify": "node scripts/verify-review-content.js && node scripts/verify-distinct-example-senses.js",
+    "examples:senses:curate": "node scripts/curate-distinct-example-senses.js",
     "content:contexts:resolve": "python scripts/resolve-example-contexts.py",
     "content:contexts:verify": "python scripts/verify-final-example-library.py",
     "dictionary:audit": "node scripts/audit-dictionary-sources.js"

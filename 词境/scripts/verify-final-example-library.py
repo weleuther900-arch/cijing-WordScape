@@ -48,14 +48,17 @@ def main() -> None:
         known_senses = {str(sense.get("id", "")): sense for sense in senses.get(word, {}).get("senses", [])}
         for group in entry.get("senseGroups", []):
             source_ids = [str(value) for value in group.get("sourceSenseIds", [])]
+            reviewed_semantic_sense = bool(group.get("contextReviewed") and group.get("semanticDistinct") and str(group.get("partOfSpeech", "")).strip() and str(group.get("sense", "")).strip())
             if len(source_ids) != 1:
+                if reviewed_semantic_sense:
+                    continue
                 errors.append("context group must contain exactly one source sense")
                 continue
             matched_sense = known_senses.get(source_ids[0])
             if matched_sense is None:
-                if not group.get("contextReviewed") or not str(group.get("partOfSpeech", "")).strip() or not str(group.get("sense", "")).strip():
+                if not reviewed_semantic_sense:
                     errors.append("context group has no reviewed resolvable source sense")
-            elif group.get("partOfSpeech") != matched_sense.get("partOfSpeech") or group.get("sense") != matched_sense.get("sense"):
+            elif not reviewed_semantic_sense and (group.get("partOfSpeech") != matched_sense.get("partOfSpeech") or group.get("sense") != matched_sense.get("sense")):
                 errors.append("context group disagrees with the dictionary sense")
         if not examples:
             errors.append("entry has no publishable examples")

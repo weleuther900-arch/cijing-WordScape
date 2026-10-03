@@ -96,24 +96,26 @@ for (const word of released) {
   }
   const groups = (record.senseGroups || []).map((group) => {
     const ids = Array.isArray(group.sourceSenseIds) ? group.sourceSenseIds.map(String) : [];
+    const reviewedSemanticSense = Boolean(group.contextReviewed && group.semanticDistinct && usableContextPartOfSpeech(group.partOfSpeech) && usableSense(group.sense));
     if (ids.length !== 1) {
+      if (reviewedSemanticSense) return group;
       mergedContextGroups.push(`${word}:${String(group.id || "")}`);
       return null;
     }
     const matched = available.find((entry) => String(entry.id) === ids[0]);
     if (matched) return { id: group.id, partOfSpeech: matched.partOfSpeech, sense: matched.sense };
-    if (group.contextReviewed && usableContextPartOfSpeech(group.partOfSpeech) && usableSense(group.sense)) return group;
+    if (reviewedSemanticSense) return group;
     return null;
   }).filter(Boolean);
   const groupIds = new Set(groups.filter((group) => usableContextPartOfSpeech(group.partOfSpeech) && usableSense(group.sense)).map((group) => group.id));
   if (!groupIds.size || !(record.examples || []).every((example) => groupIds.has(example.senseId) && example.sentence && example.translation)) unresolved.push(word);
 }
-assert.deepEqual(mergedContextGroups, [], "A sentence context group must contain exactly one dictionary sense.");
+assert.deepEqual(mergedContextGroups, [], "A sentence context group must be atomic or explicitly reviewed as one distinct learner-facing meaning.");
 assert.deepEqual(unresolved, [], "Every released word must resolve to one valid Chinese context sense for every verified example.");
 
 const appSource = fs.readFileSync(path.join(publicDir, "app.js"), "utf8");
 assert.match(appSource, /meaningsAreConfusable/);
-assert.match(appSource, /ids\.length !== 1/, "The app must reject merged sense groups before rendering 本句释义。");
+assert.match(appSource, /group\?\.semanticDistinct/, "The app may render a merged group only after semantic-distinct review.");
 assert.match(appSource, /hasUsableWordDefinition/);
 assert.doesNotMatch(appSource, /const confusable = samePart/);
 assert.match(appSource, /data-number-setting="dailyNewTarget"/);

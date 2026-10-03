@@ -17,7 +17,7 @@ const AI_EXAMPLE_LIBRARY = { ...(window.WORD_AI_EXAMPLE_LIBRARY?.entries || {}) 
 const AI_EXAMPLE_INDEX = window.WORD_AI_EXAMPLE_INDEX || {};
 const RELEASED_EXAMPLE_WORDS = new Set((window.WORD_RELEASED_EXAMPLE_WORDS || []).map((word) => String(word).toLowerCase()));
 const AI_EXAMPLE_LOADS = new Map();
-const VERIFIED_EXAMPLE_REVISION = "20260928-01";
+const VERIFIED_EXAMPLE_REVISION = "20261003-02";
 // The source dictionary is intentionally broad. These entries are the
 // learning-facing layer: correct common meanings first, without legacy or
 // unrelated technical senses leaking into normal study cards.
@@ -928,13 +928,14 @@ function resolvedAiSenseGroup(word, group) {
   // Learner-facing sentence cards may name one, and only one, dictionary
   // meaning. A merged generation group is useful metadata but must never be
   // rendered as a false "本句释义".
-  if (ids.length !== 1) return null;
-  const matched = available.find((entry) => entry.id === ids[0]);
-  if (matched) return { ...group, partOfSpeech: matched.partOfSpeech, sense: matched.sense };
+  if (ids.length === 1) {
+    const matched = available.find((entry) => entry.id === ids[0]);
+    if (matched) return { ...group, partOfSpeech: matched.partOfSpeech, sense: matched.sense };
+  }
   // A few historical specialist entries have a stable source ID but are not
   // represented by the compact everyday dictionary. They are admitted only
   // after the release reviewer has made the group atomic and context-specific.
-  if (group?.contextReviewed && hasUsablePartOfSpeech(group.partOfSpeech) && hasUsableSense(group.sense)) return group;
+  if (group?.contextReviewed && group?.semanticDistinct && hasUsablePartOfSpeech(group.partOfSpeech) && hasUsableSense(group.sense)) return group;
   return null;
 }
 function aiRecordForWord(word) {
@@ -948,7 +949,7 @@ function loadAiShard(key) {
   if (AI_EXAMPLE_LOADS.has(key)) return AI_EXAMPLE_LOADS.get(key);
   const task = new Promise((resolve, reject) => {
     const script = document.createElement("script");
-    script.src = `${AI_EXAMPLE_INDEX[key]}?v=20260928-01`;
+    script.src = `${AI_EXAMPLE_INDEX[key]}?v=20261003-02`;
     script.onload = () => { Object.assign(AI_EXAMPLE_LIBRARY, window.WORD_AI_EXAMPLE_CHUNK?.entries || {}); resolve(); };
     script.onerror = () => reject(new Error("例句分片加载失败"));
     document.head.append(script);

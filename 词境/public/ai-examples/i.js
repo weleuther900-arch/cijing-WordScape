@@ -1,0 +1,1 @@
+window.WORD_AI_EXAMPLE_CHUNK = {"entries":{"i":{"senseGroups":[{"id":"semantic-1","partOfSpeech":"pron.","sourceSenseIds":["pron-1"],"sense":"我","contextReviewed":true,"semanticDistinct":true}],"examples":[{"sentence":"I revised the draft twice before sending it to my supervisor for comments.","translation":"我修改了两遍草稿，才把它交给导师征求意见。","targetForm":"I","senseId":"semantic-1"}]}}};
