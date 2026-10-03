@@ -64,10 +64,11 @@ function prompt(items) {
   }, null, 0);
 }
 
-function callCodex(payload, batchNo, model) {
-  fs.mkdirSync(draftDir, { recursive: true });
-  const promptFile = path.join(draftDir, `${String(batchNo).padStart(5, "0")}.prompt.json`);
-  const outputFile = path.join(draftDir, `${String(batchNo).padStart(5, "0")}.result.js`);
+function callCodex(payload, batchNo, model, outputPath) {
+  const workerDir = path.join(draftDir, path.basename(outputPath, ".js").replace(/[^a-z0-9_-]/gi, "_"));
+  fs.mkdirSync(workerDir, { recursive: true });
+  const promptFile = path.join(workerDir, `${String(batchNo).padStart(5, "0")}.prompt.json`);
+  const outputFile = path.join(workerDir, `${String(batchNo).padStart(5, "0")}.result.js`);
   fs.writeFileSync(promptFile, `${payload}\n\nReturn exactly window.SEMANTIC_SENSE_DRAFT = {"items":[...]}; with no Markdown or commentary.\n`, "utf8");
   if (fs.existsSync(outputFile)) fs.unlinkSync(outputFile);
   const result = spawnSync(codexPath, ["exec", "--ephemeral", "--ignore-user-config", "--disable", "plugins", "--disable", "remote_plugin", "--sandbox", "read-only", "-m", model, "-C", root, "-o", outputFile, "-"], { cwd: root, input: fs.readFileSync(promptFile), encoding: "utf8", timeout: 300000 });
@@ -102,7 +103,7 @@ function main() {
   for (let offset = 0; offset < pending.length; offset += batchSize) {
     const batch = pending.slice(offset, offset + batchSize);
     const requests = batch.map(([word, item]) => ({ word, targetSenses: item.targetSenses, retainedExamples: item.retainedExamples, omittedForCap: item.omittedForCap }));
-    const response = callCodex(prompt(requests), offset / batchSize + 1, model);
+    const response = callCodex(prompt(requests), offset / batchSize + 1, model, outputPath);
     const rows = new Map((response.items || []).filter((row) => row && row.word).map((row) => [String(row.word).toLowerCase(), row]));
     for (const [word, item] of batch) {
       const row = rows.get(word.toLowerCase());
