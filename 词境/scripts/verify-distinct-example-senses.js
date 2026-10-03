@@ -28,6 +28,7 @@ for (const [word, entry] of Object.entries(library.entries)) {
   const groups = new Map((entry.senseGroups || []).map((group) => [group.id, group]));
   const selected = [];
   assert.ok(entry.examples?.length, `${word} must retain at least one example.`);
+  assert.ok(entry.examples.length <= 5, `${word} exceeds the five-example learning limit.`);
   for (const example of entry.examples) {
     const group = groups.get(example.senseId);
     assert.ok(group?.contextReviewed && group?.semanticDistinct, `${word} example must use a reviewed distinct sense.`);

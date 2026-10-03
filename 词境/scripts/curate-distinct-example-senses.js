@@ -78,6 +78,7 @@ function curateEntry(entry) {
   for (const example of entry.examples || []) {
     const group = groups.get(String(example.senseId));
     if (!group || !example.sentence || !example.translation) continue;
+    if (selectedExamples.length >= 5) break;
     if (accepted.some((acceptedGroup) => sameSemanticSense(acceptedGroup, group))) {
       removed += 1;
       continue;
