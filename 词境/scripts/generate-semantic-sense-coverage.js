@@ -73,8 +73,14 @@ function callCodex(payload, batchNo, model, outputPath) {
   const promptFile = path.join(workerDir, `${String(batchNo).padStart(5, "0")}.prompt.json`);
   const outputFile = path.join(workerDir, `${String(batchNo).padStart(5, "0")}.result.js`);
   fs.writeFileSync(promptFile, `${payload}\n\nReturn exactly window.SEMANTIC_SENSE_DRAFT = {"items":[...]}; with no Markdown or commentary.\n`, "utf8");
-  if (fs.existsSync(outputFile)) fs.unlinkSync(outputFile);
-  const result = spawnSync(codexPath, ["exec", "--ephemeral", "--ignore-user-config", "--disable", "plugins", "--disable", "remote_plugin", "--sandbox", "read-only", "-m", model, "-C", root, "-o", outputFile, "-"], { cwd: root, input: fs.readFileSync(promptFile), encoding: "utf8", timeout: 300000 });
+  const timeoutMs = Number(process.env.CODEX_TIMEOUT_MS || 900000);
+  const maxAttempts = Number(process.env.CODEX_RETRIES || 2);
+  let result;
+  for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+    if (fs.existsSync(outputFile)) fs.unlinkSync(outputFile);
+    result = spawnSync(codexPath, ["exec", "--ephemeral", "--ignore-user-config", "--disable", "plugins", "--disable", "remote_plugin", "--sandbox", "read-only", "-m", model, "-C", root, "-o", outputFile, "-"], { cwd: root, input: fs.readFileSync(promptFile), encoding: "utf8", timeout: timeoutMs });
+    if (!result.error || result.error.code !== "ETIMEDOUT" || attempt === maxAttempts) break;
+  }
   if (result.error) throw result.error;
   if (result.status !== 0 || !fs.existsSync(outputFile)) throw new Error(`Codex exited ${result.status}: ${(result.stderr || result.stdout || "").slice(-400)}`);
   return readAssignment(outputFile, "SEMANTIC_SENSE_DRAFT");
