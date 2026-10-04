@@ -77,6 +77,7 @@ function callCodex(payload, batchNo, model, outputPath) {
   const timeoutMs = Number(process.env.CODEX_TIMEOUT_MS || 900000);
   const maxAttempts = Number(process.env.CODEX_RETRIES || 2);
   let result;
+  let parseError;
   for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
     if (fs.existsSync(outputFile)) fs.unlinkSync(outputFile);
     result = spawnSync(codexPath, ["exec", "--ephemeral", "--ignore-user-config", "--disable", "plugins", "--disable", "remote_plugin", "--sandbox", "read-only", "-m", model, "-C", root, "-o", outputFile, "-"], { cwd: root, input: fs.readFileSync(promptFile), encoding: "utf8", timeout: timeoutMs });
@@ -84,7 +85,34 @@ function callCodex(payload, batchNo, model, outputPath) {
   }
   if (result.error) throw result.error;
   if (result.status !== 0 || !fs.existsSync(outputFile)) throw new Error(`Codex exited ${result.status}: ${(result.stderr || result.stdout || "").slice(-400)}`);
-  return readAssignment(outputFile, "SEMANTIC_SENSE_DRAFT");
+  try {
+    return readAssignment(outputFile, "SEMANTIC_SENSE_DRAFT");
+  } catch (error) {
+    parseError = error;
+  }
+  // Codex can finish while the redirected file is still being flushed. Retry
+  // the same request instead of terminating the whole partition and losing the
+  // already written batches.
+  if (parseError) {
+    for (let attempt = 2; attempt <= maxAttempts; attempt += 1) {
+      if (fs.existsSync(outputFile)) fs.unlinkSync(outputFile);
+      const retry = spawnSync(codexPath, ["exec", "--ephemeral", "--ignore-user-config", "--disable", "plugins", "--disable", "remote_plugin", "--sandbox", "read-only", "-m", model, "-C", root, "-o", outputFile, "-"], { cwd: root, input: fs.readFileSync(promptFile), encoding: "utf8", timeout: timeoutMs });
+      if (retry.error) {
+        if (retry.error.code === "ETIMEDOUT" && attempt < maxAttempts) continue;
+        throw retry.error;
+      }
+      if (retry.status !== 0 || !fs.existsSync(outputFile)) {
+        if (attempt < maxAttempts) continue;
+        throw new Error(`Codex exited ${retry.status}: ${(retry.stderr || retry.stdout || "").slice(-400)}`);
+      }
+      try {
+        return readAssignment(outputFile, "SEMANTIC_SENSE_DRAFT");
+      } catch (error) {
+        parseError = error;
+      }
+    }
+    throw parseError;
+  }
 }
 
 function main() {
