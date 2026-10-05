@@ -1,5 +1,16 @@
 {
   "schemaVersion": 1,
   "scope": "Separate reviews of exact candidate and dictionary fingerprints. Generator acceptance is not approval. Targeted authored corrections live in semantic-reviewed-corrections.json.",
-  "entries": {}
+  "entries": {
+    "carpenter": {
+      "status": "approved",
+      "fingerprint": "8591a58183810f3a9557a26c8bfba7223f52e5ebd9ce41f93eaf7cf2f74556ab",
+      "reviewedAt": "2026-10-05",
+      "reviewer": "Codex dictionary-backed candidate review",
+      "notes": "Checked the ordinary carpenter sense, noun usage, natural English, faithful Chinese and sole nonduplicated example. No correction required.",
+      "sources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/carpenter"
+      ]
+    }
+  }
 }

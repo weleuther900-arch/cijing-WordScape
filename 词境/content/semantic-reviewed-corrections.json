@@ -1,6 +1,29 @@
 {
   "reviewedAt": "2026-10-05",
   "reviewFingerprints": {
+    "enable": "490aef07380094059cd4b83414a8310f45431238fa7515f4bb9b64733ce188da",
+    "contact": "1fb1ea47e46be13dd637af16be533e391e0c21fe6e5b60f2d78b0e797bcafde7",
+    "whip": "3b6667232e03adca987f0b08d2d225b05006dc6a1214b69f2ecb4f421f0498b7",
+    "vegetable": "a0d6025b95a3d13c7f89db88c31f3c0ef09bbab6169e7e097c2d603a80b9ce88",
+    "weigh": "7dbb7080b279b406e282e921d7ad5537ae2d9a8c86d358ee148b1c0cee4c5706",
+    "farewell": "b10b37c1dfd49db5138870d10c5da1fdda70c5bfffcdd5175c9ec7d4cf657fac",
+    "gloomy": "3480a28a36f1139105592b44a7f05d31adff4b38fb568e52e5c02f0e297bc431",
+    "should": "beffb440acc15cac6bfb84f3bd01de6d413ba78ed1d2736ecfd7a58481007b1f",
+    "gasp": "8278dc908d9de256cd3e373a1eeaedf46bbf096ad16c35821341ca0513b7f995",
+    "pace": "64dc74133cae2875fcc87a430d656df29e13b7075d2430d180f548eb241af792",
+    "praise": "d4bec6af8411aea3ebc91c45a5b4b4880f6ba3b1331036a0f37126cb6078f235",
+    "fountain": "43040bfb4b03e28e553298e1a55fe40141c07e3f5c0ba4da245de3266e11bb99",
+    "everyday": "dfb0bd0f0c59e6d583c97ea1cd5f9f8703aa2e14f80b073b60aac06c2821c5b8",
+    "fashionable": "49e81ae8e41569edc51a4fb0a3475b07db2758ac346fa0cec93dd71be380104c",
+    "preside": "d1e98c6116d685d1d333b46b21b4dabf2ca4159e3f0d3a2a4f65db338a63c3e6",
+    "poison": "47dace48b5e19130031822b3f6b5379c9264318c013fe5a989babdc69bfea7b4",
+    "quote": "f812a01a3fb7aaa3fe0ff4022ed22a4a45b80ea5823017765cbff20a1729b761",
+    "encourage": "2b5f1c87592f608a169de28129bdd60daa481e6ef4718a68b23d0f6ee37369c7",
+    "practical": "c70d1711f0e02148b2ce9f364f5e7fb58747e2f6a2e46bb3c1f69725ecaf629e",
+    "hill": "1f22b7322c537fa8524445daceff70b318e5cb24efd7d326acc66f83f0bf08c7",
+    "monster": "903186370a3ce9a53c2f72d974f768d3add112c5626ee5e209b1b6aa014a94d3",
+    "concerning": "92c3975bbd25a8d9986216b18b3ae7536725d782b2b5d802b7fefd4257ea2d68",
+    "draw": "33f640cc062cd3537ed96ce7301578124696b871842504c47ffb423721fb846e",
     "moan": "9bd02cb432254e5fb42bb55da48dd2543db40c399e07108c78212b412965f844",
     "groan": "44eab71daa81ebfa762daac1ac21477590dd7b43f3a401314978e0a3ab8954c1",
     "descent": "4c74738ad670eb1a0366502a4ee8cc64f2986b8fb799446172e082747bbb0f01",
@@ -32,6 +55,613 @@
   },
   "scope": "Targeted corrections, not a full-library review. Original examples; dictionary links support sense decisions.",
   "dictionaryOverrides": {
+    "monster": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "怪物"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "恶人"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "巨物"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "小捣蛋鬼（诙谐）"
+      },
+      {
+        "id": "adj-1",
+        "partOfSpeech": "adj.",
+        "sense": "巨大的"
+      }
+    ],
+    "concerning": [
+      {
+        "id": "prep-1",
+        "partOfSpeech": "prep.",
+        "sense": "关于；有关"
+      },
+      {
+        "id": "adj-1",
+        "partOfSpeech": "adj.",
+        "sense": "令人担忧的"
+      }
+    ],
+    "draw": [
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "拉"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "拖"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "拔剑"
+      },
+      {
+        "id": "v-4",
+        "partOfSpeech": "v.",
+        "sense": "拖拉"
+      },
+      {
+        "id": "v-5",
+        "partOfSpeech": "v.",
+        "sense": "挨近"
+      },
+      {
+        "id": "v-6",
+        "partOfSpeech": "v.",
+        "sense": "领取"
+      },
+      {
+        "id": "v-7",
+        "partOfSpeech": "v.",
+        "sense": "打成平局"
+      },
+      {
+        "id": "v-8",
+        "partOfSpeech": "v.",
+        "sense": "引导"
+      },
+      {
+        "id": "v-9",
+        "partOfSpeech": "v.",
+        "sense": "抽签决定"
+      },
+      {
+        "id": "v-10",
+        "partOfSpeech": "v.",
+        "sense": "画"
+      },
+      {
+        "id": "v-11",
+        "partOfSpeech": "v.",
+        "sense": "描写"
+      },
+      {
+        "id": "v-12",
+        "partOfSpeech": "v.",
+        "sense": "制订"
+      },
+      {
+        "id": "v-13",
+        "partOfSpeech": "v.",
+        "sense": "草拟"
+      },
+      {
+        "id": "v-14",
+        "partOfSpeech": "v.",
+        "sense": "吸引"
+      },
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "拉"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "拖"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "拔出"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "抽签"
+      },
+      {
+        "id": "n-5",
+        "partOfSpeech": "n.",
+        "sense": "平局"
+      },
+      {
+        "id": "v-15",
+        "partOfSpeech": "v.",
+        "sense": "得出结论"
+      }
+    ],
+    "encourage": [
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "鼓励"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "支持"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "激励"
+      },
+      {
+        "id": "v-4",
+        "partOfSpeech": "v.",
+        "sense": "促进；助长"
+      }
+    ],
+    "practical": [
+      {
+        "id": "adj-1",
+        "partOfSpeech": "adj.",
+        "sense": "实践操作的"
+      },
+      {
+        "id": "adj-2",
+        "partOfSpeech": "adj.",
+        "sense": "现实的"
+      },
+      {
+        "id": "adj-3",
+        "partOfSpeech": "adj.",
+        "sense": "实用性的"
+      },
+      {
+        "id": "adj-4",
+        "partOfSpeech": "adj.",
+        "sense": "善于动手的"
+      },
+      {
+        "id": "adj-5",
+        "partOfSpeech": "adj.",
+        "sense": "几乎完全的"
+      },
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "实操课；实操考试"
+      }
+    ],
+    "hill": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "小山"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "丘陵"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "小土堆"
+      },
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "作成土堆"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "堆成小丘"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "坡道"
+      }
+    ],
+    "fountain": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "水源"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "源"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "喷泉"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "泉水"
+      },
+      {
+        "id": "n-5",
+        "partOfSpeech": "n.",
+        "sense": "本源"
+      },
+      {
+        "id": "n-6",
+        "partOfSpeech": "n.",
+        "sense": "喷流"
+      }
+    ],
+    "fashionable": [
+      {
+        "id": "adj-1",
+        "partOfSpeech": "adj.",
+        "sense": "时髦的"
+      },
+      {
+        "id": "adj-2",
+        "partOfSpeech": "adj.",
+        "sense": "时髦人士常光顾的"
+      },
+      {
+        "id": "adj-3",
+        "partOfSpeech": "adj.",
+        "sense": "流行的"
+      }
+    ],
+    "pace": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "速度"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "步调"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "一步；步幅"
+      },
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "踱步"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "缓慢走"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "用步测"
+      },
+      {
+        "id": "v-4",
+        "partOfSpeech": "v.",
+        "sense": "踱步于"
+      },
+      {
+        "id": "v-5",
+        "partOfSpeech": "v.",
+        "sense": "控制速度；调整节奏"
+      }
+    ],
+    "gloomy": [
+      {
+        "id": "adj-1",
+        "partOfSpeech": "adj.",
+        "sense": "消沉的"
+      },
+      {
+        "id": "adj-2",
+        "partOfSpeech": "adj.",
+        "sense": "忧闷的"
+      },
+      {
+        "id": "adj-3",
+        "partOfSpeech": "adj.",
+        "sense": "黑暗的"
+      },
+      {
+        "id": "adj-4",
+        "partOfSpeech": "adj.",
+        "sense": "悲观的"
+      }
+    ],
+    "should": [
+      {
+        "id": "aux-1",
+        "partOfSpeech": "aux.",
+        "sense": "应该"
+      },
+      {
+        "id": "aux-2",
+        "partOfSpeech": "aux.",
+        "sense": "按理应该；预期会"
+      },
+      {
+        "id": "aux-3",
+        "partOfSpeech": "aux.",
+        "sense": "万一"
+      },
+      {
+        "id": "aux-4",
+        "partOfSpeech": "aux.",
+        "sense": "竟然"
+      }
+    ],
+    "whip": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "鞭子"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "抽打"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "车夫"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "搅拌器"
+      },
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "鞭打"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "搅拌"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "煽动"
+      },
+      {
+        "id": "v-4",
+        "partOfSpeech": "v.",
+        "sense": "召集"
+      },
+      {
+        "id": "v-5",
+        "partOfSpeech": "v.",
+        "sense": "仓促制成"
+      },
+      {
+        "id": "v-6",
+        "partOfSpeech": "v.",
+        "sense": "拍击"
+      },
+      {
+        "id": "v-7",
+        "partOfSpeech": "v.",
+        "sense": "急走"
+      },
+      {
+        "id": "v-8",
+        "partOfSpeech": "v.",
+        "sense": "抽打"
+      },
+      {
+        "id": "n-5",
+        "partOfSpeech": "n.",
+        "sense": "党鞭"
+      },
+      {
+        "id": "n-6",
+        "partOfSpeech": "n.",
+        "sense": "政党投票指令"
+      },
+      {
+        "id": "n-7",
+        "partOfSpeech": "n.",
+        "sense": "议会党籍"
+      },
+      {
+        "id": "v-9",
+        "partOfSpeech": "v.",
+        "sense": "偷走"
+      },
+      {
+        "id": "v-10",
+        "partOfSpeech": "v.",
+        "sense": "击败"
+      }
+    ],
+    "vegetable": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "蔬菜"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "植物"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "生活懒散的人（非正式；贬义）"
+      },
+      {
+        "id": "adj-1",
+        "partOfSpeech": "adj.",
+        "sense": "蔬菜的"
+      },
+      {
+        "id": "adj-2",
+        "partOfSpeech": "adj.",
+        "sense": "植物的"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "对严重失能者的冒犯称呼"
+      }
+    ],
+    "weigh": [
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "称...重量"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "衡量"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "把...压弯"
+      },
+      {
+        "id": "v-4",
+        "partOfSpeech": "v.",
+        "sense": "考虑"
+      },
+      {
+        "id": "v-5",
+        "partOfSpeech": "v.",
+        "sense": "权衡"
+      },
+      {
+        "id": "v-6",
+        "partOfSpeech": "v.",
+        "sense": "起锚"
+      },
+      {
+        "id": "v-7",
+        "partOfSpeech": "v.",
+        "sense": "称分量"
+      },
+      {
+        "id": "v-8",
+        "partOfSpeech": "v.",
+        "sense": "对判断或结果产生影响"
+      },
+      {
+        "id": "v-9",
+        "partOfSpeech": "v.",
+        "sense": "重压"
+      },
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "过秤"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "称分量"
+      },
+      {
+        "id": "v-10",
+        "partOfSpeech": "v.",
+        "sense": "重量为"
+      }
+    ],
+    "enable": [
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "使能够"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "启用"
+      }
+    ],
+    "contact": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "联系"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "交际"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "熟人"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "接触"
+      },
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "接触"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "联系"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "使接触"
+      },
+      {
+        "id": "n-5",
+        "partOfSpeech": "n.",
+        "sense": "电触点"
+      },
+      {
+        "id": "n-6",
+        "partOfSpeech": "n.",
+        "sense": "隐形眼镜"
+      },
+      {
+        "id": "n-7",
+        "partOfSpeech": "n.",
+        "sense": "传染病接触者"
+      }
+    ],
     "liner": [
       {
         "id": "n-1",
@@ -465,6 +1095,144 @@
     ]
   },
   "reviews": {
+    "monster": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/monster_1",
+      "decision": "Keep imaginary creature, cruel person, enormous object and humorous naughty child. The adjective meaning huge belongs with the enormous-object group, not another sentence. Add the child use missing from the old dictionary.",
+      "additionalSources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/monster_2"
+      ]
+    },
+    "concerning": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/concerning_1",
+      "decision": "Retain the sound preposition example and add the common adjective meaning worrying; the old dictionary contained only the preposition.",
+      "additionalSources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/concerning_2"
+      ]
+    },
+    "draw": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/draw_1",
+      "decision": "Replace the first-five-gloss selection, which repeated pull/drag/unsheathe and omitted drawing. Prioritise drawing, pulling, attracting, drawing conclusions and a tied game. Keep other dictionary IDs available and record cap omissions.",
+      "omittedForCap": [
+        "v-5",
+        "v-6",
+        "v-8",
+        "v-9",
+        "v-12",
+        "v-13",
+        "n-4"
+      ]
+    },
+    "encourage": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/encourage",
+      "decision": "Merge encourage/support/motivate with a fuller original context. Add the distinct causative use with inanimate conditions encouraging growth; not every encourage sentence refers to moral support."
+    },
+    "practical": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/practical_1",
+      "decision": "Group practice-oriented adjective/noun uses, and merge realistic/useful solutions. Add being handy and virtual/almost total. Replace short generic sentences with clear contexts; do not split synonyms merely to fill five slots.",
+      "additionalSources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/practical_2"
+      ]
+    },
+    "hill": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/hill",
+      "decision": "Merge hill/hills/slope as the terrain group. Use one agricultural hilling context for the mound/heaping group. Do not distinguish singular hill and plural hills as different meanings.",
+      "additionalSources": [
+        "https://www.merriam-webster.com/dictionary/hill"
+      ]
+    },
+    "preside": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/preside",
+      "decision": "Merge presiding, being in charge and directing a meeting. Remove the orchestral-conducting context, which teaches the wrong typical verb for conducting music."
+    },
+    "poison": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/poison_1",
+      "decision": "Group literal poison and poisoning variants. Keep the figurative harmful effect, using a verb label for the verb example. Remove duplicate literal poisoning and the noun label attached to a verb.",
+      "additionalSources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/poison_2"
+      ]
+    },
+    "quote": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/quote_1",
+      "decision": "Merge quotation, quoting and citing evidence; retain the distinct price quotation. Remove repeated quotation examples that differ only in part of speech."
+    },
+    "fountain": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/fountain",
+      "decision": "Group concrete spring/jet/fountain variants; keep an abstract source of ideas distinct. Use natural learner-facing contexts rather than the weak mountain fountain collocation."
+    },
+    "everyday": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/everyday",
+      "decision": "Merge everyday, ordinary and daily-routine glosses. Use the adjective before objects in a meaningful scene; do not teach it as a substitute for the adverbial phrase every day."
+    },
+    "fashionable": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/fashionable",
+      "decision": "Merge fashionable/trendy and associated social settings into one style-related group. Replace the categorical upper-class gloss with a precise description of fashionable clientele; fashionability does not establish someone's social class."
+    },
+    "gasp": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/gasp_1",
+      "decision": "Merge breathing and breathless speech, with the actual verb labelled as a verb. For the informal wanting sense use be gasping for a drink, not gasped for recognition."
+    },
+    "pace": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/pace1_1",
+      "decision": "Merge speed/rhythm and controlling it. Correct the single-step gloss from manner of walking to a step. Keep pacing nervously and measuring with paces distinct; add the missing regulating-speed definition.",
+      "additionalSources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/pace1_2",
+        "https://www.oxfordlearnersdictionaries.com/definition/english/pace-off"
+      ]
+    },
+    "praise": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/praise_1",
+      "decision": "Merge approval, praise and religious praise under the same core commendation meaning. A different recipient or part of speech alone does not justify another example."
+    },
+    "farewell": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/farewell_1",
+      "decision": "Merge saying goodbye and farewell variants. Replace the literal, unnatural Chinese wording with an original farewell scene and natural translation."
+    },
+    "gloomy": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/gloomy",
+      "decision": "Correct the malformed Chinese gloss. Merge despondent and pessimistic emotional uses, keeping a dim physical space distinct; avoid translating ordinary sadness as a clinical diagnosis."
+    },
+    "should": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/should",
+      "decision": "Separate advice/obligation, expectation, conditional should and emotional surprise. The old translation made expected arrival sound certain. Formal reported-shall and politeness variants are outside this common-use selection."
+    },
+    "whip": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/whip_1",
+      "decision": "Merge whip/whipping and beating variants; group sudden movement/pulling. Prioritise whipping cream, the party official and stirring up feeling over the old carriage-driver sense. Record other distinct senses excluded by the five-example limit.",
+      "additionalSources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/whip_2",
+        "https://www.oxfordlearnersdictionaries.com/definition/english/whip-up"
+      ],
+      "omittedForCap": [
+        "n-3",
+        "v-5",
+        "n-6",
+        "n-7",
+        "v-9",
+        "v-10"
+      ]
+    },
+    "vegetable": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/vegetable",
+      "decision": "Distinguish edible vegetables, plant-derived material and informal inactivity. Explicitly label the dehumanising medical insult and use a cautionary context, not a routine insult. Correct the earlier noun example that could only mean an edible vegetable, not any plant.",
+      "additionalSources": [
+        "https://www.merriam-webster.com/dictionary/vegetable"
+      ]
+    },
+    "weigh": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/weigh",
+      "decision": "Merge weighing/weight variants and weighing evidence/considering. Keep burden, influence on a decision and weighing anchor distinct. Correct the excessively vague influence gloss."
+    },
+    "enable": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/enable",
+      "decision": "Keep the natural enabling-access example and add enabling a device feature. Merge making an action possible with creating enabling conditions."
+    },
+    "contact": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/contact_1",
+      "decision": "Merge communication/contact/social dealings. Preserve acquaintance, physical contact, electrical contact and contact lenses. Repair keep contact to keep in contact; record the disease-contact sense as an explicit cap omission.",
+      "omittedForCap": [
+        "n-7"
+      ]
+    },
     "retail": {
       "source": "https://www.oxfordlearnersdictionaries.com/definition/english/retail_3",
       "decision": "Merge selling senses across parts of speech. Merge telling in detail and spreading a report as one retelling use, supported by Merriam-Webster. Use retail as a noun in its noun example, not the modifier in retail sales.",
@@ -614,6 +1382,1226 @@
     "vocabulary": {"source": "https://www.oxfordlearnersdictionaries.com/definition/english/vocabulary", "decision": "Separate a person's stock of words from a written glossary. Merge variants referring to a language or subject's stock of words; replace the worksheet instruction and blank."}
   },
   "entries": {
+    "enable": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-1"
+          ],
+          "sense": "使能够",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-2"
+          ],
+          "sense": "启用",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "Reliable internet access enables rural students to attend online classes without long journeys.",
+          "translation": "可靠的网络连接让农村学生无需长途奔波也能上网课。",
+          "targetForm": "enables",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The technician enabled automatic backups before handing over the laptop, reducing the risk of losing the student's work.",
+          "translation": "技术员在交付笔记本电脑前启用了自动备份，降低学生丢失作业的风险。",
+          "targetForm": "enabled",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "contact": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2",
+            "v-2"
+          ],
+          "sense": "联系",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-3"
+          ],
+          "sense": "人脉",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-4",
+            "v-1",
+            "v-3"
+          ],
+          "sense": "接触",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-5"
+          ],
+          "sense": "电触点",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-5",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-6"
+          ],
+          "sense": "隐形眼镜",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "We kept in contact with the organisers throughout the delay, so they could rearrange the workshop before participants arrived.",
+          "translation": "延误期间，我们一直与组织者保持联系，让他们能在参与者到来前重新安排工作坊。",
+          "targetForm": "contact",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "A former colleague became her first contact in publishing and introduced her to an editor interested in local history.",
+          "translation": "一位以前的同事成了她在出版业的第一个人脉，并把她介绍给了一位关注地方史的编辑。",
+          "targetForm": "contact",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "The conservator avoided direct contact with the photograph, using clean tools to lift its damaged edges.",
+          "translation": "修复师避免直接接触照片，用干净的工具托起了受损的边缘。",
+          "targetForm": "contact",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "A corroded contact inside the torch interrupted the circuit, leaving the light flickering whenever the handle moved.",
+          "translation": "手电筒内部一个腐蚀的触点导致电路接触不良，手柄一动，灯光就忽明忽暗。",
+          "targetForm": "contact",
+          "senseId": "semantic-4"
+        },
+        {
+          "sentence": "She switched from contacts to glasses before the long flight because the dry cabin air often irritated her eyes.",
+          "translation": "长途飞行前，她摘掉隐形眼镜，换上框架眼镜，因为干燥的机舱空气常让她眼睛不适。",
+          "targetForm": "contacts",
+          "senseId": "semantic-5"
+        }
+      ]
+    },
+    "whip": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2",
+            "v-1",
+            "v-8"
+          ],
+          "sense": "鞭子",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "n-4",
+            "v-2"
+          ],
+          "sense": "打发",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-6",
+            "v-7"
+          ],
+          "sense": "猛地吹动",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-5",
+            "v-4"
+          ],
+          "sense": "党鞭",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-5",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-3"
+          ],
+          "sense": "煽动",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The museum displayed the worn leather whip beside photographs showing how horse-drawn coaches once carried passengers across the moor.",
+          "translation": "博物馆把磨损的皮鞭与照片陈列在一起，展示过去马车如何载着乘客穿越荒原。",
+          "targetForm": "whip",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "She whipped the cream until it held its shape, then folded it gently into the cooled chocolate mixture.",
+          "translation": "她把奶油打发至能够定形，再轻轻拌入冷却后的巧克力混合物中。",
+          "targetForm": "whipped",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "A sudden gust whipped the washing off the line, sending a bedsheet across the neighbour's vegetable patch.",
+          "translation": "一阵突如其来的狂风把晾着的衣物吹离了绳子，一条床单飞过了邻居的菜地。",
+          "targetForm": "whipped",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "The party whip spoke to undecided members before the vote, trying to prevent a split within the parliamentary group.",
+          "translation": "投票前，党鞭与尚未决定的议员交谈，试图避免议会党团内部分裂。",
+          "targetForm": "whip",
+          "senseId": "semantic-4"
+        },
+        {
+          "sentence": "The campaign tried to whip up anger over the proposed closure without explaining how the service would be replaced.",
+          "translation": "这场宣传活动试图煽动公众对拟议关闭措施的不满，却没有解释相关服务将如何替代。",
+          "targetForm": "whip",
+          "senseId": "semantic-5"
+        }
+      ]
+    },
+    "vegetable": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "adj-1"
+          ],
+          "sense": "蔬菜",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "n-2",
+            "adj-2"
+          ],
+          "sense": "植物来源的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-3"
+          ],
+          "sense": "生活懒散的人",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-4"
+          ],
+          "sense": "对严重失能者的冒犯称呼",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The market sells vegetables rejected by supermarkets for their unusual shapes, helping local growers reduce unnecessary waste.",
+          "translation": "市场出售因形状不规则而被超市拒收的蔬菜，帮助当地种植者减少不必要的浪费。",
+          "targetForm": "vegetables",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The workshop uses vegetable dyes made from roots and leaves to colour fabric without relying on synthetic pigments.",
+          "translation": "工作坊使用从根和叶中提取的植物染料给布料上色，而不依赖合成色素。",
+          "targetForm": "vegetable",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "After another weekend spent motionless in front of the television, he joked that he was becoming a vegetable.",
+          "translation": "又一个周末一动不动地坐在电视机前度过后，他开玩笑说自己快变成懒散的废人了。",
+          "targetForm": "vegetable",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "The nurse explained that calling an unresponsive patient a vegetable was dehumanising and had no place in respectful care.",
+          "translation": "护士解释说，用植物来贬称无反应的患者是在侮辱其人格，不应出现在尊重患者的照护中。",
+          "targetForm": "vegetable",
+          "senseId": "semantic-4"
+        }
+      ]
+    },
+    "weigh": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-1",
+            "v-7",
+            "n-1",
+            "n-2",
+            "v-10"
+          ],
+          "sense": "称重",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-2",
+            "v-4",
+            "v-5"
+          ],
+          "sense": "权衡",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-3",
+            "v-9"
+          ],
+          "sense": "压低",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-8"
+          ],
+          "sense": "对决定产生影响",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-5",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-6"
+          ],
+          "sense": "起锚",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The assistant weighed each parcel before printing the labels, checking that none exceeded the delivery service's limit.",
+          "translation": "助手先给每个包裹称重，确认没有超过配送公司的重量限制，再打印标签。",
+          "targetForm": "weighed",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "Before accepting the offer, she weighed the benefits against the additional travel time.",
+          "translation": "接受这份工作邀约前，她权衡了好处和额外的通勤时间。",
+          "targetForm": "weighed",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "Wet snow weighed down the branches until several touched the fence, so the gardener gently shook the snow off.",
+          "translation": "湿雪把树枝压得垂了下来，有几根碰到了围栏，园丁于是轻轻抖落积雪。",
+          "targetForm": "weighed",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "The lack of reliable transport weighed heavily against the rural site when the committee selected a location for the clinic.",
+          "translation": "委员会选定诊所地点时，交通不便成了反对乡村选址的重要因素。",
+          "targetForm": "weighed",
+          "senseId": "semantic-4"
+        },
+        {
+          "sentence": "The fishing boat weighed anchor at first light, hoping to reach deeper water before the wind strengthened.",
+          "translation": "渔船天刚亮就起锚，希望在风势增强前驶入较深的水域。",
+          "targetForm": "weighed",
+          "senseId": "semantic-5"
+        }
+      ]
+    },
+    "farewell": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2",
+            "n-3",
+            "int-1"
+          ],
+          "sense": "告别",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "At the station, their cheerful farewell gave way to silence as the train began to pull away.",
+          "translation": "在车站，他们愉快地互道再见，列车缓缓驶离时，告别的话语化作了沉默。",
+          "targetForm": "farewell",
+          "senseId": "semantic-1"
+        }
+      ]
+    },
+    "gloomy": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-1",
+            "adj-2",
+            "adj-4"
+          ],
+          "sense": "沮丧的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-3"
+          ],
+          "sense": "昏暗的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "She felt gloomy after the exhibition was cancelled, but a message from a former teacher helped restore her confidence.",
+          "translation": "展览取消后，她很沮丧，但以前一位老师发来的消息帮助她重拾信心。",
+          "targetForm": "gloomy",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The narrow courtyard remained gloomy even at midday because the surrounding buildings blocked almost all the sunlight.",
+          "translation": "即使到了正午，狭窄的院子依然昏暗，因为周围的建筑挡住了几乎所有阳光。",
+          "targetForm": "gloomy",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "should": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "aux.",
+          "sourceSenseIds": [
+            "aux-1"
+          ],
+          "sense": "应该",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "aux.",
+          "sourceSenseIds": [
+            "aux-2"
+          ],
+          "sense": "按理会",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "aux.",
+          "sourceSenseIds": [
+            "aux-3"
+          ],
+          "sense": "万一",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "aux.",
+          "sourceSenseIds": [
+            "aux-4"
+          ],
+          "sense": "竟然",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "Cyclists should check their lights before setting out, especially when fog is expected along the riverside route.",
+          "translation": "骑车人出发前应该检查车灯，尤其是在河边路段预计有雾的时候。",
+          "targetForm": "should",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The replacement parts should arrive tomorrow, provided the courier can get through the roads affected by flooding.",
+          "translation": "只要快递员能通过受洪水影响的道路，更换用的零件按理明天就能送到。",
+          "targetForm": "should",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "Should the temperature fall overnight, the gardener will cover the seedlings before leaving the greenhouse.",
+          "translation": "万一夜间降温，园丁会在离开温室前把幼苗盖好。",
+          "targetForm": "Should",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "It seemed strange that the usually cautious director should approve the plan without asking to see the full budget.",
+          "translation": "一向谨慎的主任竟然没有要求查看完整预算就批准了计划，这似乎有些反常。",
+          "targetForm": "should",
+          "senseId": "semantic-4"
+        }
+      ]
+    },
+    "gasp": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "n-1",
+            "v-1",
+            "v-2",
+            "v-4"
+          ],
+          "sense": "喘气",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-3"
+          ],
+          "sense": "非常想喝",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "After carrying the heavy boxes upstairs, he leaned against the wall and gasped for breath before opening the door.",
+          "translation": "把沉重的箱子搬上楼后，他靠着墙喘了口气，才打开房门。",
+          "targetForm": "gasped",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "By the time they reached the station after walking through the heat, they were gasping for a cold drink.",
+          "translation": "顶着酷热走到车站时，他们非常想喝一杯冷饮。",
+          "targetForm": "gasping",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "pace": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2",
+            "v-5"
+          ],
+          "sense": "速度",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-3"
+          ],
+          "sense": "一步",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-1",
+            "v-2",
+            "v-4"
+          ],
+          "sense": "踱步",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-3"
+          ],
+          "sense": "用步测量",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The volunteers worked at a steady pace, checking each donated bicycle carefully before deciding which parts needed replacing.",
+          "translation": "志愿者们以平稳的速度工作，仔细检查每辆捐赠的自行车，再决定需要更换哪些零件。",
+          "targetForm": "pace",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "He stopped a few paces from the broken window, noticing fresh glass scattered across the pavement.",
+          "translation": "他在离破窗几步远的地方停下，发现人行道上散落着刚碎的玻璃。",
+          "targetForm": "paces",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "She paced the corridor outside the interview room, rehearsing the answer she had been unable to finish earlier.",
+          "translation": "她在面试室外的走廊里来回踱步，练习之前没能说完的回答。",
+          "targetForm": "paced",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "Before ordering the fencing, he paced out the garden to estimate how many panels he would need.",
+          "translation": "订购围栏前，他用脚步丈量了花园，估算需要多少块围栏板。",
+          "targetForm": "paced",
+          "senseId": "semantic-4"
+        }
+      ]
+    },
+    "praise": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2",
+            "n-3",
+            "v-1",
+            "v-2",
+            "v-3",
+            "v-4"
+          ],
+          "sense": "称赞",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The editor praised her careful research but suggested removing a paragraph that distracted readers from the main argument.",
+          "translation": "编辑称赞她的研究严谨细致，但建议删去一段会分散读者对核心论点注意力的文字。",
+          "targetForm": "praised",
+          "senseId": "semantic-1"
+        }
+      ]
+    },
+    "fountain": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2",
+            "n-3",
+            "n-4",
+            "n-6"
+          ],
+          "sense": "喷泉",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-5"
+          ],
+          "sense": "源泉",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The council repaired the fountain in the square, giving residents a place to gather on warm evenings.",
+          "translation": "地方议会修好了广场上的喷泉，为居民提供了温暖夜晚相聚的地方。",
+          "targetForm": "fountain",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "Her grandfather's workshop was a fountain of ideas for the young designer, who visited whenever a project stalled.",
+          "translation": "祖父的工作室是这位年轻设计师的灵感源泉，每当项目陷入停滞，她就会去那里。",
+          "targetForm": "fountain",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "everyday": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-1",
+            "adj-2",
+            "adj-3"
+          ],
+          "sense": "日常的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The exhibition turns everyday objects such as keys and shopping bags into reminders of lives disrupted by migration.",
+          "translation": "展览把钥匙、购物袋等日常物品变成见证，提醒人们迁徙给生活带来的动荡。",
+          "targetForm": "everyday",
+          "senseId": "semantic-1"
+        }
+      ]
+    },
+    "fashionable": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-1",
+            "adj-2",
+            "adj-3"
+          ],
+          "sense": "时髦的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "Although the jacket was no longer fashionable, she kept wearing it because the fabric was warm and remarkably durable.",
+          "translation": "尽管那件夹克已经不时髦了，她仍继续穿着，因为面料保暖而且格外耐用。",
+          "targetForm": "fashionable",
+          "senseId": "semantic-1"
+        }
+      ]
+    },
+    "preside": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-3",
+            "v-5",
+            "v-6"
+          ],
+          "sense": "主持",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "An independent chair will preside over the meeting so that both sides have an equal opportunity to present their evidence.",
+          "translation": "一位独立主席将主持会议，确保双方有同等机会陈述各自的证据。",
+          "targetForm": "preside",
+          "senseId": "semantic-1"
+        }
+      ]
+    },
+    "poison": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2",
+            "n-3",
+            "v-2",
+            "v-3",
+            "v-4",
+            "v-5"
+          ],
+          "sense": "毒物",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "n-4",
+            "v-1"
+          ],
+          "sense": "破坏",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The conservation team tested the water for poison after several fish were found dead near the factory outlet.",
+          "translation": "工厂排水口附近发现几条死鱼后，环保团队检测了水中是否含有毒物。",
+          "targetForm": "poison",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "Repeated accusations began to poison their working relationship, making even routine decisions difficult to discuss calmly.",
+          "translation": "一再的指责开始破坏他们的工作关系，就连日常决定也难以心平气和地讨论。",
+          "targetForm": "poison",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "quote": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "n-1",
+            "v-1",
+            "v-2",
+            "v-4"
+          ],
+          "sense": "引用",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-3"
+          ],
+          "sense": "报价",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The historian quoted a passage from the diary to show how ordinary families experienced the long winter.",
+          "translation": "历史学家引用了一段日记，说明普通家庭是如何度过那个漫长冬季的。",
+          "targetForm": "quoted",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The builder quoted a higher price after discovering that the damaged roof required new supporting beams.",
+          "translation": "施工人员发现受损屋顶需要更换承重梁后，报出了更高的价格。",
+          "targetForm": "quoted",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "encourage": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-1",
+            "v-2",
+            "v-3"
+          ],
+          "sense": "鼓励",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-4"
+          ],
+          "sense": "促进",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "Her supervisor encouraged her to submit the paper, pointing out that the unusual results were worth investigating.",
+          "translation": "导师鼓励她提交论文，指出这些不同寻常的结果值得研究。",
+          "targetForm": "encouraged",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "Poor ventilation can encourage mould to grow behind furniture, especially in rooms where damp clothes are left to dry.",
+          "translation": "通风不良会促进家具后方的霉菌生长，晾着湿衣服的房间尤其如此。",
+          "targetForm": "encourage",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "practical": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-1",
+            "n-1"
+          ],
+          "sense": "实践操作的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-2",
+            "adj-3"
+          ],
+          "sense": "切实可行的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-4"
+          ],
+          "sense": "善于动手的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-5"
+          ],
+          "sense": "几乎完全的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The course combines lectures with practical sessions in which students repair damaged furniture under an experienced carpenter's supervision.",
+          "translation": "课程把讲座与实践操作课结合起来，学生在经验丰富的木匠指导下修复受损家具。",
+          "targetForm": "practical",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "A shared delivery service offered a practical solution for village shops that could not afford their own vans.",
+          "translation": "共用配送服务为买不起货车的乡村商店提供了切实可行的解决办法。",
+          "targetForm": "practical",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "My sister is far more practical than I am and can usually repair things that I would replace.",
+          "translation": "姐姐比我更善于动手，我打算换掉的东西，她通常都能修好。",
+          "targetForm": "practical",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "With the only bridge washed away, reaching the village by road became a practical impossibility until repairs were completed.",
+          "translation": "唯一的桥被冲毁后，在修复完成之前，走公路进村几乎成了不可能的事。",
+          "targetForm": "practical",
+          "senseId": "semantic-4"
+        }
+      ]
+    },
+    "hill": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2",
+            "n-4"
+          ],
+          "sense": "小山",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "n-3",
+            "v-1",
+            "v-2"
+          ],
+          "sense": "培土",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "From the hill above the harbour, we could see the fishing boats returning before the weather changed.",
+          "translation": "站在港口上方的小山上，我们可以看见渔船赶在天气变坏前返航。",
+          "targetForm": "hill",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The gardeners hilled soil around the potato plants, leaving clear channels between the rows for rainwater to drain away.",
+          "translation": "园丁们在马铃薯植株周围培土，并在垄间留出清晰的沟渠，便于排走雨水。",
+          "targetForm": "hilled",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "monster": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1"
+          ],
+          "sense": "怪物",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-2"
+          ],
+          "sense": "恶人",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-3",
+            "adj-1"
+          ],
+          "sense": "庞然大物",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-4"
+          ],
+          "sense": "小捣蛋鬼",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "In the village legend, a monster sleeps beneath the lake and wakes whenever someone rings the abandoned chapel bell.",
+          "translation": "村里的传说讲，一只怪物沉睡在湖底，每当有人敲响废弃教堂的钟，它就会醒来。",
+          "targetForm": "monster",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The investigation revealed a monster who had exploited vulnerable workers while presenting himself as a generous employer.",
+          "translation": "调查揭露了一个剥削弱势工人、却把自己装扮成慷慨雇主的恶人。",
+          "targetForm": "monster",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "The new printing press was such a monster that the workshop door had to be removed before installation.",
+          "translation": "新印刷机是个庞然大物，安装前不得不先拆掉车间的门。",
+          "targetForm": "monster",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "Their youngest was a little monster during the train journey, hiding everyone's tickets beneath the seat.",
+          "translation": "他们最小的孩子在火车上活像个小捣蛋鬼，把大家的车票都藏到了座位底下。",
+          "targetForm": "monster",
+          "senseId": "semantic-4"
+        }
+      ]
+    },
+    "concerning": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "prep.",
+          "sourceSenseIds": [
+            "prep-1"
+          ],
+          "sense": "关于",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-1"
+          ],
+          "sense": "令人担忧的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The committee received several practical suggestions concerning the renovation of the public library.",
+          "translation": "委员会收到了几项关于公共图书馆改造的实用建议。",
+          "targetForm": "concerning",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The bridge inspection revealed a concerning pattern of cracks that had not appeared in the previous survey.",
+          "translation": "桥梁检查发现了一组令人担忧的裂缝，在上次勘查中还没有这些裂缝。",
+          "targetForm": "concerning",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "draw": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-10",
+            "v-11"
+          ],
+          "sense": "画",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-1",
+            "v-2",
+            "v-3",
+            "v-4",
+            "n-1",
+            "n-2",
+            "n-3"
+          ],
+          "sense": "拉",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-14"
+          ],
+          "sense": "吸引",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-15"
+          ],
+          "sense": "得出结论",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-5",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "v-7",
+            "n-5"
+          ],
+          "sense": "平局",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The architect drew a rough sketch to show how the new entrance would fit beside the old staircase.",
+          "translation": "建筑师画了一张草图，说明新入口如何布置在旧楼梯旁边。",
+          "targetForm": "drew",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "She drew the curtains across the window to keep the afternoon sun from fading the old photographs.",
+          "translation": "她拉上窗帘，避免午后的阳光把旧照片晒褪色。",
+          "targetForm": "drew",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "The restored market hall drew visitors from neighbouring towns, giving small businesses a much-needed boost.",
+          "translation": "修复后的市场大厅吸引了邻近城镇的游客，为小商户带来了急需的生意。",
+          "targetForm": "drew",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "The researchers refused to draw conclusions from a sample that excluded most of the region's rural residents.",
+          "translation": "研究人员拒绝依据一个排除了该地区多数农村居民的样本得出结论。",
+          "targetForm": "draw",
+          "senseId": "semantic-4"
+        },
+        {
+          "sentence": "A late equaliser secured a draw, keeping the visiting team in contention for a place in the final.",
+          "translation": "终场前的扳平进球确保了平局，让客队保住了争夺决赛席位的机会。",
+          "targetForm": "draw",
+          "senseId": "semantic-5"
+        }
+      ]
+    },
     "moan": {
       "senseGroups": [
         {
