@@ -1,6 +1,22 @@
 {
   "reviewedAt": "2026-10-05",
   "reviewFingerprints": {
+    "annual": "cd3971f80b1b1626b93f997edc16e63d7f3390bd50be99c6f0fb55c85d87e8c7",
+    "shove": "51e241aaca544593a4ec64fc618589c686092e7f5536dcae60a8872712ff20e0",
+    "offensive": "6123a386fedd2c968deb8b8768b9ca00743d2bd06c977a59f20f808ef897ebff",
+    "devil": "7822ed88f7055ea6eefa73f79fd1ada08a09d84220ae5e9e71e7812c8a305664",
+    "train": "31795212f28a496605ca314a227a72bcbf4cd8192eb981493c82764506e65ee6",
+    "local": "0d443d3936d28ee9c6baa138c873247e843878a59f64266a7fd06516754509f5",
+    "compromise": "961c16cad0931f38281cc32af0df6e365bcd59d31e1f3510302c1a271b33f996",
+    "elite": "2a0104df838325d213daa25c940515d10afbc537b0455b4fa0dfcbc7f4d4341b",
+    "dump": "47199f9496e405357978a7657476a8d01d2f3b1516c9d1d074d287c4f9e0d2e4",
+    "forbid": "c18158aba5b8c8307de57af03844e6e3fccee35fe3ea20457d094d901aaf7763",
+    "twice": "482b27e984c2470fc47e576b9932ee15a450f1284efbfa465bec6de24cf17fae",
+    "protest": "da032654108d68901ca7d75321eaa99373c45ba5d060d2b413b3bfe15934bb52",
+    "fertilizer": "bc8e89e8ca9ba037f3a22d77a5e83cdbca4b0e2d0a704e71de0303ae4d120826",
+    "rose": "23724b19586c8ae775277878940cfda82bd51b8c0f60a469ba2239bec449afd5",
+    "miniature": "af5ce2a607502ddab4134d075dd140967884fea74938bd4e9a6c726f277a2abc",
+    "beef": "826684881031fe0331fa4d3547c578a2a9951b3ac8494f3bcb00f99158bd33ce",
     "enable": "490aef07380094059cd4b83414a8310f45431238fa7515f4bb9b64733ce188da",
     "contact": "1fb1ea47e46be13dd637af16be533e391e0c21fe6e5b60f2d78b0e797bcafde7",
     "whip": "3b6667232e03adca987f0b08d2d225b05006dc6a1214b69f2ecb4f421f0498b7",
@@ -55,6 +71,571 @@
   },
   "scope": "Targeted corrections, not a full-library review. Original examples; dictionary links support sense decisions.",
   "dictionaryOverrides": {
+    "compromise": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "妥协"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "折中"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "折中方案"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "和解"
+      },
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "妥协处理"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "危害"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "背离原则；降低标准"
+      }
+    ],
+    "shove": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "推"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "挤"
+      },
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "推挤"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "猛推"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "强使"
+      },
+      {
+        "id": "v-4",
+        "partOfSpeech": "v.",
+        "sense": "推"
+      },
+      {
+        "id": "v-5",
+        "partOfSpeech": "v.",
+        "sense": "胡乱塞放"
+      },
+      {
+        "id": "v-6",
+        "partOfSpeech": "v.",
+        "sense": "挪动让位（shove along 或 shove up）"
+      }
+    ],
+    "offensive": [
+      {
+        "id": "adj-1",
+        "partOfSpeech": "adj.",
+        "sense": "令人厌恶的"
+      },
+      {
+        "id": "adj-2",
+        "partOfSpeech": "adj.",
+        "sense": "冒犯人的"
+      },
+      {
+        "id": "adj-3",
+        "partOfSpeech": "adj.",
+        "sense": "进攻性的"
+      },
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "军事进攻"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "攻势"
+      }
+    ],
+    "devil": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "魔鬼"
+      },
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "纠缠烦扰"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "戏弄"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "恶人；捣蛋鬼（非正式）"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "家伙（与形容词连用，表示感叹）"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "用辛辣调料烹制"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "棘手的事（非正式）"
+      }
+    ],
+    "annual": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "年刊"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "年报"
+      },
+      {
+        "id": "adj-1",
+        "partOfSpeech": "adj.",
+        "sense": "每年的"
+      },
+      {
+        "id": "adj-2",
+        "partOfSpeech": "adj.",
+        "sense": "一年一次的"
+      },
+      {
+        "id": "adj-3",
+        "partOfSpeech": "adj.",
+        "sense": "全年的"
+      },
+      {
+        "id": "adj-4",
+        "partOfSpeech": "adj.",
+        "sense": "一年生的"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "一年生植物"
+      }
+    ],
+    "elite": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "精英"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "精锐"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "杰出人才"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "权势阶层"
+      },
+      {
+        "id": "adj-1",
+        "partOfSpeech": "adj.",
+        "sense": "顶尖的"
+      },
+      {
+        "id": "adj-2",
+        "partOfSpeech": "adj.",
+        "sense": "精英阶层的"
+      }
+    ],
+    "dump": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "垃圾场"
+      },
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "倾倒"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "倾销"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "倒垃圾"
+      },
+      {
+        "id": "v-4",
+        "partOfSpeech": "v.",
+        "sense": "倾销商品"
+      },
+      {
+        "id": "v-5",
+        "partOfSpeech": "v.",
+        "sense": "甩掉恋人（非正式）"
+      },
+      {
+        "id": "v-6",
+        "partOfSpeech": "v.",
+        "sense": "随手扔放"
+      },
+      {
+        "id": "v-7",
+        "partOfSpeech": "v.",
+        "sense": "转储数据"
+      },
+      {
+        "id": "v-8",
+        "partOfSpeech": "v.",
+        "sense": "把责任推给别人"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "脏乱的地方（非正式；贬义）"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "矿渣堆"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "临时军需品储存处"
+      },
+      {
+        "id": "n-5",
+        "partOfSpeech": "n.",
+        "sense": "数据转储"
+      },
+      {
+        "id": "n-6",
+        "partOfSpeech": "n.",
+        "sense": "排便（俚语）"
+      }
+    ],
+    "forbid": [
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "禁止"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "不准"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "使不可能（正式）"
+      }
+    ],
+    "train": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "火车"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "列车"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "行列"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "长队"
+      },
+      {
+        "id": "n-5",
+        "partOfSpeech": "n.",
+        "sense": "一连串事件"
+      },
+      {
+        "id": "n-6",
+        "partOfSpeech": "n.",
+        "sense": "连续的思路"
+      },
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "训练"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "培训"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "对准"
+      },
+      {
+        "id": "v-4",
+        "partOfSpeech": "v.",
+        "sense": "受训练"
+      },
+      {
+        "id": "v-5",
+        "partOfSpeech": "v.",
+        "sense": "锻炼"
+      },
+      {
+        "id": "n-7",
+        "partOfSpeech": "n.",
+        "sense": "礼服的拖裙"
+      },
+      {
+        "id": "v-6",
+        "partOfSpeech": "v.",
+        "sense": "使植物沿一定方向生长"
+      }
+    ],
+    "local": [
+      {
+        "id": "adj-1",
+        "partOfSpeech": "adj.",
+        "sense": "地方性的"
+      },
+      {
+        "id": "adj-2",
+        "partOfSpeech": "adj.",
+        "sense": "当地的"
+      },
+      {
+        "id": "adj-3",
+        "partOfSpeech": "adj.",
+        "sense": "局部的"
+      },
+      {
+        "id": "adj-4",
+        "partOfSpeech": "adj.",
+        "sense": "乡土的"
+      },
+      {
+        "id": "adj-5",
+        "partOfSpeech": "adj.",
+        "sense": "本地的"
+      },
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "当地居民"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "本地新闻"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "局部麻醉剂"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "附近常去的酒吧（英式；非正式）"
+      },
+      {
+        "id": "n-5",
+        "partOfSpeech": "n.",
+        "sense": "工会分会（北美）"
+      },
+      {
+        "id": "n-6",
+        "partOfSpeech": "n.",
+        "sense": "每站停靠的列车或公交车（北美）"
+      }
+    ],
+    "rose": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "玫瑰"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "蔷薇"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "玫瑰色"
+      },
+      {
+        "id": "adj-1",
+        "partOfSpeech": "adj.",
+        "sense": "玫瑰色的"
+      },
+      {
+        "id": "adj-2",
+        "partOfSpeech": "adj.",
+        "sense": "玫瑰花的"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "上升等（rise 的过去式）"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "洒水器的莲蓬式喷头"
+      },
+      {
+        "id": "n-5",
+        "partOfSpeech": "n.",
+        "sense": "顶棚灯线座"
+      }
+    ],
+    "miniature": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "微型复制品"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "微型肖像画"
+      },
+      {
+        "id": "adj-1",
+        "partOfSpeech": "adj.",
+        "sense": "微型的"
+      },
+      {
+        "id": "adj-2",
+        "partOfSpeech": "adj.",
+        "sense": "小型的"
+      }
+    ],
+    "beef": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "牛肉"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "肌肉；体力（非正式）"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "抱怨"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "不满；抱怨（非正式）"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "肉牛"
+      },
+      {
+        "id": "v-5",
+        "partOfSpeech": "v.",
+        "sense": "加强（beef up）"
+      }
+    ],
+    "protest": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "抗议"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "反对"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "抗议书"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "坚决的声明"
+      },
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "反对"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "抗议"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "坚决申明"
+      }
+    ],
+    "fertilizer": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "肥料"
+      }
+    ],
     "monster": [
       {
         "id": "n-1",
@@ -1095,6 +1676,157 @@
     ]
   },
   "reviews": {
+    "rose": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/rose_1",
+      "decision": "Separate flower from colour; merge rose/蔷薇 plant synonyms rather than duplicating botanical labels. Add the watering-can spray head and ceiling fitting, and keep one contextual example of the past tense of rise; other rise senses belong to its own entry. Omit the unverified old colour-verb gloss from the active learner dictionary.",
+      "retiredDictionarySenses": [
+        {
+          "id": "v-1",
+          "partOfSpeech": "v.",
+          "sense": "使成玫瑰色"
+        }
+      ]
+    },
+    "miniature": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/miniature_2",
+      "decision": "Keep the miniature scale/model family separate from the established fine portrait noun. Replace the awkward map-thumbnail usage and merge nominal/adjectival scale duplicates.",
+      "additionalSources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/miniature_1"
+      ]
+    },
+    "beef": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/beef_1",
+      "decision": "Cover meat, physical bulk, grievance, strengthening (beef up), and meat cattle. Restore common complaints and strengthening; archive the old raise/slaughter/inform verb glosses, which the consulted modern Oxford, Merriam-Webster and Collins entries do not support as learner-facing ordinary senses. This is not a claim that no historical or regional use exists.",
+      "additionalSources": [
+        "https://www.merriam-webster.com/dictionary/beef",
+        "https://www.collinsdictionary.com/dictionary/english/beef"
+      ],
+      "retiredDictionarySenses": [
+        {
+          "id": "v-1",
+          "partOfSpeech": "v.",
+          "sense": "养(牛)"
+        },
+        {
+          "id": "v-2",
+          "partOfSpeech": "v.",
+          "sense": "宰(牛)"
+        },
+        {
+          "id": "v-4",
+          "partOfSpeech": "v.",
+          "sense": "告发"
+        }
+      ]
+    },
+    "twice": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/twice",
+      "decision": "Keep distinct two occasions and double quantity; enrich the first short candidate with meaningful context, without duplicating either meaning."
+    },
+    "protest": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/protest_2",
+      "decision": "Merge protest, opposition and written protest as one objection family; distinguish the assertive claim of truth. Replace unnatural nominal assertion wording with the conventional protest-that verb construction."
+    },
+    "fertilizer": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/fertilizer",
+      "decision": "Use the established learner meaning soil fertilizer. The generic Merriam-Webster derivation does not substantiate treating an innovation catalyst or pollen as ordinary stand-alone learner senses. Archive those legacy extensions rather than forcing scientific or metaphorical sentences to satisfy the old list.",
+      "additionalSources": [
+        "https://dictionary.cambridge.org/dictionary/english-chinese-simplified/fertilizer",
+        "https://www.merriam-webster.com/dictionary/fertilizer"
+      ],
+      "retiredDictionarySenses": [
+        {
+          "id": "n-2",
+          "partOfSpeech": "n.",
+          "sense": "促进发展者"
+        },
+        {
+          "id": "n-3",
+          "partOfSpeech": "n.",
+          "sense": "受精媒介物"
+        }
+      ]
+    },
+    "elite": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/elite_2",
+      "decision": "Distinguish exceptional ability from the influential privileged social group. Merge talent/精锐 nominal-adjectival variants; replace the generic 精华 and unsupported assumption that every experienced core worker is elite.",
+      "additionalSources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/elite_1"
+      ]
+    },
+    "dump": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/dump_1",
+      "decision": "Prioritise waste disposal/site, low-price selling, ending a relationship, careless placement and data transfer. Merge dumping rubbish with the waste-site family, not with indiscriminate placement of useful belongings. Other senses retained in the dictionary are explicitly excluded by the five-example cap.",
+      "additionalSources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/dump_2"
+      ],
+      "omittedForCap": [
+        "v-8",
+        "n-2",
+        "n-3",
+        "n-4",
+        "n-6"
+      ]
+    },
+    "forbid": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/forbid",
+      "decision": "Merge prohibit/不准, retain the formal impersonal prevent/make-impossible sense. Rewrite the latter as a clear physical constraint rather than a vague snow-travel line."
+    },
+    "train": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/train_2",
+      "decision": "Restore training, which the first-five-gloss plan omitted. Keep rail transport, training skills, connected sequence, aiming, and a dress train. Physical processions and chains of events share the sequence family; plant-guiding is retained in the dictionary but omitted under the cap.",
+      "additionalSources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/train_1"
+      ],
+      "omittedForCap": [
+        "v-6"
+      ]
+    },
+    "local": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/local_2",
+      "decision": "Merge local/regional/native and derived local resident/news references, separate restricted bodily area, the British neighbourhood pub, North American union branch and stopping train. Keep one natural example per family.",
+      "additionalSources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/local_1"
+      ]
+    },
+    "compromise": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/compromise_2",
+      "decision": "Merge compromise/settlement/middle-ground agreement variants. Distinguish endangering security from actively lowering personal standards, with an explicit standards example.",
+      "additionalSources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/compromise_1"
+      ]
+    },
+    "shove": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/shove_1",
+      "decision": "Merge nominal and verbal rough pushing. Distinguish hurried insertion, figuratively forcing somebody into an unwanted role, and the British shove-along movement to make room. Remove the mistranslation of a shove as a whole crowding event.",
+      "additionalSources": [
+        "https://dictionary.cambridge.org/dictionary/english-chinese-simplified/shove"
+      ]
+    },
+    "offensive": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/offensive_1",
+      "decision": "Distinguish repulsive sensory qualities from disrespectful language; merge attacking/attack/campaign uses across military, sport and figurative contexts. Do not create repeated attacking examples just for a new part of speech.",
+      "additionalSources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/offensive_2"
+      ]
+    },
+    "devil": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/devil",
+      "decision": "Cover supernatural evil, a bad/mischievous person, informal person with evaluative adjective, teasing/annoying, and highly seasoned cooking. Merge torment/tease instead of two nearly identical verb examples. Old-fashioned difficult-task idiom retained without displacing these five representatives.",
+      "additionalSources": [
+        "https://www.merriam-webster.com/dictionary/devil"
+      ],
+      "omittedForCap": [
+        "n-4"
+      ]
+    },
+    "annual": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/annual_1",
+      "decision": "Merge once-yearly/per-year time variants, merge annual publication variants, and restore the missed one-season plant sense. Do not count yearbook and annual report as genuinely distinct senses.",
+      "additionalSources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/annual_2"
+      ]
+    },
     "monster": {
       "source": "https://www.oxfordlearnersdictionaries.com/definition/english/monster_1",
       "decision": "Keep imaginary creature, cruel person, enormous object and humorous naughty child. The adjective meaning huge belongs with the enormous-object group, not another sentence. Add the child use missing from the old dictionary.",
@@ -1382,6 +2114,1014 @@
     "vocabulary": {"source": "https://www.oxfordlearnersdictionaries.com/definition/english/vocabulary", "decision": "Separate a person's stock of words from a written glossary. Merge variants referring to a language or subject's stock of words; replace the worksheet instruction and blank."}
   },
   "entries": {
+    "annual": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-1",
+            "adj-2",
+            "adj-3"
+          ],
+          "sense": "每年一次的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2"
+          ],
+          "sense": "年刊",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "adj-4",
+            "n-3"
+          ],
+          "sense": "一年生植物",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The village holds an annual book fair where residents exchange unwanted books and raise money for the school library.",
+          "translation": "村里每年举办一次书展，居民交换不再需要的书，并为学校图书馆筹款。",
+          "targetForm": "annual",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "She found her father's school annual in the attic, filled with photographs of classmates he still mentioned decades later.",
+          "translation": "她在阁楼找到了父亲的学校年刊，里面满是几十年后他还常提起的同学照片。",
+          "targetForm": "annual",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "The gardeners planted colourful annuals along the path, planning to replace them after their single growing season ended.",
+          "translation": "园丁沿小路种下色彩鲜艳的一年生植物，打算在它们这一季生长期结束后重新栽种。",
+          "targetForm": "annuals",
+          "senseId": "semantic-3"
+        }
+      ]
+    },
+    "shove": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2",
+            "v-1",
+            "v-2",
+            "v-4"
+          ],
+          "sense": "猛推",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-5"
+          ],
+          "sense": "胡乱塞入",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-3"
+          ],
+          "sense": "强行置于",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-6"
+          ],
+          "sense": "挪动让位",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The crowd shoved him towards the barrier, and he raised his arms to protect the camera hanging from his neck.",
+          "translation": "人群把他猛地推向护栏，他抬起双臂护住挂在脖子上的相机。",
+          "targetForm": "shoved",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "She shoved the unfinished sketches into a drawer when the visitor arrived, scattering pencils across the floor.",
+          "translation": "访客到来时，她把没画完的草图胡乱塞进抽屉，铅笔撒了一地。",
+          "targetForm": "shoved",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "He resented being shoved into a management role without training when all he wanted was to continue designing.",
+          "translation": "他只想继续做设计，却没经过培训就被硬推上管理岗位，因此很不满。",
+          "targetForm": "shoved",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "The children shoved along the bench to make room for their grandfather, who had arrived carrying a basket of apples.",
+          "translation": "孩子们在长凳上挪了挪，给提着一篮苹果刚到的祖父腾出地方。",
+          "targetForm": "shoved",
+          "senseId": "semantic-4"
+        }
+      ]
+    },
+    "offensive": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-1"
+          ],
+          "sense": "难闻的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-2"
+          ],
+          "sense": "冒犯人的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-3",
+            "n-1",
+            "n-2"
+          ],
+          "sense": "进攻性的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "An offensive smell from the blocked drain forced the shopkeeper to close the bakery until repairs were completed.",
+          "translation": "堵塞的排水管散发出难闻的气味，迫使店主关闭面包房，直到维修完成。",
+          "targetForm": "offensive",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The presenter apologised for an offensive joke after listeners explained how it reinforced a hurtful stereotype.",
+          "translation": "听众指出一个笑话加深了伤人的刻板印象后，主持人为这个冒犯人的笑话道了歉。",
+          "targetForm": "offensive",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "The coach adopted a more offensive formation after half-time, sending another forward on to challenge the tiring defenders.",
+          "translation": "中场休息后，教练改用更具进攻性的阵型，增派一名前锋冲击逐渐疲惫的后卫。",
+          "targetForm": "offensive",
+          "senseId": "semantic-3"
+        }
+      ]
+    },
+    "devil": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1"
+          ],
+          "sense": "魔鬼",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-2"
+          ],
+          "sense": "捣蛋鬼",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-3"
+          ],
+          "sense": "家伙",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-1",
+            "v-2"
+          ],
+          "sense": "纠缠戏弄",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-5",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-3"
+          ],
+          "sense": "用辛辣调料烹制",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "In the folktale, the devil offers the farmer a bargain whose hidden cost becomes clear only at the end.",
+          "translation": "在这个民间故事中，魔鬼向农夫提出一笔交易，直到故事结尾，暗藏的代价才显露出来。",
+          "targetForm": "devil",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The little devil had hidden every slipper in the house, then watched his family search with a perfectly innocent expression.",
+          "translation": "这个小捣蛋鬼藏起了家里所有的拖鞋，然后一脸无辜地看着家人寻找。",
+          "targetForm": "devil",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "The poor devil missed the last ferry and spent the night in the waiting room with only his coat for warmth.",
+          "translation": "那个可怜的家伙错过了末班渡轮，只能在候船室过夜，靠一件外套保暖。",
+          "targetForm": "devil",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "His cousins deviled him about his new haircut until their grandmother pointed out that he was no longer laughing.",
+          "translation": "表兄弟们拿他的新发型纠缠取笑，直到祖母指出他已经笑不出来了。",
+          "targetForm": "deviled",
+          "senseId": "semantic-4"
+        },
+        {
+          "sentence": "The cook deviled the eggs with mustard and paprika, then arranged them around a plate of fresh salad.",
+          "translation": "厨师用芥末和红椒粉给鸡蛋调味，做成魔鬼蛋，再围着一盘新鲜沙拉摆好。",
+          "targetForm": "deviled",
+          "senseId": "semantic-5"
+        }
+      ]
+    },
+    "train": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2"
+          ],
+          "sense": "火车",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-1",
+            "v-2",
+            "v-4",
+            "v-5"
+          ],
+          "sense": "培训",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-3",
+            "n-4",
+            "n-5",
+            "n-6"
+          ],
+          "sense": "一连串",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-3"
+          ],
+          "sense": "对准",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-5",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-7"
+          ],
+          "sense": "拖裙",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "We took the early train because it reached the coast before the buses began their long journey through the hills.",
+          "translation": "我们乘了早班火车，因为它到达海岸时，公交车才开始漫长的山路行程。",
+          "targetForm": "train",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The charity trains volunteers to repair donated bicycles, giving them useful skills while keeping the service affordable.",
+          "translation": "慈善机构培训志愿者修理捐赠的自行车，让他们掌握实用技能，同时维持低廉的服务价格。",
+          "targetForm": "trains",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "A minor delay started a train of events that left several departments unable to complete their work on schedule.",
+          "translation": "一次小小的延误引发了一连串事件，导致几个部门无法按时完成工作。",
+          "targetForm": "train",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "The photographer trained her lens on the empty doorway, waiting for the first dancer to step into the afternoon light.",
+          "translation": "摄影师把镜头对准空荡荡的门口，等待第一位舞者走入午后的光线中。",
+          "targetForm": "trained",
+          "senseId": "semantic-4"
+        },
+        {
+          "sentence": "Two assistants lifted the long train of her dress as she climbed the narrow staircase behind the stage.",
+          "translation": "她沿舞台后方狭窄的楼梯上行时，两名助手托起了她礼服的长拖裙。",
+          "targetForm": "train",
+          "senseId": "semantic-5"
+        }
+      ]
+    },
+    "local": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-1",
+            "adj-2",
+            "adj-4",
+            "adj-5",
+            "n-1",
+            "n-2"
+          ],
+          "sense": "当地的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-3",
+            "n-3"
+          ],
+          "sense": "局部的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-4"
+          ],
+          "sense": "附近常去的酒吧",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-5"
+          ],
+          "sense": "工会分会",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-5",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-6"
+          ],
+          "sense": "每站停靠的列车",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "Local farmers supplied the school with seasonal vegetables, helping children learn where their food came from.",
+          "translation": "当地农民为学校供应时令蔬菜，帮助孩子们了解食物从哪里来。",
+          "targetForm": "Local",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The dentist explained that a local anaesthetic would numb the area around the tooth while the patient remained awake.",
+          "translation": "牙医解释说，局部麻醉剂会让牙齿周围的区域失去知觉，而患者仍保持清醒。",
+          "targetForm": "local",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "After the rehearsal, the musicians met at their local to discuss the concert over a quiet drink.",
+          "translation": "排练结束后，乐手们到常去的附近酒吧聚会，安静地喝上一杯，聊聊音乐会。",
+          "targetForm": "local",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "The local elected a new representative to negotiate shift arrangements with managers at the neighbouring factory.",
+          "translation": "工会分会选出一名新代表，与附近工厂的管理人员协商轮班安排。",
+          "targetForm": "local",
+          "senseId": "semantic-4"
+        },
+        {
+          "sentence": "We boarded the local instead of the express because the smaller station near our hotel was not an express stop.",
+          "translation": "我们坐了每站停靠的慢车而没有坐快车，因为快车不停靠旅馆附近的那个小站。",
+          "targetForm": "local",
+          "senseId": "semantic-5"
+        }
+      ]
+    },
+    "compromise": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2",
+            "n-3",
+            "n-4",
+            "v-1"
+          ],
+          "sense": "折中方案",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-2"
+          ],
+          "sense": "危及",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-3"
+          ],
+          "sense": "背离原则",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "Both departments accepted a compromise that gave them shared access to the equipment without increasing the overall budget.",
+          "translation": "两个部门都接受了一个折中方案，让双方共用设备，同时不增加总预算。",
+          "targetForm": "compromise",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "Leaving the storage room unlocked could compromise the collection, even if someone intended to return after only a few minutes.",
+          "translation": "即使只打算离开几分钟，不锁库房门也可能危及藏品安全。",
+          "targetForm": "compromise",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "The editor refused to compromise her standards by publishing an accusation that no independent source could support.",
+          "translation": "编辑拒绝背离自己的标准，不肯刊登一项得不到任何独立来源支持的指控。",
+          "targetForm": "compromise",
+          "senseId": "semantic-3"
+        }
+      ]
+    },
+    "elite": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2",
+            "n-3",
+            "adj-1"
+          ],
+          "sense": "顶尖的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-4",
+            "adj-2"
+          ],
+          "sense": "权势阶层",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The training centre gives young swimmers access to the same equipment used by elite athletes preparing for international competitions.",
+          "translation": "训练中心让年轻游泳选手用上了顶尖运动员备战国际比赛时使用的同类设备。",
+          "targetForm": "elite",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "For decades, a small political elite controlled the region's newspapers, limiting opportunities for ordinary citizens to challenge official decisions.",
+          "translation": "几十年来，一个小小的政治权势阶层控制着当地报纸，限制了普通公民质疑官方决定的机会。",
+          "targetForm": "elite",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "dump": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "v-1",
+            "v-3"
+          ],
+          "sense": "垃圾场",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-2",
+            "v-4"
+          ],
+          "sense": "倾销",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-5"
+          ],
+          "sense": "甩掉恋人",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-6"
+          ],
+          "sense": "随手扔放",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-5",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-7",
+            "n-5"
+          ],
+          "sense": "转储数据",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The former dump has been converted into a public park, although soil tests continue beneath the new paths.",
+          "translation": "这座旧垃圾场已改建为公共公园，不过新步道下方的土壤检测仍在继续。",
+          "targetForm": "dump",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "Several firms were accused of dumping cheap goods abroad, leaving local producers unable to compete on price.",
+          "translation": "数家公司被指控向国外倾销廉价商品，使当地生产商无法在价格上与之竞争。",
+          "targetForm": "dumping",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "She dumped her boyfriend after discovering that he had repeatedly lied about where he spent their savings.",
+          "translation": "她发现男友一再谎报两人积蓄的去向后，便甩了他。",
+          "targetForm": "dumped",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "He dumped his wet coat on the kitchen floor and hurried upstairs to close the window before the rain came in.",
+          "translation": "他把湿外套随手扔在厨房地板上，赶紧上楼关窗，免得雨水飘进来。",
+          "targetForm": "dumped",
+          "senseId": "semantic-4"
+        },
+        {
+          "sentence": "The technician dumped the database into a separate file before testing the migration, keeping the original records untouched.",
+          "translation": "技术员在测试迁移前把数据库转储到一个单独的文件中，保留原始记录不动。",
+          "targetForm": "dumped",
+          "senseId": "semantic-5"
+        }
+      ]
+    },
+    "forbid": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-1",
+            "v-2"
+          ],
+          "sense": "禁止",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-3"
+          ],
+          "sense": "使不可能",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The laboratory forbids visitors to handle specimens without supervision, even when the materials appear harmless.",
+          "translation": "实验室禁止访客在无人指导时接触标本，即使这些材料看起来无害也不例外。",
+          "targetForm": "forbids",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The narrow passage forbids the use of large machinery, so the repair crew must carry every component inside by hand.",
+          "translation": "通道太窄，无法使用大型机械，维修人员只能手工把每个部件搬进去。",
+          "targetForm": "forbids",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "twice": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "adv.",
+          "sourceSenseIds": [
+            "adv-1"
+          ],
+          "sense": "两次",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "adv.",
+          "sourceSenseIds": [
+            "adv-2"
+          ],
+          "sense": "两倍",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The technician checked the readings twice before reporting the fault, because an unnecessary shutdown would delay the whole workshop.",
+          "translation": "技术员把读数核对了两次才报告故障，因为不必要的停机会耽误整个车间的工作。",
+          "targetForm": "twice",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The new battery lasts twice as long as the old one, allowing the field team to work all day without recharging.",
+          "translation": "新电池的续航时间是旧电池的两倍，让野外工作队一整天不用充电也能工作。",
+          "targetForm": "twice",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "protest": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2",
+            "n-3",
+            "v-1",
+            "v-2"
+          ],
+          "sense": "抗议",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "n-4",
+            "v-3"
+          ],
+          "sense": "坚决申明",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "Residents protested against the proposed road, arguing that it would divide the village and destroy the only safe route to school.",
+          "translation": "居民抗议拟建的道路，认为它会把村子一分为二，还会破坏唯一安全的上学路线。",
+          "targetForm": "protested",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "She protested that she had submitted the application on time and produced an email confirming its receipt.",
+          "translation": "她坚决申明自己按时提交了申请，并拿出一封确认收到申请的邮件。",
+          "targetForm": "protested",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "fertilizer": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1"
+          ],
+          "sense": "肥料",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The gardener chose a slow-release fertilizer to support the young trees without having to feed them every week.",
+          "translation": "园丁选用了缓释肥料，既能为幼树提供养分，又不必每周施肥。",
+          "targetForm": "fertilizer",
+          "senseId": "semantic-1"
+        }
+      ]
+    },
+    "rose": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2",
+            "adj-2"
+          ],
+          "sense": "玫瑰",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "n-3",
+            "adj-1"
+          ],
+          "sense": "玫瑰红色的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-2"
+          ],
+          "sense": "上涨",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-4"
+          ],
+          "sense": "莲蓬式喷头",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-5",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-5"
+          ],
+          "sense": "灯线座",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The old rose beside the gate survived the harsh winter and produced its first flowers just as the family returned.",
+          "translation": "门旁的老玫瑰熬过了严冬，恰好在一家人回来时开出了第一批花。",
+          "targetForm": "rose",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "She chose a soft rose fabric for the curtains, hoping its warm colour would brighten the north-facing room.",
+          "translation": "她选了柔和的玫瑰红布料做窗帘，希望暖色能让朝北的房间显得明亮一些。",
+          "targetForm": "rose",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "The river rose so quickly after the storm that the rescue team moved its equipment to higher ground.",
+          "translation": "暴风雨后河水上涨得很快，救援队于是把设备转移到了地势较高的地方。",
+          "targetForm": "rose",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "He fitted a rose to the watering can so that a gentle spray would reach the seedlings without disturbing the soil.",
+          "translation": "他给洒水壶装上莲蓬式喷头，让细柔的水流浇到幼苗上，又不冲散泥土。",
+          "targetForm": "rose",
+          "senseId": "semantic-4"
+        },
+        {
+          "sentence": "An electrician replaced the cracked ceiling rose before connecting the new pendant light above the dining table.",
+          "translation": "电工先更换了开裂的顶棚灯线座，再接好餐桌上方的新吊灯。",
+          "targetForm": "rose",
+          "senseId": "semantic-5"
+        }
+      ]
+    },
+    "miniature": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "n-1",
+            "adj-1",
+            "adj-2"
+          ],
+          "sense": "微型的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-2"
+          ],
+          "sense": "微型肖像画",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The designer built a miniature theatre to test how the scenery would look from seats at different heights.",
+          "translation": "设计师搭建了一个微型剧院，用来测试从不同高度的座位看过去，布景会是什么样子。",
+          "targetForm": "miniature",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "Inside the locket was a miniature of her grandmother, painted long before the family owned a camera.",
+          "translation": "挂坠盒里是一幅祖母的微型肖像画，画成时距离家里买相机还有很多年。",
+          "targetForm": "miniature",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "beef": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1"
+          ],
+          "sense": "牛肉",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-2"
+          ],
+          "sense": "肌肉",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-3",
+            "v-3"
+          ],
+          "sense": "不满",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-5"
+          ],
+          "sense": "加强",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-5",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-4"
+          ],
+          "sense": "肉牛",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The cook simmered the beef with onions until it was tender enough to pull apart with a fork.",
+          "translation": "厨师把牛肉和洋葱一起慢炖，直到用叉子就能轻易拨开。",
+          "targetForm": "beef",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The coach wanted more beef in the forward line but refused to sacrifice the team's speed and skill.",
+          "translation": "教练希望锋线球员更壮实些，但不愿牺牲球队的速度和技术。",
+          "targetForm": "beef",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "Her main beef with the new timetable was that the last bus left before her evening class finished.",
+          "translation": "她对新时刻表最不满的是，晚课还没结束，末班车就已经开走了。",
+          "targetForm": "beef",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "The museum decided to beef up security after a visitor entered a storage room through an unlocked side door.",
+          "translation": "一名游客从未上锁的侧门进入库房后，博物馆决定加强安保。",
+          "targetForm": "beef",
+          "senseId": "semantic-4"
+        },
+        {
+          "sentence": "The old farm ledger lists thirty head of beef alongside the sheep, showing how the family once earned its living.",
+          "translation": "旧农场账簿上除了羊还列有三十头肉牛，反映了这家人过去的谋生方式。",
+          "targetForm": "beef",
+          "senseId": "semantic-5"
+        }
+      ]
+    },
     "enable": {
       "senseGroups": [
         {
