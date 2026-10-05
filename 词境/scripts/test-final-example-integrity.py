@@ -57,6 +57,9 @@ class ReviewedCorrectionsTests(unittest.TestCase):
         root = Path(__file__).resolve().parents[1]
         corrections = json.loads((root / "content" / "semantic-reviewed-corrections.json").read_text(encoding="utf-8"))
         dictionary = verifier.js(root / "public" / "word-senses.js", "WORD_SENSE_LIBRARY")["entries"]
+        for word, senses in corrections.get("dictionaryOverrides", {}).items():
+            self.assertIn(word, dictionary)
+            dictionary[word] = {"senses": senses}
         language_checks = verifier.tools()
         for word, entry in corrections["entries"].items():
             with self.subTest(word=word):
@@ -64,7 +67,7 @@ class ReviewedCorrectionsTests(unittest.TestCase):
                 self.assertEqual(verifier.structural_errors(entry, known), [])
                 groups = {group["id"] for group in entry["senseGroups"]}
                 for example in entry["examples"]:
-                    valid, reason = language_checks.locally_valid(word, example, groups)
+                    valid, reason = language_checks.strictly_valid(word, example, groups)
                     self.assertTrue(valid, reason)
 
 

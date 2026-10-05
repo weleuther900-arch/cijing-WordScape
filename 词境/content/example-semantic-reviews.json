@@ -1,0 +1,5 @@
+{
+  "schemaVersion": 1,
+  "scope": "Separate reviews of exact candidate and dictionary fingerprints. Generator acceptance is not approval. Targeted authored corrections live in semantic-reviewed-corrections.json.",
+  "entries": {}
+}

@@ -41,6 +41,10 @@ try {
     & $node .\scripts\merge-semantic-sense-coverage-drafts.js *>> $log
     if ($LASTEXITCODE -ne 0) { throw 'draft merge failed after generation' }
     & $node .\scripts\compose-semantic-sense-coverage.js *>> $log
+    if ($LASTEXITCODE -eq 3) {
+      Note 'generation saved; full-library semantic review is required before materialising public assets'
+      exit 3
+    }
     if ($LASTEXITCODE -ne 0) {
       Note "pass $pass incomplete; retaining drafts and retrying sequentially"
       continue

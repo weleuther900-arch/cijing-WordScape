@@ -4,8 +4,8 @@
 // modify a running worker's files or count generator acceptance as a review.
 const fs = require("node:fs");
 const path = require("node:path");
-const crypto = require("node:crypto");
 const { composeEntry } = require("./compose-semantic-sense-coverage");
+const { fingerprint, dictionaryWithCorrections, reviewSummary } = require("./reviewed-example-content");
 const root = path.resolve(__dirname, "..");
 function readAssignment(relative, name) {
   const raw = fs.readFileSync(path.join(root, relative), "utf8").replace(/^\uFEFF/, "");
@@ -19,9 +19,11 @@ function snapshot() {
   const words = [...new Set(book.words.map((word) => String(word).toLowerCase()))];
   if (words.length !== 5487) throw new Error("unexpected target word count");
   const published = readAssignment("data/context-resolved-examples.js", "WORD_AI_EXAMPLE_LIBRARY").entries;
-  const dictionary = readAssignment("public/word-senses.js", "WORD_SENSE_LIBRARY").entries;
+  const publishedDictionary = readAssignment("public/word-senses.js", "WORD_SENSE_LIBRARY").entries;
   const plan = JSON.parse(fs.readFileSync(path.join(root, "data/semantic-sense-coverage-plan.json"), "utf8")).entries;
   const corrections = JSON.parse(fs.readFileSync(path.join(root, "content/semantic-reviewed-corrections.json"), "utf8"));
+  const dictionary = dictionaryWithCorrections(publishedDictionary, corrections);
+  const ledger = JSON.parse(fs.readFileSync(path.join(root, "content/example-semantic-reviews.json"), "utf8"));
   const baseline = readAssignment("data/semantic-sense-coverage-drafts.js", "SEMANTIC_SENSE_COVERAGE_DRAFTS").entries;
   const drafts = { ...baseline };
   // Match the merge script: baseline wins over frozen partition copies.
@@ -34,7 +36,7 @@ function snapshot() {
     }
   }
   const entries = {};
-  const counts = { totalWords: words.length, reviewedCorrections: 0, awaitingGeneration: 0, awaitingSemanticReview: 0, invalidCandidates: 0 };
+  const counts = { totalWords: words.length, reviewedCorrections: 0, approvedReviews: 0, awaitingGeneration: 0, awaitingSemanticReview: 0, invalidCandidates: 0 };
   for (const word of words) {
     let candidate = published[word];
     let source = "published-retained";
@@ -57,20 +59,30 @@ function snapshot() {
       if (!corrections.reviews[word]?.source) throw new Error(`missing review evidence: ${word}`);
       candidate = corrections.entries[word];
       source = "reviewed-correction";
-      status = "reviewed-correction";
+      status = corrections.reviewFingerprints?.[word] === fingerprint(candidate, dictionary[word]?.senses || [])
+        ? "reviewed-correction" : "awaiting-semantic-review";
       error = null;
     }
     if (!candidate) {
       status = "invalid-candidate";
       error = "missing candidate";
     }
-    const key = { "reviewed-correction": "reviewedCorrections", "awaiting-generation": "awaitingGeneration", "awaiting-semantic-review": "awaitingSemanticReview", "invalid-candidate": "invalidCandidates" }[status];
+    if (status !== "awaiting-generation" && candidate && !error) {
+      const check = reviewSummary({ [word]: candidate }, dictionary, corrections, ledger, [word]);
+      if (check.invalid.length) {
+        status = "invalid-candidate";
+        error = "candidate structure or dictionary references are invalid";
+      } else if (check.reviewed && status !== "reviewed-correction") {
+        status = "reviewed-candidate";
+      }
+    }
+    const key = { "reviewed-correction": "reviewedCorrections", "reviewed-candidate": "approvedReviews", "awaiting-generation": "awaitingGeneration", "awaiting-semantic-review": "awaitingSemanticReview", "invalid-candidate": "invalidCandidates" }[status];
     counts[key] += 1;
     entries[word] = {
       status, source, error,
-      fingerprint: crypto.createHash("sha256").update(JSON.stringify(candidate || null)).digest("hex"),
+      fingerprint: fingerprint(candidate || null, dictionary[word]?.senses || []),
       dictionarySenses: dictionary[word]?.senses || [],
-      omittedForCap: plan[word]?.omittedForCap || [],
+      omittedForCap: corrections.reviews[word]?.omittedForCap || plan[word]?.omittedForCap || [],
       omittedSenseIds: drafts[word]?.omittedSenseIds || [],
       review: corrections.reviews[word] || null,
       candidate

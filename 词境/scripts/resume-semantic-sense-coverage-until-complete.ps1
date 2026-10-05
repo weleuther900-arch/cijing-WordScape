@@ -19,6 +19,10 @@ try {
     Note 'quota-aware supervisor: starting continuation from preserved drafts'
     & pwsh -NoLogo -NoProfile -File $continuation
     $exitCode = $LASTEXITCODE
+    if ($exitCode -eq 3) {
+      Note 'quota-aware supervisor: drafts are preserved; awaiting full-library semantic review'
+      exit 3
+    }
     if ($exitCode -eq 0) {
       Note 'quota-aware supervisor: continuation completed successfully'
       exit 0

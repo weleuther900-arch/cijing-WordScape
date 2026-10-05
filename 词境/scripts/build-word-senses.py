@@ -17,6 +17,7 @@ ROOT = Path(__file__).resolve().parents[1]
 BOOK_PATH = ROOT / "public" / "bundled-imports" / "27-one.json"
 DICTIONARY_PATH = ROOT / "data" / "offline-dictionary.json"
 OUTPUT_PATH = ROOT / "public" / "word-senses.js"
+REVIEWED_CORRECTIONS_PATH = ROOT / "content" / "semantic-reviewed-corrections.json"
 
 POS_PREFIX = re.compile(
     r"^\s*((?:(?:n|v|vi|vt|adj|a|adv|ad|prep|pron|conj|aux|art|det|num|int|interj)\.\s*(?:[/,;、]\s*)?)+)(.*)$",
@@ -166,12 +167,22 @@ def parse_definition(raw: str) -> list[dict]:
 def main() -> None:
     words = [str(word).strip().lower() for word in json.loads(BOOK_PATH.read_text(encoding="utf-8"))["words"]]
     dictionary = json.loads(DICTIONARY_PATH.read_text(encoding="utf-8")).get("entries", {})
+    corrections = json.loads(REVIEWED_CORRECTIONS_PATH.read_text(encoding="utf-8"))
+    reviewed_overrides = corrections.get("dictionaryOverrides", {})
+    for word, senses in reviewed_overrides.items():
+        review = corrections.get("reviews", {}).get(word, {})
+        if (word not in words or word not in corrections.get("entries", {})
+                or not review.get("source") or not review.get("decision")
+                or not senses or len({sense.get("id") for sense in senses}) != len(senses)
+                or any(not sense.get("id") or not sense.get("partOfSpeech")
+                       or not sense.get("sense") for sense in senses)):
+            raise ValueError(f"Invalid reviewed dictionary override: {word}")
     entries: dict[str, dict] = {}
     missing: list[str] = []
     for word in words:
         record = dictionary.get(word)
         definition = record[1] if isinstance(record, list) and len(record) > 1 else ""
-        senses = SENSE_OVERRIDES.get(word) or parse_definition(definition)
+        senses = reviewed_overrides.get(word) or SENSE_OVERRIDES.get(word) or parse_definition(definition)
         if not senses:
             missing.append(word)
             continue

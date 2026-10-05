@@ -4,6 +4,7 @@
 // has been produced. This prevents a partial batch from reaching public assets.
 const fs = require("node:fs");
 const path = require("node:path");
+const { dictionaryWithCorrections, reviewSummary } = require("./reviewed-example-content");
 
 const root = path.resolve(__dirname, "..");
 const currentPath = path.join(root, "data", "context-resolved-examples.js");
@@ -81,12 +82,28 @@ function main() {
     }
     entries[word] = entry;
   }
+  const dictionaryPath = path.join(root, "public", "word-senses.js");
+  const dictionary = readAssignment(dictionaryPath, "WORD_SENSE_LIBRARY");
+  dictionary.entries = dictionaryWithCorrections(dictionary.entries, corrections);
+  const ledgerPath = path.join(root, "content", "example-semantic-reviews.json");
+  const ledger = JSON.parse(fs.readFileSync(ledgerPath, "utf8"));
+  const book = JSON.parse(fs.readFileSync(path.join(root, "public", "bundled-imports", "27-one.json"), "utf8"));
+  const words = [...new Set(book.words.map((word) => String(word).toLowerCase()))];
+  if (words.length !== 5487) throw new Error("unexpected target word count");
+  const review = reviewSummary(entries, dictionary.entries, corrections, ledger, words);
+  fs.writeFileSync(path.join(root, "data", "example-semantic-release-gate.json"), JSON.stringify(review, null, 2) + "\n", "utf8");
+  if (review.pending.length || review.invalid.length || review.extraWords.length) {
+    console.error(JSON.stringify({ status: "semantic-review-required", reviewed: review.reviewed, pending: review.pending.length, invalid: review.invalid.length, extra: review.extraWords.length }));
+    process.exitCode = 3;
+    return;
+  }
   const totalExamples = Object.values(entries).reduce((count, entry) => count + (entry.examples || []).length, 0);
   const output = {
     source: "dictionary-sense rebuild: semantically distinct learner-facing examples, maximum five per word",
     generatedAt: new Date().toISOString(),
     entries
   };
+  fs.writeFileSync(dictionaryPath, `window.WORD_SENSE_LIBRARY = ${JSON.stringify(dictionary)};\n`, "utf8");
   fs.writeFileSync(currentPath, `window.WORD_AI_EXAMPLE_LIBRARY = ${JSON.stringify(output)};\n`, "utf8");
   console.log(JSON.stringify({ rebuiltWords: rebuilt, totalWords: Object.keys(entries).length, totalExamples }));
 }

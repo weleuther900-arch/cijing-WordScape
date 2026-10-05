@@ -1,7 +1,597 @@
 {
   "reviewedAt": "2026-10-05",
+  "reviewFingerprints": {
+    "moan": "9bd02cb432254e5fb42bb55da48dd2543db40c399e07108c78212b412965f844",
+    "groan": "44eab71daa81ebfa762daac1ac21477590dd7b43f3a401314978e0a3ab8954c1",
+    "descent": "4c74738ad670eb1a0366502a4ee8cc64f2986b8fb799446172e082747bbb0f01",
+    "kid": "198169dd907e0abe41f79bf6b0f177a86ab74a3790e5b71dda286bd5fea65149",
+    "liner": "a251ce4f4efd6fa2bccc17f30152a4c4cbf2aa5e2543f2a76f30bb9b7bf04ca3",
+    "retail": "4f187b194bc539694d54db00971f7e833347128f74d228d0f532fcffeb01e2b8",
+    "wealth": "c8f25faa44d404949b28571c614bb983fcda1c99361878d8cc68a673ba0a338a",
+    "trolley": "896ec6a7bcbdf50c090858eb4999265709263fd244b7251fb0510e834b72f0dc",
+    "correspondent": "f17d5556dc885067893b34879762747f11a1c41a670f2fdb9bc62a23aded113e",
+    "bull": "0ac09b131f2ce5e69f6ec9225664432740c5d0ee8cda8026152179cbbb0350d8",
+    "on": "0c287862c8653783f75d4840abe73d8f05d12b42b5807d962f1a25f5db3bcaf5",
+    "bus": "d6f78ac287a865463173b5db11acfebbe02ba29028b6fa9101faa7bc31b1e809",
+    "background": "5f8537541d09851577a37e83caa32c5052aebbd3c560d67c41a5196e7bcde758",
+    "defence": "ded72fb92823b3eb4f62010546ad4ca8f3de09c187bedb2af135b68740405e65",
+    "discovery": "471737878a97963317891861d68f687d544f7cf012a73de4c9bc0b357f1cd564",
+    "investment": "62ff8d74120df0a2e72c3b8469b941581fe01619702b1580070924b5444c1eb0",
+    "association": "e4d6d40b26b14aa1297aa7fbe5a8b18cd359e0af037282beac983de63cadc1cf",
+    "signature": "0626e5e73ab7853d4be6a0c7b4863bb36f3fe7becdff7421b91482a86ba01996",
+    "it": "cc00a32c8bd9b6c13c4e070d864d9103c04279aed6e8f7c4fad6dfa104fc0efa",
+    "satellite": "de49c135c9ec6945fe87d818471a57005c29b77c82a133e65307a3d915626884",
+    "undergo": "742fdb0c94330c0685d9cac6f4ce82b787de90076cfbc4f158beef3a8d2d2107",
+    "lawn": "9aeb0665da70242e50660de7eafd4d5bff8b2ff472dde8928b0008b6747e3c19",
+    "barrier": "f49d8f9484fbc68bc0b58e2af2110ca20f938fb2433f2e181e7568091faa746d",
+    "benign": "22a76c1ec81d27b3a383335e549f11012745f3e34e8b315b3ef14b983ea70a31",
+    "cafe": "c1d862b2363131808aca2e0a8909415723bda8483926e433d76c60679703f11d",
+    "curriculum": "b8c0683e020f2a3b8723703091dc61f5274e8ec35df458387edd58cc998281e2",
+    "laughter": "31d6a6262753f4c8fc4c6313d8ee7114c97872180a80445679509e2db638655f",
+    "vocabulary": "3cc61e4cd78ed37534756708c8474e78defe731e621f3367dbccc49ef46d96f8"
+  },
   "scope": "Targeted corrections, not a full-library review. Original examples; dictionary links support sense decisions.",
+  "dictionaryOverrides": {
+    "liner": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "大型客轮"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "划线器；画线者"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "定期客轮；班轮"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "内衬；衬里"
+      },
+      {
+        "id": "n-5",
+        "partOfSpeech": "n.",
+        "sense": "衬垫；防渗膜"
+      },
+      {
+        "id": "n-6",
+        "partOfSpeech": "n.",
+        "sense": "眼线或唇线化妆品"
+      }
+    ],
+    "groan": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "呻吟"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "叹息"
+      },
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "呻吟"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "抱怨"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "不堪重负"
+      },
+      {
+        "id": "v-4",
+        "partOfSpeech": "v.",
+        "sense": "呻吟着说"
+      }
+    ],
+    "it": [
+      {
+        "id": "pron-1",
+        "partOfSpeech": "pron.",
+        "sense": "它（指已提及的事物或情况）"
+      },
+      {
+        "id": "pron-2",
+        "partOfSpeech": "pron.",
+        "sense": "用于确认人的身份"
+      },
+      {
+        "id": "pron-3",
+        "partOfSpeech": "pron.",
+        "sense": "用于表示天气、时间或距离"
+      },
+      {
+        "id": "pron-4",
+        "partOfSpeech": "pron.",
+        "sense": "形式主语或形式宾语"
+      },
+      {
+        "id": "pron-5",
+        "partOfSpeech": "pron.",
+        "sense": "用于强调句"
+      }
+    ],
+    "satellite": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "人造卫星"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "天然卫星"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "附属机构；卫星城；附庸国"
+      }
+    ],
+    "discovery": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "发现"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "被发现的事物"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "证据开示"
+      }
+    ],
+    "investment": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "投资；投资款"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "时间或精力的投入"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "值得购置的物品"
+      }
+    ],
+    "association": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "协会"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "交往；合作关系"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "联想"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "关联"
+      }
+    ],
+    "bus": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "公共汽车"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "计算机总线"
+      },
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "用公共汽车运送"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "收拾餐桌"
+      }
+    ],
+    "background": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "画面背景；底色"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "事件背景；背景资料"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "个人经历；出身背景"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "不引人注意的位置；次要地位"
+      },
+      {
+        "id": "n-5",
+        "partOfSpeech": "n.",
+        "sense": "计算机后台"
+      }
+    ],
+    "defence": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "防御"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "防御设施"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "国防"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "辩护；为某观点辩解"
+      },
+      {
+        "id": "n-5",
+        "partOfSpeech": "n.",
+        "sense": "法庭上的辩护"
+      },
+      {
+        "id": "n-6",
+        "partOfSpeech": "n.",
+        "sense": "辩方"
+      },
+      {
+        "id": "n-7",
+        "partOfSpeech": "n.",
+        "sense": "后卫线；防守队员"
+      }
+    ],
+    "correspondent": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "通讯记者"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "通信者"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "代理银行"
+      }
+    ],
+    "bull": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "公牛"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "雄性大型动物"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "看涨的投资者"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "胡说"
+      },
+      {
+        "id": "n-5",
+        "partOfSpeech": "n.",
+        "sense": "教皇诏书"
+      },
+      {
+        "id": "n-6",
+        "partOfSpeech": "n.",
+        "sense": "靶心"
+      }
+    ],
+    "on": [
+      {
+        "id": "prep-1",
+        "partOfSpeech": "prep.",
+        "sense": "在……表面上"
+      },
+      {
+        "id": "adv-1",
+        "partOfSpeech": "adv.",
+        "sense": "向前"
+      },
+      {
+        "id": "adj-1",
+        "partOfSpeech": "adv.",
+        "sense": "处于开启或运行状态"
+      },
+      {
+        "id": "prep-2",
+        "partOfSpeech": "prep.",
+        "sense": "在某一天"
+      },
+      {
+        "id": "prep-3",
+        "partOfSpeech": "prep.",
+        "sense": "关于"
+      },
+      {
+        "id": "prep-4",
+        "partOfSpeech": "prep.",
+        "sense": "通过某种媒介"
+      },
+      {
+        "id": "prep-5",
+        "partOfSpeech": "prep.",
+        "sense": "乘坐交通工具"
+      },
+      {
+        "id": "prep-6",
+        "partOfSpeech": "prep.",
+        "sense": "根据"
+      },
+      {
+        "id": "prep-7",
+        "partOfSpeech": "prep.",
+        "sense": "处于某种活动或状态"
+      },
+      {
+        "id": "prep-8",
+        "partOfSpeech": "prep.",
+        "sense": "在某方向"
+      },
+      {
+        "id": "prep-9",
+        "partOfSpeech": "prep.",
+        "sense": "在……附近"
+      },
+      {
+        "id": "prep-10",
+        "partOfSpeech": "prep.",
+        "sense": "一……就；在……之时"
+      },
+      {
+        "id": "prep-11",
+        "partOfSpeech": "prep.",
+        "sense": "属于某组织"
+      },
+      {
+        "id": "prep-12",
+        "partOfSpeech": "prep.",
+        "sense": "以……为食；定期服用"
+      },
+      {
+        "id": "prep-13",
+        "partOfSpeech": "prep.",
+        "sense": "由……支付；靠……维持"
+      },
+      {
+        "id": "prep-14",
+        "partOfSpeech": "prep.",
+        "sense": "使用某电话号码"
+      },
+      {
+        "id": "prep-15",
+        "partOfSpeech": "prep.",
+        "sense": "针对；对……有影响"
+      },
+      {
+        "id": "prep-16",
+        "partOfSpeech": "prep.",
+        "sense": "随身带着"
+      },
+      {
+        "id": "prep-17",
+        "partOfSpeech": "prep.",
+        "sense": "与……相比"
+      },
+      {
+        "id": "adv-2",
+        "partOfSpeech": "adv.",
+        "sense": "继续"
+      },
+      {
+        "id": "adv-3",
+        "partOfSpeech": "adv.",
+        "sense": "穿戴着"
+      },
+      {
+        "id": "adv-4",
+        "partOfSpeech": "adv.",
+        "sense": "登上交通工具"
+      },
+      {
+        "id": "adv-5",
+        "partOfSpeech": "adv.",
+        "sense": "盖着；附着"
+      },
+      {
+        "id": "adv-6",
+        "partOfSpeech": "adv.",
+        "sense": "正在发生或上演"
+      },
+      {
+        "id": "adv-7",
+        "partOfSpeech": "adv.",
+        "sense": "已安排；未取消"
+      },
+      {
+        "id": "adv-8",
+        "partOfSpeech": "adv.",
+        "sense": "值班"
+      }
+    ]
+  },
   "reviews": {
+    "retail": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/retail_3",
+      "decision": "Merge selling senses across parts of speech. Merge telling in detail and spreading a report as one retelling use, supported by Merriam-Webster. Use retail as a noun in its noun example, not the modifier in retail sales.",
+      "additionalSources": [
+        "https://www.merriam-webster.com/dictionary/retail"
+      ]
+    },
+    "wealth": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/wealth",
+      "decision": "Merge wealth, property, resources and being rich. Keep a wealth of information as the distinct abundance construction. Remove the awkward literal translation of a country's wealth."
+    },
+    "trolley": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/trolley",
+      "decision": "Merge handcart, equipment cart and pushing such a cart; retain the distinct rail vehicle. Do not treat the object carried as a new sense."
+    },
+    "descent": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/descent",
+      "decision": "Merge physical downward variants, and merge ancestry/lineage/generational variants. Keep a concrete sudden incursion, not darkness labelled as an attack. Do not mislabel inheritance of an estate as one generation; specialist inheritance is outside this selection.",
+      "additionalSources": [
+        "https://www.merriam-webster.com/dictionary/descent"
+      ]
+    },
+    "kid": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/kid_1",
+      "decision": "Separate child, young goat and goatskin leather. Merge kidding/teasing/deceiving as related misleading speech, using a precisely labelled joke in context. Leather must not be grouped with a living goat.",
+      "additionalSources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/kid_2"
+      ]
+    },
+    "liner": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/liner",
+      "decision": "Merge passenger liner and scheduled liner, and merge inner lining and protective liner. Add the common eye/lip cosmetic sense missing from the old dictionary. Keep the old specialist line-drawing ID addressable but outside this common-use example selection."
+    },
+    "moan": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/moan_1",
+      "decision": "Merge moaning from pain or dismay, including speech/noise and noun/verb variants. Keep verbal complaining distinct; different emotions do not justify duplicate sound examples."
+    },
+    "groan": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/groan_1",
+      "decision": "Merge pain/disappointment noises and speech variants. Keep complaining and being overloaded distinct. Use a concrete overloaded shelf instead of an ungrounded landlord-oppression scenario."
+    },
+    "signature": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/signature",
+      "decision": "Keep autograph, identifying characteristic and musical key signature. Merge signing and email-signature variants. Use a noun for the characteristic and remove the unsupported claim that three sharps uniquely determine a major key.",
+      "additionalSources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/key-signature"
+      ]
+    },
+    "it": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/it_1",
+      "decision": "Keep the lowercase pronoun separate from the uppercase abbreviation IT. Use five distinct grammatical functions, merging referential variants and dummy-subject variants rather than filling the limit with synonyms."
+    },
+    "satellite": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/satellite",
+      "decision": "Group natural and artificial orbiting bodies as related satellite uses; one precise artificial-satellite context represents this group. Keep dependency as a distinct figurative meaning. Exclude specialist medical lesions from this common-use selection."
+    },
+    "discovery": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/discovery",
+      "decision": "Merge finding, realization and the result of finding as near-related learner-facing uses. Preserve the distinct legal discovery process with an independent primary reference; do not discard it just because the old dictionary omitted it.",
+      "additionalSources": [
+        "https://www.uscourts.gov/glossary-legal-terms/discovery"
+      ]
+    },
+    "investment": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/investment",
+      "decision": "Merge financial, time/effort and worthwhile-purchase extensions under committing resources for future benefit. Retain one precise financial context instead of repeating near-synonymous investment glosses. Specialist casting terminology is outside the common-use selection, not declared an incorrect meaning."
+    },
+    "association": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/association",
+      "decision": "Keep organization, relationship and mental association. Merge relationships between people and between things; neither requires a computing label. Each displayed context names only the meaning actually used."
+    },
+    "bus": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/bus_1",
+      "decision": "Preserve vehicle/transport as one related group, the distinct computing bus, and the North American restaurant verb. Do not add a second transport sentence solely for its change of part of speech.",
+      "additionalSources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/bus_2"
+      ]
+    },
+    "background": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/background",
+      "decision": "Use five groups: visual background/ground colour, explanatory history, personal experience, unobtrusive position and computing background. Merge visual variants to respect the cap without losing computing."
+    },
+    "defence": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/defence",
+      "decision": "Merge physical protection, facilities and national defence. Merge general argumentative and courtroom defence. Keep lawyers as the defence and sports defenders distinct; do not label a legal argument as a physical installation."
+    },
+    "correspondent": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/correspondent",
+      "decision": "Keep reporting journalist, letter writer and correspondent bank. Confirm the bank sense with Cambridge Business English; do not label any customer as a correspondent.",
+      "additionalSources": [
+        "https://dictionary.cambridge.org/us/dictionary/english/correspondent-bank"
+      ]
+    },
+    "bull": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/bull",
+      "decision": "Merge male cattle and other large male animals. Preserve a stock-market bull, informal nonsense, a papal document and the darts target centre. A generic buyer is not necessarily a bull."
+    },
+    "on": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/on_1",
+      "decision": "Choose five common, clearly distinct uses: surface, day/date, topic, operating state and continuation. Correct the operating-state part of speech to adverb while retaining the legacy ID. Keep other dictionary meanings and explicitly record the five-example selection limit.",
+      "additionalSources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/on_2"
+      ],
+      "omittedForCap": [
+        "adv-1",
+        "prep-4",
+        "prep-5",
+        "prep-6",
+        "prep-7",
+        "prep-8",
+        "prep-9",
+        "prep-10",
+        "prep-11",
+        "prep-12",
+        "prep-13",
+        "prep-14",
+        "prep-15",
+        "prep-16",
+        "prep-17",
+        "adv-3",
+        "adv-4",
+        "adv-5",
+        "adv-6",
+        "adv-7",
+        "adv-8"
+      ]
+    },
     "undergo": {
       "source": "https://www.oxfordlearnersdictionaries.com/definition/english/undergo",
       "decision": "Merge experience, endure and legal scrutiny into one meaning of going through a process or change. Replace the awkward translation and remove a duplicate legal-register example."
@@ -24,6 +614,1150 @@
     "vocabulary": {"source": "https://www.oxfordlearnersdictionaries.com/definition/english/vocabulary", "decision": "Separate a person's stock of words from a written glossary. Merge variants referring to a language or subject's stock of words; replace the worksheet instruction and blank."}
   },
   "entries": {
+    "moan": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2",
+            "v-1",
+            "v-3",
+            "v-4"
+          ],
+          "sense": "呻吟",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-2"
+          ],
+          "sense": "抱怨",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "A quiet moan from the next room alerted the nurse that the injured climber was awake.",
+          "translation": "隔壁房间传来一声低低的呻吟，护士由此知道受伤的登山者醒了。",
+          "targetForm": "moan",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "Instead of simply moaning about the crowded bus, the residents collected evidence and requested a more frequent service.",
+          "translation": "居民们没有一味抱怨公交车拥挤，而是收集证据，要求增加班次。",
+          "targetForm": "moaning",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "groan": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2",
+            "v-1",
+            "v-4"
+          ],
+          "sense": "呻吟",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-2"
+          ],
+          "sense": "抱怨",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-3"
+          ],
+          "sense": "不堪重负",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The runner let out a groan as he tried to stand, and his teammates hurried over to support him.",
+          "translation": "跑步者试图站起来时发出一声呻吟，队友们急忙上前扶住他。",
+          "targetForm": "groan",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "Staff groaned about the new booking system until a short training session showed them how much time it could save.",
+          "translation": "员工们一直抱怨新的预订系统，直到一次简短培训让他们看到它能节省多少时间。",
+          "targetForm": "groaned",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "The old shelves groaned under the weight of the books, so we moved the heaviest volumes into a cupboard.",
+          "translation": "旧书架被书压得吱呀作响，于是我们把最重的几册移进了柜子。",
+          "targetForm": "groaned",
+          "senseId": "semantic-3"
+        }
+      ]
+    },
+    "descent": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-5"
+          ],
+          "sense": "下降",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-2",
+            "n-4",
+            "n-6"
+          ],
+          "sense": "血统",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-3"
+          ],
+          "sense": "突然袭来",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The guide slowed our descent as loose stones made the path below the summit increasingly difficult to follow.",
+          "translation": "山顶下方的小径满是松动的石块，越来越难走，向导于是放慢了我们下山的速度。",
+          "targetForm": "descent",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "Although her family had lived abroad for generations, she traced her Irish descent through old parish records.",
+          "translation": "尽管家族已在国外生活了几代，她仍通过旧教区档案追溯到了自己的爱尔兰血统。",
+          "targetForm": "descent",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "The sudden descent of locusts on the fields left farmers struggling to protect the last of their crops.",
+          "translation": "蝗虫突然袭击田地，农民们奋力保护仅剩的庄稼。",
+          "targetForm": "descent",
+          "senseId": "semantic-3"
+        }
+      ]
+    },
+    "kid": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-3"
+          ],
+          "sense": "小孩",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1"
+          ],
+          "sense": "小山羊",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-2"
+          ],
+          "sense": "小山羊皮革",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "n-4"
+          ],
+          "sense": "开玩笑",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "Each kid chose a different object from the museum collection and explained why it deserved a place in the exhibition.",
+          "translation": "每个孩子从博物馆藏品中挑选了一件不同的物品，并解释它为何值得展出。",
+          "targetForm": "kid",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The farmer carried the shivering kid into the barn and wrapped a blanket around its thin body.",
+          "translation": "农场主把瑟瑟发抖的小山羊抱进谷仓，用毯子裹住它瘦小的身体。",
+          "targetForm": "kid",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "The restorer handled the old gloves carefully because the fine kid had become brittle after years in storage.",
+          "translation": "修复师小心地拿着那副旧手套，因为细软的小山羊皮革经过多年存放已经变脆。",
+          "targetForm": "kid",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "She was kidding when she claimed the tiny garden could feed the entire village throughout the winter.",
+          "translation": "她说这块小菜园能供全村人吃上一整个冬天，其实是在开玩笑。",
+          "targetForm": "kidding",
+          "senseId": "semantic-4"
+        }
+      ]
+    },
+    "liner": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-3"
+          ],
+          "sense": "大型客轮",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-4",
+            "n-5"
+          ],
+          "sense": "内衬",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-6"
+          ],
+          "sense": "眼线笔",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The retired ocean liner now houses a museum where visitors can explore the cabins once used by wealthy passengers.",
+          "translation": "这艘退役的大型远洋客轮如今成了博物馆，游客可以参观曾供富裕乘客使用的船舱。",
+          "targetForm": "liner",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "He removed the damp liner from his hiking boot and hung it near the stove to dry.",
+          "translation": "他取出登山靴里潮湿的内衬，挂在炉子附近晾干。",
+          "targetForm": "liner",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "The makeup artist used a dark liner along her upper lashes to make her eyes stand out under the stage lights.",
+          "translation": "化妆师沿她的上睫毛描上深色眼线，让她的双眼在舞台灯光下更加突出。",
+          "targetForm": "liner",
+          "senseId": "semantic-3"
+        }
+      ]
+    },
+    "retail": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "adj-1",
+            "v-1"
+          ],
+          "sense": "零售业",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-2",
+            "v-3"
+          ],
+          "sense": "转述",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "After years in retail, she opened a small repair workshop to help customers keep their appliances working longer.",
+          "translation": "在零售业工作多年后，她开了一间小型维修店，帮助顾客延长家用电器的使用寿命。",
+          "targetForm": "retail",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "Over dinner, he retailed the rumours circulating at work, although he admitted that nobody had confirmed them.",
+          "translation": "晚饭时，他转述了公司里流传的传闻，但也承认没人证实过这些消息。",
+          "targetForm": "retailed",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "wealth": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2",
+            "n-3",
+            "n-5"
+          ],
+          "sense": "财富",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-4",
+            "n-6"
+          ],
+          "sense": "大量",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "Rather than leave all her wealth to her children, she established a fund for apprentices from low-income families.",
+          "translation": "她没有把全部财富留给子女，而是设立了一个基金，资助低收入家庭的学徒。",
+          "targetForm": "wealth",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The letters contain a wealth of information about daily life in the village before the railway arrived.",
+          "translation": "这些信件包含大量资料，记录了铁路修通前村民的日常生活。",
+          "targetForm": "wealth",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "trolley": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "v-2"
+          ],
+          "sense": "有轨电车",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-2",
+            "n-3",
+            "v-1"
+          ],
+          "sense": "手推车",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The restored trolley carries visitors past the old factories before turning towards the newly renovated railway station.",
+          "translation": "修复后的有轨电车载着游客经过老工厂，再转向新近翻修的火车站。",
+          "targetForm": "trolley",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "She borrowed a trolley from reception to move the heavy boxes without blocking the entrance for long.",
+          "translation": "她从接待处借了一辆手推车搬运沉重的箱子，避免长时间堵住入口。",
+          "targetForm": "trolley",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "correspondent": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1"
+          ],
+          "sense": "驻地记者",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-2"
+          ],
+          "sense": "通信者",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-3"
+          ],
+          "sense": "代理银行",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The newspaper's foreign correspondent interviewed local teachers to understand how the border closure had affected their pupils.",
+          "translation": "报社的驻外记者采访了当地教师，了解边境关闭对学生造成的影响。",
+          "targetForm": "correspondent",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "Despite moving abroad, he remained a faithful correspondent, sending his former teacher a handwritten letter every month.",
+          "translation": "尽管移居国外，他仍坚持通信，每个月都给以前的老师寄一封手写信。",
+          "targetForm": "correspondent",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "The regional bank used a correspondent in Singapore to process payments for customers trading with businesses there.",
+          "translation": "这家地区银行通过新加坡的一家代理银行，为与当地企业交易的客户处理付款。",
+          "targetForm": "correspondent",
+          "senseId": "semantic-3"
+        }
+      ]
+    },
+    "bull": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2"
+          ],
+          "sense": "公牛",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-3"
+          ],
+          "sense": "看涨的投资者",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-4"
+          ],
+          "sense": "胡说",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-5"
+          ],
+          "sense": "教皇诏书",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-5",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-6"
+          ],
+          "sense": "靶心",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The farmer repaired the damaged gate before moving the bull into the field beside the barn.",
+          "translation": "农场主先修好了受损的门，再把公牛赶进谷仓旁的田里。",
+          "targetForm": "bull",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "Even after several disappointing earnings reports, the market's remaining bulls expected share prices to recover before winter.",
+          "translation": "即使接连几份盈利报告令人失望，市场上仍看涨的投资者也预期股价会在冬季前回升。",
+          "targetForm": "bulls",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "He dismissed the promise of effortless success as bull and asked to see evidence that the method worked.",
+          "translation": "他把轻松成功的承诺斥为胡说，要求对方拿出方法有效的证据。",
+          "targetForm": "bull",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "The historian examined the seal on the papal bull to determine whether the document was an original or a copy.",
+          "translation": "历史学家检查了教皇诏书上的印章，以确定这份文书是原件还是副本。",
+          "targetForm": "bull",
+          "senseId": "semantic-4"
+        },
+        {
+          "sentence": "Her final dart landed in the bull, drawing cheers from teammates who had expected a narrow defeat.",
+          "translation": "她最后一支飞镖正中靶心，原以为会惜败的队友们欢呼起来。",
+          "targetForm": "bull",
+          "senseId": "semantic-5"
+        }
+      ]
+    },
+    "on": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "prep.",
+          "sourceSenseIds": [
+            "prep-1"
+          ],
+          "sense": "在……表面上",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "prep.",
+          "sourceSenseIds": [
+            "prep-2"
+          ],
+          "sense": "在某一天",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "prep.",
+          "sourceSenseIds": [
+            "prep-3"
+          ],
+          "sense": "关于",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "adv.",
+          "sourceSenseIds": [
+            "adj-1"
+          ],
+          "sense": "开着",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-5",
+          "partOfSpeech": "adv.",
+          "sourceSenseIds": [
+            "adv-2"
+          ],
+          "sense": "继续",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The curator placed a soft cloth on the table before laying out the fragile pieces of pottery.",
+          "translation": "馆员先在桌面上铺了一块软布，再把易碎的陶器摆出来。",
+          "targetForm": "on",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The committee will meet on Friday to consider the revised plans for the new community centre.",
+          "translation": "委员会将于星期五开会，审议新社区中心的修订方案。",
+          "targetForm": "on",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "Her report on urban wildlife persuaded the planners to preserve a strip of woodland beside the railway.",
+          "translation": "她关于城市野生动物的报告说服了规划人员，保留铁路旁的一片林地。",
+          "targetForm": "on",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "The kitchen light was still on when the caretaker returned to lock the building for the night.",
+          "translation": "管理员回来锁楼准备过夜时，厨房的灯还亮着。",
+          "targetForm": "on",
+          "senseId": "semantic-4"
+        },
+        {
+          "sentence": "Despite the sudden power cut, the musicians played on while the audience lit the hall with their phones.",
+          "translation": "尽管突然停电，乐手们仍继续演奏，观众用手机照亮了大厅。",
+          "targetForm": "on",
+          "senseId": "semantic-5"
+        }
+      ]
+    },
+    "bus": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "v-1"
+          ],
+          "sense": "公共汽车",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-2"
+          ],
+          "sense": "总线",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-2"
+          ],
+          "sense": "收拾餐桌",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "When the last bus was cancelled, the passengers arranged to share a taxi back to the village.",
+          "translation": "末班公交车取消后，乘客们商量好合乘一辆出租车回村。",
+          "targetForm": "bus",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The technician traced the fault to a damaged data bus that connected the processor to the memory.",
+          "translation": "技术员查明，故障出在连接处理器和内存的一条受损数据总线上。",
+          "targetForm": "bus",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "The cafe hired two students to bus tables during the lunchtime rush, leaving the waiters free to take orders.",
+          "translation": "咖啡馆雇了两名学生在午餐高峰时收拾餐桌，让服务员腾出手来点单。",
+          "targetForm": "bus",
+          "senseId": "semantic-3"
+        }
+      ]
+    },
+    "background": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1"
+          ],
+          "sense": "画面背景",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-2"
+          ],
+          "sense": "事件背景",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-3"
+          ],
+          "sense": "个人经历",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-4"
+          ],
+          "sense": "不引人注意的位置",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-5",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-5"
+          ],
+          "sense": "后台",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The photographer moved a few steps sideways to keep the construction cranes out of the background.",
+          "translation": "摄影师向旁边挪了几步，避免把施工起重机拍进画面背景。",
+          "targetForm": "background",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The opening chapter provides the background to the dispute, explaining how the two families lost their shared land.",
+          "translation": "开篇一章交代了纠纷的背景，解释了这两家人如何失去共有的土地。",
+          "targetForm": "background",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "Her background in engineering helped her explain the bridge design to residents with no technical training.",
+          "translation": "她的工程专业背景有助于她向没有技术基础的居民解释桥梁设计。",
+          "targetForm": "background",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "Although she organised the entire exhibition, she preferred to stay in the background while the young artists answered questions.",
+          "translation": "尽管整个展览都是她组织的，她仍愿意退居幕后，让年轻艺术家回答提问。",
+          "targetForm": "background",
+          "senseId": "semantic-4"
+        },
+        {
+          "sentence": "The backup runs in the background while employees work, so they do not need to leave their computers idle.",
+          "translation": "备份在员工工作时于后台运行，因此他们不必让电脑闲置等待。",
+          "targetForm": "background",
+          "senseId": "semantic-5"
+        }
+      ]
+    },
+    "defence": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2",
+            "n-3"
+          ],
+          "sense": "防御设施",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-4",
+            "n-5"
+          ],
+          "sense": "辩护",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-6"
+          ],
+          "sense": "辩方",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-7"
+          ],
+          "sense": "后卫线",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The town strengthened its flood defences after heavy rain exposed weaknesses in the embankment beside the old bridge.",
+          "translation": "大雨暴露了老桥旁堤岸的薄弱之处后，镇上加固了防洪设施。",
+          "targetForm": "defences",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "Her defence rested on train records showing that she had left the city before the theft occurred.",
+          "translation": "她的辩护依据是列车记录，记录显示她在盗窃发生前就已离开这座城市。",
+          "targetForm": "defence",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "The defence called a second witness after the prosecution questioned the reliability of the original account.",
+          "translation": "控方质疑原先陈述的可靠性后，辩方传唤了第二位证人。",
+          "targetForm": "defence",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "The striker found a gap in the defence and passed the ball to her unmarked teammate.",
+          "translation": "前锋发现后卫线的空当，把球传给了无人盯防的队友。",
+          "targetForm": "defence",
+          "senseId": "semantic-4"
+        }
+      ]
+    },
+    "discovery": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2"
+          ],
+          "sense": "发现",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-3"
+          ],
+          "sense": "证据开示",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The discovery of an old well beneath the courtyard forced the builders to reconsider their plans.",
+          "translation": "院子下方一口古井的发现，迫使施工人员重新考虑原定方案。",
+          "targetForm": "discovery",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "During discovery, the company supplied internal emails that helped both legal teams reconstruct the sequence of events.",
+          "translation": "在证据开示阶段，公司提供了内部邮件，帮助双方律师梳理事件经过。",
+          "targetForm": "discovery",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "investment": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2",
+            "n-3"
+          ],
+          "sense": "投资",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The cooperative's investment in cold storage allowed farmers to keep their produce fresh until buyers arrived.",
+          "translation": "合作社投资建设了冷库，让农户能把农产品保鲜存放到买家到来。",
+          "targetForm": "investment",
+          "senseId": "semantic-1"
+        }
+      ]
+    },
+    "association": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1"
+          ],
+          "sense": "协会",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-2",
+            "n-4"
+          ],
+          "sense": "合作关系",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-3"
+          ],
+          "sense": "联想",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The residents' association persuaded the council to install better lighting along the path beside the river.",
+          "translation": "居民协会说服了地方议会，在河边小路增设照明设施。",
+          "targetForm": "association",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The museum's long association with local schools has helped thousands of children explore the town's history.",
+          "translation": "博物馆与当地学校的长期合作，帮助数千名孩子了解了这座城镇的历史。",
+          "targetForm": "association",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "The tune carried such strong associations with childhood that she could almost picture her grandmother's kitchen.",
+          "translation": "这段旋律勾起了强烈的童年回忆，让她仿佛看见了祖母的厨房。",
+          "targetForm": "associations",
+          "senseId": "semantic-3"
+        }
+      ]
+    },
+    "signature": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1"
+          ],
+          "sense": "签名",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-2"
+          ],
+          "sense": "鲜明特征",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-3"
+          ],
+          "sense": "调号",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "Before confirming the delivery, the driver checked the signature against the name printed on the order.",
+          "translation": "确认交付完成前，司机核对了签名和订单上印着的姓名。",
+          "targetForm": "signature",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The narrow windows became the architect's signature, appearing in nearly every house she designed.",
+          "translation": "狭长的窗户成了这位建筑师的鲜明特征，几乎出现在她设计的每一栋房子里。",
+          "targetForm": "signature",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "The violinist checked the key signature before rehearsing the passage that had caused trouble the previous evening.",
+          "translation": "小提琴手先查看了调号，再练习前一晚没能拉好的那段乐曲。",
+          "targetForm": "signature",
+          "senseId": "semantic-3"
+        }
+      ]
+    },
+    "it": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "pron.",
+          "sourceSenseIds": [
+            "pron-1"
+          ],
+          "sense": "它",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "pron.",
+          "sourceSenseIds": [
+            "pron-2"
+          ],
+          "sense": "用于确认身份",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "pron.",
+          "sourceSenseIds": [
+            "pron-3"
+          ],
+          "sense": "用于描述天气",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "pron.",
+          "sourceSenseIds": [
+            "pron-4"
+          ],
+          "sense": "形式主语",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-5",
+          "partOfSpeech": "pron.",
+          "sourceSenseIds": [
+            "pron-5"
+          ],
+          "sense": "用于强调",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The library keeps a rare handwritten map in a glass case to protect it from accidental damage.",
+          "translation": "图书馆把一幅珍贵的手绘地图放在玻璃展柜里，以免它意外受损。",
+          "targetForm": "it",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "When someone knocked during the storm, I assumed it was our neighbour seeking shelter from the rain.",
+          "translation": "暴风雨中有人敲门，我以为是邻居来避雨。",
+          "targetForm": "it",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "It had been snowing all night, so the mountain road remained closed until the afternoon.",
+          "translation": "雪下了整整一夜，因此山路直到下午才恢复通行。",
+          "targetForm": "It",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "It is difficult to judge the proposal fairly without hearing from the residents who would be affected.",
+          "translation": "如果不听取受影响居民的意见，就很难公正地评价这项提案。",
+          "targetForm": "It",
+          "senseId": "semantic-4"
+        },
+        {
+          "sentence": "It was the cleaner who noticed the leaking pipe, preventing serious damage to the paintings stored downstairs.",
+          "translation": "正是清洁工发现了水管漏水，才避免了楼下存放的画作严重受损。",
+          "targetForm": "It",
+          "senseId": "semantic-5"
+        }
+      ]
+    },
+    "satellite": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2"
+          ],
+          "sense": "人造卫星",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-3"
+          ],
+          "sense": "附属机构",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "A weather satellite tracked the storm across the ocean, giving coastal towns more time to prepare.",
+          "translation": "一颗气象卫星追踪了风暴在海上的移动，为沿海城镇争取了更多准备时间。",
+          "targetForm": "satellite",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The small research centre became a satellite of the university, relying on its laboratories and administrative support.",
+          "translation": "这家小型研究中心成了大学的附属机构，依靠大学的实验室和行政支持运作。",
+          "targetForm": "satellite",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
     "undergo": {
       "senseGroups": [
         {
