@@ -9,6 +9,7 @@ const root = path.resolve(__dirname, "..");
 const currentPath = path.join(root, "data", "context-resolved-examples.js");
 const planPath = path.join(root, "data", "semantic-sense-coverage-plan.json");
 const draftsPath = path.join(root, "data", "semantic-sense-coverage-drafts.js");
+const correctionsPath = path.join(root, "content", "semantic-reviewed-corrections.json");
 
 function readAssignment(file, name) {
   const raw = fs.readFileSync(file, "utf8").replace(/^\uFEFF/, "");
@@ -72,6 +73,14 @@ function main() {
     entries[word] = composeEntry(word, item, drafts[word] || { examples: [], omittedSenseIds: [] });
     rebuilt += 1;
   }
+  const corrections = JSON.parse(fs.readFileSync(correctionsPath, "utf8"));
+  for (const [word, entry] of Object.entries(corrections.entries)) {
+    if (!entries[word]) throw new Error(`reviewed correction for unknown word: ${word}`);
+    if (!corrections.reviews[word]?.source || !entry.examples?.length || entry.examples.length > 5) {
+      throw new Error(`invalid reviewed correction: ${word}`);
+    }
+    entries[word] = entry;
+  }
   const totalExamples = Object.values(entries).reduce((count, entry) => count + (entry.examples || []).length, 0);
   const output = {
     source: "dictionary-sense rebuild: semantically distinct learner-facing examples, maximum five per word",
@@ -82,4 +91,5 @@ function main() {
   console.log(JSON.stringify({ rebuiltWords: rebuilt, totalWords: Object.keys(entries).length, totalExamples }));
 }
 
-main();
+if (require.main === module) main();
+module.exports = { composeEntry };

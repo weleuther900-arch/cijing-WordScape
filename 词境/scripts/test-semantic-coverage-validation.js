@@ -1,0 +1,12 @@
+"use strict";
+const assert = require("node:assert/strict");
+const { coverageErrors } = require("./generate-semantic-sense-coverage");
+const targets = new Map([["v-1", {}]]);
+const retained = { requestedCount: 1, retainedExamples: [{ sentence: "An existing reviewed example." }] };
+assert.deepEqual(coverageErrors(retained, {}, [], new Set(["v-1"]), targets), []);
+assert(coverageErrors({ ...retained, retainedExamples: [] }, {}, [], new Set(["v-1"]), targets).includes("word would have no examples"));
+assert(coverageErrors(retained, undefined, [], new Set(), targets).includes("missing word in response"));
+assert(coverageErrors(retained, {}, [], new Set(), targets).some((error) => error.startsWith("missing senses:")));
+assert(coverageErrors(retained, {}, [], new Set(["other"]), targets).includes("unknown omitted sense"));
+assert.deepEqual(coverageErrors(retained, {}, [{ senseId: "v-1" }], new Set(), targets), []);
+console.log("6 semantic coverage validation checks passed");

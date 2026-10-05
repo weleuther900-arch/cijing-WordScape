@@ -68,6 +68,20 @@ function prompt(items) {
   }, null, 0);
 }
 
+function coverageErrors(item, row, accepted, omitted, targets) {
+  const errors = [];
+  if (!row) errors.push("missing word in response");
+  if ([...omitted].some((id) => !targets.has(id))) errors.push("unknown omitted sense");
+  const covered = new Set([...accepted.map((example) => example.senseId), ...omitted]);
+  const missing = [...targets.keys()].filter((id) => !covered.has(id));
+  if (missing.length) errors.push(`missing senses: ${missing.join(", ")}`);
+  if (accepted.length + omitted.size !== item.requestedCount) errors.push("incomplete target coverage");
+  // All targets can be synonyms of retained examples. Zero NEW examples is
+  // valid then, but a word may never end up with zero examples in total.
+  if (accepted.length + (item.retainedExamples || []).length === 0) errors.push("word would have no examples");
+  return errors;
+}
+
 function callCodex(payload, batchNo, model, outputPath) {
   const workerDir = path.join(draftDir, path.basename(outputPath, ".js").replace(/[^a-z0-9_-]/gi, "_"));
   fs.mkdirSync(workerDir, { recursive: true });
@@ -159,8 +173,8 @@ function main() {
         accepted.push(cleaned);
         known.add(cleaned.sentence.toLowerCase());
       }
-      const allCovered = accepted.length + omitted.size === item.requestedCount && [...omitted].every((id) => targets.has(id));
-      if (!allCovered || !accepted.length) {
+      reasons.push(...coverageErrors(item, row, accepted, omitted, targets));
+      if (reasons.length) {
         failures.push({ word, reasons: [...new Set(reasons)].slice(0, 6) });
         continue;
       }
@@ -173,4 +187,5 @@ function main() {
   console.log(JSON.stringify({ status: "complete", requested: pending.length, acceptedWords: completed, failures }));
 }
 
-main();
+if (require.main === module) main();
+module.exports = { coverageErrors };

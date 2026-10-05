@@ -1,0 +1,189 @@
+{
+  "reviewedAt": "2026-10-05",
+  "scope": "Targeted corrections, not a full-library review. Original examples; dictionary links support sense decisions.",
+  "reviews": {
+    "undergo": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/undergo",
+      "decision": "Merge experience, endure and legal scrutiny into one meaning of going through a process or change. Replace the awkward translation and remove a duplicate legal-register example."
+    },
+    "lawn": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/lawn",
+      "decision": "Keep grass and fine fabric as distinct senses. Remove the obsolete sieve example; fabric may be cotton or linen, not exclusively linen."
+    },
+    "barrier": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/barrier",
+      "decision": "Keep the figurative obstacle and physical barrier. Merge fence, gate and protective-layer variations rather than repeat the same blocking meaning."
+    },
+    "benign": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/benign",
+      "decision": "Keep a gentle manner and a benign tumour. General harmlessness is represented by the medical use; do not equate benign with a guaranteed beneficial effect."
+    },
+    "cafe": {"source": "https://www.oxfordlearnersdictionaries.com/definition/english/cafe", "decision": "Correct the hotel label to the common cafe sense and remove the duplicate. The regional South African shop sense is outside this common-use correction."},
+    "curriculum": {"source": "https://www.oxfordlearnersdictionaries.com/definition/english/curriculum", "decision": "Course content and programme of study in the existing two examples represent the same meaning; retain one clear example."},
+    "laughter": {"source": "https://www.oxfordlearnersdictionaries.com/definition/english/laughter", "decision": "Laughing and its sound form one learner-facing semantic group here. Intensity alone does not justify another example."},
+    "vocabulary": {"source": "https://www.oxfordlearnersdictionaries.com/definition/english/vocabulary", "decision": "Separate a person's stock of words from a written glossary. Merge variants referring to a language or subject's stock of words; replace the worksheet instruction and blank."}
+  },
+  "entries": {
+    "undergo": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-1",
+            "v-2",
+            "v-3"
+          ],
+          "sense": "经历",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The old theatre will undergo extensive repairs before it can safely reopen to the public.",
+          "translation": "这座老剧院将进行大规模修缮，之后才能安全地重新向公众开放。",
+          "targetForm": "undergo",
+          "senseId": "semantic-1"
+        }
+      ]
+    },
+    "lawn": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2"
+          ],
+          "sense": "草坪",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-3"
+          ],
+          "sense": "细织薄布",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "After the rain stopped, the children spread a blanket on the lawn and ate their lunch.",
+          "translation": "雨停后，孩子们在草坪上铺了一条毯子，坐下来吃午饭。",
+          "targetForm": "lawn",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "She chose a piece of cotton lawn for the blouse because the fabric felt light and cool.",
+          "translation": "她选了一块细织薄棉布来做衬衫，因为这种布料摸起来轻薄凉爽。",
+          "targetForm": "lawn",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "barrier": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1"
+          ],
+          "sense": "障碍",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-2"
+          ],
+          "sense": "隔离栏",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "Unreliable transport remains a barrier to employment for people who live far from the town centre.",
+          "translation": "对住在远离镇中心的人来说，不可靠的交通仍然是就业的障碍。",
+          "targetForm": "barrier",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "Workers placed a sturdy barrier around the damaged pavement while they waited for the repair crew.",
+          "translation": "工人在损坏的人行道周围设置了牢固的隔离栏，等待维修队到来。",
+          "targetForm": "barrier",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "benign": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-1"
+          ],
+          "sense": "和善的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-2"
+          ],
+          "sense": "良性的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The director's benign manner encouraged new staff to ask questions without worrying about making mistakes.",
+          "translation": "主管和善的态度让新员工愿意提问，不必担心出错。",
+          "targetForm": "benign",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The report described the tumour as benign, and the doctor explained the findings at the next appointment.",
+          "translation": "报告将肿瘤描述为良性，医生在下一次就诊时解释了检查结果。",
+          "targetForm": "benign",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "cafe": {
+      "senseGroups": [{"id": "semantic-1", "partOfSpeech": "n.", "sourceSenseIds": ["n-1"], "sense": "咖啡馆", "contextReviewed": true, "semanticDistinct": true}],
+      "examples": [{"sentence": "The cafe beside the station serves fresh soup and sandwiches to commuters throughout the afternoon.", "translation": "车站旁的咖啡馆整个下午都为通勤者供应新鲜的汤和三明治。", "targetForm": "cafe", "senseId": "semantic-1"}]
+    },
+    "curriculum": {
+      "senseGroups": [{"id": "semantic-1", "partOfSpeech": "n.", "sourceSenseIds": ["n-1"], "sense": "课程体系", "contextReviewed": true, "semanticDistinct": true}],
+      "examples": [{"sentence": "The school revised its curriculum to give students more opportunities for laboratory work and independent research.", "translation": "学校修订了课程体系，为学生提供更多实验操作和独立研究的机会。", "targetForm": "curriculum", "senseId": "semantic-1"}]
+    },
+    "laughter": {
+      "senseGroups": [{"id": "semantic-1", "partOfSpeech": "n.", "sourceSenseIds": ["n-1", "n-2"], "sense": "笑声", "contextReviewed": true, "semanticDistinct": true}],
+      "examples": [{"sentence": "A burst of laughter from the kitchen interrupted our conversation as the children tried to decorate a cake.", "translation": "孩子们尝试装饰蛋糕时，厨房里传来的一阵笑声打断了我们的谈话。", "targetForm": "laughter", "senseId": "semantic-1"}]
+    },
+    "vocabulary": {
+      "senseGroups": [
+        {"id": "semantic-1", "partOfSpeech": "n.", "sourceSenseIds": ["n-1"], "sense": "词汇量", "contextReviewed": true, "semanticDistinct": true},
+        {"id": "semantic-2", "partOfSpeech": "n.", "sourceSenseIds": ["n-2"], "sense": "词汇表", "contextReviewed": true, "semanticDistinct": true}
+      ],
+      "examples": [
+        {"sentence": "Reading short stories expanded her vocabulary and helped her describe everyday experiences more precisely.", "translation": "阅读短篇小说扩大了她的词汇量，也帮助她更准确地描述日常经历。", "targetForm": "vocabulary", "senseId": "semantic-1"},
+        {"sentence": "A vocabulary at the back of the textbook explains the unfamiliar terms introduced in each chapter.", "translation": "课本末尾的词汇表解释了各章中出现的生疏术语。", "targetForm": "vocabulary", "senseId": "semantic-2"}
+      ]
+    }
+  }
+}

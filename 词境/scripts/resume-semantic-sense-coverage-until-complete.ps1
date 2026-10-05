@@ -25,8 +25,8 @@ try {
     }
 
     $tail = (Get-Content -LiteralPath $log -Tail 40 -ErrorAction SilentlyContinue) -join "`n"
-    if ($tail -match '(?i)usage limit|try again at|credits') {
-      Note "quota-aware supervisor: external Codex limit detected; waiting $RetryMinutes minutes"
+    if ($tail -match '(?i)usage limit|try again at|credits|selected model is at capacity') {
+      Note "quota-aware supervisor: external Codex usage or capacity limit detected; waiting $RetryMinutes minutes"
       Start-Sleep -Seconds ($RetryMinutes * 60)
       continue
     }

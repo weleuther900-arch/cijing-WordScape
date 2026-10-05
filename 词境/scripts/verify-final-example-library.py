@@ -30,6 +30,37 @@ def tools():
     return module
 
 
+def structural_errors(entry: dict, known_senses: dict) -> list[str]:
+    """Check integrity only; review flags do not prove linguistic quality."""
+    errors = []
+    examples = entry.get("examples", [])
+    groups = entry.get("senseGroups", [])
+    ids = [str(group.get("id", "")) for group in groups]
+    if not 1 <= len(examples) <= 5:
+        errors.append("entry must contain one to five examples")
+    if any(not value for value in ids) or len(set(ids)) != len(ids):
+        errors.append("missing or duplicate sense group ID")
+    counts = Counter(str(example.get("senseId", "")) for example in examples)
+    if set(counts) != set(ids) or any(count != 1 for count in counts.values()):
+        errors.append("each sense group must have exactly one example")
+    used_source_ids = set()
+    meanings = []
+    for group in groups:
+        source_ids = [str(value) for value in group.get("sourceSenseIds", [])]
+        if not source_ids or any(value not in known_senses for value in source_ids):
+            errors.append("unknown or missing dictionary source sense")
+        if len(set(source_ids)) != len(source_ids) or used_source_ids.intersection(source_ids):
+            errors.append("dictionary source sense repeated across groups")
+        used_source_ids.update(source_ids)
+        meaning = re.sub(r"\s+", "", str(group.get("sense", "")))
+        if not meaning or not str(group.get("partOfSpeech", "")).strip():
+            errors.append("missing contextual meaning or part of speech")
+        meanings.append(meaning)
+    if len(set(meanings)) != len(meanings):
+        errors.append("duplicate contextual meaning")
+    return sorted(set(errors))
+
+
 def main() -> None:
     parser = ArgumentParser(description="Verify a source example library against its browser shards.")
     parser.add_argument("--source", type=Path, default=ROOT / "data" / "context-resolved-examples.js", help="Source library, relative to the 词境 directory unless absolute.")
@@ -44,8 +75,8 @@ def main() -> None:
     for word, entry in sorted(final.items()):
         groups = {group.get("id") for group in entry.get("senseGroups", [])}
         examples = entry.get("examples", [])
-        errors = []
         known_senses = {str(sense.get("id", "")): sense for sense in senses.get(word, {}).get("senses", [])}
+        errors = structural_errors(entry, known_senses)
         for group in entry.get("senseGroups", []):
             source_ids = [str(value) for value in group.get("sourceSenseIds", [])]
             reviewed_semantic_sense = bool(group.get("contextReviewed") and group.get("semanticDistinct") and str(group.get("partOfSpeech", "")).strip() and str(group.get("sense", "")).strip())
@@ -114,7 +145,13 @@ def main() -> None:
 
     report = {"source": str(source), "targetWords": len(target_words), "finalWords": len(final), "wordsHeldForReviewedRewrite": len(target_words - set(final)), "finalExamples": sum(len(entry["examples"]) for entry in final.values()), "invalidFinalWords": len(failures), "atomicContextGroups": sum(len(entry.get("senseGroups", [])) for entry in final.values()), "wordsWithNoRepeatFallback": no_repeat_fallback, "multiSenseWords": multi_sense_words, "multiSenseWordsThatCanSwitchAfterCorrect": correct_can_switch, "iosShards": len(index), "iosShardMatchesFinal": shard_ok, "iosFullLibraryMatchesFinal": full_static_ok, "deepseekWords": len(old), "deepseekStructurallyValid": old_checked}
     print(json.dumps(report, ensure_ascii=False, indent=2))
-    if failures or not shard_ok or not full_static_ok:
+    missing_words = sorted(target_words - set(final))
+    unexpected_words = sorted(set(final) - target_words)
+    detail = {**report, "validationScope": "structural integrity; semantic distinctness and translation quality require separate review", "expectedWordCount": 5487, "missingWords": missing_words, "unexpectedWords": unexpected_words, "failures": failures}
+    report_path = ROOT / "data" / "final-example-integrity-report.json"
+    report_path.write_text(json.dumps(detail, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(json.dumps({"report": str(report_path), "missingWords": len(missing_words), "unexpectedWords": len(unexpected_words), "validationScope": detail["validationScope"]}, ensure_ascii=False))
+    if len(target_words) != 5487 or missing_words or unexpected_words or failures or not shard_ok or not full_static_ok:
         raise SystemExit(1)
 
 
