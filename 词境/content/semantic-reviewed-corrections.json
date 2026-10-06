@@ -127,6 +127,9 @@
     ,"serial": "1064c8e40c03ac325d65580401bc8383f5a5484d3973c63fb95e7e56437b3000"
     ,"science": "53b07cacadc8d3d7e8e208a13b68bc5b3b7aab3bbfffc08a016b2b36a71ab4d3"
     ,"custom": "9b4a22ea20811e1ef0349b6fcd2b906caf8cc2c6b20855ae718a117665754ba9"
+    ,"torture": "9be2b2a6a59b199ba7989f3dbd2d5fd10a789ce1b50d60484c7bb470c01e79ef"
+    ,"paw": "8246dd2be5c304e2993bce7689e5f8ebc64ca32ab2c3419496169bbf7a5e38c8"
+    ,"setback": "e62e9ab0f36f533f22726c2cc25767ba8568e29b401ad28c1273af8d700ee08e"
   },
   "scope": "Targeted corrections, not a full-library review. Original examples; dictionary links support sense decisions.",
   "dictionaryOverrides": {
@@ -3199,6 +3202,9 @@
     ,"serial": [{"id":"n-1","partOfSpeech":"n.","sense":"分期连载作品"},{"id":"adj-1","partOfSpeech":"adj.","sense":"反复从事同类行为的"},{"id":"adj-2","partOfSpeech":"adj.","sense":"连载的；分期播出的"},{"id":"adj-3","partOfSpeech":"adj.","sense":"串行的；按顺序排列的"}]
     ,"science": [{"id":"n-1","partOfSpeech":"n.","sense":"科学（基于证据的自然与物理世界知识）"},{"id":"n-2","partOfSpeech":"n.","sense":"科学课；科学学习"},{"id":"n-3","partOfSpeech":"n.","sense":"某一门科学；科学分支"},{"id":"n-4","partOfSpeech":"n.","sense":"关于某领域的系统知识"}]
     ,"custom": [{"id":"n-1","partOfSpeech":"n.","sense":"社会或群体的习俗"},{"id":"n-2","partOfSpeech":"n.","sense":"个人一贯的习惯（正式）"},{"id":"n-3","partOfSpeech":"n.","sense":"顾客惠顾；生意"},{"id":"n-4","partOfSpeech":"n.","sense":"海关（customs，复数）"},{"id":"adj-1","partOfSpeech":"adj.","sense":"为特定人定制的"}]
+    ,"torture": [{"id":"n-1","partOfSpeech":"n.","sense":"酷刑；严刑逼供"},{"id":"n-2","partOfSpeech":"n.","sense":"极度的身心痛苦"},{"id":"v-1","partOfSpeech":"v.","sense":"施以酷刑；严刑逼供"},{"id":"v-2","partOfSpeech":"v.","sense":"使极度痛苦或焦虑"}]
+    ,"paw": [{"id":"n-1","partOfSpeech":"n.","sense":"（有爪或指甲动物的）脚；爪"},{"id":"n-2","partOfSpeech":"n.","sense":"手（非正式，常含不满）"},{"id":"v-1","partOfSpeech":"v.","sense":"用爪反复抓或触碰"},{"id":"v-2","partOfSpeech":"v.","sense":"粗鲁地触摸他人（令人反感）"}]
+    ,"setback": [{"id":"n-1","partOfSpeech":"n.","sense":"挫折；阻碍进展的意外问题"}]
   },
   "reviews": {
     "deputy": {
@@ -3964,7 +3970,10 @@
     "courtesy": {"source":"https://www.merriam-webster.com/dictionary/courtesy","decision":"Merged polite manners and individual courteous acts. Kept a favour or privilege provided by courtesy, including the adjective use, distinct from ordinary politeness."},
     "serial": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/serial_1","decision":"Kept a serialized story, a person repeatedly doing the same type of act, publication in installments, and specialist sequential arrangement distinct. Retired the unsupported repayment gloss.","additionalSources":["https://www.oxfordlearnersdictionaries.com/definition/english/serial_2"],"retiredDictionarySenses":[{"id":"adj-4","partOfSpeech":"adj.","sense":"分期偿还的"}]},
     "science": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/science","decision":"Separated science as evidence-based knowledge, school study, a particular discipline, and a system of knowledge about a field. Natural science is included in the broad first sense rather than repeated."},
-    "custom": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/custom_1","decision":"Separated group custom, formal personal habit, a business's customers, plural customs, and custom-made. Retired the loose software-setting gloss because the consulted entry defines the adjective as designed for a particular person.","additionalSources":["https://www.oxfordlearnersdictionaries.com/definition/english/custom_2"],"retiredDictionarySenses":[{"id":"n-4","partOfSpeech":"n.","sense":"自定义"}]}
+    "custom": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/custom_1","decision":"Separated group custom, formal personal habit, a business's customers, plural customs, and custom-made. Retired the loose software-setting gloss because the consulted entry defines the adjective as designed for a particular person.","additionalSources":["https://www.oxfordlearnersdictionaries.com/definition/english/custom_2"],"retiredDictionarySenses":[{"id":"n-4","partOfSpeech":"n.","sense":"自定义"}]},
+    "torture": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/torture_1","decision":"Kept torture used for coercive severe pain separate from the informal extreme suffering use. Retired unsupported distortion and bending glosses.","additionalSources":["https://www.oxfordlearnersdictionaries.com/definition/english/torture_2"],"retiredDictionarySenses":[{"id":"v-2","partOfSpeech":"v.","sense":"曲解"},{"id":"v-4","partOfSpeech":"v.","sense":"使弯曲"}]},
+    "paw": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/paw_1","decision":"Kept animal paw, informal dissatisfied hand, repeated paw contact, and the offensive rough touching use distinct. Retired unsupported trudging and clumsy-use glosses.","additionalSources":["https://www.oxfordlearnersdictionaries.com/definition/english/paw_2"],"retiredDictionarySenses":[{"id":"v-5","partOfSpeech":"v.","sense":"笨拙地使用"},{"id":"v-6","partOfSpeech":"v.","sense":"费力地前进"}]},
+    "setback": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/setback","decision":"Setback is one obstacle-to-progress meaning here; retreat and reverse are Chinese near-synonyms, not independent example groups."}
   },
   "entries": {
     "deputy": {
@@ -9862,6 +9871,23 @@
         {"sentence":"As was her custom, Mei reviewed the agenda before the meeting and arrived with notes for each topic.","translation":"和她一贯的习惯一样，梅在会议前审阅议程，并带着每个议题的笔记到场。","targetForm":"custom","senseId":"semantic-2"},
         {"sentence":"The independent bookshop thanked local readers for their custom after a difficult year of rising costs.","translation":"成本上涨的艰难一年过后，这家独立书店感谢当地读者的惠顾。","targetForm":"custom","senseId":"semantic-3"},
         {"sentence":"At customs, the traveller declared the electronic equipment she had bought during her trip abroad.","translation":"在海关，旅客申报了她出国旅行期间购买的电子设备。","targetForm":"customs","senseId":"semantic-4"},
-        {"sentence":"The laboratory ordered a custom container designed to protect the fragile samples during transport.","translation":"实验室订购了一个为保护易碎样本运输而专门设计的定制容器。","targetForm":"custom","senseId":"semantic-5"}]}
+        {"sentence":"The laboratory ordered a custom container designed to protect the fragile samples during transport.","translation":"实验室订购了一个为保护易碎样本运输而专门设计的定制容器。","targetForm":"custom","senseId":"semantic-5"}]},
+    "torture": {"senseGroups":[
+      {"id":"semantic-1","partOfSpeech":"n.","sourceSenseIds":["n-1","v-1"],"sense":"酷刑；严刑逼供","contextReviewed":true,"semanticDistinct":true},
+      {"id":"semantic-2","partOfSpeech":"n.","sourceSenseIds":["n-2","v-2"],"sense":"极度的身心痛苦","contextReviewed":true,"semanticDistinct":true}],
+      "examples":[
+        {"sentence":"The report documented allegations of torture against prisoners and called for an independent investigation.","translation":"该报告记录了针对囚犯实施酷刑的指控，并呼吁展开独立调查。","targetForm":"torture","senseId":"semantic-1"},
+        {"sentence":"Waiting for news after the storm was torture for families who could not contact relatives in the affected area.","translation":"暴风雨后无法联系受灾地区亲属，让许多家庭备受煎熬。","targetForm":"torture","senseId":"semantic-2"}]},
+    "paw": {"senseGroups":[
+      {"id":"semantic-1","partOfSpeech":"n.","sourceSenseIds":["n-1"],"sense":"（有爪或指甲动物的）脚；爪","contextReviewed":true,"semanticDistinct":true},
+      {"id":"semantic-2","partOfSpeech":"n.","sourceSenseIds":["n-2"],"sense":"手（非正式，常含不满）","contextReviewed":true,"semanticDistinct":true},
+      {"id":"semantic-3","partOfSpeech":"v.","sourceSenseIds":["v-1"],"sense":"用爪反复抓或触碰","contextReviewed":true,"semanticDistinct":true},
+      {"id":"semantic-4","partOfSpeech":"v.","sourceSenseIds":["v-2"],"sense":"粗鲁地触摸他人（令人反感）","contextReviewed":true,"semanticDistinct":true}],
+      "examples":[
+        {"sentence":"The dog lifted one muddy paw while the owner cleaned its feet before letting it into the house.","translation":"主人让狗进屋前给它擦脚时，它抬起了一只沾满泥的爪。","targetForm":"paw","senseId":"semantic-1"},
+        {"sentence":"Take your paws off the display, the guard said, after the visitor leaned across the barrier.","translation":"访客探身越过护栏后，警卫要求他把手从展品上拿开。","targetForm":"paws","senseId":"semantic-2"},
+        {"sentence":"The horse pawed the ground beside the stable gate while it waited for its evening feed.","translation":"那匹马等待晚间饲料时，在马厩门旁用蹄子不断扒地。","targetForm":"pawed","senseId":"semantic-3"},
+        {"sentence":"The workplace policy states that nobody may paw a colleague and that reports will be taken seriously.","translation":"工作场所政策规定任何人不得粗鲁地触摸同事，并且会严肃处理相关举报。","targetForm":"paw","senseId":"semantic-4"}]},
+    "setback": {"senseGroups":[{"id":"semantic-1","partOfSpeech":"n.","sourceSenseIds":["n-1"],"sense":"挫折；阻碍进展的意外问题","contextReviewed":true,"semanticDistinct":true}],"examples":[{"sentence":"The delayed shipment was a setback for the school's renovation project, but the team revised the schedule and kept working.","translation":"货物延迟到达给学校翻新项目带来挫折，但团队修改了时间表并继续工作。","targetForm":"setback","senseId":"semantic-1"}]}
   }
 }
