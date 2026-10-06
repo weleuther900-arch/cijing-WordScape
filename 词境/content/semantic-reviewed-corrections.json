@@ -1,6 +1,18 @@
 {
   "reviewedAt": "2026-10-06",
   "reviewFingerprints": {
+    "deputy": "7cdf89cf8db7ef22adfc5a42c61b066b6bfe223e563b82e8460cc62430019941",
+    "outside": "d64322bc55f58f5a30308d1e2cba9e73ad10cfb424203ef3e0eb1ff0136e0e53",
+    "employer": "42ee099ea91071ba4d62a7319987cc8bb1770a22003764366dfca5d7c22bfbdb",
+    "governor": "1d8c9cc9ce637d67033be079b40741dd7806511af7261cc964dbad7c72f3c4a1",
+    "opaque": "13cc0fc9a73947351d1edb9c9d390d56408b1d9ca282f778f253fb1b6eaaf936",
+    "muscular": "c3c4044ed4ea8a7634b07393541170147e7c48d739986561715913cd705485ea",
+    "obstruct": "b484ffb47f04adbcaa3fe186eadaab0ddd683a0413f9cb884615f30c1bc24e87",
+    "ninety": "33ca1fa9585788e27692fe45c9558d504d4b29c6b612125cb58ae942b7905cfe",
+    "testimony": "1a7beea4cae415561a9f79abd58e0bde4597d0866b2bf35035113c9a80143681",
+    "newspaper": "60472cd3d145546c56214d61a1fef944e2353067482314169491f06d1aa0579a",
+    "prosecute": "fc6b70e7179911b59b3b6d4a9f280313eef2a3307566ce8876b8503ab737f002",
+    "evade": "e570564d7593dbed970c4ea0f5db9a9ba4d7e79966640738f8424ee665e75e31",
     "affair": "49383681e830f394330253890928e866fcdc11a13bd8a22838e4d31a377ad184",
     "reproach": "419882d9d5bbe55ce81d8db895d6df87008636fad03433700cd313f8ac9a2b8e",
     "board": "d3a1b082a5a987bdaca9a7bf0f67b5f34896694b41066d6f254f8826d928d88d",
@@ -94,6 +106,355 @@
   },
   "scope": "Targeted corrections, not a full-library review. Original examples; dictionary links support sense decisions.",
   "dictionaryOverrides": {
+    "deputy": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "副手"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "代理人"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "议员（某些国家的称谓）"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "副警长（美国）"
+      }
+    ],
+    "outside": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "外面"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "外表"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "外界"
+      },
+      {
+        "id": "adj-1",
+        "partOfSpeech": "adj.",
+        "sense": "外面的"
+      },
+      {
+        "id": "adj-2",
+        "partOfSpeech": "adj.",
+        "sense": "外表的"
+      },
+      {
+        "id": "adj-3",
+        "partOfSpeech": "adj.",
+        "sense": "外界的"
+      },
+      {
+        "id": "adv-1",
+        "partOfSpeech": "adv.",
+        "sense": "外面"
+      },
+      {
+        "id": "adv-2",
+        "partOfSpeech": "adv.",
+        "sense": "外表"
+      },
+      {
+        "id": "adv-3",
+        "partOfSpeech": "adv.",
+        "sense": "外界"
+      },
+      {
+        "id": "prep-1",
+        "partOfSpeech": "prep.",
+        "sense": "在……外面"
+      },
+      {
+        "id": "prep-2",
+        "partOfSpeech": "prep.",
+        "sense": "在……范围之外"
+      },
+      {
+        "id": "prep-3",
+        "partOfSpeech": "prep.",
+        "sense": "除……之外（用于 outside of）"
+      },
+      {
+        "id": "prep-4",
+        "partOfSpeech": "prep.",
+        "sense": "超过（某一时间成绩）"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "最多（用于 at the outside）"
+      },
+      {
+        "id": "n-5",
+        "partOfSpeech": "n.",
+        "sense": "弯道外侧；靠近道路中央的一侧"
+      },
+      {
+        "id": "adj-4",
+        "partOfSpeech": "adj.",
+        "sense": "可能性极小的"
+      },
+      {
+        "id": "adj-5",
+        "partOfSpeech": "adj.",
+        "sense": "最高限度的（估计）"
+      }
+    ],
+    "employer": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "雇主"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "老板（作为雇佣者）"
+      }
+    ],
+    "governor": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "(美)州长"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "总督"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "地方行政首长"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "机构负责人（如监狱长、中央银行行长）"
+      },
+      {
+        "id": "n-5",
+        "partOfSpeech": "n.",
+        "sense": "理事"
+      },
+      {
+        "id": "n-6",
+        "partOfSpeech": "n.",
+        "sense": "调速器；自动调节装置"
+      },
+      {
+        "id": "n-7",
+        "partOfSpeech": "n.",
+        "sense": "先生（英式非正式称呼）"
+      },
+      {
+        "id": "n-8",
+        "partOfSpeech": "n.",
+        "sense": "男家庭教师（旧式用语）"
+      }
+    ],
+    "opaque": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "不透明物（较少用）"
+      },
+      {
+        "id": "adj-1",
+        "partOfSpeech": "adj.",
+        "sense": "不透明的"
+      },
+      {
+        "id": "adj-2",
+        "partOfSpeech": "adj.",
+        "sense": "不透过热辐射的"
+      },
+      {
+        "id": "adj-3",
+        "partOfSpeech": "adj.",
+        "sense": "不透过某种辐射的"
+      },
+      {
+        "id": "adj-5",
+        "partOfSpeech": "adj.",
+        "sense": "难以理解的；不清楚的"
+      }
+    ],
+    "muscular": [
+      {
+        "id": "adj-1",
+        "partOfSpeech": "adj.",
+        "sense": "强壮的"
+      },
+      {
+        "id": "adj-2",
+        "partOfSpeech": "adj.",
+        "sense": "肌肉发达的"
+      },
+      {
+        "id": "adj-3",
+        "partOfSpeech": "adj.",
+        "sense": "强劲有力的"
+      },
+      {
+        "id": "adj-4",
+        "partOfSpeech": "adj.",
+        "sense": "肌肉的"
+      },
+      {
+        "id": "adj-5",
+        "partOfSpeech": "adj.",
+        "sense": "酒体饱满的"
+      }
+    ],
+    "obstruct": [
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "阻隔"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "妨碍"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "阻塞"
+      },
+      {
+        "id": "v-4",
+        "partOfSpeech": "v.",
+        "sense": "遮挡"
+      },
+      {
+        "id": "v-5",
+        "partOfSpeech": "v.",
+        "sense": "阻挠"
+      }
+    ],
+    "ninety": [
+      {
+        "id": "num-1",
+        "partOfSpeech": "num.",
+        "sense": "九十"
+      },
+      {
+        "id": "num-2",
+        "partOfSpeech": "num.",
+        "sense": "九十个"
+      },
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "九十至九十九的数字、年份或年龄（复数 nineties）"
+      }
+    ],
+    "testimony": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "证言"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "证明；见证"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "证言；正式陈述"
+      }
+    ],
+    "newspaper": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "报纸"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "报社"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "旧报纸（作材料用）"
+      }
+    ],
+    "prosecute": [
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "提起诉讼"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "起诉"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "持续推进（正式用语）"
+      },
+      {
+        "id": "v-4",
+        "partOfSpeech": "v.",
+        "sense": "开展（正式用语）"
+      },
+      {
+        "id": "v-5",
+        "partOfSpeech": "v.",
+        "sense": "从事（正式用语）"
+      },
+      {
+        "id": "v-6",
+        "partOfSpeech": "v.",
+        "sense": "担任控方律师"
+      }
+    ],
+    "evade": [
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "(巧妙地)逃脱"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "规避"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "逃避"
+      },
+      {
+        "id": "v-4",
+        "partOfSpeech": "v.",
+        "sense": "使无法想起或得到（正式用语）"
+      }
+    ],
     "affair": [
       {
         "id": "n-1",
@@ -2705,6 +3066,78 @@
     ]
   },
   "reviews": {
+    "deputy": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/deputy",
+      "decision": "Merged deputy and representative substitutions; added the distinct elected legislative member and US sheriff's officer meanings. Contextual Chinese specifies each role without suggesting every deputy is a police officer."
+    },
+    "outside": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/outside_1",
+      "decision": "Corrected adverb/preposition examples formerly marked as nouns. Merged spatial exterior/surface forms, kept organizational/scope exclusion, small probability, maximum estimate and exceptive use distinct. Added missing prepositions; time-record excess is explicitly omitted under the cap.",
+      "additionalSources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/outside_2",
+        "https://www.oxfordlearnersdictionaries.com/definition/english/outside_3",
+        "https://www.oxfordlearnersdictionaries.com/definition/english/outside_4"
+      ],
+      "omittedForCap": [
+        "prep-4"
+      ]
+    },
+    "employer": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/employer",
+      "decision": "Merged employer and boss as employer, qualifying boss so it cannot imply every supervisor is an employer. Rewrote the short candidate into a complete natural example with matching Chinese."
+    },
+    "governor": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/governor",
+      "decision": "Merged regional governing titles and institutional administration titles rather than five near-duplicate officials. Added mechanical regulator, informal British address and the historical male tutor, each with a distinct, appropriately framed context.",
+      "additionalSources": [
+        "https://www.merriam-webster.com/dictionary/governor"
+      ]
+    },
+    "opaque": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/opaque",
+      "decision": "Corrected heat/electricity-conduction misconceptions to passage of radiant energy. Opaque does not by itself mean electrically insulating. Merged physical opacity and its noun derivative, added the missing figurative obscure sense, and archived the unqualified shadowy gloss not supported as a separate common meaning by the consulted modern entries.",
+      "additionalSources": [
+        "https://www.merriam-webster.com/dictionary/opaque"
+      ],
+      "retiredDictionarySenses": [
+        {
+          "id": "adj-4",
+          "partOfSpeech": "adj.",
+          "sense": "阴暗的"
+        }
+      ]
+    },
+    "muscular": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/muscular",
+      "decision": "Merged strength with muscular physique; added the missing muscle-related anatomical adjective and attested full-bodied wine sense. Kept forceful expression separate and removed the unsupported effortless claim from the old Chinese translation.",
+      "additionalSources": [
+        "https://www.merriam-webster.com/dictionary/muscular"
+      ]
+    },
+    "obstruct": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/obstruct",
+      "decision": "Merged passage blockage and obstruction of sight into one physical-barrier family; kept deliberate interference separate. Replaced the awkward monopolistic-practices sentence and the unnatural Chinese rendering of blocking a view."
+    },
+    "ninety": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/ninety",
+      "decision": "Merged ninety/ninety items and added the attested nineties range, illustrated specifically as the decade. The sentence explicitly says nineteen nineties, so the Chinese twentieth-century date is supported."
+    },
+    "testimony": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/testimony",
+      "decision": "Separated formal witness statements from evidence that demonstrates something. Corrected monument-as-public-statement mistranslation; formal declaration belongs with testimony, not physical proof."
+    },
+    "newspaper": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/newspaper",
+      "decision": "Added the publishing organization and material uses. Kept publication and publisher distinct, but merged old paper used as material with the physical newspaper rather than repeating the near-identical Chinese object meaning."
+    },
+    "prosecute": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/prosecute",
+      "decision": "Corrected vague accuse/report and job-title glosses to criminal prosecution and acting for the prosecution. Merged those closely related legal uses; retained sustained pursuit as a separate formal meaning with an inquiry context."
+    },
+    "evade": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/evade",
+      "decision": "Distinguished literal evasion, avoiding obligations/questions and the formal sense of something eluding one's memory or grasp. Added the missing last sense; the wildlife example avoids duplicating two misconduct contexts."
+    },
     "affair": {
       "source": "https://www.oxfordlearnersdictionaries.com/definition/english/affair",
       "decision": "Removed the false merger of relationship with generic event. Distinguished event, affairs/private business, romantic relationship and an object described by an adjective. The relationship context explicitly establishes marriage to support the Chinese extramarital gloss."
@@ -3375,6 +3808,637 @@
     "vocabulary": {"source": "https://www.oxfordlearnersdictionaries.com/definition/english/vocabulary", "decision": "Separate a person's stock of words from a written glossary. Merge variants referring to a language or subject's stock of words; replace the worksheet instruction and blank."}
   },
   "entries": {
+    "deputy": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2"
+          ],
+          "sense": "副手",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-3"
+          ],
+          "sense": "议员",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-4"
+          ],
+          "sense": "副警长（美国）",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The director asked her deputy to lead the negotiations while she travelled to inspect the damaged production site.",
+          "translation": "主管出发去检查受损的生产场地时，请她的副手负责谈判。",
+          "targetForm": "deputy",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The newly elected deputy promised to question the transport minister about villages that had lost their only bus service.",
+          "translation": "新当选的议员承诺，会就一些村庄失去唯一公交服务的问题质询交通部长。",
+          "targetForm": "deputy",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "A sheriff's deputy helped divert traffic after the bridge closed, guiding unfamiliar drivers towards a safer route across the river.",
+          "translation": "大桥关闭后，一名副警长协助疏导交通，引导不熟悉道路的司机走更安全的路线过河。",
+          "targetForm": "deputy",
+          "senseId": "semantic-3"
+        }
+      ]
+    },
+    "outside": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "prep.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2",
+            "adj-1",
+            "adj-2",
+            "adv-1",
+            "adv-2",
+            "prep-1",
+            "n-5"
+          ],
+          "sense": "在……外面",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "n-3",
+            "adj-3",
+            "adv-3",
+            "prep-2"
+          ],
+          "sense": "外部的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-4"
+          ],
+          "sense": "极小的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-4",
+            "adj-5"
+          ],
+          "sense": "最多（用于 at the outside）",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-5",
+          "partOfSpeech": "prep.",
+          "sourceSenseIds": [
+            "prep-3"
+          ],
+          "sense": "除……之外",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The visitors waited outside the workshop while the conservator prepared a safe space for them to examine the restored furniture.",
+          "translation": "参观者在工作室外等候，修复师则准备一个安全的空间，供他们查看修复后的家具。",
+          "targetForm": "outside",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The committee invited an outside expert to assess the proposal, hoping an independent perspective would reveal weaknesses they had overlooked.",
+          "translation": "委员会邀请了一位外部专家评估提案，希望独立的视角能发现他们忽略的不足。",
+          "targetForm": "outside",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "The team still had an outside chance of reaching the final, but only if every remaining result went in its favour.",
+          "translation": "这支队伍仍有极小的机会进入决赛，但前提是所有剩余比赛的结果都对它有利。",
+          "targetForm": "outside",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "The repair should take three days at the outside, provided the replacement parts arrive before the workshop closes on Friday.",
+          "translation": "只要替换零件在周五车间关门前送到，维修最多应该需要三天。",
+          "targetForm": "outside",
+          "senseId": "semantic-4"
+        },
+        {
+          "sentence": "Outside of a few minor spelling errors, the report was ready for publication and required no further changes to its conclusions.",
+          "translation": "除几处小拼写错误外，报告已经可以发表，其结论无需再作修改。",
+          "targetForm": "Outside",
+          "senseId": "semantic-5"
+        }
+      ]
+    },
+    "employer": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2"
+          ],
+          "sense": "雇主",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "Her employer agreed to adjust her working hours during the training course, allowing her to attend classes without leaving her job.",
+          "translation": "她的雇主同意在培训期间调整她的工作时间，让她无需离职就能上课。",
+          "targetForm": "employer",
+          "senseId": "semantic-1"
+        }
+      ]
+    },
+    "governor": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2",
+            "n-3"
+          ],
+          "sense": "州长",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-4",
+            "n-5"
+          ],
+          "sense": "校董",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-6"
+          ],
+          "sense": "调速器",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-7"
+          ],
+          "sense": "先生（英式非正式称呼）",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-5",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-8"
+          ],
+          "sense": "男家庭教师（旧式用语）",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The governor visited communities affected by the storm before asking the state legislature to approve additional funds for rebuilding.",
+          "translation": "州长走访了受风暴影响的社区，然后请求州议会批准额外的重建资金。",
+          "targetForm": "governor",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "As a school governor, she questioned whether the proposed budget would leave enough money to support pupils with additional needs.",
+          "translation": "作为校董，她质疑拟议预算是否为有额外需求的学生预留了足够的支持资金。",
+          "targetForm": "governor",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "The mechanic inspected the engine's governor after noticing that its speed changed sharply whenever the load was reduced.",
+          "translation": "机械师注意到发动机负载每次减少时转速都会骤变，于是检查了它的调速器。",
+          "targetForm": "governor",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "In the old film, the cab driver addresses his passenger as governor before asking where he would like to go.",
+          "translation": "在那部老电影中，出租车司机先称乘客为先生，再问他想去哪里。",
+          "targetForm": "governor",
+          "senseId": "semantic-4"
+        },
+        {
+          "sentence": "The young prince's governor supervised his lessons and accompanied him on journeys intended to prepare him for public duties.",
+          "translation": "小王子的男家庭教师督导他的学习，并陪他出行，让他为履行公共职责做好准备。",
+          "targetForm": "governor",
+          "senseId": "semantic-5"
+        }
+      ]
+    },
+    "opaque": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "n-1",
+            "adj-1",
+            "adj-2",
+            "adj-3"
+          ],
+          "sense": "不透明的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-5"
+          ],
+          "sense": "难以理解的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The laboratory stores the samples in opaque containers to prevent light from affecting them before the analysis begins.",
+          "translation": "实验室把样本存放在不透明的容器中，以防分析开始前样本受到光照的影响。",
+          "targetForm": "opaque",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The selection process remained opaque even after the committee published its criteria, because nobody explained how the scores were calculated.",
+          "translation": "即使委员会公布了标准，选拔过程仍令人费解，因为没人解释分数是如何计算的。",
+          "targetForm": "opaque",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "muscular": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-1",
+            "adj-2"
+          ],
+          "sense": "肌肉发达的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-3"
+          ],
+          "sense": "强劲有力的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-4"
+          ],
+          "sense": "肌肉的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-5"
+          ],
+          "sense": "酒体饱满的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The muscular rower helped carry the boat onto the trailer, then checked that its delicate hull was properly supported.",
+          "translation": "那位肌肉发达的划船运动员帮忙把船抬上拖车，随后检查脆弱的船体是否得到了妥善支撑。",
+          "targetForm": "muscular",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "Her muscular prose gives the argument urgency, using vivid verbs and short sentences without sacrificing the precision of her evidence.",
+          "translation": "她强劲有力的文笔用生动的动词和短句增强了论述的迫切感，同时没有牺牲证据的准确性。",
+          "targetForm": "muscular",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "The biology students compared muscular tissue with nerve tissue, drawing diagrams to show how their structures differed under the microscope.",
+          "translation": "生物专业的学生比较了肌肉组织与神经组织，并绘图展示它们在显微镜下的结构差异。",
+          "targetForm": "muscular",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "The critic described the wine as muscular, explaining that its full body would suit rich food better than delicate dishes.",
+          "translation": "评论家形容这款葡萄酒酒体饱满，解释说它更适合浓郁的食物，而非清淡细腻的菜肴。",
+          "targetForm": "muscular",
+          "senseId": "semantic-4"
+        }
+      ]
+    },
+    "obstruct": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-1",
+            "v-3",
+            "v-4"
+          ],
+          "sense": "堵塞",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-2",
+            "v-5"
+          ],
+          "sense": "阻挠",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "A fallen tree obstructed the narrow road, forcing the delivery driver to turn back and approach the village from the valley.",
+          "translation": "一棵倒下的树堵住了狭窄的道路，迫使送货司机折返，改从山谷进入村庄。",
+          "targetForm": "obstructed",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The director obstructed the independent review by refusing access to documents that the investigators needed to compare conflicting accounts.",
+          "translation": "主管拒绝提供调查人员核对矛盾说法所需的文件，阻挠了独立审查。",
+          "targetForm": "obstructed",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "ninety": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "num.",
+          "sourceSenseIds": [
+            "num-1",
+            "num-2"
+          ],
+          "sense": "九十",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1"
+          ],
+          "sense": "九十年代",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "Ninety students signed up for the workshop, so the organisers moved it to a larger room and added another instructor.",
+          "translation": "九十名学生报名参加了工作坊，因此组织者将活动移到更大的房间，并增派了一名讲师。",
+          "targetForm": "ninety",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "In the nineteen nineties, the abandoned warehouse became an arts centre where local bands could rehearse without disturbing their neighbours.",
+          "translation": "二十世纪九十年代，那座废弃仓库改成了艺术中心，让当地乐队可以排练而不打扰邻居。",
+          "targetForm": "nineties",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "testimony": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-3"
+          ],
+          "sense": "证词",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-2"
+          ],
+          "sense": "证明",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "Her testimony described the moments before the collision, helping the court compare the drivers' accounts with the security footage.",
+          "translation": "她的证词描述了碰撞前的情形，帮助法庭将司机们的陈述与监控录像进行比对。",
+          "targetForm": "testimony",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The restored theatre stands as testimony to the volunteers' determination, having reopened after years of repairs and fundraising.",
+          "translation": "经过多年的修缮和筹款，剧院重新开放；修复后的剧院见证了志愿者们的决心。",
+          "targetForm": "testimony",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "newspaper": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-3"
+          ],
+          "sense": "报纸",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-2"
+          ],
+          "sense": "报社",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "She compared accounts of the flood in several newspapers, noting which details came from witnesses and which remained unconfirmed.",
+          "translation": "她比较了几份报纸对洪水的报道，记下哪些细节来自目击者，哪些仍未得到证实。",
+          "targetForm": "newspapers",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The newspaper hired two additional reporters so that smaller villages would receive the same attention as the regional capital.",
+          "translation": "这家报社又聘请了两名记者，让小村庄也能得到与地区首府同等的关注。",
+          "targetForm": "newspaper",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "prosecute": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-1",
+            "v-2",
+            "v-6"
+          ],
+          "sense": "起诉",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-3",
+            "v-4",
+            "v-5"
+          ],
+          "sense": "持续推进（正式用语）",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The authorities decided to prosecute the contractor after investigators found evidence that the safety certificates had been deliberately falsified.",
+          "translation": "调查人员发现安全证明被故意伪造的证据后，有关部门决定起诉承包商。",
+          "targetForm": "prosecute",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The commission continued to prosecute its inquiry despite missing records, interviewing former employees to reconstruct the sequence of events.",
+          "translation": "尽管记录缺失，委员会仍继续推进调查，采访前雇员以重建事件的经过。",
+          "targetForm": "prosecute",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "evade": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-1"
+          ],
+          "sense": "躲避",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-2",
+            "v-3"
+          ],
+          "sense": "回避",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-4"
+          ],
+          "sense": "使无法想起",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The elusive fox repeatedly evaded the wildlife photographer, disappearing into dense reeds before she could focus her camera.",
+          "translation": "这只行踪难觅的狐狸多次躲开野生动物摄影师，在她对好焦前就消失在茂密的芦苇中。",
+          "targetForm": "evaded",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The spokesperson evaded questions about the missing funds, repeating familiar promises instead of explaining where the money had gone.",
+          "translation": "发言人回避有关资金失踪的问题，只是重复那些耳熟能详的承诺，没有解释钱去了哪里。",
+          "targetForm": "evaded",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "The author's name evaded her throughout the journey, although she could recall the plot and almost every character.",
+          "translation": "整个旅途中她都想不起作者的名字，尽管她记得情节和几乎所有人物。",
+          "targetForm": "evaded",
+          "senseId": "semantic-3"
+        }
+      ]
+    },
     "affair": {
       "senseGroups": [
         {
