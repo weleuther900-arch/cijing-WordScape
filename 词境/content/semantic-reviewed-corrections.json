@@ -1,6 +1,18 @@
 {
   "reviewedAt": "2026-10-05",
   "reviewFingerprints": {
+    "diamond": "11a5100cf978b74550335936941f05fc836a37e996a67caeeac276725d7f4928",
+    "edible": "62faeaa31fa46c7b6aaed348aab97027440c5f5645674dca35de9ebd103a2712",
+    "fraction": "0c4f4dc233543f2f308798393a34d1dba85c9548ebb055cc52991df8df13e9c4",
+    "supply": "43e475eeff65ea07829c66fd98d549980f0a7041e7616dfc296bf5dd430b3903",
+    "dull": "38d0b0e425e6cb2a85bed4ef334f7996cc2f9e750fc3044cd7e3fba7ccc4256e",
+    "smash": "1a514d0037517d5b2b8f2e0ad6515843c92c25f30110edf4d85291766b4ac821",
+    "bosom": "9327ee8be1e7101904b58b7401ce016c3b564df16013e33ee24e1e59d16586b3",
+    "play": "9d2261e0a452ba61adba84f2abc5522424ab5064d81931220243a0d4dd1be682",
+    "emergency": "d0ece561f365c3414cc48d6b77802c4162a0342ffc4ddcad610ce80a7827a333",
+    "furious": "e597c1393f9aef36974917bcb338e6c4e27f99614c72d19bd1a4ecdf51fb9b69",
+    "oppress": "5b12c005a10249e6d2f80da8e95d707d38dbde3b2bb09edd430263959acc0457",
+    "comply": "0fd8eddba990829c3b64f16a9bda2528defeac6e2eeaf045f15169ce01ad43ff",
     "annual": "cd3971f80b1b1626b93f997edc16e63d7f3390bd50be99c6f0fb55c85d87e8c7",
     "shove": "51e241aaca544593a4ec64fc618589c686092e7f5536dcae60a8872712ff20e0",
     "offensive": "6123a386fedd2c968deb8b8768b9ca00743d2bd06c977a59f20f808ef897ebff",
@@ -71,6 +83,500 @@
   },
   "scope": "Targeted corrections, not a full-library review. Original examples; dictionary links support sense decisions.",
   "dictionaryOverrides": {
+    "diamond": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "钻石"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "菱形"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "方块牌"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "棒球内场；棒球场"
+      }
+    ],
+    "edible": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "食品"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "食物"
+      },
+      {
+        "id": "adj-1",
+        "partOfSpeech": "adj.",
+        "sense": "可食用的"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "含大麻活性成分的食品"
+      }
+    ],
+    "fraction": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "小部分"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "一部分"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "分数"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "馏分"
+      }
+    ],
+    "supply": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "补给"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "供给"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "供应品"
+      },
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "补给"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "供给"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "提供"
+      },
+      {
+        "id": "v-4",
+        "partOfSpeech": "v.",
+        "sense": "补充"
+      },
+      {
+        "id": "v-5",
+        "partOfSpeech": "v.",
+        "sense": "临时代替他人任职（尤指牧师）"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "临时代课（用于 supply teacher）"
+      }
+    ],
+    "dull": [
+      {
+        "id": "adj-1",
+        "partOfSpeech": "adj.",
+        "sense": "钝的"
+      },
+      {
+        "id": "adj-2",
+        "partOfSpeech": "adj.",
+        "sense": "无趣的"
+      },
+      {
+        "id": "adj-3",
+        "partOfSpeech": "adj.",
+        "sense": "头脑迟钝的"
+      },
+      {
+        "id": "adj-4",
+        "partOfSpeech": "adj.",
+        "sense": "暗淡的；阴沉的"
+      },
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "使头脑迟钝"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "使变暗淡"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "缓和"
+      },
+      {
+        "id": "v-4",
+        "partOfSpeech": "v.",
+        "sense": "变迟钝"
+      },
+      {
+        "id": "v-5",
+        "partOfSpeech": "v.",
+        "sense": "减弱（感觉或强度）"
+      },
+      {
+        "id": "adj-5",
+        "partOfSpeech": "adj.",
+        "sense": "（疼痛）隐隐的"
+      },
+      {
+        "id": "adj-6",
+        "partOfSpeech": "adj.",
+        "sense": "（声音）低沉的"
+      },
+      {
+        "id": "adj-7",
+        "partOfSpeech": "adj.",
+        "sense": "（生意）不景气的"
+      }
+    ],
+    "smash": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "打碎"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "粉碎"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "打碎时哗啦声"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "猛击"
+      },
+      {
+        "id": "n-5",
+        "partOfSpeech": "n.",
+        "sense": "扣球"
+      },
+      {
+        "id": "n-6",
+        "partOfSpeech": "n.",
+        "sense": "杀球"
+      },
+      {
+        "id": "n-7",
+        "partOfSpeech": "n.",
+        "sense": "经营失败"
+      },
+      {
+        "id": "n-8",
+        "partOfSpeech": "n.",
+        "sense": "破产"
+      },
+      {
+        "id": "adj-1",
+        "partOfSpeech": "adj.",
+        "sense": "非常轰动的"
+      },
+      {
+        "id": "adj-2",
+        "partOfSpeech": "adj.",
+        "sense": "大获成功的"
+      },
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "打碎"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "粉碎"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "击溃"
+      },
+      {
+        "id": "v-4",
+        "partOfSpeech": "v.",
+        "sense": "使破产"
+      },
+      {
+        "id": "v-7",
+        "partOfSpeech": "v.",
+        "sense": "碎裂"
+      },
+      {
+        "id": "v-8",
+        "partOfSpeech": "v.",
+        "sense": "猛撞"
+      },
+      {
+        "id": "v-9",
+        "partOfSpeech": "v.",
+        "sense": "破产"
+      },
+      {
+        "id": "v-10",
+        "partOfSpeech": "v.",
+        "sense": "扣球"
+      },
+      {
+        "id": "v-11",
+        "partOfSpeech": "v.",
+        "sense": "杀球"
+      },
+      {
+        "id": "n-11",
+        "partOfSpeech": "n.",
+        "sense": "大获成功的作品"
+      },
+      {
+        "id": "v-12",
+        "partOfSpeech": "v.",
+        "sense": "打破（纪录）"
+      }
+    ],
+    "bosom": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "胸部"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "胸"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "内心（文学用语）"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "温暖的家庭或群体环境"
+      },
+      {
+        "id": "n-5",
+        "partOfSpeech": "n.",
+        "sense": "受到保护的内部环境（文学用语）"
+      },
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "怀抱；将……置于怀中（文学用语）"
+      },
+      {
+        "id": "n-6",
+        "partOfSpeech": "n.",
+        "sense": "衣服的前胸部分"
+      },
+      {
+        "id": "adj-1",
+        "partOfSpeech": "adj.",
+        "sense": "亲密的（用于 bosom friend）"
+      }
+    ],
+    "play": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "游戏"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "游玩"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "玩笑"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "运动"
+      },
+      {
+        "id": "n-5",
+        "partOfSpeech": "n.",
+        "sense": "比赛过程"
+      },
+      {
+        "id": "n-6",
+        "partOfSpeech": "n.",
+        "sense": "赌博"
+      },
+      {
+        "id": "n-7",
+        "partOfSpeech": "n.",
+        "sense": "跳动"
+      },
+      {
+        "id": "n-8",
+        "partOfSpeech": "n.",
+        "sense": "戏剧表演"
+      },
+      {
+        "id": "n-9",
+        "partOfSpeech": "n.",
+        "sense": "戏剧；剧本"
+      },
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "玩"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "游戏"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "假装"
+      },
+      {
+        "id": "v-4",
+        "partOfSpeech": "v.",
+        "sense": "开玩笑"
+      },
+      {
+        "id": "v-5",
+        "partOfSpeech": "v.",
+        "sense": "比赛"
+      },
+      {
+        "id": "v-6",
+        "partOfSpeech": "v.",
+        "sense": "扮演"
+      },
+      {
+        "id": "v-7",
+        "partOfSpeech": "v.",
+        "sense": "演奏"
+      },
+      {
+        "id": "v-8",
+        "partOfSpeech": "v.",
+        "sense": "演戏"
+      },
+      {
+        "id": "v-9",
+        "partOfSpeech": "v.",
+        "sense": "（光等）摇曳；闪动"
+      },
+      {
+        "id": "v-10",
+        "partOfSpeech": "v.",
+        "sense": "（使）轻快地移动"
+      },
+      {
+        "id": "v-11",
+        "partOfSpeech": "v.",
+        "sense": "播放"
+      },
+      {
+        "id": "v-12",
+        "partOfSpeech": "v.",
+        "sense": "起作用（用于 play a part 等）"
+      },
+      {
+        "id": "n-10",
+        "partOfSpeech": "n.",
+        "sense": "活动余地；松动间隙"
+      }
+    ],
+    "emergency": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "紧急状况"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "紧急事件"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "紧急情况"
+      }
+    ],
+    "furious": [
+      {
+        "id": "adj-1",
+        "partOfSpeech": "adj.",
+        "sense": "狂怒的"
+      },
+      {
+        "id": "adj-2",
+        "partOfSpeech": "adj.",
+        "sense": "激烈的；急速的"
+      }
+    ],
+    "oppress": [
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "压迫"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "压抑"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "使烦恼"
+      }
+    ],
+    "comply": [
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "遵守；服从"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "依从"
+      }
+    ],
     "compromise": [
       {
         "id": "n-1",
@@ -1676,6 +2182,135 @@
     ]
   },
   "reviews": {
+    "diamond": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/diamond",
+      "decision": "Added the attested playing-card and baseball-ground senses to gem and shape; authored four non-redundant examples with unambiguous translations."
+    },
+    "edible": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/edible",
+      "decision": "Merged food and fit-for-eating derivations; added the contemporary noun for food containing cannabis active compounds with a neutral packaging documentary context.",
+      "additionalSources": [
+        "https://www.merriam-webster.com/dictionary/edible"
+      ]
+    },
+    "fraction": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/fraction",
+      "decision": "Merged small-part and fragment overlap, replacing the unnatural pottery fraction example. Retained mathematics and added the attested distillation sense."
+    },
+    "supply": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/supply_1",
+      "decision": "Merged provision, supplies and replenishment derivations into one family. Qualified substitution as temporary service and illustrated the productive supply teacher compound rather than forcing an uncommon bare-verb use.",
+      "additionalSources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/supply_2",
+        "https://www.oxfordlearnersdictionaries.com/definition/english/supply-teacher",
+        "https://www.merriam-webster.com/dictionary/supply"
+      ]
+    },
+    "dull": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/dull_1",
+      "decision": "Separated bluntness, boredom, mental sluggishness, dim appearance and weakened feeling; corrected ambiguous verb glosses. Added attested aching, low sound and sluggish trade senses but recorded cap omissions rather than claiming their examples exist.",
+      "additionalSources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/dull_2",
+        "https://dictionary.cambridge.org/dictionary/english-chinese-simplified/dull_1",
+        "https://www.merriam-webster.com/dictionary/dull"
+      ],
+      "omittedForCap": [
+        "adj-5",
+        "adj-6",
+        "adj-7"
+      ]
+    },
+    "smash": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/smash_1",
+      "decision": "Merged synonymous breaking and sports striking labels. Added missing major success and record-breaking uses; preserved ruin/financial collapse under destruction. Collision is separately omitted for the cap. Archived coin, atomic-fission and adverb labels not established as common standalone senses by the consulted learner entries; this is not a claim that historical or specialist uses never occur.",
+      "additionalSources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/smash_2",
+        "https://www.merriam-webster.com/dictionary/smash"
+      ],
+      "retiredDictionarySenses": [
+        {
+          "id": "n-9",
+          "partOfSpeech": "n.",
+          "sense": "硬币"
+        },
+        {
+          "id": "n-10",
+          "partOfSpeech": "n.",
+          "sense": "假硬币"
+        },
+        {
+          "id": "v-5",
+          "partOfSpeech": "v.",
+          "sense": "使裂变"
+        },
+        {
+          "id": "v-6",
+          "partOfSpeech": "v.",
+          "sense": "使用假硬币"
+        },
+        {
+          "id": "adv-1",
+          "partOfSpeech": "adv.",
+          "sense": "轰隆一声"
+        },
+        {
+          "id": "adv-2",
+          "partOfSpeech": "adv.",
+          "sense": "哗啦一声"
+        }
+      ],
+      "omittedForCap": [
+        "v-8"
+      ]
+    },
+    "bosom": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/bosom",
+      "decision": "Merged chest and the related literary holding use. Distinguished literary inner feelings, protected family setting, garment front and close friendship. Qualified overgeneral internal/middle glosses; removed unnatural bosom of committee and bosom of her heart examples.",
+      "additionalSources": [
+        "https://www.merriam-webster.com/dictionary/bosom",
+        "https://www.oxfordlearnersdictionaries.com/definition/english/bosom-friend"
+      ]
+    },
+    "play": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/play_1",
+      "decision": "Replaced five near-duplicate leisure examples with games, instrumental music, recorded-media playback, acting and dramatic work. Corrected match-process and corrupt movement glosses. Added playback, functional role and mechanical play; latter two and less central senses explicitly omitted under the five-example cap.",
+      "additionalSources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/play_2"
+      ],
+      "omittedForCap": [
+        "n-3",
+        "n-6",
+        "n-7",
+        "v-4",
+        "v-9",
+        "v-10",
+        "v-12",
+        "n-10"
+      ]
+    },
+    "emergency": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/emergency",
+      "decision": "Merged emergency situation, incident and urgent need into one semantic family; replaced short redundant examples with one original evacuation context."
+    },
+    "furious": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/furious",
+      "decision": "Retained anger and energetic intensity as distinct families. Removed misleading unqualified noisy gloss and unnatural furious with noise; pace example isolates rapid intensity.",
+      "retiredDictionarySenses": [
+        {
+          "id": "adj-3",
+          "partOfSpeech": "adj.",
+          "sense": "吵闹的"
+        }
+      ]
+    },
+    "oppress": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/oppress",
+      "decision": "Separated abuse of power from a distressing burden; merged emotional oppression and trouble. Rewrote both contexts and translations to avoid literal awkwardness."
+    },
+    "comply": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/comply",
+      "decision": "Merged synonymous obedience senses; added natural comply with collocation and a complete safety-rule context."
+    },
     "rose": {
       "source": "https://www.oxfordlearnersdictionaries.com/definition/english/rose_1",
       "decision": "Separate flower from colour; merge rose/蔷薇 plant synonyms rather than duplicating botanical labels. Add the watering-can spray head and ceiling fitting, and keep one contextual example of the past tense of rise; other rise senses belong to its own entry. Omit the unverified old colour-verb gloss from the active learner dictionary.",
@@ -2114,6 +2749,715 @@
     "vocabulary": {"source": "https://www.oxfordlearnersdictionaries.com/definition/english/vocabulary", "decision": "Separate a person's stock of words from a written glossary. Merge variants referring to a language or subject's stock of words; replace the worksheet instruction and blank."}
   },
   "entries": {
+    "diamond": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1"
+          ],
+          "sense": "钻石",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-2"
+          ],
+          "sense": "菱形",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-3"
+          ],
+          "sense": "方块牌",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-4"
+          ],
+          "sense": "棒球场",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The jeweller examined the diamond under a microscope before explaining how a tiny flaw would affect its value.",
+          "translation": "珠宝商在显微镜下检查了这颗钻石，然后解释一处微小瑕疵会如何影响它的价值。",
+          "targetForm": "diamond",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The weaver arranged contrasting threads into a repeating diamond pattern that ran along the edge of the blanket.",
+          "translation": "织工用颜色形成对比的丝线织出重复的菱形图案，沿着毯子的边缘延伸。",
+          "targetForm": "diamond",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "She needed one more diamond to complete her flush, but the next card turned out to be a heart.",
+          "translation": "她还差一张方块牌就能凑成同花，可下一张却是红桃。",
+          "targetForm": "diamond",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "Groundskeepers covered the diamond before the storm arrived, hoping the baseball game could resume later that evening.",
+          "translation": "暴风雨来临前，场地管理员用遮盖物盖住棒球场，希望比赛能在当晚稍晚时候恢复。",
+          "targetForm": "diamond",
+          "senseId": "semantic-4"
+        }
+      ]
+    },
+    "edible": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-1",
+            "n-1",
+            "n-2"
+          ],
+          "sense": "可食用的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-3"
+          ],
+          "sense": "含大麻活性成分的食品",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The baker assured the children that the tiny flowers decorating the birthday cake were edible and made entirely from sugar.",
+          "translation": "面包师告诉孩子们，生日蛋糕上的小花可以吃，而且完全是用糖做的。",
+          "targetForm": "edible",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The documentary examined how colourful packaging could cause people to mistake cannabis edibles for ordinary sweets on a kitchen shelf.",
+          "translation": "纪录片探讨了色彩鲜艳的包装如何让人把厨房架子上含大麻活性成分的食品误认成普通糖果。",
+          "targetForm": "edibles",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "fraction": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2"
+          ],
+          "sense": "一小部分",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-3"
+          ],
+          "sense": "分数",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-4"
+          ],
+          "sense": "馏分",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "Only a fraction of the museum's collection is on display, while the remaining objects are stored for future exhibitions.",
+          "translation": "博物馆仅展出了藏品的一小部分，其余物品则存放起来，留待日后展出。",
+          "targetForm": "fraction",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The teacher used a measuring jug to show how adding fractions could solve a practical problem in the kitchen.",
+          "translation": "老师用量杯演示了如何通过分数加法解决厨房中的实际问题。",
+          "targetForm": "fractions",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "The chemist collected each fraction in a separate flask during distillation, then compared the liquids to identify their components.",
+          "translation": "化学家在蒸馏过程中用不同的烧瓶收集各个馏分，再比较这些液体以鉴定其成分。",
+          "targetForm": "fraction",
+          "senseId": "semantic-3"
+        }
+      ]
+    },
+    "supply": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2",
+            "n-3",
+            "v-1",
+            "v-2",
+            "v-3",
+            "v-4"
+          ],
+          "sense": "供应",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "v-5",
+            "n-4"
+          ],
+          "sense": "代课（用于 supply teacher）",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "A local cooperative supplies fresh vegetables to the school, allowing its kitchen to plan meals around what farmers are harvesting.",
+          "translation": "当地一家合作社向学校供应新鲜蔬菜，让食堂能根据农民正在收获的作物安排餐食。",
+          "targetForm": "supplies",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The supply teacher adapted the lesson quickly when she discovered that the class had already finished the assigned chapter.",
+          "translation": "代课老师发现全班已经学完指定章节后，迅速调整了教学内容。",
+          "targetForm": "supply",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "dull": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-1"
+          ],
+          "sense": "钝的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-2"
+          ],
+          "sense": "乏味的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-3",
+            "v-1",
+            "v-4"
+          ],
+          "sense": "迟钝的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-4",
+            "v-2"
+          ],
+          "sense": "暗淡的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-5",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-3",
+            "v-5"
+          ],
+          "sense": "减弱",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The carpenter set aside the dull chisel because it was tearing the wood instead of cutting a clean edge.",
+          "translation": "木匠放下了那把钝凿子，因为它只会撕裂木材，无法切出平整的边缘。",
+          "targetForm": "dull",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "What might have been a dull lecture became fascinating when the historian read letters written by ordinary factory workers.",
+          "translation": "历史学家读起普通工厂工人的来信，让原本可能乏味的讲座变得引人入胜。",
+          "targetForm": "dull",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "After a sleepless night, his mind felt dull, and even familiar questions took him unusually long to answer.",
+          "translation": "彻夜未眠后，他头脑迟钝，就连熟悉的问题也要比平时花更长时间才能回答。",
+          "targetForm": "dull",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "Years of sunlight had faded the once vivid curtains to a dull blue that no longer matched the wallpaper.",
+          "translation": "经年日晒使原本鲜艳的窗帘褪成了暗淡的蓝色，与墙纸不再相配。",
+          "targetForm": "dull",
+          "senseId": "semantic-4"
+        },
+        {
+          "sentence": "Repeated rejections dulled her enthusiasm for the competition, although she continued practising because she still loved the music.",
+          "translation": "接连被拒削弱了她参赛的热情，但她仍热爱音乐，所以继续练习。",
+          "targetForm": "dulled",
+          "senseId": "semantic-5"
+        }
+      ]
+    },
+    "smash": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2",
+            "n-3",
+            "v-1",
+            "v-2",
+            "v-7"
+          ],
+          "sense": "打碎",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-4",
+            "n-5",
+            "n-6",
+            "v-10",
+            "v-11"
+          ],
+          "sense": "扣杀",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-3",
+            "n-7",
+            "n-8",
+            "v-4",
+            "v-9"
+          ],
+          "sense": "摧毁",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-12"
+          ],
+          "sense": "打破纪录",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-5",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-11",
+            "adj-1",
+            "adj-2"
+          ],
+          "sense": "大获成功的作品",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "A falling branch smashed the greenhouse windows during the storm, leaving delicate seedlings exposed to the cold.",
+          "translation": "暴风雨中，一根落下的树枝砸碎了温室的窗户，让娇嫩的幼苗暴露在寒冷中。",
+          "targetForm": "smashed",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "Her powerful smash landed just inside the badminton court, winning the final point before her opponent could react.",
+          "translation": "她有力的一记扣杀落在羽毛球场界内，对手还没来得及反应，她就赢下了最后一分。",
+          "targetForm": "smash",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "The investigation smashed a criminal network that had been selling stolen paintings through apparently respectable galleries for years.",
+          "translation": "调查摧毁了一个犯罪网络，该网络多年来通过看似正规的画廊出售失窃画作。",
+          "targetForm": "smashed",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "The young swimmer smashed the club record despite losing valuable training time when the pool closed for repairs.",
+          "translation": "尽管泳池因维修关闭，让她损失了宝贵的训练时间，这名年轻游泳运动员仍打破了俱乐部纪录。",
+          "targetForm": "smashed",
+          "senseId": "semantic-4"
+        },
+        {
+          "sentence": "The comedy became an unexpected smash, persuading the theatre to extend its run for another six weeks.",
+          "translation": "这部喜剧意外地大获成功，促使剧院将演出档期又延长了六周。",
+          "targetForm": "smash",
+          "senseId": "semantic-5"
+        }
+      ]
+    },
+    "bosom": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2",
+            "v-1"
+          ],
+          "sense": "胸前",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-3"
+          ],
+          "sense": "内心",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-4",
+            "n-5"
+          ],
+          "sense": "温暖的家庭环境",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-6"
+          ],
+          "sense": "衣服前胸部分",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-5",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-1"
+          ],
+          "sense": "亲密的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "She pressed the photograph to her bosom before placing it carefully among the letters she had kept for years.",
+          "translation": "她把照片紧贴胸前，然后小心地将它放进那些保存多年的信件中。",
+          "targetForm": "bosom",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "In the novel, resentment grows in the prince's bosom as he watches his younger brother inherit the throne.",
+          "translation": "小说中，王子眼看着弟弟继承王位，内心的怨恨日益加深。",
+          "targetForm": "bosom",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "After months of lonely travel, he returned to the bosom of his family and slowly regained his confidence.",
+          "translation": "独自在外漂泊数月后，他回到家人的温暖怀抱，慢慢重拾了信心。",
+          "targetForm": "bosom",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "The tailor adjusted the bosom of the dress, making sure the embroidered pattern lay smoothly across the fabric.",
+          "translation": "裁缝调整了连衣裙的前胸部分，确保刺绣图案在布料上平整舒展。",
+          "targetForm": "bosom",
+          "senseId": "semantic-4"
+        },
+        {
+          "sentence": "Although their careers eventually took them to different continents, the two women remained bosom friends throughout their lives.",
+          "translation": "尽管事业最终把她们带往不同的大陆，这两位女性仍一生都是挚友。",
+          "targetForm": "bosom",
+          "senseId": "semantic-5"
+        }
+      ]
+    },
+    "play": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2",
+            "n-4",
+            "n-5",
+            "v-1",
+            "v-2",
+            "v-5"
+          ],
+          "sense": "玩",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-7"
+          ],
+          "sense": "演奏",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-11"
+          ],
+          "sense": "播放",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-3",
+            "v-6",
+            "v-8",
+            "n-8"
+          ],
+          "sense": "扮演",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-5",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-9"
+          ],
+          "sense": "戏剧",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The children play board games in the library after school, learning to take turns and explain their decisions.",
+          "translation": "孩子们放学后在图书馆玩桌游，学习轮流参与并解释自己的决定。",
+          "targetForm": "play",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "She learned to play the cello as an adult and now performs with a small orchestra in her neighbourhood.",
+          "translation": "她成年后开始学习演奏大提琴，如今在社区的一支小型管弦乐队中演出。",
+          "targetForm": "play",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "The guide played a recording of the bird's song so that visitors could recognise it later in the forest.",
+          "translation": "导游播放了一段鸟鸣录音，让游客稍后在森林中能辨认出这种鸟的叫声。",
+          "targetForm": "played",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "The actor plays a retired detective whose quiet holiday is interrupted by the disappearance of a fellow passenger.",
+          "translation": "这位演员扮演一名退休侦探，一位同行乘客的失踪打断了他平静的假期。",
+          "targetForm": "plays",
+          "senseId": "semantic-4"
+        },
+        {
+          "sentence": "The theatre commissioned a new play about a family deciding whether to sell the farm they had inherited.",
+          "translation": "剧院委托创作了一部新戏，讲述一家人决定是否出售祖传农场的故事。",
+          "targetForm": "play",
+          "senseId": "semantic-5"
+        }
+      ]
+    },
+    "emergency": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2",
+            "n-3"
+          ],
+          "sense": "紧急情况",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The hotel rehearses its evacuation plan regularly so that staff can guide guests safely during an emergency.",
+          "translation": "酒店定期演练疏散方案，以便员工在紧急情况下引导客人安全撤离。",
+          "targetForm": "emergency",
+          "senseId": "semantic-1"
+        }
+      ]
+    },
+    "furious": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-1"
+          ],
+          "sense": "愤怒的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-2"
+          ],
+          "sense": "急速的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "Residents were furious when the council approved the construction project without giving them a chance to raise their concerns.",
+          "translation": "议会没让居民有机会表达顾虑就批准了建设项目，居民们为此非常愤怒。",
+          "targetForm": "furious",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "She typed at a furious pace, determined to finish the report before the last train left for home.",
+          "translation": "她飞快地打字，决心在回家的末班火车开走前写完报告。",
+          "targetForm": "furious",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "oppress": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-1"
+          ],
+          "sense": "压迫",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-2",
+            "v-3"
+          ],
+          "sense": "使感到压抑",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The regime oppressed its citizens for decades, imprisoning anyone who publicly demanded fair elections or an independent press.",
+          "translation": "这个政权压迫民众长达数十年，将所有公开要求公正选举或新闻独立的人投入监狱。",
+          "targetForm": "oppressed",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The silence of the empty house oppressed him, reminding him how much he missed the familiar voices of his family.",
+          "translation": "空荡荡的屋子里一片寂静，令他感到压抑，也让他意识到自己多么想念家人熟悉的声音。",
+          "targetForm": "oppressed",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "comply": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-1",
+            "v-2"
+          ],
+          "sense": "遵守",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "Visitors must comply with the laboratory's safety rules, even when they are only staying for a brief tour.",
+          "translation": "即使只是短暂参观，访客也必须遵守实验室的安全规定。",
+          "targetForm": "comply",
+          "senseId": "semantic-1"
+        }
+      ]
+    },
     "annual": {
       "senseGroups": [
         {
