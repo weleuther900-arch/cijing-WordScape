@@ -118,6 +118,9 @@
     ,"glory": "620d77f66ea72231d86de15339bb2d19adca76f3851e33fed0ce61b69c7b4d62"
     ,"evolve": "426d8815159a1b02aea39e252d58f3d63aa4ccfd1d9ae21f2d83c2614ec63416"
     ,"nylon": "90e5abf504901513aabae639a2b3e5ba982206b54c99fb7a29b186ae5597b493"
+    ,"horsepower": "59a58acdc5c5e873cbde3223d2937896bdac00f5972760b9dc61fded20f27265"
+    ,"lick": "9b9a9f6f38a5deafa96c9fb6acfab55acd96a68cb3f1e4025b73b0aca1cc5bae"
+    ,"relief": "54141195d2f4c9802f62e36639df08f9be492c7bbaa4c6736ee62def46fc4eba"
   },
   "scope": "Targeted corrections, not a full-library review. Original examples; dictionary links support sense decisions.",
   "dictionaryOverrides": {
@@ -3175,6 +3178,14 @@
     "nylon": [
       {"id":"n-1","partOfSpeech":"n.","sense":"尼龙"},
       {"id":"n-2","partOfSpeech":"n.","sense":"尼龙丝袜或连裤袜（复数，旧用法）"}
+    ],
+    "horsepower": [{"id":"n-1","partOfSpeech":"n.","sense":"马力（发动机功率单位）"}],
+    "lick": [
+      {"id":"n-1","partOfSpeech":"n.","sense":"舔；一舔"},{"id":"n-2","partOfSpeech":"n.","sense":"少许油漆"},{"id":"n-3","partOfSpeech":"n.","sense":"即兴短乐句（爵士或流行音乐）"},
+      {"id":"v-1","partOfSpeech":"v.","sense":"舔；用舌头尝或弄湿"},{"id":"v-2","partOfSpeech":"v.","sense":"舔食或舔饮"},{"id":"v-3","partOfSpeech":"v.","sense":"轻触（如火焰）"},{"id":"v-4","partOfSpeech":"v.","sense":"轻易击败；解决"}
+    ],
+    "relief": [
+      {"id":"n-1","partOfSpeech":"n.","sense":"安心；宽慰"},{"id":"n-2","partOfSpeech":"n.","sense":"减轻；缓解"},{"id":"n-3","partOfSpeech":"n.","sense":"救济物资；救助"},{"id":"n-4","partOfSpeech":"n.","sense":"税收减免"},{"id":"n-5","partOfSpeech":"n.","sense":"调剂；轻松内容"},{"id":"n-6","partOfSpeech":"n.","sense":"替班人员；替补"},{"id":"n-7","partOfSpeech":"n.","sense":"解围；解救"},{"id":"n-8","partOfSpeech":"n.","sense":"浮雕"},{"id":"n-9","partOfSpeech":"n.","sense":"鲜明对比；突出效果"}
     ]
   },
   "reviews": {
@@ -3932,7 +3943,10 @@
     "assignment": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/assignment","decision":"Merged schoolwork and work task into one assigned-work sense. Added the distinct act of assigning, post or placement, and legal transfer of property or rights. Archived attribution and statement glosses because the consulted current learner and general dictionary entries do not support them as assignment senses.","additionalSources":["https://www.merriam-webster.com/dictionary/assignment"],"retiredDictionarySenses":[{"id":"n-5","partOfSpeech":"n.","sense":"归因"},{"id":"n-6","partOfSpeech":"n.","sense":"陈述"}]},
     "glory": {"source":"https://www.merriam-webster.com/dictionary/glory","decision":"Separated public honour, something worthy of pride, an era of prosperity, beauty and splendour, the religious use, and the verb glory in. The near-synonymous Chinese labels for honour are not repeated as separate examples."},
     "evolve": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/evolve","decision":"Modern learner definitions support gradual development and biological evolution, each with transitive and intransitive grammar. Archived unsupported expand and infer glosses rather than generating artificial examples.","retiredDictionarySenses":[{"id":"v-3","partOfSpeech":"v.","sense":"展开"},{"id":"v-4","partOfSpeech":"v.","sense":"使发展"},{"id":"v-5","partOfSpeech":"v.","sense":"使推断出"},{"id":"v-6","partOfSpeech":"v.","sense":"使进化"}]},
-    "nylon": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/nylon","decision":"Kept the synthetic material and the old-fashioned plural clothing meaning distinct. The material sentence avoids claiming nylon itself makes an item waterproof."}
+    "nylon": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/nylon","decision":"Kept the synthetic material and the old-fashioned plural clothing meaning distinct. The material sentence avoids claiming nylon itself makes an item waterproof."},
+    "horsepower": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/horsepower","decision":"The original candidate accurately uses the engine-power unit; its Chinese gloss now makes the unit explicit."},
+    "lick": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/lick_1","decision":"Corrected unsupported hitting and wave-rolling glosses. Kept tongue use, a lick of paint, musical lick, flame contact, and the informal defeat or solve use distinct.","additionalSources":["https://www.oxfordlearnersdictionaries.com/definition/english/lick_2"]},
+    "relief": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/relief","decision":"Kept five high-value distinct uses: emotional relief, reduction of pain or discomfort, humanitarian aid, light diversion, and sculpture. Tax reduction, replacement workers, military rescue, and contrast effects are recorded as omitted under the five-example cap.","omittedForCap":[{"id":"n-4","partOfSpeech":"n.","sense":"税收减免","sourceSenseIds":["n-4"]},{"id":"n-6","partOfSpeech":"n.","sense":"替班人员；替补","sourceSenseIds":["n-6"]},{"id":"n-7","partOfSpeech":"n.","sense":"解围；解救","sourceSenseIds":["n-7"]},{"id":"n-9","partOfSpeech":"n.","sense":"鲜明对比；突出效果","sourceSenseIds":["n-9"]}]}
   },
   "entries": {
     "deputy": {
@@ -9753,6 +9767,31 @@
         {"sentence":"The climber chose a nylon rope because the material is strong, light, and suitable for repeated use outdoors.","translation":"登山者选择了尼龙绳，因为这种材料结实、轻便，适合在户外反复使用。","targetForm":"nylon","senseId":"semantic-1"},
         {"sentence":"In the old advertisement, the shop promoted nylons as a practical gift for women during the holiday season.","translation":"在这则旧广告中，商店把尼龙丝袜宣传为节日期间送给女性的实用礼物。","targetForm":"nylons","senseId":"semantic-2"}
       ]
-    }
+    },
+    "horsepower": {"senseGroups":[{"id":"semantic-1","partOfSpeech":"n.","sourceSenseIds":["n-1"],"sense":"马力（发动机功率单位）","contextReviewed":true,"semanticDistinct":true}],"examples":[{"sentence":"The engineer compared the engine's horsepower before selecting a delivery van that could carry equipment up steep roads.","translation":"工程师在选择能沿陡坡运送设备的送货车前，比较了发动机的马力。","targetForm":"horsepower","senseId":"semantic-1"}]},
+    "lick": {"senseGroups":[
+      {"id":"semantic-1","partOfSpeech":"v.","sourceSenseIds":["n-1","v-1","v-2"],"sense":"舔；用舌头尝或舔食","contextReviewed":true,"semanticDistinct":true},
+      {"id":"semantic-2","partOfSpeech":"n.","sourceSenseIds":["n-2"],"sense":"少许油漆","contextReviewed":true,"semanticDistinct":true},
+      {"id":"semantic-3","partOfSpeech":"n.","sourceSenseIds":["n-3"],"sense":"即兴短乐句","contextReviewed":true,"semanticDistinct":true},
+      {"id":"semantic-4","partOfSpeech":"v.","sourceSenseIds":["v-3"],"sense":"轻触（如火焰）","contextReviewed":true,"semanticDistinct":true},
+      {"id":"semantic-5","partOfSpeech":"v.","sourceSenseIds":["v-4"],"sense":"轻易击败；解决","contextReviewed":true,"semanticDistinct":true}],
+      "examples":[
+        {"sentence":"The dog licked the child's hand after lunch, then waited patiently beside the table for everyone to finish eating.","translation":"午饭后，那只狗舔了舔孩子的手，随后耐心地在餐桌旁等待大家吃完。","targetForm":"licked","senseId":"semantic-1"},
+        {"sentence":"Before the exhibition opened, the hallway needed only a lick of paint around the doorframes and windows.","translation":"展览开幕前，走廊只需在门框和窗框周围补一点漆。","targetForm":"lick","senseId":"semantic-2"},
+        {"sentence":"During the solo, the guitarist repeated a short blues lick that the audience recognized from the opening song.","translation":"独奏时，吉他手重复了一段观众从开场曲就听过的短蓝调乐句。","targetForm":"lick","senseId":"semantic-3"},
+        {"sentence":"Flames licked at the curtains before the firefighters brought the small kitchen fire under control.","translation":"消防员控制住这场小型厨房火灾前，火焰轻触着窗帘。","targetForm":"licked","senseId":"semantic-4"},
+        {"sentence":"After several failed attempts, the team finally licked the software problem that had delayed the launch.","translation":"经过数次失败尝试后，团队终于解决了延误发布的软件问题。","targetForm":"licked","senseId":"semantic-5"}]},
+    "relief": {"senseGroups":[
+      {"id":"semantic-1","partOfSpeech":"n.","sourceSenseIds":["n-1"],"sense":"安心；宽慰","contextReviewed":true,"semanticDistinct":true},
+      {"id":"semantic-2","partOfSpeech":"n.","sourceSenseIds":["n-2"],"sense":"减轻；缓解","contextReviewed":true,"semanticDistinct":true},
+      {"id":"semantic-3","partOfSpeech":"n.","sourceSenseIds":["n-3"],"sense":"救济物资；救助","contextReviewed":true,"semanticDistinct":true},
+      {"id":"semantic-4","partOfSpeech":"n.","sourceSenseIds":["n-5"],"sense":"调剂；轻松内容","contextReviewed":true,"semanticDistinct":true},
+      {"id":"semantic-5","partOfSpeech":"n.","sourceSenseIds":["n-8"],"sense":"浮雕","contextReviewed":true,"semanticDistinct":true}],
+      "examples":[
+        {"sentence":"To everyone's relief, the missing child was found safely at a neighbour's house before nightfall.","translation":"令大家宽慰的是，失踪的孩子在天黑前被平安地在邻居家找到。","targetForm":"relief","senseId":"semantic-1"},
+        {"sentence":"The nurse adjusted the cushion to provide some relief from the pressure on his injured shoulder.","translation":"护士调整了靠垫，以缓解他受伤肩膀承受的压力。","targetForm":"relief","senseId":"semantic-2"},
+        {"sentence":"Relief supplies reached the village after the storm damaged roads and cut off its usual deliveries.","translation":"暴风雨毁坏道路并切断日常配送后，救济物资送到了村庄。","targetForm":"Relief","senseId":"semantic-3"},
+        {"sentence":"The director added a brief comic scene as relief between two tense discussions in the otherwise serious play.","translation":"导演在这部整体严肃的戏剧中两段紧张讨论之间加入一段简短喜剧场景作为调剂。","targetForm":"relief","senseId":"semantic-4"},
+        {"sentence":"The museum guide explained that the figures on the bronze door were carved in high relief.","translation":"博物馆讲解员解释说，青铜门上的人物是以高浮雕形式雕刻的。","targetForm":"relief","senseId":"semantic-5"}]}
   }
 }
