@@ -115,6 +115,9 @@
     ,"calorie": "5e25ebdc1876c41a52dbe67ac631738c84a735e5523280d049baabb17a9ae9df"
     ,"palace": "6fc92b46e142e933ff3cb5feace34a99952c65269fe28d7c176f7c9ef1efff25"
     ,"assignment": "602121f21e8fe6cd53942b4b106d64d405f463c7936895f0408be8250ba63c13"
+    ,"glory": "620d77f66ea72231d86de15339bb2d19adca76f3851e33fed0ce61b69c7b4d62"
+    ,"evolve": "426d8815159a1b02aea39e252d58f3d63aa4ccfd1d9ae21f2d83c2614ec63416"
+    ,"nylon": "90e5abf504901513aabae639a2b3e5ba982206b54c99fb7a29b186ae5597b493"
   },
   "scope": "Targeted corrections, not a full-library review. Original examples; dictionary links support sense decisions.",
   "dictionaryOverrides": {
@@ -3156,6 +3159,22 @@
       {"id":"n-2","partOfSpeech":"n.","sense":"任务；作业"},
       {"id":"n-3","partOfSpeech":"n.","sense":"派驻职位；岗位"},
       {"id":"n-4","partOfSpeech":"n.","sense":"财产或权利的转让"}
+    ],
+    "glory": [
+      {"id":"n-1","partOfSpeech":"n.","sense":"荣誉；声望"},
+      {"id":"n-2","partOfSpeech":"n.","sense":"值得自豪之处"},
+      {"id":"n-3","partOfSpeech":"n.","sense":"鼎盛；繁荣"},
+      {"id":"n-4","partOfSpeech":"n.","sense":"壮丽；辉煌"},
+      {"id":"n-5","partOfSpeech":"n.","sense":"天国的福乐（宗教）"},
+      {"id":"v-1","partOfSpeech":"v.","sense":"以…为荣；因…欢欣"}
+    ],
+    "evolve": [
+      {"id":"v-1","partOfSpeech":"v.","sense":"逐渐发展；使逐渐发展"},
+      {"id":"v-2","partOfSpeech":"v.","sense":"进化；使进化"}
+    ],
+    "nylon": [
+      {"id":"n-1","partOfSpeech":"n.","sense":"尼龙"},
+      {"id":"n-2","partOfSpeech":"n.","sense":"尼龙丝袜或连裤袜（复数，旧用法）"}
     ]
   },
   "reviews": {
@@ -3910,7 +3929,10 @@
     "politician": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/politician","decision":"Merged neutral political-office and party-politics labels. Kept the distinct disapproving use for a person who manoeuvres for advantage, including outside electoral politics."},
     "calorie": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/calorie","decision":"Separated the food-energy use from the specialist small-calorie heat unit. The food example is informational rather than dietary advice.","additionalSources":["https://www.merriam-webster.com/dictionary/calorie"]},
     "palace": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/palace","decision":"Kept the official residence, the metonym for people working there, a grand private house, and the old-fashioned public-building use distinct. Removed the unsupported claim that any cultural centre is a palace of the arts."},
-    "assignment": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/assignment","decision":"Merged schoolwork and work task into one assigned-work sense. Added the distinct act of assigning, post or placement, and legal transfer of property or rights. Archived attribution and statement glosses because the consulted current learner and general dictionary entries do not support them as assignment senses.","additionalSources":["https://www.merriam-webster.com/dictionary/assignment"],"retiredDictionarySenses":[{"id":"n-5","partOfSpeech":"n.","sense":"归因"},{"id":"n-6","partOfSpeech":"n.","sense":"陈述"}]}
+    "assignment": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/assignment","decision":"Merged schoolwork and work task into one assigned-work sense. Added the distinct act of assigning, post or placement, and legal transfer of property or rights. Archived attribution and statement glosses because the consulted current learner and general dictionary entries do not support them as assignment senses.","additionalSources":["https://www.merriam-webster.com/dictionary/assignment"],"retiredDictionarySenses":[{"id":"n-5","partOfSpeech":"n.","sense":"归因"},{"id":"n-6","partOfSpeech":"n.","sense":"陈述"}]},
+    "glory": {"source":"https://www.merriam-webster.com/dictionary/glory","decision":"Separated public honour, something worthy of pride, an era of prosperity, beauty and splendour, the religious use, and the verb glory in. The near-synonymous Chinese labels for honour are not repeated as separate examples."},
+    "evolve": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/evolve","decision":"Modern learner definitions support gradual development and biological evolution, each with transitive and intransitive grammar. Archived unsupported expand and infer glosses rather than generating artificial examples.","retiredDictionarySenses":[{"id":"v-3","partOfSpeech":"v.","sense":"展开"},{"id":"v-4","partOfSpeech":"v.","sense":"使发展"},{"id":"v-5","partOfSpeech":"v.","sense":"使推断出"},{"id":"v-6","partOfSpeech":"v.","sense":"使进化"}]},
+    "nylon": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/nylon","decision":"Kept the synthetic material and the old-fashioned plural clothing meaning distinct. The material sentence avoids claiming nylon itself makes an item waterproof."}
   },
   "entries": {
     "deputy": {
@@ -9694,6 +9716,42 @@
         {"sentence":"For her reporting assignment, Lena interviewed shop owners about how the road closure had affected their trade.","translation":"为完成报道任务，莉娜采访了店主，了解道路封闭如何影响他们的生意。","targetForm":"assignment","senseId":"semantic-2"},
         {"sentence":"His next assignment is to the embassy in Seoul, where he will coordinate cultural exchange programmes.","translation":"他的下一项派驻职位在首尔大使馆，他将在那里协调文化交流项目。","targetForm":"assignment","senseId":"semantic-3"},
         {"sentence":"The assignment of the patent was recorded so the new owner could licence the invention to other companies.","translation":"该专利的权利转让已被登记，因此新所有人可以把这项发明许可给其他公司使用。","targetForm":"assignment","senseId":"semantic-4"}
+      ]
+    },
+    "glory": {
+      "senseGroups":[
+        {"id":"semantic-1","partOfSpeech":"n.","sourceSenseIds":["n-1"],"sense":"荣誉；声望","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-2","partOfSpeech":"n.","sourceSenseIds":["n-2"],"sense":"值得自豪之处","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-3","partOfSpeech":"n.","sourceSenseIds":["n-3"],"sense":"鼎盛；繁荣","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-4","partOfSpeech":"n.","sourceSenseIds":["n-4"],"sense":"壮丽；辉煌","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-5","partOfSpeech":"v.","sourceSenseIds":["n-5","v-1"],"sense":"以…为荣；因…欢欣","contextReviewed":true,"semanticDistinct":true}
+      ],
+      "examples":[
+        {"sentence":"Winning the community award brought glory to the volunteers, whose work had made the neighbourhood safer for older residents.","translation":"获得社区奖项为志愿者带来了荣誉，他们的工作让社区老年居民生活得更安全。","targetForm":"glory","senseId":"semantic-1"},
+        {"sentence":"The cathedral is the glory of the town, admired for its stained-glass windows and carefully restored stonework.","translation":"这座大教堂是小镇最值得自豪之处，人们赞赏它的彩色玻璃窗和精心修复的石雕。","targetForm":"glory","senseId":"semantic-2"},
+        {"sentence":"The old harbour recalls the glory of the city's trading past, when ships arrived daily from several continents.","translation":"老港口让人想起这座城市贸易鼎盛的往昔，当时每天都有船只从多个大洲驶来。","targetForm":"glory","senseId":"semantic-3"},
+        {"sentence":"At dawn, the hikers stopped to watch the glory of the mountains as sunlight reached the highest snowfields.","translation":"黎明时，徒步者停下来欣赏群山的壮丽，阳光正照到最高处的雪原。","targetForm":"glory","senseId":"semantic-4"},
+        {"sentence":"The choir sang of heavenly glory, while the congregation gloried in the hope expressed by the final hymn.","translation":"唱诗班吟唱天国的福乐，会众因最后一首赞美诗所表达的希望而欢欣。","targetForm":"gloried","senseId":"semantic-5"}
+      ]
+    },
+    "evolve": {
+      "senseGroups":[
+        {"id":"semantic-1","partOfSpeech":"v.","sourceSenseIds":["v-1"],"sense":"逐渐发展；使逐渐发展","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-2","partOfSpeech":"v.","sourceSenseIds":["v-2"],"sense":"进化；使进化","contextReviewed":true,"semanticDistinct":true}
+      ],
+      "examples":[
+        {"sentence":"The project evolved from a small pilot into a regional service after staff learned which support families needed most.","translation":"员工了解家庭最需要哪些支持后，该项目从小型试点逐渐发展为区域服务项目。","targetForm":"evolved","senseId":"semantic-1"},
+        {"sentence":"Over many generations, the insects evolved markings that helped them blend into the bark of the trees they lived on.","translation":"经过许多世代，这些昆虫进化出有助于融入所栖树木树皮的斑纹。","targetForm":"evolved","senseId":"semantic-2"}
+      ]
+    },
+    "nylon": {
+      "senseGroups":[
+        {"id":"semantic-1","partOfSpeech":"n.","sourceSenseIds":["n-1"],"sense":"尼龙","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-2","partOfSpeech":"n.","sourceSenseIds":["n-2"],"sense":"尼龙丝袜或连裤袜（复数，旧用法）","contextReviewed":true,"semanticDistinct":true}
+      ],
+      "examples":[
+        {"sentence":"The climber chose a nylon rope because the material is strong, light, and suitable for repeated use outdoors.","translation":"登山者选择了尼龙绳，因为这种材料结实、轻便，适合在户外反复使用。","targetForm":"nylon","senseId":"semantic-1"},
+        {"sentence":"In the old advertisement, the shop promoted nylons as a practical gift for women during the holiday season.","translation":"在这则旧广告中，商店把尼龙丝袜宣传为节日期间送给女性的实用礼物。","targetForm":"nylons","senseId":"semantic-2"}
       ]
     }
   }
