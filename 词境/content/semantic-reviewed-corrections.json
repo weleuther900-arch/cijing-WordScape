@@ -124,6 +124,9 @@
     ,"decent": "40c0090cfea250b15cc7328c8ba644822698896f21bedecbce41430cc198e211"
     ,"notebook": "86ee175884da19b1dd692c018c4389189548d964552f771d05b4f688b2798309"
     ,"courtesy": "f67456517229a4e237539b760a3bf7d0f95004592847e170ff7827971359d1ac"
+    ,"serial": "1064c8e40c03ac325d65580401bc8383f5a5484d3973c63fb95e7e56437b3000"
+    ,"science": "53b07cacadc8d3d7e8e208a13b68bc5b3b7aab3bbfffc08a016b2b36a71ab4d3"
+    ,"custom": "9b4a22ea20811e1ef0349b6fcd2b906caf8cc2c6b20855ae718a117665754ba9"
   },
   "scope": "Targeted corrections, not a full-library review. Original examples; dictionary links support sense decisions.",
   "dictionaryOverrides": {
@@ -3193,6 +3196,9 @@
     "decent": [{"id":"adj-1","partOfSpeech":"adj.","sense":"相当好的；合格的"},{"id":"adj-2","partOfSpeech":"adj.","sense":"正派的；尊重他人的"},{"id":"adj-3","partOfSpeech":"adj.","sense":"得体的；合乎场合的"},{"id":"adj-4","partOfSpeech":"adj.","sense":"衣着足够整齐的"}],
     "notebook": [{"id":"n-1","partOfSpeech":"n.","sense":"笔记本；练习本"},{"id":"n-2","partOfSpeech":"n.","sense":"笔记本电脑；便携式电脑"}],
     "courtesy": [{"id":"n-1","partOfSpeech":"n.","sense":"礼貌；尊重他人的行为"},{"id":"n-2","partOfSpeech":"n.","sense":"好意提供的便利或特权"},{"id":"adj-1","partOfSpeech":"adj.","sense":"出于礼貌提供的"}]
+    ,"serial": [{"id":"n-1","partOfSpeech":"n.","sense":"分期连载作品"},{"id":"adj-1","partOfSpeech":"adj.","sense":"反复从事同类行为的"},{"id":"adj-2","partOfSpeech":"adj.","sense":"连载的；分期播出的"},{"id":"adj-3","partOfSpeech":"adj.","sense":"串行的；按顺序排列的"}]
+    ,"science": [{"id":"n-1","partOfSpeech":"n.","sense":"科学（基于证据的自然与物理世界知识）"},{"id":"n-2","partOfSpeech":"n.","sense":"科学课；科学学习"},{"id":"n-3","partOfSpeech":"n.","sense":"某一门科学；科学分支"},{"id":"n-4","partOfSpeech":"n.","sense":"关于某领域的系统知识"}]
+    ,"custom": [{"id":"n-1","partOfSpeech":"n.","sense":"社会或群体的习俗"},{"id":"n-2","partOfSpeech":"n.","sense":"个人一贯的习惯（正式）"},{"id":"n-3","partOfSpeech":"n.","sense":"顾客惠顾；生意"},{"id":"n-4","partOfSpeech":"n.","sense":"海关（customs，复数）"},{"id":"adj-1","partOfSpeech":"adj.","sense":"为特定人定制的"}]
   },
   "reviews": {
     "deputy": {
@@ -3955,7 +3961,10 @@
     "relief": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/relief","decision":"Kept five high-value distinct uses: emotional relief, reduction of pain or discomfort, humanitarian aid, light diversion, and sculpture. Tax reduction, replacement workers, military rescue, and contrast effects are recorded as omitted under the five-example cap.","omittedForCap":[{"id":"n-4","partOfSpeech":"n.","sense":"税收减免","sourceSenseIds":["n-4"]},{"id":"n-6","partOfSpeech":"n.","sense":"替班人员；替补","sourceSenseIds":["n-6"]},{"id":"n-7","partOfSpeech":"n.","sense":"解围；解救","sourceSenseIds":["n-7"]},{"id":"n-9","partOfSpeech":"n.","sense":"鲜明对比；突出效果","sourceSenseIds":["n-9"]}]},
     "decent": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/decent","decision":"Separated sufficient quality, fair and respectful character, situational propriety, and the informal dressed-enough use. The old broad Chinese glosses did not identify these contexts."},
     "notebook": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/notebook","decision":"Merged note and exercise books as the same paper-book meaning and added the portable-computer use. Archived unsupported handbook and payment-book glosses.","retiredDictionarySenses":[{"id":"n-2","partOfSpeech":"n.","sense":"手册"},{"id":"n-3","partOfSpeech":"n.","sense":"期票簿"}]},
-    "courtesy": {"source":"https://www.merriam-webster.com/dictionary/courtesy","decision":"Merged polite manners and individual courteous acts. Kept a favour or privilege provided by courtesy, including the adjective use, distinct from ordinary politeness."}
+    "courtesy": {"source":"https://www.merriam-webster.com/dictionary/courtesy","decision":"Merged polite manners and individual courteous acts. Kept a favour or privilege provided by courtesy, including the adjective use, distinct from ordinary politeness."},
+    "serial": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/serial_1","decision":"Kept a serialized story, a person repeatedly doing the same type of act, publication in installments, and specialist sequential arrangement distinct. Retired the unsupported repayment gloss.","additionalSources":["https://www.oxfordlearnersdictionaries.com/definition/english/serial_2"],"retiredDictionarySenses":[{"id":"adj-4","partOfSpeech":"adj.","sense":"分期偿还的"}]},
+    "science": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/science","decision":"Separated science as evidence-based knowledge, school study, a particular discipline, and a system of knowledge about a field. Natural science is included in the broad first sense rather than repeated."},
+    "custom": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/custom_1","decision":"Separated group custom, formal personal habit, a business's customers, plural customs, and custom-made. Retired the loose software-setting gloss because the consulted entry defines the adjective as designed for a particular person.","additionalSources":["https://www.oxfordlearnersdictionaries.com/definition/english/custom_2"],"retiredDictionarySenses":[{"id":"n-4","partOfSpeech":"n.","sense":"自定义"}]}
   },
   "entries": {
     "deputy": {
@@ -9823,6 +9832,36 @@
       {"id":"semantic-2","partOfSpeech":"n.","sourceSenseIds":["n-2","adj-1"],"sense":"好意提供的便利或特权","contextReviewed":true,"semanticDistinct":true}],
       "examples":[
         {"sentence":"Out of courtesy, she held the door open for the visitor and showed him where to leave his coat.","translation":"出于礼貌，她为访客扶着门，并告诉他把外套放在哪里。","targetForm":"courtesy","senseId":"semantic-1"},
-        {"sentence":"The museum provided courtesy tickets for local teachers so they could preview the exhibition before bringing their classes.","translation":"博物馆为当地教师提供了免费礼遇票，让他们能在带学生参观前预览展览。","targetForm":"courtesy","senseId":"semantic-2"}]}
+        {"sentence":"The museum provided courtesy tickets for local teachers so they could preview the exhibition before bringing their classes.","translation":"博物馆为当地教师提供了免费礼遇票，让他们能在带学生参观前预览展览。","targetForm":"courtesy","senseId":"semantic-2"}]},
+    "serial": {"senseGroups":[
+      {"id":"semantic-1","partOfSpeech":"n.","sourceSenseIds":["n-1","adj-2"],"sense":"分期连载作品；连载的","contextReviewed":true,"semanticDistinct":true},
+      {"id":"semantic-2","partOfSpeech":"adj.","sourceSenseIds":["adj-1"],"sense":"反复从事同类行为的","contextReviewed":true,"semanticDistinct":true},
+      {"id":"semantic-3","partOfSpeech":"adj.","sourceSenseIds":["adj-3"],"sense":"串行的；按顺序排列的","contextReviewed":true,"semanticDistinct":true}],
+      "examples":[
+        {"sentence":"The magazine published a new serial chapter every Friday, leaving readers eager to discover what happened next.","translation":"这家杂志每周五刊登一章新的连载作品，让读者急切想知道接下来会发生什么。","targetForm":"serial","senseId":"semantic-1"},
+        {"sentence":"The report described him as a serial offender because he had repeatedly committed the same type of fraud.","translation":"报告称他是连环作案者，因为他一再实施同一类型的诈骗。","targetForm":"serial","senseId":"semantic-2"},
+        {"sentence":"The computer processed the requests in serial order, completing one task before beginning the next.","translation":"计算机按串行顺序处理请求，完成一项任务后才开始下一项。","targetForm":"serial","senseId":"semantic-3"}]},
+    "science": {"senseGroups":[
+      {"id":"semantic-1","partOfSpeech":"n.","sourceSenseIds":["n-1"],"sense":"科学（基于证据的自然与物理世界知识）","contextReviewed":true,"semanticDistinct":true},
+      {"id":"semantic-2","partOfSpeech":"n.","sourceSenseIds":["n-2"],"sense":"科学课；科学学习","contextReviewed":true,"semanticDistinct":true},
+      {"id":"semantic-3","partOfSpeech":"n.","sourceSenseIds":["n-3"],"sense":"某一门科学；科学分支","contextReviewed":true,"semanticDistinct":true},
+      {"id":"semantic-4","partOfSpeech":"n.","sourceSenseIds":["n-4"],"sense":"关于某领域的系统知识","contextReviewed":true,"semanticDistinct":true}],
+      "examples":[
+        {"sentence":"Science tests explanations against evidence, allowing researchers to revise their ideas when observations do not match predictions.","translation":"科学用证据检验解释，使研究人员在观察结果与预测不符时能够修正观点。","targetForm":"Science","senseId":"semantic-1"},
+        {"sentence":"The school added more practical experiments to science lessons so younger students could investigate questions for themselves.","translation":"学校在科学课中增加了更多实践实验，让低年级学生能自行探究问题。","targetForm":"science","senseId":"semantic-2"},
+        {"sentence":"Computer science attracted students who wanted to understand both algorithms and the systems built from them.","translation":"计算机科学吸引了既想理解算法又想理解由算法构建的系统的学生。","targetForm":"science","senseId":"semantic-3"},
+        {"sentence":"Before opening her bakery, she studied the science of bread making, including fermentation and temperature control.","translation":"开面包店前，她学习了制作面包的系统知识，包括发酵和温度控制。","targetForm":"science","senseId":"semantic-4"}]},
+    "custom": {"senseGroups":[
+      {"id":"semantic-1","partOfSpeech":"n.","sourceSenseIds":["n-1"],"sense":"社会或群体的习俗","contextReviewed":true,"semanticDistinct":true},
+      {"id":"semantic-2","partOfSpeech":"n.","sourceSenseIds":["n-2"],"sense":"个人一贯的习惯（正式）","contextReviewed":true,"semanticDistinct":true},
+      {"id":"semantic-3","partOfSpeech":"n.","sourceSenseIds":["n-3"],"sense":"顾客惠顾；生意","contextReviewed":true,"semanticDistinct":true},
+      {"id":"semantic-4","partOfSpeech":"n.","sourceSenseIds":["n-4"],"sense":"海关（customs，复数）","contextReviewed":true,"semanticDistinct":true},
+      {"id":"semantic-5","partOfSpeech":"adj.","sourceSenseIds":["adj-1"],"sense":"为特定人定制的","contextReviewed":true,"semanticDistinct":true}],
+      "examples":[
+        {"sentence":"It is a local custom to leave flowers at the graves during the spring festival each year.","translation":"每年春季节庆时在墓前献花是当地的一项习俗。","targetForm":"custom","senseId":"semantic-1"},
+        {"sentence":"As was her custom, Mei reviewed the agenda before the meeting and arrived with notes for each topic.","translation":"和她一贯的习惯一样，梅在会议前审阅议程，并带着每个议题的笔记到场。","targetForm":"custom","senseId":"semantic-2"},
+        {"sentence":"The independent bookshop thanked local readers for their custom after a difficult year of rising costs.","translation":"成本上涨的艰难一年过后，这家独立书店感谢当地读者的惠顾。","targetForm":"custom","senseId":"semantic-3"},
+        {"sentence":"At customs, the traveller declared the electronic equipment she had bought during her trip abroad.","translation":"在海关，旅客申报了她出国旅行期间购买的电子设备。","targetForm":"customs","senseId":"semantic-4"},
+        {"sentence":"The laboratory ordered a custom container designed to protect the fragile samples during transport.","translation":"实验室订购了一个为保护易碎样本运输而专门设计的定制容器。","targetForm":"custom","senseId":"semantic-5"}]}
   }
 }
