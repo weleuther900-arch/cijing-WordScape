@@ -2,6 +2,16 @@
   "schemaVersion": 1,
   "scope": "Separate reviews of exact candidate and dictionary fingerprints. Generator acceptance is not approval. Targeted authored corrections live in semantic-reviewed-corrections.json.",
   "entries": {
+    "living-room": {
+      "status": "approved",
+      "fingerprint": "fa9f06ad02cd4e267ad49b4b3c16b1094d1101f760da6043a72e1792fd32b62b",
+      "reviewedAt": "2026-10-06",
+      "reviewer": "Codex dictionary-backed candidate review",
+      "notes": "Independently checked the sole living-room meaning against Oxford. The natural-light reading context, noun usage, target form and Chinese translation are correct; no semantic duplication or missing common sense was found. Retains the project's hyphenated compound spelling.",
+      "sources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/living-room"
+      ]
+    },
     "carpenter": {
       "status": "approved",
       "fingerprint": "8591a58183810f3a9557a26c8bfba7223f52e5ebd9ce41f93eaf7cf2f74556ab",

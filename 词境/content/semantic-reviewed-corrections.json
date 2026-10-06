@@ -1,6 +1,17 @@
 {
-  "reviewedAt": "2026-10-05",
+  "reviewedAt": "2026-10-06",
   "reviewFingerprints": {
+    "affair": "49383681e830f394330253890928e866fcdc11a13bd8a22838e4d31a377ad184",
+    "reproach": "419882d9d5bbe55ce81d8db895d6df87008636fad03433700cd313f8ac9a2b8e",
+    "board": "d3a1b082a5a987bdaca9a7bf0f67b5f34896694b41066d6f254f8826d928d88d",
+    "gather": "e6dee09a6d26f956150ee344ce3941d869e38112b3f0c0a970ebba69005e9f02",
+    "operate": "8652622ba649c3574b91b77d986acb84fde8feb2c65fa1e7b7c75a7a975181c9",
+    "defect": "d7a68cce73346d38b84c5174b1064fabf65844b0424382d2103c6469c18d0ec8",
+    "old": "294b424a0d8d8e82e03e6ca3ee83358293cd52f1ecb3776b4d2bf54ed25cf310",
+    "list": "8e42ffc51bfb9a67c1d4332e9c509550b5317bb2b6fb5d0e28889cf1ca9ea0c4",
+    "dog": "945382a78102ab26a7e9b4cf624fe5174af81d011ce63fad824cb234be12bf86",
+    "curiosity": "febd374ec10c927474f453d852eae2f4c75271ebff5c1bc9d29d1b88b0797fce",
+    "neighbor": "320e7197c8a2f9016557511652df611c6fab07b236a4408fc78a385fe135e038",
     "diamond": "11a5100cf978b74550335936941f05fc836a37e996a67caeeac276725d7f4928",
     "edible": "62faeaa31fa46c7b6aaed348aab97027440c5f5645674dca35de9ebd103a2712",
     "fraction": "0c4f4dc233543f2f308798393a34d1dba85c9548ebb055cc52991df8df13e9c4",
@@ -83,6 +94,518 @@
   },
   "scope": "Targeted corrections, not a full-library review. Original examples; dictionary links support sense decisions.",
   "dictionaryOverrides": {
+    "affair": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "事件"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "事务"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "恋情；婚外情"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "私事"
+      },
+      {
+        "id": "n-5",
+        "partOfSpeech": "n.",
+        "sense": "物件（旧式用语，通常有修饰语）"
+      }
+    ],
+    "reproach": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "责备"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "耻辱"
+      },
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "责备"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "申斥"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "使丢脸"
+      },
+      {
+        "id": "v-4",
+        "partOfSpeech": "v.",
+        "sense": "自责（用于 reproach oneself）"
+      }
+    ],
+    "board": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "木板"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "船舷（航海用语）"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "膳食"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "会议桌（较少用）"
+      },
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "登上船、飞机、火车等"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "供膳食"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "用板覆盖"
+      },
+      {
+        "id": "v-4",
+        "partOfSpeech": "v.",
+        "sense": "寄宿；搭伙"
+      },
+      {
+        "id": "n-5",
+        "partOfSpeech": "n.",
+        "sense": "专用板（如黑板、棋盘、滑板）"
+      },
+      {
+        "id": "n-6",
+        "partOfSpeech": "n.",
+        "sense": "董事会；委员会"
+      },
+      {
+        "id": "n-7",
+        "partOfSpeech": "n.",
+        "sense": "资格考试（美式英语，常用复数）"
+      },
+      {
+        "id": "n-8",
+        "partOfSpeech": "n.",
+        "sense": "电路板"
+      },
+      {
+        "id": "n-9",
+        "partOfSpeech": "n.",
+        "sense": "网上留言板"
+      },
+      {
+        "id": "n-10",
+        "partOfSpeech": "n.",
+        "sense": "舞台（旧式用语，the boards）"
+      },
+      {
+        "id": "n-11",
+        "partOfSpeech": "n.",
+        "sense": "冰球场围板（常用复数）"
+      }
+    ],
+    "gather": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "聚集（较少用）"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "集合体（较少用）"
+      },
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "聚集"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "集合"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "渐增"
+      },
+      {
+        "id": "v-4",
+        "partOfSpeech": "v.",
+        "sense": "使聚集"
+      },
+      {
+        "id": "v-5",
+        "partOfSpeech": "v.",
+        "sense": "搜集"
+      },
+      {
+        "id": "v-6",
+        "partOfSpeech": "v.",
+        "sense": "积聚"
+      },
+      {
+        "id": "v-7",
+        "partOfSpeech": "v.",
+        "sense": "推断；理解"
+      },
+      {
+        "id": "v-8",
+        "partOfSpeech": "v.",
+        "sense": "给布料打褶"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "衣褶（常用复数）"
+      },
+      {
+        "id": "v-9",
+        "partOfSpeech": "v.",
+        "sense": "收拢衣物"
+      },
+      {
+        "id": "v-10",
+        "partOfSpeech": "v.",
+        "sense": "拥抱"
+      },
+      {
+        "id": "v-11",
+        "partOfSpeech": "v.",
+        "sense": "集中思绪；振作精神"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "用于吹制的熔融玻璃团"
+      }
+    ],
+    "operate": [
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "操作"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "运转"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "动手术"
+      },
+      {
+        "id": "v-4",
+        "partOfSpeech": "v.",
+        "sense": "开展业务或活动"
+      },
+      {
+        "id": "v-5",
+        "partOfSpeech": "v.",
+        "sense": "（制度或程序）运作；实施"
+      },
+      {
+        "id": "v-6",
+        "partOfSpeech": "v.",
+        "sense": "经营；管理"
+      }
+    ],
+    "defect": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "缺陷；缺点"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "身体结构或功能缺陷（用于人时须注意措辞）"
+      },
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "转投另一阵营；叛逃"
+      }
+    ],
+    "old": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "以前（用于 of old）"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "往昔（用于 of old）"
+      },
+      {
+        "id": "adj-1",
+        "partOfSpeech": "adj.",
+        "sense": "老的"
+      },
+      {
+        "id": "adj-2",
+        "partOfSpeech": "adj.",
+        "sense": "旧的"
+      },
+      {
+        "id": "adj-3",
+        "partOfSpeech": "adj.",
+        "sense": "古老的"
+      },
+      {
+        "id": "adj-4",
+        "partOfSpeech": "adj.",
+        "sense": "年长的"
+      },
+      {
+        "id": "adj-5",
+        "partOfSpeech": "adj.",
+        "sense": "老练的"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "特定年龄的人（用于数词复合词）"
+      },
+      {
+        "id": "adj-6",
+        "partOfSpeech": "adj.",
+        "sense": "……岁的；存在……久的"
+      },
+      {
+        "id": "adj-7",
+        "partOfSpeech": "adj.",
+        "sense": "从前的"
+      },
+      {
+        "id": "adj-8",
+        "partOfSpeech": "adj.",
+        "sense": "相识已久的；熟悉的"
+      },
+      {
+        "id": "adj-9",
+        "partOfSpeech": "adj.",
+        "sense": "用于表达亲昵或轻蔑语气"
+      },
+      {
+        "id": "adj-10",
+        "partOfSpeech": "adj.",
+        "sense": "令人厌烦的（非正式用语）"
+      }
+    ],
+    "list": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "目录"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "名单"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "明细表"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "布边；窄条材料（专门用语）"
+      },
+      {
+        "id": "n-5",
+        "partOfSpeech": "n.",
+        "sense": "条纹（较少用）"
+      },
+      {
+        "id": "n-6",
+        "partOfSpeech": "n.",
+        "sense": "列表"
+      },
+      {
+        "id": "n-7",
+        "partOfSpeech": "n.",
+        "sense": "序列"
+      },
+      {
+        "id": "n-8",
+        "partOfSpeech": "n.",
+        "sense": "数据清单"
+      },
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "列出"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "列于表上"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "记入名单内"
+      },
+      {
+        "id": "n-9",
+        "partOfSpeech": "n.",
+        "sense": "船体侧倾"
+      },
+      {
+        "id": "v-5",
+        "partOfSpeech": "v.",
+        "sense": "向一侧倾斜"
+      },
+      {
+        "id": "v-6",
+        "partOfSpeech": "v.",
+        "sense": "挂牌出售；标价"
+      },
+      {
+        "id": "v-7",
+        "partOfSpeech": "v.",
+        "sense": "使股票上市"
+      },
+      {
+        "id": "n-10",
+        "partOfSpeech": "n.",
+        "sense": "竞技场（文学用语，常用复数）"
+      }
+    ],
+    "dog": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "狗"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "坏蛋（非正式贬称）"
+      },
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "跟踪"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "尾随"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "雄犬"
+      },
+      {
+        "id": "n-4",
+        "partOfSpeech": "n.",
+        "sense": "失败之作；劣质品（非正式用语）"
+      },
+      {
+        "id": "n-5",
+        "partOfSpeech": "n.",
+        "sense": "赛狗（英式英语，the dogs）"
+      },
+      {
+        "id": "n-6",
+        "partOfSpeech": "n.",
+        "sense": "对女性外貌的侮辱性称呼（冒犯用语）"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "长期困扰"
+      }
+    ],
+    "curiosity": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "好奇心"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "新奇的事物"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "珍奇物品"
+      }
+    ],
+    "neighbor": [
+      {
+        "id": "n-1",
+        "partOfSpeech": "n.",
+        "sense": "邻居"
+      },
+      {
+        "id": "v-1",
+        "partOfSpeech": "v.",
+        "sense": "邻接"
+      },
+      {
+        "id": "v-2",
+        "partOfSpeech": "v.",
+        "sense": "毗邻而居"
+      },
+      {
+        "id": "v-3",
+        "partOfSpeech": "v.",
+        "sense": "友好来往（较少用）"
+      },
+      {
+        "id": "adj-1",
+        "partOfSpeech": "adj.",
+        "sense": "邻近的"
+      },
+      {
+        "id": "n-2",
+        "partOfSpeech": "n.",
+        "sense": "邻国；邻近的人或事物"
+      },
+      {
+        "id": "n-3",
+        "partOfSpeech": "n.",
+        "sense": "同胞（文学用语）"
+      }
+    ],
     "diamond": [
       {
         "id": "n-1",
@@ -2182,6 +2705,109 @@
     ]
   },
   "reviews": {
+    "affair": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/affair",
+      "decision": "Removed the false merger of relationship with generic event. Distinguished event, affairs/private business, romantic relationship and an object described by an adjective. The relationship context explicitly establishes marriage to support the Chinese extramarital gloss."
+    },
+    "reproach": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/reproach_1",
+      "decision": "Merged blame and rebuke plus reflexive self-blame; distinguished disgrace and its cause. Preserved the attested discredit verb under the disgrace family, using natural noun/verb examples rather than two short formulaic sentences.",
+      "additionalSources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/reproach_2",
+        "https://www.merriam-webster.com/dictionary/reproach"
+      ]
+    },
+    "board": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/board_1",
+      "decision": "Corrected bare board as deck and widened boarding beyond ships. Restored the missing governing body and professional examinations. Grouped physical boards with covering in boards, and food/lodging derivatives together. Ship's side, council table, circuit board, online board, stage and hockey barriers remain explicit cap omissions rather than being falsely covered by a wood-plank example.",
+      "additionalSources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/board_2",
+        "https://www.merriam-webster.com/dictionary/board"
+      ],
+      "omittedForCap": [
+        "n-2",
+        "n-4",
+        "n-8",
+        "n-9",
+        "n-10",
+        "n-11"
+      ]
+    },
+    "gather": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/gather",
+      "decision": "Removed nominal gathering masquerading as an inflection of gather. Consolidated collecting and assembling synonyms, then covered increasing intensity, inference, fabric pleating and collecting one's thoughts. Added the missing meanings and recorded cap omissions for holding a person, drawing clothing around oneself and molten-glass mass.",
+      "additionalSources": [
+        "https://www.merriam-webster.com/dictionary/gather"
+      ],
+      "omittedForCap": [
+        "v-9",
+        "v-10",
+        "n-4"
+      ]
+    },
+    "operate": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/operate",
+      "decision": "Merged machine operation and the causative/intransitive functioning family, including system operation; distinguished running an organization and surgery. Corrected vague activity gloss and added business management."
+    },
+    "defect": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/defect_1",
+      "decision": "Preserved flaw/deficiency family without duplicating physical and abstract domains, and restored the missing verb for switching allegiance. Original contexts are illustrative fiction, not factual allegations or medical advice.",
+      "additionalSources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/defect_2"
+      ]
+    },
+    "old": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/old",
+      "decision": "Added missing age expression, former and long-familiar senses; experience is not falsely covered by an ancient bridge. Five examples represent specified age, advanced age, former times, familiarity and expertise. Of old and age-denoting noun derivatives share their semantic families. Affectionate/emphatic and tiresome uses are recorded outside the cap.",
+      "additionalSources": [
+        "https://www.merriam-webster.com/dictionary/old"
+      ],
+      "omittedForCap": [
+        "adj-9",
+        "adj-10"
+      ]
+    },
+    "list": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/list_1",
+      "decision": "Merged redundant catalog, roster and itemization examples. Added absent tilting and commercial listing senses, distinguishing offering property for sale from admitting shares to exchange trading. Retained the attested textile-edge noun in an explicit conservation context. Archived the unverified attach-cloth-strip verb instead of fabricating usage; stripe and tournament lists are recorded as cap omissions.",
+      "additionalSources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/list_2",
+        "https://www.merriam-webster.com/dictionary/list"
+      ],
+      "retiredDictionarySenses": [
+        {
+          "id": "v-4",
+          "partOfSpeech": "v.",
+          "sense": "装布条"
+        }
+      ],
+      "omittedForCap": [
+        "n-5",
+        "n-10"
+      ]
+    },
+    "dog": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/dog_1",
+      "decision": "Separated the animal, insulting person label, physical pursuit, persistent trouble and unsuccessful thing. Merged following synonyms and the male-animal restriction; added missing trouble and failure senses. Racing and offensive appearance label are recorded outside the cap.",
+      "additionalSources": [
+        "https://www.oxfordlearnersdictionaries.com/definition/english/dog_2"
+      ],
+      "omittedForCap": [
+        "n-5",
+        "n-6"
+      ]
+    },
+    "curiosity": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/curiosity",
+      "decision": "Preserved interest and unusual object as distinct meanings; qualified precious object as an interesting rarity rather than inherent monetary value. Replaced generic examples with original concrete contexts."
+    },
+    "neighbor": {
+      "source": "https://www.oxfordlearnersdictionaries.com/definition/english/neighbour_1",
+      "decision": "Merged proximity across noun, adjective and verb, including neighbouring countries; distinguished literary fellow human and the less common socializing verb attested by Merriam-Webster. Kept American spelling consistently.",
+      "additionalSources": [
+        "https://www.merriam-webster.com/dictionary/neighbor"
+      ]
+    },
     "diamond": {
       "source": "https://www.oxfordlearnersdictionaries.com/definition/english/diamond",
       "decision": "Added the attested playing-card and baseball-ground senses to gem and shape; authored four non-redundant examples with unambiguous translations."
@@ -2749,6 +3375,770 @@
     "vocabulary": {"source": "https://www.oxfordlearnersdictionaries.com/definition/english/vocabulary", "decision": "Separate a person's stock of words from a written glossary. Merge variants referring to a language or subject's stock of words; replace the worksheet instruction and blank."}
   },
   "entries": {
+    "affair": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1"
+          ],
+          "sense": "事件",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-2",
+            "n-4"
+          ],
+          "sense": "事务",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-3"
+          ],
+          "sense": "婚外情",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-5"
+          ],
+          "sense": "物件（旧式用语）",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The missing documents turned a routine inspection into a complicated affair, requiring several departments to explain their recordkeeping procedures.",
+          "translation": "文件失踪使一次例行检查变成了复杂的事件，需要多个部门解释各自的档案管理程序。",
+          "targetForm": "affair",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "She entrusted the firm's financial affairs to an experienced accountant so that she could concentrate on developing new products.",
+          "translation": "她把公司的财务事务交给一位经验丰富的会计处理，以便自己专注于开发新产品。",
+          "targetForm": "affairs",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "The novel reveals that the married diplomat's secret affair had begun long before the letters reached his wife.",
+          "translation": "小说揭示，这位已婚外交官的秘密婚外情早在那些信到达他妻子手中之前就开始了。",
+          "targetForm": "affair",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "The old radio was a bulky affair with polished wooden panels, far too large to fit on the narrow shelf.",
+          "translation": "那台旧收音机是个笨重的物件，镶着抛光木板，体积太大，放不进狭窄的架子。",
+          "targetForm": "affair",
+          "senseId": "semantic-4"
+        }
+      ]
+    },
+    "reproach": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "n-1",
+            "v-1",
+            "v-2",
+            "v-4"
+          ],
+          "sense": "责备",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-2",
+            "v-3"
+          ],
+          "sense": "耻辱",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "She reproached her colleague for announcing the decision before the whole team had been given a chance to discuss it.",
+          "translation": "整个团队还没机会讨论决定，同事就公布了它，她为此责备了这位同事。",
+          "targetForm": "reproached",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The neglected public housing stood as a reproach to a council that had repeatedly promised to improve residents' living conditions.",
+          "translation": "这些失修的公共住房成了议会的耻辱，因为议会曾多次承诺改善居民的居住条件。",
+          "targetForm": "reproach",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "board": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-5",
+            "v-3"
+          ],
+          "sense": "木板",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-6"
+          ],
+          "sense": "董事会",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-3",
+            "v-2",
+            "v-4"
+          ],
+          "sense": "膳食",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-1"
+          ],
+          "sense": "登上交通工具",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-5",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-7"
+          ],
+          "sense": "资格考试（美式英语，常用复数）",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The carpenter selected a sturdy oak board to ensure the bookshelf could support the weight of heavy encyclopedias.",
+          "translation": "木匠挑选了一块结实的橡木板，以确保书架能承受厚重百科全书的重量。",
+          "targetForm": "board",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The board postponed its decision on the merger until an independent review could assess the risks to employees.",
+          "translation": "董事会推迟了对合并的决定，等待独立审查评估其对员工的风险。",
+          "targetForm": "board",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "The scholarship covers room and board, allowing students from distant villages to attend the course without paying daily travel costs.",
+          "translation": "奖学金涵盖住宿和膳食，让来自偏远村庄的学生无需每天支付交通费就能参加课程。",
+          "targetForm": "board",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "Passengers boarded the later flight after the airline explained that the original aircraft required an additional safety inspection.",
+          "translation": "航空公司解释原定飞机需要额外进行安全检查后，乘客登上了后续航班。",
+          "targetForm": "boarded",
+          "senseId": "semantic-4"
+        },
+        {
+          "sentence": "After passing her medical boards, she celebrated with the classmates who had spent months preparing alongside her.",
+          "translation": "通过医学资格考试后，她和那些与她一起备考了数月的同学共同庆祝。",
+          "targetForm": "boards",
+          "senseId": "semantic-5"
+        }
+      ]
+    },
+    "gather": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2",
+            "v-1",
+            "v-2",
+            "v-4",
+            "v-5",
+            "v-6"
+          ],
+          "sense": "搜集",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-3"
+          ],
+          "sense": "增强",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-7"
+          ],
+          "sense": "推断",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-8",
+            "n-3"
+          ],
+          "sense": "给布料打褶",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-5",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-11"
+          ],
+          "sense": "集中思绪",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The researchers gathered accounts from former residents before deciding how to present the neighbourhood's history in the exhibition.",
+          "translation": "研究人员先搜集了昔日居民的讲述，再决定如何在展览中呈现这个街区的历史。",
+          "targetForm": "gathered",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The campaign gathered momentum after local shops offered their support, drawing volunteers from streets the organisers had not yet visited.",
+          "translation": "当地商店表示支持后，这场活动的声势逐渐增强，吸引了来自组织者尚未走访街区的志愿者。",
+          "targetForm": "gathered",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "From the missing equipment and the locked office, I gathered that the field team had already left for the coast.",
+          "translation": "看到设备不在、办公室也锁了门，我推断实地调查队已经动身去海岸了。",
+          "targetForm": "gathered",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "She gathered the fabric at the waist before attaching the waistband, creating soft folds without adding extra layers.",
+          "translation": "她先在布料腰部打褶，再缝上腰头，不用增加布料层数就形成了柔软的褶皱。",
+          "targetForm": "gathered",
+          "senseId": "semantic-4"
+        },
+        {
+          "sentence": "He paused to gather his thoughts before answering the question, determined not to confuse speculation with established facts.",
+          "translation": "他停下来集中思绪再回答问题，决意不把推测与已确定的事实混为一谈。",
+          "targetForm": "gather",
+          "senseId": "semantic-5"
+        }
+      ]
+    },
+    "operate": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-1",
+            "v-2",
+            "v-5"
+          ],
+          "sense": "操作",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-4",
+            "v-6"
+          ],
+          "sense": "经营",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-3"
+          ],
+          "sense": "做手术",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "Volunteers learn to operate the recording equipment before interviewing residents, so that technical problems do not interrupt their stories.",
+          "translation": "志愿者在采访居民前学习操作录音设备，以免技术问题打断他们的讲述。",
+          "targetForm": "operate",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The charity operates a secondhand bookshop, using the income to fund reading groups for children in nearby villages.",
+          "translation": "这家慈善机构经营着一家二手书店，用收入资助附近村庄的儿童读书小组。",
+          "targetForm": "operates",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "The surgeon operated on the injured cyclist while another team contacted his family and arranged support for his recovery.",
+          "translation": "外科医生为受伤的骑车人做手术，另一组人员则联系他的家人，并为他的康复安排支持。",
+          "targetForm": "operated",
+          "senseId": "semantic-3"
+        }
+      ]
+    },
+    "defect": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2"
+          ],
+          "sense": "缺陷",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-1"
+          ],
+          "sense": "转投另一阵营",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "An inspector discovered a defect in the bridge's support beam, prompting repairs before the crossing could reopen to traffic.",
+          "translation": "检查员发现桥梁的支撑梁有一处缺陷，促使有关人员在桥梁重新通车前开展维修。",
+          "targetForm": "defect",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "Two councillors defected to the opposition after their party refused to investigate allegations concerning the sale of public land.",
+          "translation": "两名议员所属的政党拒绝调查有关出售公共土地的指控后，他们转投了反对阵营。",
+          "targetForm": "defected",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "old": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-6",
+            "n-3"
+          ],
+          "sense": "……岁的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-1",
+            "adj-2",
+            "adj-3",
+            "adj-4"
+          ],
+          "sense": "古老的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2",
+            "adj-7"
+          ],
+          "sense": "从前的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-8"
+          ],
+          "sense": "相识已久的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-5",
+          "partOfSpeech": "adj.",
+          "sourceSenseIds": [
+            "adj-5"
+          ],
+          "sense": "经验丰富的",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "Although she was only eight years old, she could explain the rules clearly enough to teach the adults.",
+          "translation": "虽然她只有八岁，却能把规则解释得清清楚楚，足以教会大人们。",
+          "targetForm": "old",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The old stone bridge has survived centuries of flooding, but engineers now inspect its foundations before every winter.",
+          "translation": "这座古老的石桥经历了数百年的洪水仍屹立不倒，但如今工程师会在每年冬季前检查其地基。",
+          "targetForm": "old",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "She returned to her old workplace for a reunion and was surprised to find the reception area completely transformed.",
+          "translation": "她回到从前的工作单位参加聚会，惊讶地发现接待区已经完全变了样。",
+          "targetForm": "old",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "An old friend recognised his handwriting on an unsigned letter and helped the family discover who had sent it.",
+          "translation": "一位老朋友从一封未署名的信上认出了他的笔迹，帮助这家人查明了寄信人。",
+          "targetForm": "old",
+          "senseId": "semantic-4"
+        },
+        {
+          "sentence": "As an old hand at restoring furniture, she knew which scratches to remove and which marks revealed the cabinet's history.",
+          "translation": "她是修复家具的老手，知道哪些划痕该去除，哪些痕迹体现了这只柜子的历史。",
+          "targetForm": "old",
+          "senseId": "semantic-5"
+        }
+      ]
+    },
+    "list": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-2",
+            "n-3",
+            "n-6",
+            "n-7",
+            "n-8",
+            "v-1",
+            "v-2",
+            "v-3"
+          ],
+          "sense": "清单",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "n-9",
+            "v-5"
+          ],
+          "sense": "向一侧倾斜",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-6"
+          ],
+          "sense": "挂牌出售",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-4"
+          ],
+          "sense": "布边（纺织用语）",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-5",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-7"
+          ],
+          "sense": "使股票上市",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "Before ordering replacement parts, the mechanic made a list of everything damaged and checked it against the workshop's remaining supplies.",
+          "translation": "订购替换零件前，机械师列出了所有损坏部件的清单，并对照车间剩余的库存逐项核查。",
+          "targetForm": "list",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The ferry began to list after several vehicles shifted, prompting the captain to order passengers away from the lower deck.",
+          "translation": "几辆车移位后，渡轮开始向一侧倾斜，船长随即命令乘客离开下层甲板。",
+          "targetForm": "list",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "They listed the cottage for sale after accepting jobs abroad, but kept the garden tidy while waiting for a buyer.",
+          "translation": "他们接受了海外的工作后，将小屋挂牌出售，但在等待买家期间仍把花园打理得整整齐齐。",
+          "targetForm": "listed",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "The conservator examined the list along the fabric's edge, using its weave to investigate how the cloth had been produced.",
+          "translation": "修复师检查了织物边缘的布边，根据其织法研究这块布是如何制成的。",
+          "targetForm": "list",
+          "senseId": "semantic-4"
+        },
+        {
+          "sentence": "The company plans to list its shares on the exchange, hoping to raise enough capital to expand its research programme.",
+          "translation": "公司计划让股票在交易所上市，希望筹集足够的资金来扩大研究项目。",
+          "targetForm": "list",
+          "senseId": "semantic-5"
+        }
+      ]
+    },
+    "dog": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "n-3"
+          ],
+          "sense": "狗",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-2"
+          ],
+          "sense": "坏蛋（贬称）",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-1",
+            "v-2"
+          ],
+          "sense": "尾随",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-4",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-3"
+          ],
+          "sense": "长期困扰",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-5",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-4"
+          ],
+          "sense": "失败之作（非正式用语）",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "The rescue dog located a missing walker beneath the fallen branches, allowing the search team to reach him before nightfall.",
+          "translation": "搜救犬在倒下的树枝下找到了失踪的徒步者，让搜救队得以在天黑前赶到他身边。",
+          "targetForm": "dog",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The narrator calls the landlord a greedy dog after discovering that he has secretly charged every tenant twice.",
+          "translation": "叙述者发现房东偷偷向每位租客重复收费后，称他为贪婪的坏蛋。",
+          "targetForm": "dog",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "Photographers dogged the singer from the courthouse to her hotel, ignoring repeated requests to leave her family alone.",
+          "translation": "摄影记者从法院一路尾随这位歌手到酒店，无视她一再要求别打扰家人的请求。",
+          "targetForm": "dogged",
+          "senseId": "semantic-3"
+        },
+        {
+          "sentence": "Technical failures dogged the project from the start, forcing the engineers to redesign equipment they had expected to reuse.",
+          "translation": "技术故障从一开始就困扰着这个项目，迫使工程师重新设计原本打算再利用的设备。",
+          "targetForm": "dogged",
+          "senseId": "semantic-4"
+        },
+        {
+          "sentence": "Despite its celebrated cast, the film was a dog, losing money and disappearing from cinemas within a fortnight.",
+          "translation": "尽管演员阵容知名，这部电影却是个失败之作，亏了钱，两周内就从影院下映了。",
+          "targetForm": "dog",
+          "senseId": "semantic-5"
+        }
+      ]
+    },
+    "curiosity": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1"
+          ],
+          "sense": "好奇心",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-2",
+            "n-3"
+          ],
+          "sense": "珍奇物品",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "Her curiosity about the abandoned railway led her to interview retired workers and reconstruct the history of the line.",
+          "translation": "她对废弃铁路的好奇心促使她采访退休工人，重现这条线路的历史。",
+          "targetForm": "curiosity",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The mechanical bird was displayed as a curiosity, attracting visitors who wanted to understand how its tiny wings moved.",
+          "translation": "这只机械鸟作为一件珍奇物品展出，吸引了想弄清它的小翅膀如何活动的游客。",
+          "targetForm": "curiosity",
+          "senseId": "semantic-2"
+        }
+      ]
+    },
+    "neighbor": {
+      "senseGroups": [
+        {
+          "id": "semantic-1",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-1",
+            "v-1",
+            "v-2",
+            "adj-1",
+            "n-2"
+          ],
+          "sense": "邻居",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-2",
+          "partOfSpeech": "n.",
+          "sourceSenseIds": [
+            "n-3"
+          ],
+          "sense": "同胞（文学用语）",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        },
+        {
+          "id": "semantic-3",
+          "partOfSpeech": "v.",
+          "sourceSenseIds": [
+            "v-3"
+          ],
+          "sense": "友好来往（较少用）",
+          "contextReviewed": true,
+          "semanticDistinct": true
+        }
+      ],
+      "examples": [
+        {
+          "sentence": "Our neighbor offered to collect the parcels while we were away for the weekend, keeping them safely in her hallway.",
+          "translation": "我们周末外出时，邻居主动提出代收包裹，并把它们妥善放在她家的门厅里。",
+          "targetForm": "neighbor",
+          "senseId": "semantic-1"
+        },
+        {
+          "sentence": "The sermon urged listeners to care for their neighbor, including strangers whose language and customs differed from their own.",
+          "translation": "布道呼吁听众关爱自己的同胞，包括那些语言和风俗与自己不同的陌生人。",
+          "targetForm": "neighbor",
+          "senseId": "semantic-2"
+        },
+        {
+          "sentence": "The memoir recalls how farm families once neighbored with one another, sharing tools and news during the winter months.",
+          "translation": "这本回忆录记述了农家过去如何在冬季友好来往，互借工具、互通消息。",
+          "targetForm": "neighbored",
+          "senseId": "semantic-3"
+        }
+      ]
+    },
     "diamond": {
       "senseGroups": [
         {
