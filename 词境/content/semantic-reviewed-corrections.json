@@ -102,7 +102,19 @@
     "cafe": "c1d862b2363131808aca2e0a8909415723bda8483926e433d76c60679703f11d",
     "curriculum": "b8c0683e020f2a3b8723703091dc61f5274e8ec35df458387edd58cc998281e2",
     "laughter": "31d6a6262753f4c8fc4c6313d8ee7114c97872180a80445679509e2db638655f",
-    "vocabulary": "3cc61e4cd78ed37534756708c8474e78defe731e621f3367dbccc49ef46d96f8"
+    "vocabulary": "3cc61e4cd78ed37534756708c8474e78defe731e621f3367dbccc49ef46d96f8",
+    "piano": "4b3adeeaf7e5f836354af9f36c42331cad4c2bf5ad81a6e3692371c9961d187f",
+    "brave": "1c13bbf3f859efc9888bae0f23b2edc5c304a9a925a569a69c567c9590a22a5d",
+    "noise": "3503c2473f6380dfb10d62a1755aeb098d8d090822334025ef3c0941f5bcf768"
+    ,"reasonable": "3fc9329714d6c52e468c27a1a4dc8423d0768c8f0213da12ec3597c4fb282874"
+    ,"key": "3930e55e8fcffbdf0db8c56cf9f732bf0e3245f136be36fae62fb37d883cec37"
+    ,"strawberry": "7ead41750247ba906af17e1151bdabdd709b1394f201855579768f141e1072ac"
+    ,"guest": "d13b97275abc2443edd7e9d0749569ea7734da8ca7b4536ce136d7bdc6f60401"
+    ,"sack": "123d182e95f6e7742cc09520cd4e418b355b67c662574475d50319150896578a"
+    ,"politician": "949834b4f786c9d441e6c243872871daf7fa8d318fc9d2297328e4b0ef9284dd"
+    ,"calorie": "5e25ebdc1876c41a52dbe67ac631738c84a735e5523280d049baabb17a9ae9df"
+    ,"palace": "6fc92b46e142e933ff3cb5feace34a99952c65269fe28d7c176f7c9ef1efff25"
+    ,"assignment": "602121f21e8fe6cd53942b4b106d64d405f463c7936895f0408be8250ba63c13"
   },
   "scope": "Targeted corrections, not a full-library review. Original examples; dictionary links support sense decisions.",
   "dictionaryOverrides": {
@@ -3063,6 +3075,87 @@
         "partOfSpeech": "adv.",
         "sense": "值班"
       }
+    ],
+    "piano": [
+      {"id":"n-1","partOfSpeech":"n.","sense":"钢琴"},
+      {"id":"adj-1","partOfSpeech":"adj.","sense":"轻柔的（音乐）"},
+      {"id":"adv-1","partOfSpeech":"adv.","sense":"轻柔地（音乐）"}
+    ],
+    "brave": [
+      {"id":"adj-1","partOfSpeech":"adj.","sense":"勇敢的"},
+      {"id":"adj-2","partOfSpeech":"adj.","sense":"华丽的；壮丽的（旧用法）"},
+      {"id":"adj-3","partOfSpeech":"adj.","sense":"出色的；极好的（旧用法）"},
+      {"id":"n-1","partOfSpeech":"n.","sense":"勇敢的人"},
+      {"id":"n-2","partOfSpeech":"n.","sense":"北美原住民战士（旧称，慎用）"},
+      {"id":"v-1","partOfSpeech":"v.","sense":"勇敢面对"}
+    ],
+    "noise": [
+      {"id":"n-1","partOfSpeech":"n.","sense":"噪声；嘈杂声"},
+      {"id":"n-2","partOfSpeech":"n.","sense":"电子干扰信号"},
+      {"id":"n-3","partOfSpeech":"n.","sense":"无关数据；干扰信息"},
+      {"id":"n-4","partOfSpeech":"n.","sense":"传闻；非正式说法"},
+      {"id":"v-1","partOfSpeech":"v.","sense":"传播；传开（消息）"},
+      {"id":"v-2","partOfSpeech":"v.","sense":"高声谈论；发出噪声"}
+    ],
+    "reasonable": [
+      {"id":"adj-1","partOfSpeech":"adj.","sense":"合理而明智的"},
+      {"id":"adj-2","partOfSpeech":"adj.","sense":"可以接受的；适当的"},
+      {"id":"adj-3","partOfSpeech":"adj.","sense":"价格公道的"},
+      {"id":"adj-4","partOfSpeech":"adj.","sense":"尚可的；中等的"}
+    ],
+    "key": [
+      {"id":"n-1","partOfSpeech":"n.","sense":"钥匙"},
+      {"id":"n-2","partOfSpeech":"n.","sense":"键"},
+      {"id":"n-3","partOfSpeech":"n.","sense":"解答；答案"},
+      {"id":"n-4","partOfSpeech":"n.","sense":"关键；关键因素"},
+      {"id":"n-5","partOfSpeech":"n.","sense":"要害；关键部位"},
+      {"id":"n-6","partOfSpeech":"n.","sense":"调；基调"},
+      {"id":"n-7","partOfSpeech":"n.","sense":"说明；图例"},
+      {"id":"n-8","partOfSpeech":"n.","sense":"线索"},
+      {"id":"n-9","partOfSpeech":"n.","sense":"低矮小岛；珊瑚礁"},
+      {"id":"adj-1","partOfSpeech":"adj.","sense":"关键的；极重要的"},
+      {"id":"v-1","partOfSpeech":"v.","sense":"按调定音；使协调"},
+      {"id":"v-2","partOfSpeech":"v.","sense":"用钥匙锁住"},
+      {"id":"v-3","partOfSpeech":"v.","sense":"输入（文字或数据）"},
+      {"id":"v-4","partOfSpeech":"v.","sense":"刮划（车辆）"}
+    ],
+    "strawberry": [
+      {"id":"n-1","partOfSpeech":"n.","sense":"草莓（果实或植株）"}
+    ],
+    "guest": [
+      {"id":"n-1","partOfSpeech":"n.","sense":"客人；来宾"},
+      {"id":"n-2","partOfSpeech":"n.","sense":"住宿客人"},
+      {"id":"n-3","partOfSpeech":"n.","sense":"餐馆顾客"},
+      {"id":"v-1","partOfSpeech":"v.","sense":"客串；临时参与演出或比赛"}
+    ],
+    "sack": [
+      {"id":"n-1","partOfSpeech":"n.","sense":"大袋"},
+      {"id":"n-2","partOfSpeech":"n.","sense":"一袋的量"},
+      {"id":"n-3","partOfSpeech":"n.","sense":"解雇（the sack）"},
+      {"id":"n-4","partOfSpeech":"n.","sense":"洗劫"},
+      {"id":"v-1","partOfSpeech":"v.","sense":"解雇"},
+      {"id":"v-2","partOfSpeech":"v.","sense":"洗劫"},
+      {"id":"v-3","partOfSpeech":"v.","sense":"擒杀四分卫（美式橄榄球）"}
+    ],
+    "politician": [
+      {"id":"n-1","partOfSpeech":"n.","sense":"政治人物（尤指民选者）"},
+      {"id":"n-2","partOfSpeech":"n.","sense":"善于权术的人（贬义）"}
+    ],
+    "calorie": [
+      {"id":"n-1","partOfSpeech":"n.","sense":"食物能量单位（通常指千卡）"},
+      {"id":"n-2","partOfSpeech":"n.","sense":"热量单位（小卡）"}
+    ],
+    "palace": [
+      {"id":"n-1","partOfSpeech":"n.","sense":"王室或国家元首的官邸"},
+      {"id":"n-2","partOfSpeech":"n.","sense":"王室方面；王宫中的决策者"},
+      {"id":"n-3","partOfSpeech":"n.","sense":"宏伟华丽的宅邸"},
+      {"id":"n-4","partOfSpeech":"n.","sense":"大型公共建筑（旧用法）"}
+    ],
+    "assignment": [
+      {"id":"n-1","partOfSpeech":"n.","sense":"指派；分配"},
+      {"id":"n-2","partOfSpeech":"n.","sense":"任务；作业"},
+      {"id":"n-3","partOfSpeech":"n.","sense":"派驻职位；岗位"},
+      {"id":"n-4","partOfSpeech":"n.","sense":"财产或权利的转让"}
     ]
   },
   "reviews": {
@@ -3805,7 +3898,19 @@
     "cafe": {"source": "https://www.oxfordlearnersdictionaries.com/definition/english/cafe", "decision": "Correct the hotel label to the common cafe sense and remove the duplicate. The regional South African shop sense is outside this common-use correction."},
     "curriculum": {"source": "https://www.oxfordlearnersdictionaries.com/definition/english/curriculum", "decision": "Course content and programme of study in the existing two examples represent the same meaning; retain one clear example."},
     "laughter": {"source": "https://www.oxfordlearnersdictionaries.com/definition/english/laughter", "decision": "Laughing and its sound form one learner-facing semantic group here. Intensity alone does not justify another example."},
-    "vocabulary": {"source": "https://www.oxfordlearnersdictionaries.com/definition/english/vocabulary", "decision": "Separate a person's stock of words from a written glossary. Merge variants referring to a language or subject's stock of words; replace the worksheet instruction and blank."}
+    "vocabulary": {"source": "https://www.oxfordlearnersdictionaries.com/definition/english/vocabulary", "decision": "Separate a person's stock of words from a written glossary. Merge variants referring to a language or subject's stock of words; replace the worksheet instruction and blank."},
+    "piano": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/piano_1","decision":"Kept the keyboard instrument separate from the Italian musical direction. The adjective and adverb both mean softly in music and therefore share one example."},
+    "brave": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/brave_1","decision":"Kept courage, facing danger, and the now uncommon fine-show senses distinct. The historical noun for an Indigenous North American warrior is explicitly labelled old-fashioned and used only in a sentence that explains why a precise nation name is preferable.","additionalSources":["https://www.oxfordlearnersdictionaries.com/definition/english/brave_3","https://www.merriam-webster.com/dictionary/brave"]},
+    "noise": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/noise","decision":"Merged ordinary unwanted sound and commotion rather than manufacturing near-duplicate examples. Kept electronic interference, irrelevant information, and report-spreading distinct; noising news does not assert that the report is false.","additionalSources":["https://www.merriam-webster.com/dictionary/noise"]},
+    "reasonable": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/reasonable","decision":"Merged reasonable, sensible and acceptable decisions into their non-price meanings. Added the distinct price and quality senses; a general health claim was replaced by concrete, neutral contexts."},
+    "key": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/key_1","decision":"Kept five common learner-facing semantic groups: a locking tool, a keyboard control, an explanation or answer guide, crucial importance, and musical key. Merged close noun, adjective and verb uses within those groups. The low-island geographical sense, rare specialized tool senses, encryption, sports and car-scratching uses are recorded below but excluded under the five-example cap.","additionalSources":["https://www.merriam-webster.com/dictionary/key"],"omittedForCap":[{"id":"n-9","partOfSpeech":"n.","sense":"低矮小岛；珊瑚礁","sourceSenseIds":["n-9"]},{"id":"v-4","partOfSpeech":"v.","sense":"刮划（车辆）","sourceSenseIds":["v-4"]}]},
+    "strawberry": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/strawberry","decision":"Fruit and its low plant form one learner-facing group; one concrete food context is enough and does not duplicate the same meaning."},
+    "guest": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/guest_1","decision":"Merged a private-event guest and a guest of honour as one invited-person sense. Kept hotel guest, restaurant customer, and temporary performer or player distinct; a hotel guest is not a general traveller.","additionalSources":["https://www.oxfordlearnersdictionaries.com/definition/english/guest_2"]},
+    "sack": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/sack_1","decision":"Corrected the unsupported bagging verb. Kept bag, dismissal, historical plundering, and the American-football tackle distinct. The British informal dismissal sense is labelled by the source.","additionalSources":["https://www.oxfordlearnersdictionaries.com/definition/english/sack_2"]},
+    "politician": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/politician","decision":"Merged neutral political-office and party-politics labels. Kept the distinct disapproving use for a person who manoeuvres for advantage, including outside electoral politics."},
+    "calorie": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/calorie","decision":"Separated the food-energy use from the specialist small-calorie heat unit. The food example is informational rather than dietary advice.","additionalSources":["https://www.merriam-webster.com/dictionary/calorie"]},
+    "palace": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/palace","decision":"Kept the official residence, the metonym for people working there, a grand private house, and the old-fashioned public-building use distinct. Removed the unsupported claim that any cultural centre is a palace of the arts."},
+    "assignment": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/assignment","decision":"Merged schoolwork and work task into one assigned-work sense. Added the distinct act of assigning, post or placement, and legal transfer of property or rights. Archived attribution and statement glosses because the consulted current learner and general dictionary entries do not support them as assignment senses.","additionalSources":["https://www.merriam-webster.com/dictionary/assignment"],"retiredDictionarySenses":[{"id":"n-5","partOfSpeech":"n.","sense":"归因"},{"id":"n-6","partOfSpeech":"n.","sense":"陈述"}]}
   },
   "entries": {
     "deputy": {
@@ -9443,6 +9548,152 @@
       "examples": [
         {"sentence": "Reading short stories expanded her vocabulary and helped her describe everyday experiences more precisely.", "translation": "阅读短篇小说扩大了她的词汇量，也帮助她更准确地描述日常经历。", "targetForm": "vocabulary", "senseId": "semantic-1"},
         {"sentence": "A vocabulary at the back of the textbook explains the unfamiliar terms introduced in each chapter.", "translation": "课本末尾的词汇表解释了各章中出现的生疏术语。", "targetForm": "vocabulary", "senseId": "semantic-2"}
+      ]
+    },
+    "piano": {
+      "senseGroups":[
+        {"id":"semantic-1","partOfSpeech":"n.","sourceSenseIds":["n-1"],"sense":"钢琴","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-2","partOfSpeech":"adv.","sourceSenseIds":["adj-1","adv-1"],"sense":"轻柔地演奏或演唱","contextReviewed":true,"semanticDistinct":true}
+      ],
+      "examples":[
+        {"sentence":"After the rehearsal, Maya stayed to practise the piano passage that had troubled her during the ensemble piece.","translation":"排练结束后，玛雅留下来练习合奏曲中一直难住她的那段钢琴乐句。","targetForm":"piano","senseId":"semantic-1"},
+        {"sentence":"The conductor asked the strings to play piano so that the singer's final words could be heard clearly.","translation":"指挥要求弦乐组轻柔地演奏，好让能清楚听见歌者最后的歌词。","targetForm":"piano","senseId":"semantic-2"}
+      ]
+    },
+    "brave": {
+      "senseGroups":[
+        {"id":"semantic-1","partOfSpeech":"adj.","sourceSenseIds":["adj-1","n-1"],"sense":"勇敢的","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-2","partOfSpeech":"v.","sourceSenseIds":["v-1"],"sense":"勇敢面对","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-3","partOfSpeech":"adj.","sourceSenseIds":["adj-2","adj-3"],"sense":"华丽而出色的（旧用法）","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-4","partOfSpeech":"n.","sourceSenseIds":["n-2"],"sense":"北美原住民战士（旧称，慎用）","contextReviewed":true,"semanticDistinct":true}
+      ],
+      "examples":[
+        {"sentence":"The brave neighbour called emergency services and stayed with the injured cyclist until help arrived.","translation":"那位勇敢的邻居呼叫了急救服务，并陪在受伤的骑车人身边直到救援到来。","targetForm":"brave","senseId":"semantic-1"},
+        {"sentence":"The hikers braved freezing rain to reach the shelter before the mountain path became unsafe.","translation":"徒步者冒着冰冷的雨赶到避难所，以免山路变得不安全。","targetForm":"braved","senseId":"semantic-2"},
+        {"sentence":"In the old poem, the author praised the brave banners that brightened the crowded square.","translation":"在这首旧诗中，作者赞美了点亮拥挤广场的华丽旗帜。","targetForm":"brave","senseId":"semantic-3"},
+        {"sentence":"The museum replaced the old word brave with the specific name of the Indigenous nation represented in the display.","translation":"博物馆用展品所代表的原住民族具体名称替换了旧称 brave。","targetForm":"brave","senseId":"semantic-4"}
+      ]
+    },
+    "noise": {
+      "senseGroups":[
+        {"id":"semantic-1","partOfSpeech":"n.","sourceSenseIds":["n-1","v-2"],"sense":"噪声；嘈杂声","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-2","partOfSpeech":"n.","sourceSenseIds":["n-2"],"sense":"电子干扰信号","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-3","partOfSpeech":"n.","sourceSenseIds":["n-3"],"sense":"无关数据；干扰信息","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-4","partOfSpeech":"v.","sourceSenseIds":["n-4","v-1"],"sense":"传闻；传播消息","contextReviewed":true,"semanticDistinct":true}
+      ],
+      "examples":[
+        {"sentence":"The noise from the construction site made it difficult for the class to hear the recorded interview.","translation":"施工现场的噪声使全班难以听清录制的访谈。","targetForm":"noise","senseId":"semantic-1"},
+        {"sentence":"The engineer moved the cable away from the motor to reduce noise in the sensor signal.","translation":"工程师把电缆移离电机，以减少传感器信号中的电子干扰。","targetForm":"noise","senseId":"semantic-2"},
+        {"sentence":"Before comparing the surveys, the analyst removed noise from the data that was unrelated to customers' responses.","translation":"在比较这些调查前，分析师删除了数据中与客户回答无关的干扰信息。","targetForm":"noise","senseId":"semantic-3"},
+        {"sentence":"The result was quickly noised abroad, although the organizers had not yet issued an official statement.","translation":"结果很快被传开，尽管主办方尚未发布正式声明。","targetForm":"noised","senseId":"semantic-4"}
+      ]
+    },
+    "reasonable": {
+      "senseGroups":[
+        {"id":"semantic-1","partOfSpeech":"adj.","sourceSenseIds":["adj-1","adj-2"],"sense":"合理而明智的","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-2","partOfSpeech":"adj.","sourceSenseIds":["adj-3"],"sense":"价格公道的","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-3","partOfSpeech":"adj.","sourceSenseIds":["adj-4"],"sense":"尚可的；中等的","contextReviewed":true,"semanticDistinct":true}
+      ],
+      "examples":[
+        {"sentence":"The committee reached a reasonable decision after comparing the evidence, the costs, and the likely effect on local residents.","translation":"委员会比较证据、成本以及对当地居民的可能影响后，作出了合理而明智的决定。","targetForm":"reasonable","senseId":"semantic-1"},
+        {"sentence":"The shop offered a reasonable price for the repaired bicycle, including a written guarantee for the new parts.","translation":"商店为修好的自行车报出了公道的价格，其中包括新零件的书面保修。","targetForm":"reasonable","senseId":"semantic-2"},
+        {"sentence":"The hotel was clean and comfortable, with a reasonable breakfast rather than an elaborate buffet.","translation":"这家酒店干净舒适，早餐尚可，并非丰盛的自助餐。","targetForm":"reasonable","senseId":"semantic-3"}
+      ]
+    },
+    "key": {
+      "senseGroups":[
+        {"id":"semantic-1","partOfSpeech":"n.","sourceSenseIds":["n-1","v-2"],"sense":"钥匙","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-2","partOfSpeech":"n.","sourceSenseIds":["n-2","v-3"],"sense":"键；用键盘输入","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-3","partOfSpeech":"n.","sourceSenseIds":["n-3","n-7","n-8"],"sense":"解答或说明线索","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-4","partOfSpeech":"adj.","sourceSenseIds":["n-4","n-5","adj-1"],"sense":"关键的；极重要的","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-5","partOfSpeech":"n.","sourceSenseIds":["n-6","v-1"],"sense":"调；基调","contextReviewed":true,"semanticDistinct":true}
+      ],
+      "examples":[
+        {"sentence":"The caretaker kept a labelled key for each storage room so volunteers could return supplies without searching for a manager.","translation":"管理员为每间储物室保留了一把贴有标签的钥匙，志愿者无需寻找负责人就能归还物资。","targetForm":"key","senseId":"semantic-1"},
+        {"sentence":"Press the Escape key before keying your password again, because the first attempt included an extra character.","translation":"重新输入密码前先按下 Escape 键，因为第一次输入多了一个字符。","targetForm":"key","senseId":"semantic-2"},
+        {"sentence":"The map key explains which symbols mark footpaths, shelters, and areas where camping is not permitted.","translation":"地图图例说明哪些符号标示步道、避难所和禁止露营的区域。","targetForm":"key","senseId":"semantic-3"},
+        {"sentence":"Reliable transport is key to keeping the clinic open for patients who live far from the town centre.","translation":"可靠的交通对让住在远离镇中心的患者仍能使用这家诊所至关重要。","targetForm":"key","senseId":"semantic-4"},
+        {"sentence":"The composer moved the final chorus into a brighter key to make the return of the main melody feel hopeful.","translation":"作曲家把最后的合唱段转到更明亮的调上，使主旋律的回归显得充满希望。","targetForm":"key","senseId":"semantic-5"}
+      ]
+    },
+    "strawberry": {
+      "senseGroups":[{"id":"semantic-1","partOfSpeech":"n.","sourceSenseIds":["n-1"],"sense":"草莓","contextReviewed":true,"semanticDistinct":true}],
+      "examples":[{"sentence":"After picking ripe strawberries from the garden, the children used the sweetest ones to make jam for their grandparents.","translation":"从花园采摘成熟草莓后，孩子们用最甜的那些为祖父母制作果酱。","targetForm":"strawberries","senseId":"semantic-1"}]
+    },
+    "guest": {
+      "senseGroups":[
+        {"id":"semantic-1","partOfSpeech":"n.","sourceSenseIds":["n-1"],"sense":"客人；来宾","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-2","partOfSpeech":"n.","sourceSenseIds":["n-2"],"sense":"住宿客人","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-3","partOfSpeech":"n.","sourceSenseIds":["n-3"],"sense":"餐馆顾客","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-4","partOfSpeech":"v.","sourceSenseIds":["v-1"],"sense":"客串；临时参与演出或比赛","contextReviewed":true,"semanticDistinct":true}
+      ],
+      "examples":[
+        {"sentence":"Each guest received a name badge before the conference began and chose a seat near the speaker they wished to hear.","translation":"每位来宾在会议开始前都领到姓名牌，并选择靠近自己想听的演讲者的座位。","targetForm":"guest","senseId":"semantic-1"},
+        {"sentence":"Hotel guests may leave their luggage at reception after checkout while they explore the town.","translation":"酒店住客退房后可将行李寄存在前台，再去游览小镇。","targetForm":"guests","senseId":"semantic-2"},
+        {"sentence":"The restaurant asks each guest whether anyone at the table has an allergy before taking the order.","translation":"餐馆在点餐前会询问每位顾客同桌是否有人过敏。","targetForm":"guest","senseId":"semantic-3"},
+        {"sentence":"The violinist will guest with the orchestra for its spring concerts before returning to her regular ensemble.","translation":"这位小提琴家将在春季音乐会中与该管弦乐团客串合作，随后回到自己的常驻乐团。","targetForm":"guest","senseId":"semantic-4"}
+      ]
+    },
+    "sack": {
+      "senseGroups":[
+        {"id":"semantic-1","partOfSpeech":"n.","sourceSenseIds":["n-1","n-2"],"sense":"大袋；一袋的量","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-2","partOfSpeech":"v.","sourceSenseIds":["n-3","v-1"],"sense":"解雇","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-3","partOfSpeech":"v.","sourceSenseIds":["n-4","v-2"],"sense":"洗劫","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-4","partOfSpeech":"v.","sourceSenseIds":["v-3"],"sense":"擒杀四分卫（美式橄榄球）","contextReviewed":true,"semanticDistinct":true}
+      ],
+      "examples":[
+        {"sentence":"The farmer lifted a sack of potatoes onto the scale before loading the rest of the harvest into the truck.","translation":"农民把一大袋土豆放到秤上，再把其余收成装上卡车。","targetForm":"sack","senseId":"semantic-1"},
+        {"sentence":"The manager was sacked after the investigation found that safety checks had been repeatedly ignored.","translation":"调查发现安全检查一再被忽视后，这名经理被解雇了。","targetForm":"sacked","senseId":"semantic-2"},
+        {"sentence":"The invading army sacked the town, destroying homes and carrying away property from public buildings.","translation":"入侵军队洗劫了这座城镇，毁坏房屋并从公共建筑中掠走财物。","targetForm":"sacked","senseId":"semantic-3"},
+        {"sentence":"With seconds left in the game, the defender sacked the quarterback before he could throw the ball.","translation":"比赛还剩几秒时，防守队员在四分卫传球前将他擒杀。","targetForm":"sacked","senseId":"semantic-4"}
+      ]
+    },
+    "politician": {
+      "senseGroups":[
+        {"id":"semantic-1","partOfSpeech":"n.","sourceSenseIds":["n-1"],"sense":"政治人物（尤指民选者）","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-2","partOfSpeech":"n.","sourceSenseIds":["n-2"],"sense":"善于权术的人（贬义）","contextReviewed":true,"semanticDistinct":true}
+      ],
+      "examples":[
+        {"sentence":"The local politician held weekly meetings where residents could question her about housing, transport, and school funding.","translation":"这位地方政治人物每周举行会议，让居民就住房、交通和学校经费向她提问。","targetForm":"politician","senseId":"semantic-1"},
+        {"sentence":"Colleagues called him a politician because he changed alliances whenever a new manager seemed likely to gain influence.","translation":"同事称他为善于权术的人，因为每当新经理看似要获得影响力时，他就改变阵营。","targetForm":"politician","senseId":"semantic-2"}
+      ]
+    },
+    "calorie": {
+      "senseGroups":[
+        {"id":"semantic-1","partOfSpeech":"n.","sourceSenseIds":["n-1"],"sense":"食物能量单位（通常指千卡）","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-2","partOfSpeech":"n.","sourceSenseIds":["n-2"],"sense":"热量单位（小卡）","contextReviewed":true,"semanticDistinct":true}
+      ],
+      "examples":[
+        {"sentence":"The label shows the number of calories in one serving, so shoppers can compare similar products using the same measure.","translation":"标签显示每份食物所含的卡路里数，购物者可用同一计量方式比较相似产品。","targetForm":"calories","senseId":"semantic-1"},
+        {"sentence":"In the experiment, students calculated how many calories of heat were needed to raise the water temperature by one degree.","translation":"在实验中，学生计算把水温升高一度需要多少小卡热量。","targetForm":"calories","senseId":"semantic-2"}
+      ]
+    },
+    "palace": {
+      "senseGroups":[
+        {"id":"semantic-1","partOfSpeech":"n.","sourceSenseIds":["n-1"],"sense":"王室或国家元首的官邸","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-2","partOfSpeech":"n.","sourceSenseIds":["n-2"],"sense":"王室方面；王宫中的决策者","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-3","partOfSpeech":"n.","sourceSenseIds":["n-3"],"sense":"宏伟华丽的宅邸","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-4","partOfSpeech":"n.","sourceSenseIds":["n-4"],"sense":"大型公共建筑（旧用法）","contextReviewed":true,"semanticDistinct":true}
+      ],
+      "examples":[
+        {"sentence":"Visitors queued outside the palace to see the state rooms that are opened to the public each summer.","translation":"游客在宫殿外排队参观每年夏季向公众开放的国事厅。","targetForm":"palace","senseId":"semantic-1"},
+        {"sentence":"The Palace declined to comment until advisers had reviewed the reports and briefed the head of state.","translation":"王室方面在顾问审阅报告并向国家元首汇报前拒绝置评。","targetForm":"Palace","senseId":"semantic-2"},
+        {"sentence":"Compared with the cramped cottage, their new house seemed like a palace, with high ceilings and light-filled rooms.","translation":"与狭小的小屋相比，他们的新房像一座华丽大宅，有高高的天花板和洒满阳光的房间。","targetForm":"palace","senseId":"semantic-3"},
+        {"sentence":"The old cinema retained Palace in its name, recalling the grand public buildings that once used the word.","translation":"这家老电影院在名称中保留了 Palace，唤起人们对曾使用该词的大型公共建筑的记忆。","targetForm":"Palace","senseId":"semantic-4"}
+      ]
+    },
+    "assignment": {
+      "senseGroups":[
+        {"id":"semantic-1","partOfSpeech":"n.","sourceSenseIds":["n-1"],"sense":"指派；分配","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-2","partOfSpeech":"n.","sourceSenseIds":["n-2"],"sense":"任务；作业","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-3","partOfSpeech":"n.","sourceSenseIds":["n-3"],"sense":"派驻职位；岗位","contextReviewed":true,"semanticDistinct":true},
+        {"id":"semantic-4","partOfSpeech":"n.","sourceSenseIds":["n-4"],"sense":"财产或权利的转让","contextReviewed":true,"semanticDistinct":true}
+      ],
+      "examples":[
+        {"sentence":"The assignment of new staff to the evening shift was announced after managers considered their experience and travel times.","translation":"管理人员考虑员工经验和通勤时间后，公布了新员工的晚班分配。","targetForm":"assignment","senseId":"semantic-1"},
+        {"sentence":"For her reporting assignment, Lena interviewed shop owners about how the road closure had affected their trade.","translation":"为完成报道任务，莉娜采访了店主，了解道路封闭如何影响他们的生意。","targetForm":"assignment","senseId":"semantic-2"},
+        {"sentence":"His next assignment is to the embassy in Seoul, where he will coordinate cultural exchange programmes.","translation":"他的下一项派驻职位在首尔大使馆，他将在那里协调文化交流项目。","targetForm":"assignment","senseId":"semantic-3"},
+        {"sentence":"The assignment of the patent was recorded so the new owner could licence the invention to other companies.","translation":"该专利的权利转让已被登记，因此新所有人可以把这项发明许可给其他公司使用。","targetForm":"assignment","senseId":"semantic-4"}
       ]
     }
   }
