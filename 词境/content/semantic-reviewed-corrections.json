@@ -133,6 +133,9 @@
     ,"method": "470f0a53f5dde57279347773dbcfd87da4454720108b9e3184762e64f10f53d2"
     ,"painting": "94fa08ae51896f9feceb1e073c073fd6ff7f1efcb19f9d5bb18d5d4c8c6d1357"
     ,"appliance": "48244e8064916e0009e7485004381454e2317dbac09df072ce7768dd747e6b84"
+    ,"invent": "e75a54771dc0b91cdcd41adf9295e777d74efb91f45b8e193068893cf1d06955"
+    ,"beer": "3161322379c9cb2d2c624e429dadac9e35ba5ebaa23bc94175ef329e5afcaed6"
+    ,"drunk": "047e2a33f2946495184f57f944bfbc2d0cc6398154f75e26a8e125f2c9af3a7a"
   },
   "scope": "Targeted corrections, not a full-library review. Original examples; dictionary links support sense decisions.",
   "dictionaryOverrides": {
@@ -3211,6 +3214,9 @@
     ,"method": [{"id":"n-1","partOfSpeech":"n.","sense":"做某事的特定方法"},{"id":"n-2","partOfSpeech":"n.","sense":"周密安排的条理；井然有序"}]
     ,"painting": [{"id":"n-1","partOfSpeech":"n.","sense":"绘制的画；画作"},{"id":"n-2","partOfSpeech":"n.","sense":"绘画艺术；绘画活动"},{"id":"n-3","partOfSpeech":"n.","sense":"给物体或墙面上漆的工作"}]
     ,"appliance": [{"id":"n-1","partOfSpeech":"n.","sense":"家用电器"}]
+    ,"invent": [{"id":"v-1","partOfSpeech":"v.","sense":"发明；创造此前不存在的事物"},{"id":"v-2","partOfSpeech":"v.","sense":"编造不实的说法或故事"}]
+    ,"beer": [{"id":"n-1","partOfSpeech":"n.","sense":"啤酒"}]
+    ,"drunk": [{"id":"adj-1","partOfSpeech":"adj.","sense":"醉酒的；喝醉的"},{"id":"v-1","partOfSpeech":"v.","sense":"drink 的过去分词"}]
   },
   "reviews": {
     "deputy": {
@@ -3983,6 +3989,9 @@
     ,"method": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/method","decision":"Merged the near-synonymous method and way entries. Kept a particular way of doing something separate from the uncountable quality of being well planned and organized."}
     ,"painting": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/painting","decision":"Kept a painted picture, the art or activity of producing pictures, and the work of applying paint to surfaces distinct. Retired the inaccurate paint-substance gloss."}
     ,"appliance": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/appliance","decision":"Retained the common learner use: a household machine designed for a particular task. Retired the obsolete application and overly broad apparatus glosses."}
+    ,"invent": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/invent","decision":"Kept creating something not previously existing distinct from making up an untrue statement or story. Merged the candidate's fictional-character use into the latter group."}
+    ,"beer": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/beer","decision":"Countable servings and beer as a drink are the same Chinese meaning, so they use one example group."}
+    ,"drunk": {"source":"https://www.oxfordlearnersdictionaries.com/definition/english/drunk_1","decision":"Kept the adjective for intoxication distinct from drunk as the past participle of drink; the latter is a grammatical form with a different sentence role."}
   },
   "entries": {
     "deputy": {
@@ -9901,5 +9910,8 @@
     ,"method": {"senseGroups":[{"id":"semantic-1","partOfSpeech":"n.","sourceSenseIds":["n-1"],"sense":"做某事的特定方法","contextReviewed":true,"semanticDistinct":true},{"id":"semantic-2","partOfSpeech":"n.","sourceSenseIds":["n-2"],"sense":"周密安排的条理；井然有序","contextReviewed":true,"semanticDistinct":true}],"examples":[{"sentence":"The teacher introduced a simple method for memorizing new vocabulary through short daily reviews.","translation":"老师介绍了一种通过每天短时复习记忆新词的简单方法。","targetForm":"method","senseId":"semantic-1"},{"sentence":"There was method in her careful plan for moving the library without losing a single book.","translation":"她周密安排图书馆搬迁，确保一本书也不遗失，体现了做事的条理。","targetForm":"method","senseId":"semantic-2"}]}
     ,"painting": {"senseGroups":[{"id":"semantic-1","partOfSpeech":"n.","sourceSenseIds":["n-1"],"sense":"绘制的画；画作","contextReviewed":true,"semanticDistinct":true},{"id":"semantic-2","partOfSpeech":"n.","sourceSenseIds":["n-2"],"sense":"绘画艺术；绘画活动","contextReviewed":true,"semanticDistinct":true},{"id":"semantic-3","partOfSpeech":"n.","sourceSenseIds":["n-3"],"sense":"给物体或墙面上漆的工作","contextReviewed":true,"semanticDistinct":true}],"examples":[{"sentence":"The gallery displayed a painting that captured the changing light across the harbour.","translation":"画廊展出了一幅捕捉港湾光线变化的画作。","targetForm":"painting","senseId":"semantic-1"},{"sentence":"After retiring, he took up painting and spent weekends studying colour and composition.","translation":"退休后，他开始学习绘画，并在周末研究色彩和构图。","targetForm":"painting","senseId":"semantic-2"},{"sentence":"The painting of the classroom walls was postponed until the windows could be repaired.","translation":"教室墙面的粉刷工作被推迟，直到窗户能够修好。","targetForm":"painting","senseId":"semantic-3"}]}
     ,"appliance": {"senseGroups":[{"id":"semantic-1","partOfSpeech":"n.","sourceSenseIds":["n-1"],"sense":"家用电器","contextReviewed":true,"semanticDistinct":true}],"examples":[{"sentence":"Before leaving for the holiday, Mia unplugged each appliance that would not be needed while the house was empty.","translation":"米娅出门度假前拔掉了所有空房期间不需要使用的家用电器插头。","targetForm":"appliance","senseId":"semantic-1"}]}
+    ,"invent": {"senseGroups":[{"id":"semantic-1","partOfSpeech":"v.","sourceSenseIds":["v-1"],"sense":"发明；创造此前不存在的事物","contextReviewed":true,"semanticDistinct":true},{"id":"semantic-2","partOfSpeech":"v.","sourceSenseIds":["v-2"],"sense":"编造不实的说法或故事","contextReviewed":true,"semanticDistinct":true}],"examples":[{"sentence":"The engineer invented a compact filter that made polluted water safer for a remote village to use.","translation":"这位工程师发明了一种紧凑过滤器，使偏远村庄的污染水更适合使用。","targetForm":"invented","senseId":"semantic-1"},{"sentence":"He invented an excuse for missing the staff meeting instead of admitting that he had forgotten it.","translation":"他为缺席员工会议编造了借口，而没有承认自己忘记了。","targetForm":"invented","senseId":"semantic-2"}]}
+    ,"beer": {"senseGroups":[{"id":"semantic-1","partOfSpeech":"n.","sourceSenseIds":["n-1"],"sense":"啤酒","contextReviewed":true,"semanticDistinct":true}],"examples":[{"sentence":"The restaurant serves local beer with its traditional dishes, but it also offers several non-alcoholic drinks.","translation":"这家餐厅供应搭配传统菜肴的本地啤酒，也提供几种无酒精饮料。","targetForm":"beer","senseId":"semantic-1"}]}
+    ,"drunk": {"senseGroups":[{"id":"semantic-1","partOfSpeech":"adj.","sourceSenseIds":["adj-1"],"sense":"醉酒的；喝醉的","contextReviewed":true,"semanticDistinct":true},{"id":"semantic-2","partOfSpeech":"v.","sourceSenseIds":["v-1"],"sense":"drink 的过去分词","contextReviewed":true,"semanticDistinct":true}],"examples":[{"sentence":"The driver was too drunk to operate the school bus safely, so another employee took the route.","translation":"那名司机醉得无法安全驾驶校车，因此由另一名员工接手这条路线。","targetForm":"drunk","senseId":"semantic-1"},{"sentence":"By midnight, he had drunk enough water to recover from the heat and continue the hike.","translation":"到午夜时，他已经喝了足够的水缓解暑热，并继续徒步。","targetForm":"drunk","senseId":"semantic-2"}]}
   }
 }
