@@ -1,7 +1,7 @@
 "use strict";
 
 const FSRS6 = [0.212, 1.2931, 2.3065, 8.2956, 6.4133, 0.8334, 3.0194, 0.001, 1.8722, 0.1666, 0.796, 1.4835, 0.0614, 0.2629, 1.6483, 0.6014, 1.8729, 0.5425, 0.0912, 0.0658, 0.1542];
-const DEFAULT_SETTINGS = { targetRetention: 0.92, wordRate: 1.08, sentenceRate: 0.96, voiceSpeedVersion: 3, voiceURI: "", sentenceVoiceEngine: "natural", reducedMotion: false, darkMode: false, dailyNewTarget: 200, dailyReviewTarget: 30 };
+const DEFAULT_SETTINGS = { targetRetention: 0.92, wordRate: 1.08, sentenceRate: 0.96, voiceSpeedVersion: 4, voiceURI: "", sentenceVoiceEngine: "natural", reducedMotion: false, darkMode: false, dailyNewTarget: 200, dailyReviewTarget: 30 };
 const APP = document.querySelector("#app");
 const TOAST = document.querySelector("#toast");
 const SPEAKER_TEMPLATE = document.querySelector("#speaker-template");
@@ -768,10 +768,9 @@ const MEMORY_STEPS = Object.freeze([
   { id: "day15", label: "Day 15", directory: "十五" },
   { id: "day30", label: "Mastered", directory: "完全熟悉" }
 ]);
-const MEMORY_TABLE_PAGE_SIZE = 80;
-let memoryVisibleCount = MEMORY_TABLE_PAGE_SIZE;
+const MEMORY_TABLE_PAGE_SIZE = 50;
+let memoryPage = 0;
 let memorySearch = "";
-let memoryWindowStart = 0;
 let memorySearchTargetId = "";
 let memoryTableScrollLeft = 0;
 const memoryRevealedDefinitions = new Map([["recite", new Set()], ["dictation", new Set()]]);
@@ -856,7 +855,7 @@ function syncConfig() {
   return state.sync;
 }
 function upgradeVoiceSpeedSettings(settings) {
-  if (!settings || typeof settings !== "object" || Number(settings.voiceSpeedVersion) >= 3) return false;
+  if (!settings || typeof settings !== "object" || Number(settings.voiceSpeedVersion) >= 4) return false;
   const version = Number(settings.voiceSpeedVersion) || 0;
   if (version < 2) {
     settings.wordRate = Math.max(1.08, Number(settings.wordRate) || 0);
@@ -866,7 +865,11 @@ function upgradeVoiceSpeedSettings(settings) {
     if (!Number.isFinite(Number(settings.sentenceRate)) || Math.abs(Number(settings.sentenceRate) - 1.14) < 0.001) settings.sentenceRate = 0.96;
     if (settings.sentenceVoiceEngine !== "system" && settings.sentenceVoiceEngine !== "natural") settings.sentenceVoiceEngine = "natural";
   }
-  settings.voiceSpeedVersion = 3;
+  if (version < 4) {
+    settings.wordRate = Math.min(2, Math.max(.8, Number(settings.wordRate) || DEFAULT_SETTINGS.wordRate));
+    settings.sentenceRate = Math.min(2, Math.max(.8, Number(settings.sentenceRate) || DEFAULT_SETTINGS.sentenceRate));
+  }
+  settings.voiceSpeedVersion = 4;
   return true;
 }
 function makeInitialState() { return { version: 2, words: [], batches: [], logs: [], settings: { ...DEFAULT_SETTINGS }, sync: { enabled: false, key: "", revision: 0, lastSyncedAt: null, dirty: false, contentVersion: CLOUD_SYNC_CONTENT_VERSION }, updatedAt: new Date().toISOString() }; }
@@ -1167,7 +1170,7 @@ function migrateNotebookState() {
 }
 function activeNotebook() { return state.notebooks.find((notebook) => notebook.id === state.activeNotebookId && !notebook.archivedAt) || state.notebooks.find((notebook) => !notebook.archivedAt) || null; }
 function defaultMemoryTable(notebook = {}) {
-  return { mode: "recite", filter: "all", hideReciteDefinitions: false, hideDictationDefinitions: false, memo: "", memoUpdatedAt: null, updatedAt: notebook.updatedAt || notebook.createdAt || new Date().toISOString() };
+  return { mode: "recite", filter: "all", hideReciteDefinitions: false, hideDictationDefinitions: false, memo: "", memoUpdatedAt: null, shuffleOrders: { all: [], learning: [], mastered: [] }, updatedAt: notebook.updatedAt || notebook.createdAt || new Date().toISOString() };
 }
 function normalizeMemoryFilter(filter) {
   const legacy = String(filter || "all");
@@ -1181,7 +1184,9 @@ function migrateMemoryTableState() {
   (state.notebooks || []).forEach((notebook) => {
     const previous = notebook.memoryTable && typeof notebook.memoryTable === "object" ? notebook.memoryTable : {};
     const legacyHideAll = Boolean(previous.hideAll);
-    const normalized = { ...defaultMemoryTable(notebook), mode: previous.mode === "dictation" ? "dictation" : "recite", filter: normalizeMemoryFilter(previous.filter), hideReciteDefinitions: typeof previous.hideReciteDefinitions === "boolean" ? previous.hideReciteDefinitions : legacyHideAll, hideDictationDefinitions: typeof previous.hideDictationDefinitions === "boolean" ? previous.hideDictationDefinitions : legacyHideAll, hideReciteDefinitionsUpdatedAt: previous.hideReciteDefinitionsUpdatedAt || previous.updatedAt || notebook.updatedAt || null, hideDictationDefinitionsUpdatedAt: previous.hideDictationDefinitionsUpdatedAt || previous.updatedAt || notebook.updatedAt || null, memo: typeof previous.memo === "string" ? previous.memo.slice(0, 2400) : "", memoUpdatedAt: previous.memoUpdatedAt || null, updatedAt: previous.updatedAt || notebook.updatedAt || notebook.createdAt || new Date().toISOString() };
+    const sourceOrders = previous.shuffleOrders && typeof previous.shuffleOrders === "object" ? previous.shuffleOrders : {};
+    const normalizedOrders = Object.fromEntries(["all", "learning", "mastered"].map((key) => [key, Array.isArray(sourceOrders[key]) ? [...new Set(sourceOrders[key].map(String).filter(Boolean))] : []]));
+    const normalized = { ...defaultMemoryTable(notebook), mode: previous.mode === "dictation" ? "dictation" : "recite", filter: normalizeMemoryFilter(previous.filter), hideReciteDefinitions: typeof previous.hideReciteDefinitions === "boolean" ? previous.hideReciteDefinitions : legacyHideAll, hideDictationDefinitions: typeof previous.hideDictationDefinitions === "boolean" ? previous.hideDictationDefinitions : legacyHideAll, hideReciteDefinitionsUpdatedAt: previous.hideReciteDefinitionsUpdatedAt || previous.updatedAt || notebook.updatedAt || null, hideDictationDefinitionsUpdatedAt: previous.hideDictationDefinitionsUpdatedAt || previous.updatedAt || notebook.updatedAt || null, memo: typeof previous.memo === "string" ? previous.memo.slice(0, 2400) : "", memoUpdatedAt: previous.memoUpdatedAt || null, shuffleOrders: normalizedOrders, updatedAt: previous.updatedAt || notebook.updatedAt || notebook.createdAt || new Date().toISOString() };
     if (JSON.stringify(previous) !== JSON.stringify(normalized)) { notebook.memoryTable = normalized; changed = true; }
   });
   return changed;
@@ -1212,6 +1217,29 @@ function memoryFilterIncludes(word, filter) {
 function memoryWordHasBeenLearned(word) { return Boolean(word?.learningSeen || word?.learnedAt); }
 function memoryWords() {
   return activeWords().filter(memoryWordHasBeenLearned).slice().sort((left, right) => (Date.parse(left.learnedAt || left.createdAt) || 0) - (Date.parse(right.learnedAt || right.createdAt) || 0));
+}
+function orderedMemoryWords(words, prefs = memoryPrefs(), filter = prefs.filter) {
+  const items = Array.isArray(words) ? words : [];
+  const ids = new Set(items.map((word) => word.id));
+  const saved = Array.isArray(prefs.shuffleOrders?.[filter]) ? prefs.shuffleOrders[filter] : [];
+  const byId = new Map(items.map((word) => [word.id, word]));
+  const ordered = saved.filter((id) => ids.has(id)).map((id) => byId.get(id));
+  const known = new Set(ordered.map((word) => word.id));
+  return [...ordered, ...items.filter((word) => !known.has(word.id))];
+}
+function shuffleMemoryWords(scope) {
+  const prefs = memoryPrefs(); const filter = prefs.filter;
+  const base = orderedMemoryWords(memoryWords().filter((word) => memoryFilterIncludes(word, filter)), prefs, filter);
+  if (base.length < 2) { showToast("至少需要两个单词才能打乱。"); return; }
+  const start = memoryPage * MEMORY_TABLE_PAGE_SIZE;
+  const next = scope === "page"
+    ? [...base.slice(0, start), ...shuffle(base.slice(start, start + MEMORY_TABLE_PAGE_SIZE)), ...base.slice(start + MEMORY_TABLE_PAGE_SIZE)]
+    : shuffle(base);
+  prefs.shuffleOrders = { ...(prefs.shuffleOrders || {}), [filter]: next.map((word) => word.id) };
+  touchMemoryPrefs(prefs);
+  void persist({ defer: true });
+  render();
+  showToast(scope === "page" ? "已打乱当前 50 词页面。" : "已打乱 " + memoryFilterLabel(filter) + " 中的全部单词。");
 }
 function memoryMatchesSearch(word, query) {
   const needle = String(query || "").trim().toLowerCase();
@@ -1815,17 +1843,20 @@ function renderMemory() {
   if (memoryWords().length && renderSenseLibraryGate("记忆")) return;
   const notebook = activeNotebook(); const prefs = memoryPrefs(notebook); const orderedWords = memoryWords();
   const directory = memoryDirectoryItems(orderedWords);
-  const filtered = orderedWords.filter((word) => memoryFilterIncludes(word, prefs.filter));
+  const filtered = orderedMemoryWords(orderedWords.filter((word) => memoryFilterIncludes(word, prefs.filter)), prefs, prefs.filter);
   const serials = new Map(filtered.map((word, index) => [word.id, index + 1]));
   const targetIndex = memorySearchTargetId ? filtered.findIndex((word) => word.id === memorySearchTargetId) : -1;
-  const windowStart = filtered.length ? Math.min(memoryWindowStart, Math.max(0, filtered.length - 1)) : 0;
-  const visible = filtered.slice(windowStart, windowStart + memoryVisibleCount); const hasMore = windowStart + visible.length < filtered.length; const mode = prefs.mode;
+  const pageCount = Math.max(1, Math.ceil(filtered.length / MEMORY_TABLE_PAGE_SIZE));
+  memoryPage = Math.max(0, Math.min(memoryPage, pageCount - 1));
+  const windowStart = memoryPage * MEMORY_TABLE_PAGE_SIZE;
+  const visible = filtered.slice(windowStart, windowStart + MEMORY_TABLE_PAGE_SIZE); const mode = prefs.mode;
   const locationHint = targetIndex >= 0 ? ` · 已定位第 ${targetIndex + 1} 条` : "";
+  const pagination = filtered.length > MEMORY_TABLE_PAGE_SIZE ? `<nav class="memory-pagination" aria-label="记忆页码"><button class="quiet-button" data-memory-page="${memoryPage - 1}" ${memoryPage === 0 ? "disabled" : ""}>上一页</button><span>第 ${memoryPage + 1} / ${pageCount} 页 · 每页 50 词</span><button class="quiet-button" data-memory-page="${memoryPage + 1}" ${memoryPage === pageCount - 1 ? "disabled" : ""}>下一页</button></nav>` : `<p class="memory-pagination-summary">共 ${filtered.length} 词</p>`;
   const memoryExampleWord = memoryExampleWordId ? activeWords().find((word) => word.id === memoryExampleWordId) : null;
 
   const rows = visible.map((word) => `<div class="memory-row" data-memory-row="${escapeHtml(word.id)}" role="row"><div class="memory-cell memory-index is-sticky" role="cell"><button class="memory-example-trigger" type="button" data-memory-examples="${escapeHtml(word.id)}" aria-label="查看 ${escapeHtml(word.text)} 的例句与中文释义">${serials.get(word.id)}</button></div><div class="memory-cell memory-word is-sticky" role="cell">${memoryWordCell(word, mode)}</div><div class="memory-cell memory-definition is-sticky" role="cell">${memoryDefinitionHtml(word, prefs)}</div>${MEMORY_STEPS.map((step) => `<div class="memory-cell memory-step" role="cell">${memoryCircle(word, step, mode)}</div>`).join("")}</div>`).join("");
   const body = rows || `<div class="memory-empty">${orderedWords.length ? "这个目录中还没有单词。" : "当前单词本还没有单词。"}</div>`;
-  APP.innerHTML = `<section class="memory-page">${pageHeading("记忆")}<section class="memory-lead"><div><p class="section-label">${escapeHtml(notebook?.name || "我的单词本")} · 独立记录</p><h2>循着自己的记忆痕迹。</h2><p>按加入词本与首次学习时间排列；圆点只记录你的手动记忆，不影响 FSRS 复习。</p></div><div class="memory-summary"><strong>${orderedWords.length}</strong><span>全部单词</span></div></section><div class="memory-toolbar"><div class="memory-modes" role="tablist" aria-label="记忆方式"><button class="memory-mode ${mode === "recite" ? "is-active" : ""}" data-memory-mode="recite" role="tab" aria-selected="${mode === "recite"}">背诵</button><button class="memory-mode ${mode === "dictation" ? "is-active" : ""}" data-memory-mode="dictation" role="tab" aria-selected="${mode === "dictation"}">默写</button></div><button class="quiet-button memory-hide-all" data-memory-hide-all aria-label="${prefs.hideAll ? "显示全部词性和释义" : "隐藏全部词性和释义"}">${prefs.hideAll ? "显示" : "隐藏"}</button><div class="memory-search" role="search" aria-label="在记忆表中定位单词"><input data-memory-search type="search" value="${escapeHtml(memorySearch)}" placeholder="输入单词后跳转" autocomplete="off" enterkeyhint="search" /><button class="quiet-button memory-search-go" type="button" data-memory-search-go>跳转</button></div></div><div class="memory-workspace"><div class="memory-side-stack"><aside class="memory-sidebar"><p class="section-label">目录</p><nav class="memory-directory" aria-label="记忆目录">${directory.map((item) => `<button class="memory-directory-item ${prefs.filter === item.id ? "is-active" : ""}" data-memory-filter="${item.id}"><span>${item.label}</span><b>${item.count}</b></button>`).join("")}</nav></aside><section class="memory-memo" aria-labelledby="memory-memo-title"><h3 class="memory-memo-title" id="memory-memo-title">Notes</h3><textarea data-memory-memo maxlength="2400" rows="4" aria-label="学习备忘">${escapeHtml(String(prefs.memo || ""))}</textarea></section></div><section class="memory-table-card"><div class="memory-table-caption"><div><p class="section-label">${mode === "dictation" ? "默写" : "背诵"}</p><h2>${memoryFilterLabel(prefs.filter)}</h2></div><p>${mode === "dictation" ? "直接在英文框中书写；核对正确后自动填满下一个空圆。" : "先回忆释义，再点按对应圆点。"}${locationHint}</p></div><div class="memory-table-scroll"><div class="memory-table" role="table" aria-label="${escapeHtml(notebook?.name || "当前")}单词本记忆表"><div class="memory-row memory-head" role="row"><div class="memory-cell memory-index is-sticky" role="columnheader">序号</div><div class="memory-cell memory-word is-sticky" role="columnheader">${mode === "dictation" ? "默写" : "英文"}</div><div class="memory-cell memory-definition is-sticky" role="columnheader">释义</div>${MEMORY_STEPS.map((step) => `<div class="memory-cell memory-step" role="columnheader">${step.label}</div>`).join("")}</div>${body}</div></div>${hasMore ? `<button class="secondary memory-more" data-memory-more>更多</button>` : ""}</section></div><p class="memory-footnote">节点：${memoryStepDescription()}。切换单词本会切换整张记忆表与全部记录。</p></section>`;
+  APP.innerHTML = `<section class="memory-page">${pageHeading("记忆")}<section class="memory-lead"><div><p class="section-label">${escapeHtml(notebook?.name || "我的单词本")} · 独立记录</p><h2>循着自己的记忆痕迹。</h2><p>按加入词本与首次学习时间排列；圆点只记录你的手动记忆，不影响 FSRS 复习。</p></div><div class="memory-summary"><strong>${orderedWords.length}</strong><span>全部单词</span></div></section><div class="memory-toolbar"><div class="memory-modes" role="tablist" aria-label="记忆方式"><button class="memory-mode ${mode === "recite" ? "is-active" : ""}" data-memory-mode="recite" role="tab" aria-selected="${mode === "recite"}">背诵</button><button class="memory-mode ${mode === "dictation" ? "is-active" : ""}" data-memory-mode="dictation" role="tab" aria-selected="${mode === "dictation"}">默写</button></div><button class="quiet-button memory-hide-all" data-memory-hide-all aria-label="${prefs.hideAll ? "显示全部词性和释义" : "隐藏全部词性和释义"}">${prefs.hideAll ? "显示" : "隐藏"}</button><div class="memory-search" role="search" aria-label="在记忆表中定位单词"><input data-memory-search type="search" value="${escapeHtml(memorySearch)}" placeholder="输入单词后跳转" autocomplete="off" enterkeyhint="search" /><button class="quiet-button memory-search-go" type="button" data-memory-search-go>跳转</button></div></div><div class="memory-workspace"><div class="memory-side-stack"><aside class="memory-sidebar"><p class="section-label">目录</p><nav class="memory-directory" aria-label="记忆目录">${directory.map((item) => `<button class="memory-directory-item ${prefs.filter === item.id ? "is-active" : ""}" data-memory-filter="${item.id}"><span>${item.label}</span><b>${item.count}</b></button>`).join("")}</nav></aside><section class="memory-memo" aria-labelledby="memory-memo-title"><h3 class="memory-memo-title" id="memory-memo-title">Notes</h3><textarea data-memory-memo maxlength="2400" rows="4" aria-label="学习备忘">${escapeHtml(String(prefs.memo || ""))}</textarea></section></div><section class="memory-table-card"><div class="memory-table-caption"><div><p class="section-label">${mode === "dictation" ? "默写" : "背诵"}</p><h2>${memoryFilterLabel(prefs.filter)}</h2></div><p>${mode === "dictation" ? "直接在英文框中书写；核对正确后自动填满下一个空圆。" : "先回忆释义，再点按对应圆点。"}${locationHint}</p></div><div class="memory-table-actions"><span>随机顺序</span><button class="quiet-button" data-memory-shuffle="page" ${visible.length < 2 ? "disabled" : ""}>打乱本页</button><button class="quiet-button" data-memory-shuffle="all" ${filtered.length < 2 ? "disabled" : ""}>打乱全部</button></div><div class="memory-table-scroll"><div class="memory-table" role="table" aria-label="${escapeHtml(notebook?.name || "当前")}单词本记忆表"><div class="memory-row memory-head" role="row"><div class="memory-cell memory-index is-sticky" role="columnheader">序号</div><div class="memory-cell memory-word is-sticky" role="columnheader">${mode === "dictation" ? "默写" : "英文"}</div><div class="memory-cell memory-definition is-sticky" role="columnheader">释义</div>${MEMORY_STEPS.map((step) => `<div class="memory-cell memory-step" role="columnheader">${step.label}</div>`).join("")}</div>${body}</div></div>${pagination}</section></div><p class="memory-footnote">节点：${memoryStepDescription()}。切换单词本会切换整张记忆表与全部记录。</p></section>`;
   const tableScroller = APP.querySelector(".memory-table-scroll");
   if (tableScroller) {
     tableScroller.scrollLeft = memoryTableScrollLeft;
@@ -2177,11 +2208,10 @@ function locateMemorySearch() {
   if (!target) { memorySearchTargetId = ""; showToast("未在已学习单词中找到匹配项。"); return; }
   const prefs = memoryPrefs();
   if (!memoryFilterIncludes(target, prefs.filter)) { prefs.filter = "all"; touchMemoryPrefs(prefs); void persist({ defer: true }); }
-  const visibleWords = memoryWords().filter((word) => memoryFilterIncludes(word, prefs.filter));
+  const visibleWords = orderedMemoryWords(memoryWords().filter((word) => memoryFilterIncludes(word, prefs.filter)), prefs, prefs.filter);
   const index = visibleWords.findIndex((word) => word.id === target.id);
   memorySearchTargetId = target.id;
-  memoryWindowStart = Math.floor(Math.max(0, index) / MEMORY_TABLE_PAGE_SIZE) * MEMORY_TABLE_PAGE_SIZE;
-  memoryVisibleCount = MEMORY_TABLE_PAGE_SIZE;
+  memoryPage = Math.floor(Math.max(0, index) / MEMORY_TABLE_PAGE_SIZE);
   render();
   window.requestAnimationFrame(() => {
     const row = APP.querySelector(`[data-memory-row="${memorySearchTargetId}"]`);
@@ -2195,7 +2225,7 @@ function locateMemorySearch() {
 }
 function setMemoryFilter(filter) {
   const allowed = new Set(["all", "learning", "mastered"]);
-  const prefs = memoryPrefs(); prefs.filter = allowed.has(filter) ? filter : "all"; touchMemoryPrefs(prefs); memoryVisibleCount = MEMORY_TABLE_PAGE_SIZE; memoryWindowStart = 0; memorySearch = ""; memorySearchTargetId = ""; memoryTableScrollLeft = 0; persist({ defer: true }); render();
+  const prefs = memoryPrefs(); prefs.filter = allowed.has(filter) ? filter : "all"; touchMemoryPrefs(prefs); memoryPage = 0; memorySearch = ""; memorySearchTargetId = ""; memoryTableScrollLeft = 0; persist({ defer: true }); render();
 }
 function setMemoryHideAll() {
   const prefs = memoryPrefs(); const mode = memoryModeKey(prefs); const field = mode === "dictation" ? "hideDictationDefinitions" : "hideReciteDefinitions"; const timestamp = new Date().toISOString();
@@ -2259,7 +2289,7 @@ function checkMemorySpelling(field) {
 function setActiveNotebook(notebookId) {
 
   const notebook = state.notebooks.find((item) => item.id === notebookId && !item.archivedAt); if (!notebook) return;
-  state.activeNotebookId = notebook.id; selectedBatchId = lastItem(state.batches.filter((batch) => batch.notebookId === notebook.id))?.id || null; learnPage = 0; mistakePage = 0; savedPage = 0; memoryVisibleCount = MEMORY_TABLE_PAGE_SIZE; memoryWindowStart = 0; memorySearch = ""; memorySearchTargetId = ""; memoryTableScrollLeft = 0; memoryRevealedDefinitions.clear(); question = null; persist(); render();
+  state.activeNotebookId = notebook.id; selectedBatchId = lastItem(state.batches.filter((batch) => batch.notebookId === notebook.id))?.id || null; learnPage = 0; mistakePage = 0; savedPage = 0; memoryPage = 0; memorySearch = ""; memorySearchTargetId = ""; memoryTableScrollLeft = 0; memoryRevealedDefinitions.clear(); question = null; persist(); render();
 }
 function createNotebook() {
   const field = document.querySelector("#new-notebook-name"); const name = field?.value.trim(); if (!name) { showToast("请先填写单词本名称。"); field?.focus(); return; }
@@ -2513,7 +2543,9 @@ function speakWithSystem(phrase, type) {
   if (voice) { utterance.voice = voice; utterance.lang = voice.lang || "en-US"; }
   else utterance.lang = "en-US";
   const naturalSentence = type === "sentence" && state.settings.sentenceVoiceEngine === "natural";
-  utterance.rate = naturalSentence ? Math.min(rate, 0.96) : rate; utterance.pitch = naturalSentence ? 0.92 : 1; utterance.volume = 1;
+  // Natural mode changes only the tone; it must not silently cap the rate
+  // chosen in Settings.  Safari honours this value on each utterance.
+  utterance.rate = rate; utterance.pitch = naturalSentence ? 0.92 : 1; utterance.volume = 1;
   activeSpeechUtterance = utterance;
   const clearActiveUtterance = () => { if (activeSpeechUtterance === utterance) activeSpeechUtterance = null; };
   utterance.onend = clearActiveUtterance;
@@ -2631,7 +2663,8 @@ document.addEventListener("click", (event) => {
   if (button.dataset.memoryHideAll !== undefined) setMemoryHideAll();
   if (button.dataset.memoryToggleDefinition) toggleMemoryDefinition(button.dataset.memoryToggleDefinition);
   if (button.dataset.memoryStep && button.dataset.memoryWord) toggleMemoryStep(button.dataset.memoryWord, button.dataset.memoryStep);
-  if (button.dataset.memoryMore !== undefined) { memoryVisibleCount += MEMORY_TABLE_PAGE_SIZE; render(); }
+  if (button.dataset.memoryPage !== undefined) { memoryPage = Math.max(0, Number(button.dataset.memoryPage)); render(); window.scrollTo({ top: 0, behavior: state.settings.reducedMotion ? "auto" : "smooth" }); }
+  if (button.dataset.memoryShuffle) shuffleMemoryWords(button.dataset.memoryShuffle);
 
   if (button.dataset.import !== undefined) importWords(document.querySelector("#word-input")?.value || "");
   if (button.dataset.openFile !== undefined) document.querySelector("#txt-file")?.click();
@@ -2707,7 +2740,7 @@ document.addEventListener("change", (event) => {
 document.addEventListener("input", (event) => {
   if (event.target.dataset.memorySearch !== undefined) {
     const value = event.target.value; memorySearch = value;
-    if (!value.trim()) { memorySearchTargetId = ""; memoryWindowStart = 0; memoryVisibleCount = MEMORY_TABLE_PAGE_SIZE; }
+    if (!value.trim()) { memorySearchTargetId = ""; memoryPage = 0; }
     if (currentView === "memory" && !value.trim()) {
       renderMemory();
       const field = document.querySelector("[data-memory-search]"); field?.focus(); field?.setSelectionRange(value.length, value.length);
